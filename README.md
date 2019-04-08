@@ -49,27 +49,9 @@ Many of the issues to be found in parsing gbXML files are clerical matters that 
 
 </details>
 
-<details>
-<summary class=sumHeader title-"What you you really want?" >To Do / Wish List</summary>
-
-* 2019-04-03 ~ Identify surface edges with multiple vertices where two are sufficient
-* 2019-03-12 ~ Add as many tests currently in Spider gbXML Viewer as possible that do not require 3D
-* 2019-03-12 ~ Add more and better fixing the issues where possible
-* 2019-03-12 ~ Add check for opening vertices greater then four
-* 2019-03-12 ~ Add check for openings larger or outside their parent surface
-
-</details>
 
 <details>
-<summary class=sumHeader title="Bugs we know about already" >Issues</summary>
-
-* 2019-04-02 ~ Toggling the display of a module and clicking the 'Run check again' perform thhe identical action. It would be nice to decide which is preferable.
-* 2019-04-02 ~ Once a change is effected, some modules re-run the check automatically and others do not. It would be nice to decide which behavior is preferable.
-
-</details>
-
-<details>
-<summary class=sumHeader >Usage / things you can do using this script</summary>
+<summary class=sumHeader title="How to use Atrax" >Instructions / usage / things you can do using this script</summary>
 
 Opening files and saving changes
 * Click 'Choose file' and load a gbXML files or a ZIP file containing a gbXML file
@@ -107,6 +89,26 @@ Debugging
 Enhancing the script
 * Try adding a new menu module
 * Translate into another language
+
+</details>
+
+
+<details>
+<summary class=sumHeader title-"What you you really want?" >To Do / Wish List</summary>
+
+* 2019-04-03 ~ Identify surface edges with multiple vertices where two are sufficient
+* 2019-03-12 ~ Add as many tests currently in Spider gbXML Viewer as possible that do not require 3D
+* 2019-03-12 ~ Add more and better fixing the issues where possible
+* 2019-03-12 ~ Add check for opening vertices greater then four
+* 2019-03-12 ~ Add check for openings larger or outside their parent surface
+
+</details>
+
+<details>
+<summary class=sumHeader title="Bugs we know about already" >Issues</summary>
+
+* 2019-04-02 ~ Toggling the display of a module and clicking the 'Run check again' perform thhe identical action. It would be nice to decide which is preferable.
+* 2019-04-02 ~ Once a change is effected, some modules re-run the check automatically and others do not. It would be nice to decide which behavior is preferable.
 
 </details>
 
