@@ -1,26 +1,26 @@
 
-<span style=display:none; >[You are now in a GitHub source code view - click this link to view Read Me file as a web page]( https://www.ladybug.tools/spider-gbxml-tools/#sandbox/spider-gbxml-fixer/README.md "View file as a web page." ) </span>
+<span style=display:none; >[You are now in a GitHub source code view - click this link to view Read Me file as a web page]( https://www.ladybug.tools/spider-gbxml-fixer/#README.md "View file as a web page." ) </span>
 
-<div><input type=button class = "btn btn-secondary btn-sm" onclick=window.location.href="https://github.com/ladybug-tools/spider-gbxml-tools/blob/master/sandbox/spider-gbxml-fixer/README.md"
+<div><input type=button class = "btn btn-secondary btn-sm" onclick=window.location.href="https://github.com/ladybug-tools/spider-gbxml-fixer/"
 value="You are now in a GitHub web page view - Click this button to view this read me file as source code" ></div>
 
 <br>
 
-# [Spider gbXML Fixer 'Atrax' Read Me]( #sandbox/spider-gbxml-fixer/README.md )
+# [Spider gbXML Fixer 'Atrax' Read Me]( #README.md )
 
 <!--
-<iframe src=https://www.ladybug.tools/spider-gbxml-tools/sandbox/spider-gbxml-fixer/sandbox/spider-gbxml-fixer.html width=100% height=500px >Iframes are not viewable in GitHub source code views</iframe>
+<iframe src=https://www.ladybug.tools/spider-gbxml-fixer/spider-gbxml-fixer.html width=100% height=500px >Iframes are not viewable in GitHub source code views</iframe>
 _<small>Spider gbXML Fixer</small>_
 -->
 
 _JavaScript utilities to help you identify and fix common errors in gbXML files_
 
 
-### Bookmark this link:<br>https://www.ladybug.tools/spider-gbxml-tools/sandbox/spider-gbxml-fixer/
+### Bookmark this link:<br>https://www.ladybug.tools/spider-gbxml-fixer/
 
 * Always links to the current stable release
 
-### Latest release with demo: [Sample test run]( https://www.ladybug.tools/spider-gbxml-tools/sandbox/spider-gbxml-fixer/#https://cdn.jsdelivr.net/gh/ladybug-tools/spider@master/gbxml-sample-files/bristol-clifton-downs-broken.xml )
+### Latest release with demo: [Sample test run]( https://www.ladybug.tools/spider-gbxml-fixer/#https://cdn.jsdelivr.net/gh/ladybug-tools/spider@master/gbxml-sample-files/bristol-clifton-downs-broken.xml )
 
 * Loads and checks a sample file from the [Spider gbXML sample files]( https://www.ladybug.tools/spider/#gbxml-sample-files/README.md ) folder
 
