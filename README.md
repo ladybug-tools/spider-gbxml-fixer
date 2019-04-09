@@ -53,34 +53,51 @@ Many of the issues to be found in parsing gbXML files are clerical matters that 
 <details>
 <summary class=sumHeader title="How to use Atrax" >Instructions / usage / things you can do using this script</summary>
 
-Opening files and saving changes
-* Click 'Choose file' and load a gbXML files or a ZIP file containing a gbXML file
-* Drag & drop a gbXML or ZIP file to the area inside the dotted lines in the left menu
-* Click 'Open gbXML sample files' to access the Spider gbXML sample files
-	* Then click any of the buttons to a obtain a list of files you can open
-* Click on the 'Save file' to save any changes you have made to a new file
+Overview of the Spider menu system
+
+* The left menu is composed of several panels that resemble the drop-down menus in desktop programs. The panels are 'File', 'Settings' and 'Help'. The 'Edit' menu in Fixer is the main content window
+* Every menu panel has its own JavaScript file or files that includes help and other useful information in a pop-up window
+* Click on any of the '?' links to see the pop-up window at top right - each with:
+	* Short description of the module
+	* Link to source code for the module
+	* Wish list / to do items
+	* Issues list- bugs we know about
+	* Change log - see what's new
+* Click the three bars( 'hamburger menu icon' ) to slide the menu in and out
+	* Useful feature on a tablet or phone
+* Click the Octocat icon to view or edit the source code on GitHub
+* Click on title in the left menu to reload the web page
+	* Reloads the data file if the source is a URL
+
+**File Menu** - Opening files and saving changes
+
+* 'Open gbXML sample files' - click to access the Spider gbXML sample files
+	* Then click any of the buttons to to view a list of files you can open
+	* Click a file title to load it
+* 'Open gbXML or ZIP file' - click 'Choose file' and load a gbXML files or a ZIP file containing a gbXML file
+	* Drag & drop a gbXML or ZIP file to the area inside the dotted lines in the left menu
+* 'Save file' - Click on to save any changes you have made to a new file
 	* You may save the changes either to an XML file or and XML file compressed into a ZIP file
 
-Checking and fixing errors
-* Once a file is opened a menu appears in the main content area that allows yo to identify and fix any issues found in the file
+
+**Edit menu**
+
+* Checking and fixing errors in main content area
+* Once a file is opened a menu appears in the main content area that allows you to identify and fix any issues found in the file
 * Clicking any of the titles displays the text and runs the checking routines
 	* Click 'Run all checks' to open all the modules' text and run all the checks. This may take quite a while on large files
 * There are a numbers of types of errors to be check and needs its own style of user interface
 	* Streamlining amd homogenizing the workflows of the modules is a work-in-progress. Please do report issues and insights
 * In some workflows an Air surface type with duplicate adjacent spaces is acceptable. You may adjust the settings so an error is not issued.
 
-Menu system
-* Click on any of the '?' links to see a pop-up menu at top right with
-	* Short description of the module
-	* Link to source code for the module
-	* Wish list / to do items
-	* Issues list
-	* Change log
-* Click the three bars( 'hamburger menu icon' ) to slide the menu in and out
-* Click the Octocat icon to view or edit the source code on GitHub
-* Click on title in the menu to reload the web page
-* Click on 'Select Them and choose a [Bootswatch]( https://bootswatch.com/ ) theme such as 'United'
-* Click on 'Footer / Help' to see the links to many support files
+
+**Settings menu**
+* Click on 'Select Theme and choose a [Bootswatch]( https://bootswatch.com/ ) theme such as 'United'
+
+
+**Help menu**
+* Click to see the links to many support files
+
 
 Debugging
 * Press Control-U/Command-Option-U to view the source code
@@ -104,6 +121,7 @@ Enhancing the script
 
 </details>
 
+
 <details>
 <summary class=sumHeader title="Bugs we know about already" >Issues</summary>
 
@@ -115,8 +133,6 @@ Enhancing the script
 <details>
 <summary class=sumHeader title="The back story on things"  >Links of Interest</summary>
 
-
-
 ### _Atrax robustus_
 
 * https://en.wikipedia.org/wiki/Sydney_funnel-web_spider
@@ -124,6 +140,7 @@ Enhancing the script
 > The Sydney funnel-web spider (Atrax robustus) is a species of venomous mygalomorph spider native to eastern Australia, usually found within a 100 km (62 mi) radius of Sydney. It is a member of a group of spiders known as Australian funnel-web spiders. Its bite is capable of causing serious illness or death in humans if left untreated.
 
 </details>
+
 
 <details>
 
@@ -151,10 +168,11 @@ Semantic Versioning
 
 ### 2019-04-08 ~ Theo
 
-Spider gbXML Fixer 'Atrax' R2.2.0
+Spider gbXML Fixer 'Atrax' R2.2.3
 * F - Initial fork to spider-gbxml-repo
 * D - Cookbook folders moved to R3 folder( dev release )
-
+* B - Update many links
+* D - Edit and add text to read me as per @mechSpecs' guidance
 
 ### 2019-04-04 ~ Theo
 
