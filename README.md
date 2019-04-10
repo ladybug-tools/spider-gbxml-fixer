@@ -168,25 +168,31 @@ From [The case for single character git commit message prefixes]( https://smalld
 * T, test cases and/or test improvements
 * !, unknown - i.e. for when you really need to make that commit because there's a horde of zombies waiting outside.
 
-Semantic Versioning
+### Semantic Versioning
 
 * https://semver.org/
+* https://en.wikipedia.org/wiki/Software_versioning
+* https://medium.com/@jameshamann/a-brief-guide-to-semantic-versioning-c6055d87c90e
+* https://docs.npmjs.com/about-semantic-versioning
+* https://gist.github.com/jashkenas/cbd2b088e20279ae2c8e
+	* Many interesting comments to a short gist
 
 
 
 ### 2019-04-09 ~ Theo
 
 Spider gbXML Fixer 'Atrax' R3.0.0
-* Add 'dev' folder with index file redirecting to r3
-* First commit R3 dev release
-* Add cookbook folder
-* Add 'ft-template' folder with template files
-* Add 'fets-fix-exposed-to-sun' folder with files
+* F -Add 'dev' folder with index file redirecting to r3
+* F - First commit R3 dev release
+* T - Add cookbook folder
+* T - Add 'ft-template' folder with template files
+* T - Add 'fets-fix-exposed-to-sun' folder with files
 
 
 ### 2019-04-08 ~ Theo
 
 #### GH Release [Spider gbXML Fixer 'Atrax' R2.2.3]( https://github.com/ladybug-tools/spider-gbxml-fixer/releases/tag/v2.2.3 )
+
 * F - Initial fork to spider-gbxml-repo
 * D - Cookbook folders moved to R3 folder( dev release )
 * B - Update many links
@@ -208,7 +214,7 @@ Spider gbXML Fixer 'Atrax' R2.0.0
 
 ### 2019-04-02 ~ Theo
 
-Spider gbXML Fixer 'Atrax' R1.7
+[Spider gbXML Fixer 'Atrax' R1.7]( https://www.ladybug.tools/spider-gbxml-fixer/r1/spider-gbxml-fixer.html )
 * B - Validate HTML with  https://validator.w3.org/nu / Fix all errors reported
 * D - Update this read me a lot
 
