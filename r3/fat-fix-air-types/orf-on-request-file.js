@@ -4,11 +4,11 @@
 /* jshint loopfunc: true */
 
 
-const OFR = { "release": "R13.0", "date": "2019-04-04" };
+const OFR = { "release": "R1.0", "date": "2019-04-09" };
 
 OFR.description =
 	`
-		TooToo On File Request (OFR) provides HTML and JavaScript to
+		On File Request (OFR) provides HTML and JavaScript to
 		select, open and display local files using the file dialog box, drag and drop or URL.
 	`;
 
@@ -53,12 +53,14 @@ OFR.currentStatus =
 
 OFR.reader = new FileReader();
 OFR.xhr = new XMLHttpRequest(); // declare now to load event listeners in other modules
+
 OFR.regexImages = /\.(jpe?g|png|gif|webp|ico|svg|bmp)$/i;
 OFR.regexHtml = /\.(htm?l)$/i;
 OFR.regexXml = /\.(xml)$/i;
 OFR.regexZip = /\.(zip)$/i;
 
 OFR.contentsCss = `box-sizing: border-box; border: 1px solid #888; height: ${ window.innerHeight - 4 }px; margin: 0; padding:0; width:100%;`;
+
 
 
 //////////
@@ -117,7 +119,7 @@ OFR.onRequestFile = function( url ) { // from a button
 
 		OFR.target.innerHTML = `<img src=${ url } >`;
 
- 	/* } else if ( name.match( OFR.regexXml ) ) {
+ 	/* } else if ( name.match( OFR.regexXml ) ) { // decide on load
 
 		let event = new Event( "onRequestXml", {"bubbles": true, "cancelable": false, detail: true } );
 
@@ -159,10 +161,9 @@ OFR.onLoadReader = function( files ) {
 
 			OFR.target.innerHTML = `<img src=${ OFR.reader.result } >`;
 
-		} else if ( OFR.regexHtml.test( file.name ) ) { // html mucks things up
+		} else if ( OFR.regexHtml.test( file.name ) ) { // html can muck things up but srcdoc gets around some CORS issues
 
 			OFR.target.innerHTML = `<iframe srcdoc="${ OFR.reader.result }" style="${ OFR.contentsCss }" ></iframe>`;
-
 
 		} else if ( OFR.regexXml.test( file.name )  ) {
 
@@ -269,10 +270,11 @@ OFR.onProgress = function( size = 0, note = '' ) {
 
 		console.log( 'loaded', size );
 
-		const event = new Event( 'onXmlFileLoad' );
+		const event = new Event( 'onFileLoad' );
 		document.body.dispatchEvent( event );
 
-		// document.body.addEventListener( 'onXmlFileLoad', setStats, false );
+		console.log( 'event', event );
+		// document.body.addEventListener( 'onFileLoad', setStats, false );
 
 	}
 };

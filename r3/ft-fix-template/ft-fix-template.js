@@ -1,36 +1,32 @@
 //Copyright 2019 Ladybug Tools authors. MIT License
-/* globals SGF, FIL */
+/* globals FIL */
 /* jshint esversion: 6 */
 /* jshint loopfunc: true */
 
 
-const FAT = { "release": "1.1.0", "date": "2019-04-09" };
+const FT = { "release": "1.0.0", "date": "2019-04-09" };
 
 
-FAT.types = [
+FT.types = [
 
 	"InteriorWall", "ExteriorWall", "Roof", "InteriorFloor", "ExposedFloor", "Shade", "UndergroundWall",
 	"UndergroundSlab", "Ceiling", "Air", "UndergroundCeiling", "RaisedFloor", "SlabOnGrade",
 	"FreestandingColumn", "EmbeddedColumn"
 ];
 
-FAT.exposedTypes = [ "ExteriorWall", "Roof", "ExposedFloor", "Shade", "RaisedFloor" ];
+FT.exposedTypes = [ "ExteriorWall", "Roof", "ExposedFloor", "Shade", "RaisedFloor" ];
 
-FAT.description =
+FT.description =
 	`
-		type 2 Checks for a surface type that is not one of the 15 valid gbXML surface types
+		template for checking surfaces
 	`;
 
-FAT.currentStatus =
+FT.currentStatus =
 	`
-		<h3>Fix Surface Type Invalid (FAT) R${ FAT.release } ~ ${ FAT.date }</h3>
+		<h3>Fix Surface Type Invalid (FT) R${ FT.release } ~ ${ FT.date }</h3>
 
 		<p>
-			${ FAT.description }.
-		</p>
-
-		<p>
-			Most likely this type of error is quite rare. It occurs when a user types in a non-valid surface type in the originating CAD application.
+			${ FT.description }.
 		</p>
 
 		<p>
@@ -51,14 +47,14 @@ FAT.currentStatus =
 
 
 
-FAT.getSurfaceTypeInvalid = function() {
+FT.getSurfaceTypeInvalid = function() {
 
 	const htm =
 		`
-			<details ontoggle="FXSTIdivSurfaceType.innerHTML=FAT.getSurfaceType();" >
+			<details ontoggle="FXSTIdivSurfaceType.innerHTML=FT.getSurfaceType();" >
 
 				<summary id=FXSTIsumSurfaceType class=sumHeader >Fix surfaces with invalid surface type
-					<a id=FXSTISum class=helpItem href="JavaScript:MNU.setPopupShowHide(FXSTISum,FAT.currentStatus);" >&nbsp; ? &nbsp;</a>
+					<a id=FXSTISum class=helpItem href="JavaScript:MNU.setPopupShowHide(FXSTISum,FT.currentStatus);" >&nbsp; ? &nbsp;</a>
 				</summary>
 
 				<div id=FXSTIdivSurfaceType ></div>
@@ -73,13 +69,13 @@ FAT.getSurfaceTypeInvalid = function() {
 
 
 
-FAT.getSurfaceType = function() {
+FT.getSurfaceType = function() {
 
 	const timeStart = performance.now();
 
-	FAT.errors = [];
+	FT.errors = [];
 
-	FAT.surfaceTypes = SGF.surfaces.map( surface => {
+	FT.surfaceTypes = SGF.surfaces.map( surface => {
 
 		let typeSource = surface.match( /surfaceType="(.*?)"/i )
 		typeSource = typeSource ? typeSource[ 1 ] : "";
@@ -98,15 +94,15 @@ FAT.getSurfaceType = function() {
 
 	} )
 
-	console.log( 'FAT.errors', FAT.errors );
-	//console.log( 'FAT.surfaceTypes', FAT.surfaceTypes );
+	console.log( 'FT.errors', FT.errors );
+	//console.log( 'FT.surfaceTypes', FT.surfaceTypes );
 
-	errors = FAT.errors.map( item => `id: ${ item.id } current surface type: ${ item.typeSource } ${ item.exposedToSun }` );
+	errors = FT.errors.map( item => `id: ${ item.id } current surface type: ${ item.typeSource } ${ item.exposedToSun }` );
 
-	const help = `<a id=fxstiHelp class=helpItem href="JavaScript:MNU.setPopupShowHide(fxstiHelp,FAT.currentStatus);" >&nbsp; ? &nbsp;</a>`;
+	const help = `<a id=fxstiHelp class=helpItem href="JavaScript:MNU.setPopupShowHide(fxstiHelp,FT.currentStatus);" >&nbsp; ? &nbsp;</a>`;
 
 	FXSTIsumSurfaceType.innerHTML =
-		`Surface types ~ ${ FAT.surfaceTypes.length.toLocaleString() } found
+		`Surface types ~ ${ FT.surfaceTypes.length.toLocaleString() } found
 			${ help }
 		`;
 
@@ -114,7 +110,7 @@ FAT.getSurfaceType = function() {
 	`
 		<p><i>A surface type was supplied that is not one of the following: ${ SGF.surfaceTypes.join( ', ' ) }</i></p>
 
-		<p>${ FAT.surfaceTypes.length.toLocaleString() } surface types found.</p>
+		<p>${ FT.surfaceTypes.length.toLocaleString() } surface types found.</p>
 
 		${ errors.join("<br>") }
 
@@ -128,7 +124,7 @@ FAT.getSurfaceType = function() {
 
 
 
-FAT.setTypeInvalidData = function( select ) {
+FT.setTypeInvalidData = function( select ) {
 
 	const invalidData = SGF.getSurfacesAttributesByIndex( select.value, select.options[ select.selectedIndex ].innerText );
 
@@ -149,8 +145,8 @@ FAT.setTypeInvalidData = function( select ) {
 
 			<p>
 				Select new surface type <select id=selSurfaceType${ index } >${ options }</select>
-				<button onclick=FAT.setSurfaceType(${ index }); >Update data in memory</button>
-				<button onclick=FAT.showSurfaceGbxml(${ index }); >View gbXML text</button>
+				<button onclick=FT.setSurfaceType(${ index }); >Update data in memory</button>
+				<button onclick=FT.showSurfaceGbxml(${ index }); >View gbXML text</button>
 			</p>
 		`;
 
@@ -160,10 +156,10 @@ FAT.setTypeInvalidData = function( select ) {
 
 
 
-FAT.setSurfaceType = function( index ) {
-	//console.log( 'index',FAT.surfaceTypeInvalids[ index ]  );
+FT.setSurfaceType = function( index ) {
+	//console.log( 'index',FT.surfaceTypeInvalids[ index ]  );
 
-	const surfaceTextCurrent = SGF.surfaces[ FAT.surfaceTypeInvalids[ index ] ];
+	const surfaceTextCurrent = SGF.surfaces[ FT.surfaceTypeInvalids[ index ] ];
 	//console.log( 'surfaceTextCurrent', surfaceTextCurrent );
 
 	const type = document.body.querySelector( `#selSurfaceType${ index }` ).value;
@@ -180,9 +176,9 @@ FAT.setSurfaceType = function( index ) {
 
 
 
-FAT.showSurfaceGbxml = function( index ) {
+FT.showSurfaceGbxml = function( index ) {
 
-	const surfaceText = SGF.surfaces[ FAT.surfaceTypeInvalids[ index ] ];
+	const surfaceText = SGF.surfaces[ FT.surfaceTypeInvalids[ index ] ];
 
 	//const div = document.body.querySelector( `#divSurfaceType${ index }` );
 

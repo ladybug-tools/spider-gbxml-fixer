@@ -18,17 +18,20 @@ FETS.exposedTypes = [ "ExteriorWall", "Roof", "ExposedFloor", "Shade", "RaisedFl
 
 FETS.description =
 	`
-		Checks for surface with invalid exposedToSon values
+		type 2 Checks for a surface type that is not one of the 15 valid gbXML surface types
 	`;
 
 FETS.currentStatus =
 	`
-		<h3>Fix Surfaces Exposed To Sun I(FETS) R${ FETS.release } ~ ${ FETS.date }</h3>
+		<h3>Fix Surface Type Invalid (FETS) R${ FETS.release } ~ ${ FETS.date }</h3>
 
 		<p>
 			${ FETS.description }.
 		</p>
 
+		<p>
+			Most likely this type of error is quite rare. It occurs when a user types in a non-valid surface type in the originating CAD application.
+		</p>
 
 		<p>
 			Wish List / To do:<br>
@@ -40,7 +43,7 @@ FETS.currentStatus =
 		<details>
 			<summary>Change log</summary>
 			<ul>
-				<li>2019-04-09 ~ First commit</li>
+				<li>2019-03-19 ~ First commit</li>
 			</ul>
 		</details>
 	`;
@@ -48,17 +51,17 @@ FETS.currentStatus =
 
 
 
-FETS.getSurfaceExposedToSun = function() {
+FETS.getSurfaceTypeInvalid = function() {
 
 	const htm =
 		`
 			<details ontoggle="FXSTIdivSurfaceType.innerHTML=FETS.getSurfaceType();" >
 
-				<summary id=FXSTIsumSurfaceType class=sumHeader >Fix surfaces with invalid ExposedToSun values
-					<a id=FXSTISum class=helpItem href="JavaScript:MNU.setPopupShowHide(FXSTISum,FETS.currentStatus);" >&nbsp; ? &nbsp;</a>
-				</summary>
+			<summary id=FXSTIsumSurfaceType class=sumHeader >Fix surfaces with invalid surface type
+				<a id=FXSTISum class=helpItem href="JavaScript:MNU.setPopupShowHide(FXSTISum,FETS.currentStatus);" >&nbsp; ? &nbsp;</a>
+			</summary>
 
-				<div id=FXSTIdivSurfaceType ></div>
+			<div id=FXSTIdivSurfaceType ></div>
 
 			</details>
 
@@ -75,39 +78,39 @@ FETS.getSurfaceType = function() {
 	const timeStart = performance.now();
 
 	FETS.errors = [];
-	FETS.values = [];
 
 	FETS.surfaceTypes = SGF.surfaces.map( surface => {
+
 
 		let typeSource = surface.match( /surfaceType="(.*?)"/i )
 		typeSource = typeSource ? typeSource[ 1 ] : "";
 
-		let exposedToSun = surface.match( /exposedToSun="(.*?)"/i );
-		let exposedToSunBoolean = exposedToSun ? exposedToSun[ 1 ] === "true" : false;
+		let exposedToSun= surface.match( /exposedToSun="(.*?)"/i );
+		exposedToSun = exposedToSun ? exposedToSun[ 1 ] === "true" : false;
+
 		//console.log( 'exposedToSun', exposedToSun );
 
-		if ( exposedToSunBoolean === true && FETS.exposedTypes.includes( typeSource ) === false ) {
+		if ( exposedToSun && FETS.exposedTypes.includes( typeSource ) === false ) {
 
 				id = surface.match( / id="(.*?)"/i )[ 1 ];
-				console.log( 'id', id );
 
-				FETS.errors.push( {id, typeSource, exposedToSunBoolean, exposedToSun } );
+				FETS.errors.push( {id, typeSource, exposedToSun } );
 
-		} else if ( exposedToSunBoolean === false && FETS.exposedTypes.includes( typeSource ) === true  ) {
+		} else if ( exposedToSun === false && FETS.exposedTypes.includes( typeSource ) === true  ) {
 
 			id = surface.match( / id="(.*?)"/i )[ 1 ];
 
-			FETS.errors.push( {id, typeSource, exposedToSunBoolean, exposedToSun } );
+			FETS.errors.push( {id, typeSource, exposedToSun} );
 
 		}
 
 
 	} )
 
-	//console.log( 'FETS.errors', FETS.errors );
+	console.log( 'FETS.errors', FETS.errors );
 	//console.log( 'FETS.surfaceTypes', FETS.surfaceTypes );
 
-	errors = FETS.errors.map( item => `id: ${ item.id } surface type: ${ item.typeSource } - exposedToSun value: ${ ( item.exposedToSun && item.exposedToSun.length ? item.exposedToSun[ 1 ] : "null" ) }` );
+	errors = FETS.errors.map( item => `id: ${ item.id } current surface type: ${ item.typeSource } ${ item.exposedToSun }` );
 
 	const help = `<a id=fxstiHelp class=helpItem href="JavaScript:MNU.setPopupShowHide(fxstiHelp,FETS.currentStatus);" >&nbsp; ? &nbsp;</a>`;
 
@@ -118,9 +121,9 @@ FETS.getSurfaceType = function() {
 
 	const htm =
 	`
-		<p><i>A surface with exposedToSun value not equal to "true" was supplied or is not one of the following surface types: ${ FETS.exposedTypes.join( ', ' ) }</i></p>
+		<p><i>A surface type was supplied that is not one of the following: ${ SGF.surfaceTypes.join( ', ' ) }</i></p>
 
-		<p>${ FETS.errors.length.toLocaleString() } surface with errors found.</p>
+		<p>${ FETS.surfaceTypes.length.toLocaleString() } surface types found.</p>
 
 		${ errors.join("<br>") }
 

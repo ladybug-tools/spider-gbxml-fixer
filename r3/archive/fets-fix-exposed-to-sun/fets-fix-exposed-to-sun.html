@@ -9,7 +9,7 @@
 <title></title>
 <style>
 
-	body { font: 12pt monospace; margin: 0 auto 0 400px; max-width: 800px; }
+	body { font: 12pt monospace; margin: 0 auto; max-width: 800px; }
 	a { color: crimson; text-decoration: none; }
 	a:hover, a:focus { background-color: yellow; color: #aaa; text-decoration: underline }
 
@@ -35,10 +35,11 @@
 <script src="https://rawgit.com/showdownjs/showdown/1.9.0/dist/showdown.min.js" ></script>
 
 <script src="orf-on-request-file.js" ></script>
+
+
 <script src="../spider-gbxml-fixer-core.js" ></script>
 <script src="../ggd-get-gbxml-data.js" ></script>
-
-<script src="fat-fix-air-types.js" ></script>
+<script src="fets-fix-exposed-to-sun.js" ></script>
 
 	<nav id="navMenu" >
 
@@ -60,26 +61,22 @@
 
 		</details>
 
-		<!--
+		<p>
+			<button id=but onclick=OFR.onRequestFile(this.innerHTML); >README.md</button>
+		</p>
 
+		<p>
+			<button id=but onclick=OFR.onRequestFile(this.innerHTML); >../../../README.md</button>
+		</p>
 
-			<p>
-				<button id=but onclick=OFR.onRequestFile(this.innerHTML); >README.md</button>
-			</p>
+		<p>
+			<button id=but onclick=OFR.onRequestFile(this.innerHTML); >../../favicon.ico</button>
+		</p>
 
-			<p>
-				<button id=but onclick=OFR.onRequestFile(this.innerHTML); >../../README.md</button>
-			</p>
+		<p>
+			<button id=but onclick=OFR.onRequestFile(this.innerHTML); >../../index.html</button>
+		</p>
 
-			<p>
-				<button id=but onclick=OFR.onRequestFile(this.innerHTML); >../../favicon.ico</button>
-			</p>
-
-			<p>
-				<button id=but onclick=OFR.onRequestFile(this.innerHTML); >../../index.html</button>
-			</p>
-
-		-->
 		<p>
 			<button id=but onclick=OFR.onRequestFile(this.innerHTML); >one-room-with-surface-type-errors.xml</button>
 		</p>
@@ -134,7 +131,6 @@ MNU.setPopupShowHide = function( id, text ) {
 	divPopUpData.innerHTML = id.classList.contains( 'active' ) ? text : '';
 
 };
-
 
 
 function getTitle() {

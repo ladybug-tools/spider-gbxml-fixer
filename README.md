@@ -16,11 +16,16 @@ _<small>Spider gbXML Fixer</small>_
 _JavaScript utilities to help you identify and fix common errors in gbXML files_
 
 
-### Bookmark this link:<br>https://www.ladybug.tools/spider-gbxml-fixer/
+### Bookmark this link for stable:<br>https://www.ladybug.tools/spider-gbxml-fixer/
 
-* Always links to the current stable release
+* Always links to the release that has been tested
 
-### Latest release with demo: [Sample test run]( https://www.ladybug.tools/spider-gbxml-fixer/#https://cdn.jsdelivr.net/gh/ladybug-tools/spider@master/gbxml-sample-files/bristol-clifton-downs-broken.xml )
+### Bookmark this link for latest:<br>https://www.ladybug.tools/spider-gbxml-fixer/dev/
+
+* Always links to the version currently being worked on
+
+
+### Stable release with demo: [Sample test run]( https://www.ladybug.tools/spider-gbxml-fixer/#https://cdn.jsdelivr.net/gh/ladybug-tools/spider@master/gbxml-sample-files/bristol-clifton-downs-broken.xml )
 
 * Loads and checks a sample file from the [Spider gbXML sample files]( https://www.ladybug.tools/spider/#gbxml-sample-files/README.md ) folder
 
@@ -31,6 +36,7 @@ _JavaScript utilities to help you identify and fix common errors in gbXML files_
 
 Many of the issues to be found in parsing gbXML files are clerical matters that may be identified using simple text search routines. Full 3D viewing of these types of errors is not needed and may actually slow things down.
 
+The desired solution is a utility that enables seamless gbXML data transfer between applications without human intervention.
 
 ### Mission for Spider gbXML Fixer / currently
 
@@ -39,7 +45,8 @@ Many of the issues to be found in parsing gbXML files are clerical matters that 
 
 ### Vision / future
 
-* All errors are fixed and changes saved with the click of a single button or just running the script of a server
+* All errors are fixed and changes saved with the click of a single button or just running the script on a server
+
 
 ### Notes
 
@@ -125,7 +132,8 @@ Enhancing the script
 <details>
 <summary class=sumHeader title="Bugs we know about already" >Issues</summary>
 
-* 2019-04-02 ~ Toggling the display of a module and clicking the 'Run check again' perform thhe identical action. It would be nice to decide which is preferable.
+* 2019-04-08 ~ When reloading a file, the 'undefined' in main content window
+* 2019-04-02 ~ Toggling the display of a module and clicking the 'Run check again' perform the identical action. It would be nice to decide which is preferable.
 * 2019-04-02 ~ Once a change is effected, some modules re-run the check automatically and others do not. It would be nice to decide which behavior is preferable.
 
 </details>
@@ -166,9 +174,19 @@ Semantic Versioning
 
 
 
+### 2019-04-09 ~ Theo
+
+Spider gbXML Fixer 'Atrax' R3.0.0
+* Add 'dev' folder with index file redirecting to r3
+* First commit R3 dev release
+* Add cookbook folder
+* Add 'ft-template' folder with template files
+* Add 'fets-fix-exposed-to-sun' folder with files
+
+
 ### 2019-04-08 ~ Theo
 
-Spider gbXML Fixer 'Atrax' R2.2.3
+#### GH Release [Spider gbXML Fixer 'Atrax' R2.2.3]( https://github.com/ladybug-tools/spider-gbxml-fixer/releases/tag/v2.2.3 )
 * F - Initial fork to spider-gbxml-repo
 * D - Cookbook folders moved to R3 folder( dev release )
 * B - Update many links

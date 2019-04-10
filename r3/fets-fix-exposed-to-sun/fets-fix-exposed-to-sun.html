@@ -9,7 +9,7 @@
 <title></title>
 <style>
 
-	body { font: 12pt monospace; margin: 0 auto; max-width: 800px; }
+	body { font: 12pt monospace; margin: 0 auto 0 400px; max-width: 800px; }
 	a { color: crimson; text-decoration: none; }
 	a:hover, a:focus { background-color: yellow; color: #aaa; text-decoration: underline }
 
@@ -34,11 +34,10 @@
 <body>
 <script src="https://rawgit.com/showdownjs/showdown/1.9.0/dist/showdown.min.js" ></script>
 
-<script src="orf-on-request-file.js" ></script>
-
-
+<script src="../fil-file-open-xml-zip.js" ></script>
 <script src="../spider-gbxml-fixer-core.js" ></script>
 <script src="../ggd-get-gbxml-data.js" ></script>
+
 <script src="fets-fix-exposed-to-sun.js" ></script>
 
 	<nav id="navMenu" >
@@ -49,34 +48,34 @@
 
 			<summary class=sumMenuTitle >File Menu</summary>
 
-			<section id="OFRsecFileOpenBasic" ></section>
+			<section id="FILdivFileOpen"></section>
+
+			<section id="FILdivFileSave"></section>
 
 		</details>
 
-		<details id=FILdetFileOpen >
 
-			<summary class=sumHeader >File open statistics</summary>
 
-			<div id=FILdivProgress ></div>
+		<!--
 
-		</details>
 
-		<p>
-			<button id=but onclick=OFR.onRequestFile(this.innerHTML); >README.md</button>
-		</p>
+			<p>
+				<button id=but onclick=OFR.onRequestFile(this.innerHTML); >README.md</button>
+			</p>
 
-		<p>
-			<button id=but onclick=OFR.onRequestFile(this.innerHTML); >../../../README.md</button>
-		</p>
+			<p>
+				<button id=but onclick=OFR.onRequestFile(this.innerHTML); >../../README.md</button>
+			</p>
 
-		<p>
-			<button id=but onclick=OFR.onRequestFile(this.innerHTML); >../../favicon.ico</button>
-		</p>
+			<p>
+				<button id=but onclick=OFR.onRequestFile(this.innerHTML); >../../favicon.ico</button>
+			</p>
 
-		<p>
-			<button id=but onclick=OFR.onRequestFile(this.innerHTML); >../../index.html</button>
-		</p>
+			<p>
+				<button id=but onclick=OFR.onRequestFile(this.innerHTML); >../../index.html</button>
+			</p>
 
+		-->
 		<p>
 			<button id=but onclick=OFR.onRequestFile(this.innerHTML); >one-room-with-surface-type-errors.xml</button>
 		</p>
@@ -100,6 +99,9 @@ const urlSourceCodeIcon = "https://pushme-pullyou.github.io/github-mark-64.png";
 const urlSourceCode = "https://github.com/zzzzz/xxxxx.html";
 
 
+//FIL.urlDefaultFile = "../README.md";
+FIL.urlDefaultFile = "../../test-samples/one-room-with-exposedtosun-errors.xml"
+
 init();
 
 
@@ -108,15 +110,50 @@ function init() {
 
 	divTitle.innerHTML = getTitle();
 
-	OFRsecFileOpenBasic.innerHTML = OFR.getMenuFileOpenBasic( divContents );
+	FILdivFileOpen.innerHTML = FIL.getMenuFileOpen();
+
+	FILdivFileSave.innerHTML = FIL.getMenuFileSave();
 
 	//window.addEventListener( "onRequestXml", requestXml );
 	//document.body.addEventListener( 'onXmlFileLoad', GGD.getData, false );
 
-	OFR.onRequestFile( "../../test-samples/one-room-with-surface-type-errors.xml" );
+	//FIL.XhrRequestFileXml( "../../test-samples/one-room-with-surface-type-errors.xml" );
 
-	//divContents.innerHTML = FXSTI.getSurfaceTypeInvalid();
+	FIL.onHashChange();
 
+	//divContents.innerHTML = FXSTI.getSurfaceExposedToSun();
+
+	document.body.addEventListener( 'onXmlFileLoad', onLoad, false );
+
+}
+
+
+
+function onLoad() {
+
+
+	GGD.getData(  FIL.text  );
+
+	htm1 = GGD.getGbxmlData(  FIL.text  );
+
+	htm2 = FETS.getSurfaceExposedToSun();
+
+	divContents.innerHTML =
+	`
+	<br><br>
+
+	<h2 id=SGFh1FileName >Check file: ${ decodeURI( FIL.name ) } </h2>
+
+	<p>
+		<button onclick=SGF.runAll(); >Run all checks</button>
+
+		<button onclick=SGF.closeAll(); >Close all checks</button>
+	</p>
+
+	<p>
+		<input type=checkbox id=SGFinpIgnoreAirSurfaceType > Ignore Air surface type
+	</p>
+	` + htm1 + htm2;
 }
 
 
@@ -133,6 +170,7 @@ MNU.setPopupShowHide = function( id, text ) {
 };
 
 
+
 function getTitle() {
 
 	document.title = document.title ? document.title : location.href.split( '/' ).pop().slice( 0, - 5 ).replace( /-/g, ' ' );
@@ -147,7 +185,7 @@ function getTitle() {
 		</h2>
 
 		<p>
-			${ OFR.description }
+			${ FIL.description }
 		</p>
 	`;
 
