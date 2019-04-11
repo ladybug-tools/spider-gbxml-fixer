@@ -121,6 +121,7 @@ FSTN.getSurfaceType = function() {
 };
 
 
+
 FSTN.setTypeInvalidData = function( select ) {
 
 	const invalidData = SGF.getSurfacesAttributesByIndex( select.value, select.options[ select.selectedIndex ].innerText );

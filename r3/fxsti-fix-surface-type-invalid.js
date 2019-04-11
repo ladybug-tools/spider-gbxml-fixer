@@ -80,7 +80,8 @@ FXSTI.getSurfaceType = function() {
 
 		} )
 		.map( surface => SGF.surfaces.indexOf( surface ) );
-	console.log( 'FXSTI.surfaceTypeInvalids', FXSTI.surfaceTypeInvalids );
+
+	//console.log( 'FXSTI.surfaceTypeInvalids', FXSTI.surfaceTypeInvalids );
 
 	const options = FXSTI.surfaceTypeInvalids.map( index => {
 
@@ -127,6 +128,7 @@ FXSTI.getSurfaceType = function() {
 	return htm;
 
 };
+
 
 
 FXSTI.setTypeInvalidData = function( select ) {
