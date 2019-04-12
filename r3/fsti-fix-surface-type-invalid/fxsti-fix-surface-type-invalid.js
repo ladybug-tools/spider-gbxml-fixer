@@ -65,6 +65,8 @@ FXSTI.getSurfaceTypeInvalid = function() {
 
 			<div id=FXSTIdivSurfaceData ></div>
 
+			<hr>
+
 			</details>
 
 		`;

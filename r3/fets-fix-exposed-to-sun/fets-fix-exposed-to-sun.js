@@ -58,11 +58,13 @@ FETS.getSurfaceExposedToSun = function() {
 				</summary>
 
 				<p><mark>Work-in-progress</mark></p>
-				
+
 				<div id=FETSdivSurfaces ></div>
 
 				<div id=FETSdivSurfaceData ></div>
 
+				<hr>
+				
 			</details>
 
 		`;
