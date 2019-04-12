@@ -177,11 +177,11 @@ OHC.onHashChange = function() {
 
 	} else if ( ulc.endsWith( ".xml" ) ) {
 
-		FIL.XhrRequestFileXml( url );
+		FIL.xhrRequestFileXml( url );
 
 	} else if ( ulc.endsWith( '.zip' )) {
 
-		FIL.XhrRequestFileZip( url, FIL.callbackUrlUtf16 );
+		FIL.xhrRequestFileZip( url, FIL.callbackUrlUtf16 );
 
 	} else {
 

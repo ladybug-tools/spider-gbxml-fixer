@@ -19,13 +19,15 @@ _JavaScript utilities to help you identify and fix common errors in gbXML files_
 ### Bookmark this link for stable:<br>https://www.ladybug.tools/spider-gbxml-fixer/
 
 * Always links to the release that has been tested
+### Stable release with demo: [Sample test run]( https://www.ladybug.tools/spider-gbxml-fixer/#https://cdn.jsdelivr.net/gh/ladybug-tools/spider@master/gbxml-sample-files/bristol-clifton-downs-broken.xml )
 
 ### Bookmark this link for latest:<br>https://www.ladybug.tools/spider-gbxml-fixer/dev/
 
 * Always links to the version currently being worked on
 
+### Latest release with demo: [Sample test run]( https://www.ladybug.tools/spider-gbxml-fixer/dev/#https://cdn.jsdelivr.net/gh/ladybug-tools/spider@master/gbxml-sample-files/bristol-clifton-downs-broken.xml )
 
-### Stable release with demo: [Sample test run]( https://www.ladybug.tools/spider-gbxml-fixer/#https://cdn.jsdelivr.net/gh/ladybug-tools/spider@master/gbxml-sample-files/bristol-clifton-downs-broken.xml )
+
 
 * Loads and checks a sample file from the [Spider gbXML sample files]( https://www.ladybug.tools/spider/#gbxml-sample-files/README.md ) folder
 
