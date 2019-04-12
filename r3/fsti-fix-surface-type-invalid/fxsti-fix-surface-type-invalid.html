@@ -5,11 +5,11 @@
 <meta name = "viewport" content= "width=device-width, initial-scale=1" >
 <meta name = "description" content = "Open files with FileReader() or XMLHttpRequest()" >
 <meta name = "keywords" content = "JavaScript,GitHub,FOSS" >
-<meta name = "date" content = "2019-02-07" >
+<meta name = "date" content = "2019-04-11" >
 <title></title>
 <style>
 
-	body { font: 12pt monospace; margin: 0 auto; max-width: 800px; }
+	body { font: 12pt monospace; margin: 0 auto 0 400px; max-width: 800px; }
 	a { color: crimson; text-decoration: none; }
 	a:hover, a:focus { background-color: yellow; color: #aaa; text-decoration: underline }
 
@@ -32,14 +32,16 @@
 </style>
 </head>
 <body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.5/jszip.min.js" ></script>
 <script src="https://rawgit.com/showdownjs/showdown/1.9.0/dist/showdown.min.js" ></script>
 
-<script src="orf-on-request-file.js" ></script>
-
-
+<script src="../fil-file-open-xml-zip.js" ></script>
 <script src="../spider-gbxml-fixer-core.js" ></script>
 <script src="../ggd-get-gbxml-data.js" ></script>
-<script src="fxsti-fix-surface-type-invalid-2.js" ></script>
+<script src="../gsa-get-surface-attributes.js" ></script>
+
+
+<script src="fxsti-fix-surface-type-invalid.js" ></script>
 
 	<nav id="navMenu" >
 
@@ -49,36 +51,14 @@
 
 			<summary class=sumMenuTitle >File Menu</summary>
 
-			<section id="OFRsecFileOpenBasic" ></section>
+			<section id="FILdivFileOpen"></section>
 
-		</details>
-
-		<details id=FILdetFileOpen >
-
-			<summary class=sumHeader >File open statistics</summary>
-
-			<div id=FILdivProgress ></div>
+			<section id="FILdivFileSave"></section>
 
 		</details>
 
 		<p>
-			<button id=but onclick=OFR.onRequestFile(this.innerHTML); >README.md</button>
-		</p>
-
-		<p>
-			<button id=but onclick=OFR.onRequestFile(this.innerHTML); >../../../README.md</button>
-		</p>
-
-		<p>
-			<button id=but onclick=OFR.onRequestFile(this.innerHTML); >../../favicon.ico</button>
-		</p>
-
-		<p>
-			<button id=but onclick=OFR.onRequestFile(this.innerHTML); >../../index.html</button>
-		</p>
-
-		<p>
-			<button id=but onclick=OFR.onRequestFile(this.innerHTML); >one-room-with-surface-type-errors.xml</button>
+			<button id=but onclick=location.hash=this.innerHTML; >../../test-samples/one-room-with-surface-type-errors.xml</button>
 		</p>
 
 	</nav>
@@ -100,6 +80,9 @@ const urlSourceCodeIcon = "https://pushme-pullyou.github.io/github-mark-64.png";
 const urlSourceCode = "https://github.com/zzzzz/xxxxx.html";
 
 
+//FIL.urlDefaultFile = "../README.md";
+FIL.urlDefaultFile = "../../test-samples/one-room-with-surface-type-errors.xml"
+
 init();
 
 
@@ -108,16 +91,50 @@ function init() {
 
 	divTitle.innerHTML = getTitle();
 
-	OFRsecFileOpenBasic.innerHTML = OFR.getMenuFileOpenBasic( divContents );
+	FILdivFileOpen.innerHTML = FIL.getMenuFileOpen();
 
-	//window.addEventListener( "onRequestXml", requestXml );
-	//document.body.addEventListener( 'onXmlFileLoad', GGD.getData, false );
+	FILdivFileSave.innerHTML = FIL.getMenuFileSave();
 
-	OFR.onRequestFile( "one-room-with-surface-type-errors.xml" );
+	FIL.xhrRequestFileXml( FIL.urlDefaultFile );
 
-	//divContents.innerHTML = FXSTI.getSurfaceTypeInvalid();
+	//FIL.onHashChange();
+
+	window.addEventListener ( 'hashchange', FIL.onHashChange, false );
+	document.body.addEventListener( 'onXmlFileLoad', onLoad, false );
 
 }
+
+
+
+function onLoad() {
+
+	GGD.getData(  FIL.text  );
+
+	htm1 = GGD.getGbxmlData(  FIL.text  );
+
+	htm2 = FXSTI.getSurfaceTypeInvalid();
+
+	divContents.innerHTML =
+	`
+		<br><br>
+
+		<h2 id=SGFh1FileName >Check file: ${ decodeURI( FIL.name ) } </h2>
+
+		<p>
+			<button onclick=SGF.runAll(); >Run all checks</button>
+
+			<button onclick=SGF.closeAll(); >Close all checks</button>
+		</p>
+
+		<p>
+			<input type=checkbox id=SGFinpIgnoreAirSurfaceType > Ignore Air surface type
+		</p>
+		${ htm1 }
+		${ htm2 }
+
+	`;
+}
+
 
 
 const MNU = {};
@@ -131,14 +148,6 @@ MNU.setPopupShowHide = function( id, text ) {
 	divPopUpData.innerHTML = id.classList.contains( 'active' ) ? text : '';
 
 };
-
-
-
-function setIt() {
-
-	divContents.innerHTML += `<p>${ ( performance.now() ) } - Howdy! </p>`;
-
-}
 
 
 
@@ -156,7 +165,7 @@ function getTitle() {
 		</h2>
 
 		<p>
-			${ OFR.description }
+			${ FIL.description }
 		</p>
 	`;
 

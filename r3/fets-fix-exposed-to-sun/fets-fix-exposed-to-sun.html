@@ -32,11 +32,13 @@
 </style>
 </head>
 <body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.5/jszip.min.js" ></script>
 <script src="https://rawgit.com/showdownjs/showdown/1.9.0/dist/showdown.min.js" ></script>
 
 <script src="../fil-file-open-xml-zip.js" ></script>
 <script src="../spider-gbxml-fixer-core.js" ></script>
 <script src="../ggd-get-gbxml-data.js" ></script>
+<script src="../gsa-get-surface-attributes.js" ></script>
 
 <script src="fets-fix-exposed-to-sun.js" ></script>
 
@@ -54,25 +56,6 @@
 
 		</details>
 
-		<!--
-
-			<p>
-				<button id=but onclick=OFR.onRequestFile(this.innerHTML); >README.md</button>
-			</p>
-
-			<p>
-				<button id=but onclick=OFR.onRequestFile(this.innerHTML); >../../README.md</button>
-			</p>
-
-			<p>
-				<button id=but onclick=OFR.onRequestFile(this.innerHTML); >../../favicon.ico</button>
-			</p>
-
-			<p>
-				<button id=but onclick=OFR.onRequestFile(this.innerHTML); >../../index.html</button>
-			</p>
-
-		-->
 		<p>
 			<button id=but onclick=OFR.onRequestFile(this.innerHTML); >one-room-with-surface-type-errors.xml</button>
 		</p>
@@ -111,15 +94,11 @@ function init() {
 
 	FILdivFileSave.innerHTML = FIL.getMenuFileSave();
 
-	//window.addEventListener( "onRequestXml", requestXml );
-	//document.body.addEventListener( 'onXmlFileLoad', GGD.getData, false );
+	FIL.xhrRequestFileXml( "../../test-samples/one-room-with-exposedtosun-errors.xml" );
 
-	//FIL.XhrRequestFileXml( "../../test-samples/one-room-with-surface-type-errors.xml" );
+	//FIL.onHashChange();
 
-	FIL.onHashChange();
-
-	//divContents.innerHTML = FXSTI.getSurfaceExposedToSun();
-
+	window.addEventListener ( 'hashchange', FIL.onHashChange, false );
 	document.body.addEventListener( 'onXmlFileLoad', onLoad, false );
 
 }
@@ -127,7 +106,6 @@ function init() {
 
 
 function onLoad() {
-
 
 	GGD.getData(  FIL.text  );
 
@@ -137,20 +115,24 @@ function onLoad() {
 
 	divContents.innerHTML =
 	`
-	<br><br>
+		<br><br>
 
-	<h2 id=SGFh1FileName >Check file: ${ decodeURI( FIL.name ) } </h2>
+		<h2 id=SGFh1FileName >Check file: ${ decodeURI( FIL.name ) } </h2>
 
-	<p>
-		<button onclick=SGF.runAll(); >Run all checks</button>
+		<p>
+			<button onclick=SGF.runAll(); >Run all checks</button>
 
-		<button onclick=SGF.closeAll(); >Close all checks</button>
-	</p>
+			<button onclick=SGF.closeAll(); >Close all checks</button>
+		</p>
 
-	<p>
-		<input type=checkbox id=SGFinpIgnoreAirSurfaceType > Ignore Air surface type
-	</p>
-	` + htm1 + htm2;
+		<p>
+			<input type=checkbox id=SGFinpIgnoreAirSurfaceType > Ignore Air surface type
+		</p>
+		${ htm1 }
+		${ htm2 }
+
+	`;
+
 }
 
 

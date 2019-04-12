@@ -79,7 +79,7 @@ FXSTI.getSurfaceType = function() {
 		let typeSource = surface.match( /surfaceType="(.*?)"/i )
 		typeSource = typeSource ? typeSource[ 1 ] : "";
 
-		let tilt = surface.match( /<Tilt>(.*?)<\/Tilt>/i )[ 1 ];
+		const tilt = surface.match( /<Tilt>(.*?)<\/Tilt>/i )[ 1 ];
 
 		let spaces = surface.match( /<AdjacentSpaceId(.*?)\/>/gi );
 		spaces = spaces ? spaces : [];
@@ -230,6 +230,7 @@ FXSTI.getSurfaceType = function() {
 
 
 		}
+
 		return type;
 
 	} )

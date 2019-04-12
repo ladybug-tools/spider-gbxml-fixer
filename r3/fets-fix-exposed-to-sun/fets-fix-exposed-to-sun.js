@@ -4,7 +4,7 @@
 /* jshint loopfunc: true */
 
 
-const FETS = { "release": "2.1.0", "date": "2019-04-02" };
+const FETS = { "release": "3.0.0", "date": "2019-04-11" };
 
 
 FETS.types = [
@@ -51,13 +51,15 @@ FETS.getSurfaceExposedToSun = function() {
 
 	const htm =
 		`
-			<details ontoggle="FETSdivSurfaces.innerHTML=FETS.getSurfaceExposedToSunErrors();" >
+			<details id=FETSdet ontoggle="FETSdivSurfaces.innerHTML=FETS.getSurfaceExposedToSunErrors();" >
 
 				<summary id=FETSsumSurfaces class=sumHeader >Fix surfaces with invalid ExposedToSun values
 					<a id=FETSSum class=helpItem href="JavaScript:MNU.setPopupShowHide(FETSSum,FETS.currentStatus);" >&nbsp; ? &nbsp;</a>
 				</summary>
 
 				<div id=FETSdivSurfaces ></div>
+
+				<div id=FETSdivSurfaceData ></div>
 
 			</details>
 
@@ -73,63 +75,75 @@ FETS.getSurfaceExposedToSunErrors = function() {
 
 	const timeStart = performance.now();
 
+	FETSdivSurfaceData.innerHTML = "";
+
 	FETS.errorsByType = [];
 	FETS.errorsByValue = [];
 	FETS.errorsByAttribute = [];
 
-	FETS.surfaceTypes = SGF.surfaces.map( surface => {
+	FETS.surfaceTypes = SGF.surfaces.map( ( surface, index ) => {
 
 		let typeSource = surface.match( /surfaceType="(.*?)"/i )
 		typeSource = typeSource ? typeSource[ 1 ] : "";
 
 		let exposedToSun = surface.match( /exposedToSun="(.*?)"/i );
-		let exposedToSunBoolean = exposedToSun ? exposedToSun[ 1 ] === "true" : false;
 		//console.log( 'exposedToSun', exposedToSun );
+		let exposedToSunBoolean = exposedToSun ? exposedToSun[ 1 ].toLowerCase() === "true" : false;
 		const id = surface.match( / id="(.*?)"/i )[ 1 ];
 
 		if ( exposedToSunBoolean === true && FETS.exposedTypes.includes( typeSource ) === false ) {
+			//console.log( 'exposedToSun', exposedToSun );
 
-				FETS.errorsByType.push( {id, typeSource, exposedToSunBoolean, exposedToSun } );
+			if ( exposedToSun[ 1 ] === "true" ) {
+
+				FETS.errorsByType.push( { id, index, typeSource, exposedToSunBoolean, exposedToSun } );
+
+			}
 
 		} else if ( exposedToSunBoolean === false && FETS.exposedTypes.includes( typeSource ) === true  ) {
 
 			if ( exposedToSun && exposedToSun.length ) {
 
-				FETS.errorsByValue.push( {id, typeSource, exposedToSunBoolean, exposedToSun } );
+				FETS.errorsByValue.push( {id, index, typeSource, exposedToSunBoolean, exposedToSun } );
 
 			} else {
 
-				FETS.errorsByAttribute.push( {id, typeSource, exposedToSunBoolean, exposedToSun } );
+				FETS.errorsByAttribute.push( {id, index, typeSource, exposedToSunBoolean, exposedToSun } );
 
 			}
 
 		}
 
-
-	} )
+	} );
 
 
 	const help = `<a id=FETSHelp class=helpItem href="JavaScript:MNU.setPopupShowHide(FETSHelp,FETS.currentStatus);" >&nbsp; ? &nbsp;</a>`;
 
 	FETSsumSurfaces.innerHTML =
-		`Surfaces ~ ${ ( FETS.errorsByValue.length + FETS.errorsByType.length ).toLocaleString() } errors
+		`Fix surfaces with invalid ExposedToSun values ~ ${ ( FETS.errorsByValue.length + FETS.errorsByType.length + FETS.errorsByAttribute.length ).toLocaleString() } errors
 			${ help }
 		`;
 
 	errorsByValueString = FETS.errorsByValue.map( item =>
-		`<input type=checkbox value=${ item.id } checked > ${ item.id } / ${ item.typeSource } from:
+		`<input type=checkbox value=${ item.id } checked >
+		<button onclick=FETSdivSurfaceData.innerHTML=FETS.getSurfaceData(${item.index },"${ item.id}"); >
+		${ item.id }</button> / ${ item.typeSource } from:
 		<mark> ${ item.exposedToSun[ 0 ] }</mark> to: exposedToSun="true"
 		`
 	).join("<br>");
 
 	errorsByAttributeString = FETS.errorsByAttribute.map( item =>
-		`<input type=checkbox value=${ item.id } checked > ${ item.id } / ${ item.typeSource } from: attribute
+		`<input type=checkbox value=${ item.id } checked >
+		<button onclick=FETSdivSurfaceData.innerHTML=FETS.getSurfaceData(${item.index },"${ item.id}"); >
+		${ item.id }</button> / ${ item.typeSource } from: attribute
 		<mark>${ item.exposedToSun }</mark> to: exposedToSun="true"
 		`
 	).join("<br>");
 
 	errorsByTypeString = FETS.errorsByType.map( item =>
-		`<input type=checkbox value=${ item.id } checked > ${ item.id } / ${ item.typeSource } from:
+		`<input type=checkbox value=${ item.id } checked >
+		<button onclick=FETSdivSurfaceData.innerHTML=FETS.getSurfaceData(${item.index },"${ item.id}"); >
+		${ item.id }</button> / ${ item.typeSource } from:
 		 <mark>${ item.exposedToSun[ 0 ] }</mark> to: exposedToSun="false"
 		`
 	).join("<br>");
@@ -160,9 +174,19 @@ FETS.getSurfaceExposedToSunErrors = function() {
 
 
 
+FETS.getSurfaceData = function( index, text = "item" ) {
+
+	htm = GSA.getSurfacesAttributesByIndex( index, text );
+
+	return htm;
+
+};
+
+
+
 FETS.fixAllChecked = function() {
 
-	checked = Array.from( FETSdivSurfaces.querySelectorAll( 'input:checked') ).map( item => item.vale );
+	checked = Array.from( FETSdivSurfaces.querySelectorAll( 'input:checked') ).map( item => item.value );
 
 	for ( let error of FETS.errorsByValue ) {
 
@@ -176,10 +200,6 @@ FETS.fixAllChecked = function() {
 
 			SGF.surfaces[ index ] = surface.replace( /exposedToSun="(.*?)"/i, `exposedToSun="true"` );
 			//console.log( 'SGF.surfaces[ index ]', SGF.surfaces[ index ] );
-
-			//surfaceNew = surfaceCurrent.replace( /exposedToSun="(.*?)"/i, `exposedToSun="true"` );
-			//SGF.text.replace( surfaceCurrent, surfaceNew );
-			//SGF.surfaces = SGF.text.match( /<Surface(.*?)<\/Surface>/gi );
 
 		}
 
@@ -202,7 +222,6 @@ FETS.fixAllChecked = function() {
 
 	}
 
-
 	for ( let error of FETS.errorsByType ) {
 
 		if ( checked.includes = error.id ) {
@@ -213,83 +232,13 @@ FETS.fixAllChecked = function() {
 
 			const index = SGF.surfaces.indexOf( surface );
 
-			const index = SGF.surfaces.find( surface => surface.match( / id="(.*?)"/i )[ 1 ] ===  error.id ).indexOf( surface );
-
-			SGF.surfaces[ index ] = surface.replace( /exposedToSun="(.*?)"/i, `exposedToSun="false" id="` );
-			//console.log( 'SGF.surfaces[ index ]', SGF.surfaces[ index ] );
+			SGF.surfaces[ index ] = surface.replace( /exposedToSun="(.*?)"/i, `exposedToSun="false"` );
+			//console.log( 'SGF.surfaces[ index ]', index, SGF.surfaces[ index ] );
 
 		}
 
 	}
 
-};
-
-
-
-/*
-
-FETS.setTypeInvalidData = function( select ) {
-
-	const invalidData = SGF.getSurfacesAttributesByIndex( select.value, select.options[ select.selectedIndex ].innerText );
-
-	const options = SGF.surfaceTypes.map( ( type, index ) => {
-
-		const selected = ""; //index === selectedIndex ? "selected" : "";
-		return `<option ${ selected } >${ type }</option>`;
-
-	} ).join( "" );
-
-	let index = 0;
-
-	const htm =
-		`
-			<p>
-				${ invalidData }
-			</p>
-
-			<p>
-				Select new surface type <select id=selSurfaceType${ index } >${ options }</select>
-				<button onclick=FETS.setSurfaceType(${ index }); >Update data in memory</button>
-				<button onclick=FETS.showSurfaceGbxml(${ index }); >View gbXML text</button>
-			</p>
-		`;
-
-	FETSdivTypeInvalidData.innerHTML = htm;
+	FETSdet.open = false;
 
 };
-
-
-
-
-
-FETS.setSurfaceType = function( index ) {
-	//console.log( 'index',FETS.surfaceTypeInvalids[ index ]  );
-
-	const surfaceTextCurrent = SGF.surfaces[ FETS.surfaceTypeInvalids[ index ] ];
-	//console.log( 'surfaceTextCurrent', surfaceTextCurrent );
-
-	const type = document.body.querySelector( `#selSurfaceType${ index }` ).value;
-	//console.log( 'type', type );
-
-	const surfaceTextNew = surfaceTextCurrent.replace( /surfaceType="(.*)" /, `surfaceType="${ type }" ` );
-	//console.log( 'surfaceTextNew', surfaceTextNew );
-
-	SGF.text =  SGF.text.replace( surfaceTextCurrent, surfaceTextNew );
-
-	SGF.surfaces = SGF.text.match( /<Surface(.*?)<\/Surface>/gi );
-
-};
-
-
-
-FETS.showSurfaceGbxml = function( index ) {
-
-	const surfaceText = SGF.surfaces[ FETS.surfaceTypeInvalids[ index ] ];
-
-	//const div = document.body.querySelector( `#divSurfaceType${ index }` );
-
-	FETSdivSelecteSurfaceTGbxml.innerText = surfaceText;
-
-};
-
-*/

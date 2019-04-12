@@ -55,6 +55,7 @@ FXASD.getFixAdjacentSpaceDuplicate = function() {
 };
 
 
+
 FXASD.getAdjacentSpaceDuplicate = function() {
 
 	const timeStart = performance.now();
@@ -211,12 +212,10 @@ FXASD.setSpaceDuplicateData = function( select ) {
 
 
 FXASD.adjacentSpaceUpdate = function( index, surfaceId ) {
+	//console.log( 'index/id', index,  surfaceId );
 
 	const spaceIdNew = document.body.querySelector( `#FXASDselSpaceIdNew${ index }` ).value;
-
 	//console.log( 'spaceIdNew', spaceIdNew );
-
-	//console.log( 'index/id',index,  surfaceId );
 
 	const surfaceTextCurrent = SGF.surfaces[ surfaceId ];
 

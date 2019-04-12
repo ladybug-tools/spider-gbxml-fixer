@@ -165,11 +165,11 @@ FIL.onHashChange = function() {
 
 	if ( FIL.name.toLowerCase().endsWith( '.xml' ) ) {
 
-		FIL.XhrRequestFileXml( url );
+		FIL.xhrRequestFileXml( url );
 
 	} else if ( FIL.name.toLowerCase().endsWith( '.zip' )) {
 
-		FIL.XhrRequestFileZip( url, FIL.callbackUrlUtf16 );
+		FIL.xhrRequestFileZip( url, FIL.callbackUrlUtf16 );
 
 	} else {
 
@@ -181,7 +181,7 @@ FIL.onHashChange = function() {
 
 
 
-FIL.XhrRequestFileXml = function( url ) {
+FIL.xhrRequestFileXml = function( url ) {
 
 	FIL.name = url.split( '/').pop();
 
@@ -198,7 +198,7 @@ FIL.XhrRequestFileXml = function( url ) {
 
 
 
-FIL.XhrRequestFileZip = function( url ) {
+FIL.xhrRequestFileZip = function( url ) {
 
 	FIL.timeStart = performance.now();
 

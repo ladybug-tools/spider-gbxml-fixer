@@ -14,7 +14,6 @@ FXASE.description =
 	`;
 
 
-
 FXASE.currentStatus =
 	`
 		<h3>Fix Surface Adjacent Space Extra (FXASE) R${ FXASE.release } ~ ${ FXASE.date }</h3>

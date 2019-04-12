@@ -60,8 +60,6 @@ SGF.divFixThings =
 
 		<div id=FXAdivGetFixAttributes ></div>
 
-		<div id=FETSdivGetFixExposedToSun ></div>
-
 		<div id=FXSTIdivGetSurfaceTypeInvalid ></div>
 
 		<div id=FXDPCdivGetDuplicatePlanar ></div>
@@ -123,8 +121,6 @@ SGF.init = function() {
 
 	FXAdivGetFixAttributes.innerHTML = FXA.getFixAttributes();
 
-	FETSdivGetFixExposedToSun.innerHTML = FETS.getSurfaceExposedToSun()
-
 	FXSTIdivGetSurfaceTypeInvalid.innerHTML = FXSTI.getSurfaceTypeInvalid();
 
 	FXDPCdivGetDuplicatePlanar.innerHTML = FXDPC.getCheckDuplicatePlanarCoordinates();
@@ -162,7 +158,6 @@ SGF.closeAll = function(){
 	for ( let item of details ) { item.open = false; }
 
 };
-
 
 
 

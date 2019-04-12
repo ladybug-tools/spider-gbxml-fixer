@@ -14,7 +14,6 @@ FT.types = [
 	"FreestandingColumn", "EmbeddedColumn"
 ];
 
-FT.exposedTypes = [ "ExteriorWall", "Roof", "ExposedFloor", "Shade", "RaisedFloor" ];
 
 FT.description =
 	`
@@ -39,7 +38,7 @@ FT.currentStatus =
 		<details>
 			<summary>Change log</summary>
 			<ul>
-				<li>2019-03-19 ~ First commit</li>
+				<li>2019-04-11 ~ First commit</li>
 			</ul>
 		</details>
 	`;
@@ -51,13 +50,15 @@ FT.getSurfaceTypeInvalid = function() {
 
 	const htm =
 		`
-			<details ontoggle="FXSTIdivSurfaceType.innerHTML=FT.getSurfaceType();" >
+			<details ontoggle="FTdivSurface.innerHTML=FT.getSurfaces();" >
 
-				<summary id=FXSTIsumSurfaceType class=sumHeader >Fix surfaces with invalid surface type
-					<a id=FXSTISum class=helpItem href="JavaScript:MNU.setPopupShowHide(FXSTISum,FT.currentStatus);" >&nbsp; ? &nbsp;</a>
+				<summary id=FTsumSurfaces class=sumHeader >Get surfaces
+					<a id=FTsum class=helpItem href="JavaScript:MNU.setPopupShowHide(FTsum,FT.currentStatus);" >&nbsp; ? &nbsp;</a>
 				</summary>
 
-				<div id=FXSTIdivSurfaceType ></div>
+				<div id=FTdivSurface ></div>
+
+				<div id=FTdivSurfaceData ></div>
 
 			</details>
 
@@ -69,50 +70,63 @@ FT.getSurfaceTypeInvalid = function() {
 
 
 
-FT.getSurfaceType = function() {
+FT.getSurfaces = function() {
 
 	const timeStart = performance.now();
 
-	FT.errors = [];
+	FTdivSurfaceData.innerHTML = "";
 
-	FT.surfaceTypes = SGF.surfaces.map( surface => {
+	FT.surfaces = [];
+
+	FT.surfaces = SGF.surfaces.map( ( surface, index ) => {
+
+		const id = surface.match( / id="(.*?)"/i )[ 1 ];
 
 		let typeSource = surface.match( /surfaceType="(.*?)"/i )
 		typeSource = typeSource ? typeSource[ 1 ] : "";
 		//console.log( '', typeSource );
 
-		if ( typeSource === "Air" ) {
-
-			let spaces = surface.match( /<AdjacentSpaceId(.*?)\/>/gi );
-			spaces = spaces ? spaces : [];
-			console.log( 'spaces', spaces[ 0 ] === spaces[ 1 ] );
-
-		}
+		let exposedToSun = surface.match( /exposedToSun="(.*?)"/i );
+		//console.log( 'exposedToSun', exposedToSun );
+		//let exposedToSunBoolean = exposedToSun ? exposedToSun[ 1 ].toLowerCase() === "true" : false;
 
 		//console.log( 'exposedToSun', exposedToSun );
+
+		return( { index, id, typeSource, exposedToSun } )
 
 
 	} )
 
-	console.log( 'FT.errors', FT.errors );
+	console.log( 'FT.surfaces', FT.surfaces );
 	//console.log( 'FT.surfaceTypes', FT.surfaceTypes );
 
-	errors = FT.errors.map( item => `id: ${ item.id } current surface type: ${ item.typeSource } ${ item.exposedToSun }` );
+	//errors = FT.errors.map( item => `id: ${ item.id } current surface type: ${ item.typeSource } ${ item.exposedToSun }` );
+
+	surfacesString = FT.surfaces.map( item =>
+		`<input type=checkbox value=${ item.id } checked >
+		<button onclick=FTdivSurfaceData.innerHTML=FT.getSurfaceData(${item.index },"${ item.id}"); >
+		${ item.id }</button> / ${ item.typeSource } from:
+		 <mark>${ item.exposedToSun }</mark> to: exposedToSun="false"
+		`
+	).join("<br>");
+
 
 	const help = `<a id=fxstiHelp class=helpItem href="JavaScript:MNU.setPopupShowHide(fxstiHelp,FT.currentStatus);" >&nbsp; ? &nbsp;</a>`;
 
-	FXSTIsumSurfaceType.innerHTML =
-		`Surface types ~ ${ FT.surfaceTypes.length.toLocaleString() } found
+	FTsumSurfaces.innerHTML =
+		`Surfaces ~ ${ FT.surfaces.length.toLocaleString() } found
 			${ help }
 		`;
 
+
+
 	const htm =
 	`
-		<p><i>A surface type was supplied that is not one of the following: ${ SGF.surfaceTypes.join( ', ' ) }</i></p>
+		<p><i>Surfaces</i></p>
 
-		<p>${ FT.surfaceTypes.length.toLocaleString() } surface types found.</p>
+		<p>${ FT.surfaces.length.toLocaleString() } surface types found.</p>
 
-		${ errors.join("<br>") }
+		${ surfacesString }
 
 		<p>Time to check: ${ ( performance.now() - timeStart ).toLocaleString() } ms</p>
 
@@ -124,64 +138,51 @@ FT.getSurfaceType = function() {
 
 
 
-FT.setTypeInvalidData = function( select ) {
+FT.getSurfaceData = function( index, text = "item" ) {
 
-	const invalidData = SGF.getSurfacesAttributesByIndex( select.value, select.options[ select.selectedIndex ].innerText );
+	htm = GSA.getSurfacesAttributesByIndex( index, text );
 
-	const options = SGF.surfaceTypes.map( ( type, index ) => {
-
-		const selected = ""; //index === selectedIndex ? "selected" : "";
-		return `<option ${ selected } >${ type }</option>`;
-
-	} ).join( "" );
-
-	let index = 0;
-
-	const htm =
-		`
-			<p>
-				${ invalidData }
-			</p>
-
-			<p>
-				Select new surface type <select id=selSurfaceType${ index } >${ options }</select>
-				<button onclick=FT.setSurfaceType(${ index }); >Update data in memory</button>
-				<button onclick=FT.showSurfaceGbxml(${ index }); >View gbXML text</button>
-			</p>
-		`;
-
-	FXSTIdivTypeInvalidData.innerHTML = htm;
+	return htm;
 
 };
 
 
+/*
 
-FT.setSurfaceType = function( index ) {
-	//console.log( 'index',FT.surfaceTypeInvalids[ index ]  );
 
-	const surfaceTextCurrent = SGF.surfaces[ FT.surfaceTypeInvalids[ index ] ];
-	//console.log( 'surfaceTextCurrent', surfaceTextCurrent );
+FXSTI.fixAllChecked = function() {
 
-	const type = document.body.querySelector( `#selSurfaceType${ index }` ).value;
-	//console.log( 'type', type );
+	const checked = Array.from( FXSTIdivSurfaceType.querySelectorAll( 'input:checked') ).map( item => item.value );
 
-	const surfaceTextNew = surfaceTextCurrent.replace( /surfaceType="(.*)" /, `surfaceType="${ type }" ` );
-	//console.log( 'surfaceTextNew', surfaceTextNew );
+	for ( let error of FXSTI.errors ) {
 
-	SGF.text =  SGF.text.replace( surfaceTextCurrent, surfaceTextNew );
+		if ( checked.includes = error.id ) {
+			//console.log( 'error', error.id );
 
-	SGF.surfaces = SGF.text.match( /<Surface(.*?)<\/Surface>/gi );
+			const surface = SGF.surfaces.find( surface => surface.match( / id="(.*?)"/i )[ 1 ] ===  error.id )
+			//console.log( 'surface', surface);
+
+			const index = SGF.surfaces.indexOf( surface );
+
+			if ( error.typeSource === "null") {
+				//console.log( 'error', error );
+
+				SGF.surfaces[ index ] = surface.replace( / id="/i, ` surfaceType="${ error.type}" id="` );
+				//console.log( 'SGF.surfaces[ index ]', SGF.surfaces[ index ] );
+
+			} else {
+
+				SGF.surfaces[ index ] = surface.replace( /surfaceType="(.*?)"/i, `surfaceType="${ error.type}"` );
+
+			}
+			//console.log( 'SGF.surfaces[ index ]', SGF.surfaces[ index ] );
+
+		}
+
+	}
+
+	FXSTIdet.open = false;
 
 };
 
-
-
-FT.showSurfaceGbxml = function( index ) {
-
-	const surfaceText = SGF.surfaces[ FT.surfaceTypeInvalids[ index ] ];
-
-	//const div = document.body.querySelector( `#divSurfaceType${ index }` );
-
-	FXSTIdivSelecteSurfaceTGbxml.innerText = surfaceText;
-
-};
+*/
