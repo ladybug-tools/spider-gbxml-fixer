@@ -9,7 +9,9 @@ const FXSTI = { "release": "3.0.0", "date": "2019-04-11" };
 
 FXSTI.description =
 	`
-		Checks for a surface type that is not one of the 15 valid gbXML surface types
+		Checks for a surface type that is not one of the 15 valid gbXML surface types.
+		Checks that tilt. exposedToSun and adjacent spaces are appropriate for the surface type
+
 	`;
 
 FXSTI.currentStatus =
@@ -20,17 +22,21 @@ FXSTI.currentStatus =
 			${ FXSTI.description }.
 		</p>
 
-		<p>
-			Most likely this type of error is quite rare. It occurs when a user types in a non-valid surface type in the originating CAD application.
-		</p>
+		<p>This modules checks for two kinds of errors.</p>
 
 		<p>
-			Wish List / To do:<br>
-			<ul>
-				<li>2019-03-25 ~ Add select and update multiple surfaces at once</li>
-				<li>2019-03-19 ~ Pre-select the correct surface type in the select type list box</li>
-			</ul>
+			1. Misspelled surface types (quite rare) .
+			These may  occur when a user types in a non-valid surface type in the originating CAD application.
 		</p>
+
+		<p>2. Surfaces given a type that does not correspond to the given geometry or given attributes.</p>
+
+		<details>
+			<summary>Wish list / to do</summary>
+			<ul>
+				<li>2019-04-11 ~ Display the reasoning behind each issue that is identified</li>
+			</ul>
+		</details>
 
 		<details>
 			<summary>Change log</summary>
@@ -52,6 +58,8 @@ FXSTI.getSurfaceTypeInvalid = function() {
 			<summary id=FXSTIsumSurfaceType class=sumHeader >Fix surfaces with invalid surface type
 				<a id=FXSTISum class=helpItem href="JavaScript:MNU.setPopupShowHide(FXSTISum,FXSTI.currentStatus);" >&nbsp; ? &nbsp;</a>
 			</summary>
+
+			<p><mark>Work-in-progress</mark></p>
 
 			<div id=FXSTIdivSurfaceType ></div>
 
@@ -113,9 +121,7 @@ FXSTI.getSurfaceType = function() {
 					type = "Air";
 
 				}
-
 				//type = "InteriorWall";
-
 
 			} else if ( spaces.length === 1 ) {
 
