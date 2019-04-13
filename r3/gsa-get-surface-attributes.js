@@ -3,7 +3,7 @@
 /* jshint esversion: 6 */
 /* jshint loopfunc: true */
 
-const GSA = { release: "3.0.0", date: "2019-04-11 ~ " };
+const GSA = { release: "3.0.1", date: "2019-04-11 ~ " };
 
 GSA.description = `Display all possible data for a surface`;
 
@@ -26,6 +26,7 @@ GSA.currentStatus =
 		<details>
 			<summary>Change log</summary>
 			<ul>
+				<li>2019-04-12 ~ B - Fix GSA/SGF issue</li>
   				<li>2019-04-11 ~ F - R3 First commit</li>
 			</ul>
 		</details>
@@ -132,13 +133,18 @@ GSA.getAttributesHtml = function( obj ) {
 			//console.log( 'campusXml', campusXml.attributes );
 
 			const constructions = Array.from( campusXml.getElementsByTagName( 'Construction' ) );
+			//console.log( 'constructions', constructions);
+
 			const construction = constructions.find( item => item.id === attribute.value );
-			//console.log( 'construction', construction);
 
-			const xmlText = new XMLSerializer().serializeToString( construction );
-			//console.log( 'xmlText', xmlText );
+			if ( construction ) {
 
-			htm += `<textarea style=height:5rem;width:100%; >${ xmlText }</textarea>`;
+				const xmlText = new XMLSerializer().serializeToString( construction );
+				//console.log( 'xmlText', xmlText );
+
+				htm += `<textarea style=height:5rem;width:100%; >${ xmlText }</textarea>`;
+
+			}
 
 		}
 
@@ -206,11 +212,11 @@ GSA.getAttributesAdjacentSpace = function( surfaceXml ){
 		const spaceId1 = adjacentSpaceId[ 0 ].getAttribute( "spaceIdRef" );
 		const spaceId2 = adjacentSpaceId[ 1 ].getAttribute( "spaceIdRef" );
 
-		const spaceText1 = GSA.spaces.find( item => item.includes( spaceId1 ) );
+		const spaceText1 = SGF.spaces.find( item => item.includes( spaceId1 ) );
 		//console.log( 'spaceText1', spaceText1 );
 		const spaceName1 = spaceText1.match( /<Name>(.*?)<\/Name>/i )[ 1 ];
 
-		const spaceText2 = GSA.spaces.find( item => item.includes( spaceId2 ) );
+		const spaceText2 = SGF.spaces.find( item => item.includes( spaceId2 ) );
 		//console.log( 'spaceText2', spaceText2 );
 		const spaceName2 = spaceText2.match( /<Name>(.*?)<\/Name>/i )[ 1 ];
 

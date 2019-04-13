@@ -1,41 +1,10 @@
 //Copyright 2019 Ladybug Tools authors. MIT License
-/* globals SGF, GSA, FETSdet, FETSdivSurfaces, FETSdivSurfaceData, FETSsumSurfaces */
+/* globals SGF, FIL */
 /* jshint esversion: 6 */
 /* jshint loopfunc: true */
 
 
-const FETS = { "release": "3.0.1", "date": "2019-04-12" };
-
-FETS.description =
-	`
-		Checks for surface with invalid exposedToSun values
-	`;
-
-
-FETS.currentStatus =
-`
-	<h3>Fix Surfaces Exposed To Sun I(FETS) R${ FETS.release } ~ ${ FETS.date }</h3>
-
-	<p>
-		${ FETS.description }.
-	</p>
-
-
-	<p>
-		Wish List / To do:<br>
-		<ul>
-
-		</ul>
-	</p>
-
-	<details>
-		<summary>Change log</summary>
-		<ul>
-			<li>2019-04-12 ~ B ~ Fix save to file issues</li>
-			<li>2019-04-09 ~ First commit</li>
-		</ul>
-	</details>
-`;
+const FETS = { "release": "3.0.0", "date": "2019-04-11" };
 
 
 FETS.types = [
@@ -46,31 +15,59 @@ FETS.types = [
 
 FETS.exposedTypes = [ "ExteriorWall", "Roof", "ExposedFloor", "Shade", "RaisedFloor" ];
 
+FETS.description =
+	`
+		Checks for surface with invalid exposedToSon values
+	`;
+
+FETS.currentStatus =
+	`
+		<h3>Fix Surfaces Exposed To Sun I(FETS) R${ FETS.release } ~ ${ FETS.date }</h3>
+
+		<p>
+			${ FETS.description }.
+		</p>
 
 
-//////////
+		<p>
+			Wish List / To do:<br>
+			<ul>
+
+			</ul>
+		</p>
+
+		<details>
+			<summary>Change log</summary>
+			<ul>
+				<li>2019-04-09 ~ First commit</li>
+			</ul>
+		</details>
+	`;
+
+
+
 
 FETS.getSurfaceExposedToSun = function() {
 
 	const htm =
-	`
-		<details id=FETSdet ontoggle="FETSdivSurfaces.innerHTML=FETS.getSurfaceExposedToSunErrors();" >
+		`
+			<details id=FETSdet ontoggle="FETSdivSurfaces.innerHTML=FETS.getSurfaceExposedToSunErrors();" >
 
-			<summary id=FETSsumSurfaces class=sumHeader ><mark>Fix surfaces with invalid ExposedToSun</mark>
-				<a id=FETSSum class=helpItem href="JavaScript:MNU.setPopupShowHide(FETSSum,FETS.currentStatus);" >&nbsp; ? &nbsp;</a>
-			</summary>
+				<summary id=FETSsumSurfaces class=sumHeader >Fix surfaces with invalid ExposedToSun values
+					<a id=FETSSum class=helpItem href="JavaScript:MNU.setPopupShowHide(FETSSum,FETS.currentStatus);" >&nbsp; ? &nbsp;</a>
+				</summary>
 
-			<p><mark>Work-in-progress</mark></p>
+				<p><mark>Work-in-progress</mark></p>
 
-			<div id=FETSdivSurfaces ></div>
+				<div id=FETSdivSurfaces ></div>
 
-			<div id=FETSdivSurfaceData ></div>
+				<div id=FETSdivSurfaceData ></div>
 
-			<hr>
+				<hr>
+				
+			</details>
 
-		</details>
-
-	`;
+		`;
 
 	return htm;
 
@@ -90,15 +87,13 @@ FETS.getSurfaceExposedToSunErrors = function() {
 
 	FETS.surfaceTypes = SGF.surfaces.map( ( surface, index ) => {
 
-		const id = surface.match( / id="(.*?)"/i )[ 1 ];
-
-		let typeSource = surface.match( /surfaceType="(.*?)"/i );
+		let typeSource = surface.match( /surfaceType="(.*?)"/i )
 		typeSource = typeSource ? typeSource[ 1 ] : "";
 
 		let exposedToSun = surface.match( /exposedToSun="(.*?)"/i );
 		//console.log( 'exposedToSun', exposedToSun );
-
 		let exposedToSunBoolean = exposedToSun ? exposedToSun[ 1 ].toLowerCase() === "true" : false;
+		const id = surface.match( / id="(.*?)"/i )[ 1 ];
 
 		if ( exposedToSunBoolean === true && FETS.exposedTypes.includes( typeSource ) === false ) {
 			//console.log( 'exposedToSun', exposedToSun );
@@ -129,12 +124,11 @@ FETS.getSurfaceExposedToSunErrors = function() {
 	const help = `<a id=FETSHelp class=helpItem href="JavaScript:MNU.setPopupShowHide(FETSHelp,FETS.currentStatus);" >&nbsp; ? &nbsp;</a>`;
 
 	FETSsumSurfaces.innerHTML =
-	`Fix surfaces with invalid ExposedToSun
-		~ ${ ( FETS.errorsByValue.length + FETS.errorsByType.length + FETS.errorsByAttribute.length ).toLocaleString() } errors
-		${ help }
-	`;
+		`Fix surfaces with invalid ExposedToSun values ~ ${ ( FETS.errorsByValue.length + FETS.errorsByType.length + FETS.errorsByAttribute.length ).toLocaleString() } errors
+			${ help }
+		`;
 
-	const errorsByValueString = FETS.errorsByValue.map( item =>
+	errorsByValueString = FETS.errorsByValue.map( item =>
 		`<input type=checkbox value=${ item.id } checked >
 		<button onclick=FETSdivSurfaceData.innerHTML=FETS.getSurfaceData(${item.index },"${ item.id}"); >
 		${ item.id }</button> / ${ item.typeSource } from:
@@ -142,7 +136,7 @@ FETS.getSurfaceExposedToSunErrors = function() {
 		`
 	).join("<br>");
 
-	const errorsByAttributeString = FETS.errorsByAttribute.map( item =>
+	errorsByAttributeString = FETS.errorsByAttribute.map( item =>
 		`<input type=checkbox value=${ item.id } checked >
 		<button onclick=FETSdivSurfaceData.innerHTML=FETS.getSurfaceData(${item.index },"${ item.id}"); >
 		${ item.id }</button> / ${ item.typeSource } from: attribute
@@ -150,14 +144,13 @@ FETS.getSurfaceExposedToSunErrors = function() {
 		`
 	).join("<br>");
 
-	const errorsByTypeString = FETS.errorsByType.map( item =>
+	errorsByTypeString = FETS.errorsByType.map( item =>
 		`<input type=checkbox value=${ item.id } checked >
 		<button onclick=FETSdivSurfaceData.innerHTML=FETS.getSurfaceData(${item.index },"${ item.id}"); >
 		${ item.id }</button> / ${ item.typeSource } from:
 		 <mark>${ item.exposedToSun[ 0 ] }</mark> to: exposedToSun="false"
 		`
 	).join("<br>");
-
 
 	const htm =
 	`
@@ -187,7 +180,7 @@ FETS.getSurfaceExposedToSunErrors = function() {
 
 FETS.getSurfaceData = function( index, text = "item" ) {
 
-	const htm = GSA.getSurfacesAttributesByIndex( index, text );
+	htm = GSA.getSurfacesAttributesByIndex( index, text );
 
 	return htm;
 
@@ -197,17 +190,20 @@ FETS.getSurfaceData = function( index, text = "item" ) {
 
 FETS.fixAllChecked = function() {
 
-	const boxesChecked = Array.from( FETSdivSurfaces.querySelectorAll( 'input:checked') ).map( item => item.value );
+	checked = Array.from( FETSdivSurfaces.querySelectorAll( 'input:checked') ).map( item => item.value );
 
 	for ( let error of FETS.errorsByValue ) {
 
-		if ( boxesChecked.includes( error.id ) ) {
+		if ( checked.includes = error.id ) {
+			//console.log( 'error', error.id );
 
-			const surfaceCurrent = SGF.surfaces[ error.index ];
-			const surfaceNew = surfaceCurrent.replace( /exposedToSun="(.*?)"/i, `exposedToSun="true"` );
+			const surface = SGF.surfaces.find( surface => surface.match( / id="(.*?)"/i )[ 1 ] ===  error.id )
+			//console.log( 'surfaceCurrent', surfaceCurrent);
 
-			SGF.text = SGF.text.replace( surfaceCurrent, surfaceNew );
-			SGF.surfaces = SGF.text.match( /<Surface(.*?)<\/Surface>/gi );
+			const index = SGF.surfaces.indexOf( surface );
+
+			SGF.surfaces[ index ] = surface.replace( /exposedToSun="(.*?)"/i, `exposedToSun="true"` );
+			//console.log( 'SGF.surfaces[ index ]', SGF.surfaces[ index ] );
 
 		}
 
@@ -215,13 +211,16 @@ FETS.fixAllChecked = function() {
 
 	for ( let error of FETS.errorsByAttribute ) {
 
-		if ( boxesChecked.includes( error.id ) ) {
+		if ( checked.includes = error.id ) {
+			//console.log( 'error', error.id );
 
-			const surfaceCurrent = SGF.surfaces[ error.index ];
-			const surfaceNew = surfaceCurrent.replace( / id="(.*?)"/i, `exposedToSun="true" id="` );
+			const surface = SGF.surfaces.find( surface => surface.match( / id="(.*?)"/i )[ 1 ] ===  error.id )
+			//console.log( 'surfaceCurrent', surfaceCurrent);
 
-			SGF.text = SGF.text.replace( surfaceCurrent, surfaceNew );
-			SGF.surfaces = SGF.text.match( /<Surface(.*?)<\/Surface>/gi );
+			const index = SGF.surfaces.indexOf( surface );
+
+			SGF.surfaces[ index ] = surface.replace( / id="(.*?)"/i, `exposedToSun="true" id="` );
+			//console.log( 'SGF.surfaces[ index ]', SGF.surfaces[ index ] );
 
 		}
 
@@ -229,13 +228,16 @@ FETS.fixAllChecked = function() {
 
 	for ( let error of FETS.errorsByType ) {
 
-		if ( boxesChecked.includes( error.id ) ) {
+		if ( checked.includes = error.id ) {
+			//console.log( 'error', error.id );
 
-			const surfaceCurrent = SGF.surfaces[ error.index ];
-			const surfaceNew = surfaceCurrent.replace( /exposedToSun="(.*?)"/i, `exposedToSun="false"` );
+			const surface = SGF.surfaces.find( surface => surface.match( / id="(.*?)"/i )[ 1 ] ===  error.id )
+			//console.log( 'surfaceCurrent', surface );
 
-			SGF.text = SGF.text.replace( surfaceCurrent, surfaceNew );
-			SGF.surfaces = SGF.text.match( /<Surface(.*?)<\/Surface>/gi );
+			const index = SGF.surfaces.indexOf( surface );
+
+			SGF.surfaces[ index ] = surface.replace( /exposedToSun="(.*?)"/i, `exposedToSun="false"` );
+			//console.log( 'SGF.surfaces[ index ]', index, SGF.surfaces[ index ] );
 
 		}
 

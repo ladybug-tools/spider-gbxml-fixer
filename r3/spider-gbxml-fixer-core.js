@@ -3,7 +3,7 @@
 /* jshint esversion: 6 */
 /* jshint loopfunc: true */
 
-const SGF = { release: "2.1.0", date: "2019-04-04" };
+const SGF = { release: "3.0.1", date: "2019-04-12" };
 
 SGF.description = `Run basic checks on gbXML files and identify, report and fix issues`;
 
@@ -26,6 +26,7 @@ SGF.currentStatus =
 		<details>
 			<summary>Change log</summary>
 			<ul>
+				<li>2019-04-12 ~ D - switch order exposed to sun and invalid surface</li>
 				<li>2019-04-03 ~ D - Add pop-up help</li>
   				<li>2019-04-03 ~ F - First commit</li>
 			</ul>
@@ -60,9 +61,9 @@ SGF.divFixThings =
 
 		<div id=FXAdivGetFixAttributes ></div>
 
-		<div id=FETSdivGetFixExposedToSun ></div>
-
 		<div id=FXSTIdivGetSurfaceTypeInvalid ></div>
+
+		<div id=FETSdivGetFixExposedToSun ></div>
 
 		<div id=FXDPCdivGetDuplicatePlanar ></div>
 
@@ -73,6 +74,10 @@ SGF.divFixThings =
 		<div id=FXCIMdivGetCadIdMissing ></div>
 
 		<div id=SGFdivGetTemplate ></div>
+
+		<hr>
+
+		<center title="hello!" ><a href=javascript:window.scrollTo(0,0); style=text-decoration:none; > <img src="https://ladybug.tools/artwork/icons_bugs/ico/spider.ico" height=24 > </a></center>
 
 	`;
 
@@ -123,9 +128,9 @@ SGF.init = function() {
 
 	FXAdivGetFixAttributes.innerHTML = FXA.getFixAttributes();
 
-	FETSdivGetFixExposedToSun.innerHTML = FETS.getSurfaceExposedToSun()
-
 	FXSTIdivGetSurfaceTypeInvalid.innerHTML = FXSTI.getSurfaceTypeInvalid();
+
+	FETSdivGetFixExposedToSun.innerHTML = FETS.getSurfaceExposedToSun()
 
 	FXDPCdivGetDuplicatePlanar.innerHTML = FXDPC.getCheckDuplicatePlanarCoordinates();
 

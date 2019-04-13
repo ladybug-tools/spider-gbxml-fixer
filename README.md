@@ -179,11 +179,25 @@ From [The case for single character git commit message prefixes]( https://smalld
 	* Many interesting comments to a short gist
 
 
+### 2019-04-09 ~ Theo
+
+Spider gbXML Fixer 'Atrax' R3.1.0
+
+Fix Surface Type Invalid (FXSTI)
+* F - Display the reasoning behind each issue that is identified
+* B ~ Fixed issues with saving data to files
+* R ~ Refactor
+
+Fix Surfaces Exposed To Sun I(FETS)
+* B ~ Fixed issues with saving data to files
+* R ~ Refactor
+
+plus other minor fixes
 
 ### 2019-04-09 ~ Theo
 
 Spider gbXML Fixer 'Atrax' R3.0.0
-* F -Add 'dev' folder with index file redirecting to r3
+* F - Add 'dev' folder with index file redirecting to r3
 * F - First commit R3 dev release
 * T - Add cookbook folder
 * T - Add 'ft-template' folder with template files

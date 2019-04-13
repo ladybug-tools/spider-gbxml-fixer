@@ -5,7 +5,7 @@
 
 
 
-const FXA = { "release": "2.0", "date": "2019-04-03" };
+const FXA = { "release": "3.0.10", "date": "2019-04-12" };
 
 FXA.description =
 	`
@@ -34,10 +34,8 @@ FXA.currentStatus =
 		<details>
 			<summary>Change log</summary>
 			<ul>
-				<li>2019-04-02 ~ B - Validate and fix with jsHint</li>
-				<li>2019-03-23 ~ 1.1 ~ Rename everything from 'metadata' to 'attributes.</li>
-				<li>2019-03-23 ~ 1.1 fix run again issues</li>
-				<li>2019-02-28 ~ R1.0 ~ First commit to Tester</li>
+				<li>2019-04-12 ~ D - Change title from 'Check" to 'Fix'</li>
+				<li>2019-04-12 ~ R3 -First commit to Tester</li>
 			</ul>
 		</details>
 
@@ -51,7 +49,7 @@ FXA.getFixAttributes = function() {
 		`
 			<details ontoggle="FXAdivAttributes.innerHTML=FXA.getAttributes();" >
 
-			<summary id=FXAsumAttributes class=sumHeader >Check for missing required gbXML attributes
+			<summary id=FXAsumAttributes class=sumHeader >Fix missing required gbXML attributes
 				<a id=FXASum class=helpItem href="JavaScript:MNU.setPopupShowHide(FXASum,FXA.currentStatus);" >&nbsp; ? &nbsp;</a>
 			</summary>
 				<div id=FXAdivAttributes ></div>
@@ -106,7 +104,7 @@ FXA.getAttributes = function() {
 	const help = `<a id=fxmHelp class=helpItem href="JavaScript:MNU.setPopupShowHide(fxmHelp,FXA.currentStatus);" >&nbsp; ? &nbsp;</a>`;
 
 	FXAsumAttributes.innerHTML =
-	`Check for missing required gbXML attributes ~ ${FXA.attributesMissing.length} missing ${ help }`;
+	`Fix missing required gbXML attributes ~ ${FXA.attributesMissing.length} missing ${ help }`;
 
 	const htm =
 		`

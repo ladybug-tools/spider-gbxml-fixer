@@ -453,7 +453,7 @@ FIL.butSaveFile = function() {
 	//const lines = SGT.text.split(/\r\n|\n/);
 	//console.log( 'len', lines.length );
 
-	const blob = new Blob( [ SGT.text ] );
+	const blob = new Blob( [ SGF.text ] );
 	let a = document.body.appendChild( document.createElement( 'a' ) );
 	a.href = window.URL.createObjectURL( blob );
 	a.download = FIL.name;
@@ -468,7 +468,7 @@ FIL.butSaveFileZip = function() {
 
 	const zip = new JSZip();
 
-	zip.file( FIL.name, GBX.text );
+	zip.file( FIL.name, SGF.text );
 
 	zip.generateAsync( { type:"blob", compression: "DEFLATE" } )
 
