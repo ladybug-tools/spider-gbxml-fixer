@@ -27,7 +27,6 @@ _JavaScript utilities to help you identify and fix common errors in gbXML files_
 #### Latest release with demo: [Sample test run]( https://www.ladybug.tools/spider-gbxml-fixer/dev/#https://cdn.jsdelivr.net/gh/ladybug-tools/spider@master/gbxml-sample-files/bristol-clifton-downs-broken.xml )
 
 * Always links to the version currently being worked on
-
 * Loads and checks a sample file from the [Spider gbXML sample files]( https://www.ladybug.tools/spider/#gbxml-sample-files/README.md ) folder
 
 <details>
@@ -178,6 +177,13 @@ From [The case for single character git commit message prefixes]( https://smalld
 * https://gist.github.com/jashkenas/cbd2b088e20279ae2c8e
 	* Many interesting comments to a short gist
 
+
+### 2019-04-15 ~ Theo
+
+Spider gbXML Fixer 'Atrax' R3.1.1
+
+* Add link to Maevia
+* Continuing work on modules
 
 ### 2019-04-09 ~ Theo
 
