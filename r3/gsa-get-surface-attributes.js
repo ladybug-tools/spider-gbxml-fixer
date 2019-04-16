@@ -51,7 +51,6 @@ GSA.getSurfacesAttributesByIndex = function( indexes, id = 1 ) {
 
 		return htmAttributes;
 
-
 	} );
 
 	return htmArray;
@@ -73,9 +72,11 @@ GSA.getSurfaceAttributes = function( surfaceXml, id, index ) {
 
 	const htm =
 	`
-		<div><b>Selected Surface: ${ id }</b><br>Attributes:</div>
+		<div><b>${ id } - Selected Surface Attributes</b></div>
 
-		${ htmSurface }
+		<p>
+			${ htmSurface }
+		</p>
 
 		<details>
 			<summary> AdjacentSpace</summary>

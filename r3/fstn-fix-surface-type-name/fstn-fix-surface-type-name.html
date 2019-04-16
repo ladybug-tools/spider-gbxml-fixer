@@ -39,7 +39,7 @@
 <script src="../ggd-get-gbxml-data.js" ></script>
 <script src="../gsa-get-surface-attributes.js" ></script>
 
-<script src="fat-fix-air-types.js" ></script>
+<script src="fstn-fix-surface-type-name.js" ></script>
 
 	<nav id="navMenu" >
 
@@ -105,12 +105,15 @@ function init() {
 
 function onLoad() {
 
-	console.log( '', FIL.name  );
+	//console.log( '', FIL.name  );
+
 	GGD.getData(  FIL.text  );
 
 	htm1 = GGD.getGbxmlData(  FIL.text  );
 
-	htm2 = FAT.getSurfaceTypeInvalid();
+	//htm2 = FT.getSurfaceTypeInvalid();
+
+	htm3 = FSTN.getMenuSurfaceTypeName();
 
 	divContents.innerHTML =
 	`
@@ -128,7 +131,8 @@ function onLoad() {
 			<input type=checkbox id=SGFinpIgnoreAirSurfaceType > Ignore Air surface type
 		</p>
 		${ htm1 }
-		${ htm2 }
+
+		${ htm3 }
 	`;
 }
 

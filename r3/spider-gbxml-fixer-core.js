@@ -63,6 +63,8 @@ SGF.divFixThings =
 
 		<div id=FXSTIdivGetSurfaceTypeInvalid ></div>
 
+		<div id=FSTNdivGetSurfaceTypeName ></div>
+
 		<div id=FETSdivGetFixExposedToSun ></div>
 
 		<div id=FXDPCdivGetDuplicatePlanar ></div>
@@ -128,7 +130,9 @@ SGF.init = function() {
 
 	FXAdivGetFixAttributes.innerHTML = FXA.getFixAttributes();
 
-	FXSTIdivGetSurfaceTypeInvalid.innerHTML = FXSTI.getSurfaceTypeInvalid();
+	//FXSTIdivGetSurfaceTypeInvalid.innerHTML = FXSTI.getSurfaceTypeInvalid();
+
+	FSTNdivGetSurfaceTypeName.innerHTML = FSTN.getMenuSurfaceTypeName();
 
 	FETSdivGetFixExposedToSun.innerHTML = FETS.getSurfaceExposedToSun()
 

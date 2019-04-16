@@ -58,7 +58,7 @@ FT.getSurfaceTypeInvalid = function() {
 
 				<div id=FTdivSurface ></div>
 
-				<div id=FTdivSurfaceData ></div>
+				<div id=FTdivSurfaceAttributeData ></div>
 
 			</details>
 
@@ -74,7 +74,7 @@ FT.getSurfaces = function() {
 
 	const timeStart = performance.now();
 
-	FTdivSurfaceData.innerHTML = "";
+	FTdivSurfaceAttributeData.innerHTML = "";
 
 	FT.surfaces = [];
 
@@ -104,7 +104,7 @@ FT.getSurfaces = function() {
 
 	surfacesString = FT.surfaces.map( item =>
 		`<input type=checkbox value=${ item.id } checked >
-		<button onclick=FTdivSurfaceData.innerHTML=FT.getSurfaceData(${item.index },"${ item.id}"); >
+		<button onclick=FTdivSurfaceAttributeData.innerHTML=FT.getSurfaceData(${item.index },"${ item.id}"); >
 		${ item.id }</button> / ${ item.typeSource } from:
 		 <mark>${ item.exposedToSun }</mark> to: exposedToSun="false"
 		`
