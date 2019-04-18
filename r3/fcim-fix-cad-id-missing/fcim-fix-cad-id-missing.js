@@ -99,7 +99,7 @@ FCIM.getFixCadIdMissing = function() {
 
 	}
 
-	const options = FCIM.errors.map( ( item, index ) => {
+	const options = FCIM.errors.map( ( item, indexError ) => {
 
 		const surface = SGF.surfaces[ item.index ];
 		//console.log( 'sf', surface );
@@ -112,7 +112,7 @@ FCIM.getFixCadIdMissing = function() {
 		name = name ? name.pop() : id;
 		//.pop();
 
-		return `<option value=${index } title="${ id }" >${ name }</option>`;
+		return `<option value=${ indexError } title="${ id }" >${ name }</option>`;
 
 	} );
 	//console.log( 'options', options );
@@ -151,8 +151,10 @@ FCIM.getFixCadIdMissing = function() {
 
 
 FCIM.getSurfaceData = function( select ) {
+	//console.log( 'select.selectedIndex', select.selectedIndex  );
 
 	const error = FCIM.errors[ select.selectedIndex ];
+	// console.log( 'error', error );
 
 	const invalidData = GSA.getSurfacesAttributesByIndex( error.index, error.id );
 
@@ -163,7 +165,7 @@ FCIM.getSurfaceData = function( select ) {
 		<p>
 			CAD Object ID <input id=FCIMinpCadId value="Place holder: ${ error.id }" style=width:30rem; >
 
-			<button onclick=FCIM.getFixCim(error.index); >UpdateCAD Object ID</button>
+			<button onclick=FCIM.getFixCim(FCIMselSurface.selectedIndex); >UpdateCAD Object ID</button>
 		</p>
 	`;
 
@@ -176,9 +178,11 @@ FCIM.getSurfaceData = function( select ) {
 
 //////////
 
-FCIM.getFixCim = function( index ) {
+FCIM.getFixCim = function( indexError ) {
+	console.log( 'index', indexError );
 
-	const error = FCIM.errors[ index ];
+	const error = FCIM.errors[ indexError ];
+	console.log( 'error', error );
 
 	const surfaceTextCurrent = SGF.surfaces[ error.index ];
 	//console.log( 'surfaceTextCurrent', surfaceTextCurrent );
@@ -189,14 +193,13 @@ FCIM.getFixCim = function( index ) {
 
 	if ( error.cadId === "no attribute" ){
 
-		surfaceTextNew = surfaceTextCurrent.replace( /<Name>/i, `<CADObjectId>${ text }</CADObjectId> </Name>` );
+		surfaceTextNew = surfaceTextCurrent.replace( /<\/Surface>/i, `<CADObjectId>${ text }</CADObjectId> <\/Surface>` );
 
 	} else {
 
 		surfaceTextNew = surfaceTextCurrent.replace( /<CADObjectId>(.*?)<\/CADObjectId>/i, `<CADObjectId>${ text }</CADObjectId>` );
 
 	}
-
 	//console.log( 'surfaceTextNew', surfaceTextNew );
 
 	SGF.text = SGF.text.replace( surfaceTextCurrent, surfaceTextNew );
@@ -229,7 +232,7 @@ FCIM.fixAllSelected = function() {
 
 		if ( error.cadId === "no attribute" ){
 
-			surfaceTextNew = surfaceTextCurrent.replace( /<Name>/i, `<CADObjectId>${ text }</CADObjectId> </Name>` );
+			surfaceTextNew = surfaceTextCurrent.replace( /<\/Surface>/i, `<CADObjectId>${ text }</CADObjectId> <\/Surface>` );
 
 		} else {
 

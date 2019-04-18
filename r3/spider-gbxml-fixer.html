@@ -5,8 +5,8 @@
 <meta name = "viewport" content= "width=device-width, initial-scale=1" >
 <meta name = "description" content = "This menu is a component of a basic html content management script with sliding menu, css theme selection, Markdown to HTML, drag and drop file reading capability, access to frequently used pages and more" >
 <meta name = "keywords" content = "JavaScript,GitHub,FOSS" >
-<meta name = "date" content = "2019-04-15" >
-<meta name = "release" content = "3.2.0" >
+<meta name = "date" content = "2019-04-18" >
+<meta name = "release" content = "3.3.0" >
 <title>Spider gbXML Fixer 'Atrax'</title>
 <link rel="stylesheet" href="https://pushme-pullyou.github.io/tootoo13/js-tootoo13-2/style.css">
 </head>
@@ -34,7 +34,7 @@
 <script src="fstn-fix-surface-type-name/fstn-fix-surface-type-name.js" ></script>
 <script src="fets-fix-exposed-to-sun/fets-fix-exposed-to-sun.js" ></script>
 
-<script src="fxdpc-fix-duplicate-planar-coordinates.js" ></script>
+<script src="fdpc-fix-duplicate-planar-coordinates/fdpc-fix-duplicate-planar-coordinates.js" ></script>
 <script src="fxase-fix-adjacent-space-extra.js" ></script>
 <script src="fxasd-fix-adjacent-space-duplicate.js" ></script>
 <script src="fcim-fix-cad-id-missing/fcim-fix-cad-id-missing.js" ></script>
@@ -107,10 +107,11 @@ MNU.currentStatusCore =
 
 
 
-	FIL.urlDefaultFile = "../README.md";
+//FIL.urlDefaultFile = "../README.md";
 
 // useful when testing / un-comment
-//OHC.uriDefaultFile = "https://cdn.jsdelivr.net/gh/ladybug-tools/spider@master/gbxml-sample-files/bristol-clifton-downs-broken.xml";
+FIL.urlDefaultFile = "https://cdn.jsdelivr.net/gh/ladybug-tools/spider@master/gbxml-sample-files/bristol-clifton-downs-broken.xml";
+
 
 THM.themeUrlStorage = 'spider-gbxml-fixer-theme-url';
 THM.cssBasic = "https://pushme-pullyou.github.io/tootoo13/js-tootoo13-2/style.css";
@@ -236,12 +237,11 @@ OHC.urlGitHubPage = "";
 <script>
 
 
+
 init();
 
 
 function init() {
-
-	//OHC.divContents = divContents;
 
 	MNUdivHeader.innerHTML = MNU.getNavHeader();
 

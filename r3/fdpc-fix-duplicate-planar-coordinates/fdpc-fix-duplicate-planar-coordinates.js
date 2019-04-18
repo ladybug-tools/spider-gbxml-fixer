@@ -37,6 +37,7 @@ FDPC.currentStatus =
 			<summary>Change log</summary>
 
 			<ul>
+				<li>2019-04-18 ~ F - 'Fix all' working / waiting for testing.</li>
 				<li>2019-04-03 ~ First commit</li>
 			</ul>
 		</details>
@@ -48,9 +49,9 @@ FDPC.getFixDuplicatePlanarCoordinates = function() {
 
 	const htm =
 		`
-			<details ontoggle="FDPCdivDuplicatePlanar.innerHTML=FDPC.getDuplicatePlanarCoordinates();" >
+			<details id=FDPCdet  ontoggle="FDPCdivDuplicatePlanar.innerHTML=FDPC.getDuplicatePlanarCoordinates();" >
 
-				<summary id=FDPCsumDuplicatePlanar class=sumHeader >Fix surfaces with duplicate planar coordinates
+				<summary id=FDPCsumDuplicatePlanar class=sumHeader ><mark>Fix surfaces with duplicate planar coordinates</mark>
 					<a id=FDPCSum class=helpItem href="JavaScript:MNU.setPopupShowHide(FDPCSum,FDPC.currentStatus);" >&nbsp; ? &nbsp;</a>
 				</summary>
 
@@ -63,6 +64,7 @@ FDPC.getFixDuplicatePlanarCoordinates = function() {
 	return htm;
 
 };
+
 
 
 FDPC.getDuplicatePlanarCoordinates = function() {
@@ -78,7 +80,7 @@ FDPC.getDuplicatePlanarCoordinates = function() {
 
 	}
 
-	const duplicates = [];
+	FDPC.duplicates = [];
 
 	planes.forEach( ( plane1, index1 ) => {
 
@@ -88,22 +90,15 @@ FDPC.getDuplicatePlanarCoordinates = function() {
 
 			if ( plane1 === plane2 ) {
 
-				//duplicates.push( [ index1, ( planes.length - planesRemainder.length ) ] );
-
-				duplicates.push( [ index1, ( index1 + index2 + 1) ] );
-				//p1 = plane1;
-				//p2 = plane2
-				//console.log( 'plane1', plane1 );
-				//console.log( 'plane2', plane2 );
-
+				FDPC.duplicates.push( [ index1, ( index1 + index2 + 1) ] );
 			}
 
 		} );
 
 	} );
-	//console.log( 'duplicates', duplicates );
+	//console.log( 'FDPC.duplicates', FDPC.duplicates );
 
-	const options = duplicates.map( ( arr, count ) => arr.map( index => {
+	const options = FDPC.duplicates.map( ( arr, count ) => arr.map( index => {
 
 		const surface = SGF.surfaces[ index ];
 		return `<option value="${ arr.join() }" style=background-color:${ count % 2 === 0 ? "#eee" : "" };
@@ -116,11 +111,10 @@ FDPC.getDuplicatePlanarCoordinates = function() {
 	);
 	//console.log( 'options', options );
 
-
 	const help = `<a id=fdpcHelp class=helpItem href="JavaScript:MNU.setPopupShowHide(fdpcHelp,FDPC.currentStatus);" >&nbsp; ? &nbsp;</a>`;
 
 	FDPCsumDuplicatePlanar.innerHTML =
-		`Fix surfaces with duplicate planar coordinates ~ ${ duplicates.length.toLocaleString() } found
+		`Fix surfaces with duplicate planar coordinates ~ ${ FDPC.duplicates.length.toLocaleString() } found
 			${ help }
 		`;
 
@@ -129,20 +123,16 @@ FDPC.getDuplicatePlanarCoordinates = function() {
 			<p><i>${ FDPC.description }</i></p>
 
 			<p>
-				${ duplicates.length.toLocaleString() } sets duplicates found.  See tool tips for surface ID.<br>
+				${ FDPC.duplicates.length.toLocaleString() } sets duplicates found.  See tool tips for surface ID.<br>
 			</p>
 
 			<p>
-				<select onclick=FDPC.setDuplData(this); style=min-width:8rem; size=${ duplicates.length >= 5 &&  duplicates.length <= 20 ? 2 * duplicates.length : 10 } >${ options }</select>
+				<select onclick=FDPC.setDuplicateData(this); style=min-width:8rem; size=${ FDPC.duplicates.length >= 5 &&  FDPC.duplicates.length <= 20 ? 2 * FDPC.duplicates.length : 10 } >${ options }</select>
 			</p>
 
 			<div id="FDPCdivDuplData" >Click a surface ID above to view its details and delete if necessary</div>
 
-			<p>
-				<button onclick=FDPCdivGetDuplicatePlanar.innerHTML=FDPC.getCheckDuplicatePlanarCoordinates(); >Run check again</button>
-			</p>
-
-			<div id=FDPCdivSelectedSurface ></div>
+			<p><button onclick=FDPC.deleteDuplicateSurfaces(); >Fix all</button></p>
 
 			<p>
 				Click 'Save file' button in File Menu to save changes to a file.
@@ -157,39 +147,51 @@ FDPC.getDuplicatePlanarCoordinates = function() {
 
 
 
-FDPC.setDuplData = function( select ) {
-	//console.log( '', select.value );
+FDPC.setDuplicateData = function( select ) {
+	//console.log( '', select.selectedOptions );
 
 	const items = select.value.split( ",");
 	//console.log( '', items );
 
+	surfaceText1 = SGF.surfaces[ items[ 0 ] ];
+	const id1 = surfaceText1.match( / id="(.*?)"/i )[ 1 ];
+
+	surfaceText2 = SGF.surfaces[ items[ 1 ] ];
+	const id2 = surfaceText2.match( / id="(.*?)"/i )[ 1 ];
+
+	console.log( '', surfaceText1.length, surfaceText2.length );
+
 	const htm =
 		`
-			${ SGF.getSurfacesAttributesByIndex( items[ 0 ], 1 ) }
+			${ GSA.getSurfacesAttributesByIndex( items[ 0 ], id1 ) }
+
+			<p>
+				Number of characters in surface text: ${ surfaceText1.length.toLocaleString() }
+			</p>
 
 			<p>
 				<button onclick=FDPC.deleteSelectedSurface(${ items[ 0 ] }); >delete</button>
 
-				<button onclick=FDPC.showSelectedSurfaceGbxml(${ items[ 0 ] },FDPCdivSelectedSurface); >view gbXML text</button>
-
 			</p>
 
-			${ SGF.getSurfacesAttributesByIndex( items[ 1 ],  2 ) }
+			${ GSA.getSurfacesAttributesByIndex( items[ 1 ], id2) }
+
+			<p>
+				Number of characters in surface text: ${ surfaceText2.length.toLocaleString() }
+			</p>
 
 			<p>
 				<button onclick=FDPC.deleteSelectedSurface(${ items[ 1 ] }); >Delete</button>
-
-				<button onclick=FDPC.showSelectedSurfaceGbxml(${ items[ 1 ] },FDPCdivSelectedSurface); >View gbXML text</button>
-
 			</p>
 
+			<hr>
 		`;
 
 	FDPCdivDuplData.innerHTML= htm;
 
-	const det = FDPCdivDuplData.querySelectorAll( 'details' );
-	det[ 1 ].open = true;
-	det[ 4 ].open = true;
+	const details = FDPCdivDuplData.querySelectorAll( 'details' );
+	details[ 1 ].open = true;
+	details[ 5 ].open = true;
 
 };
 
@@ -210,14 +212,40 @@ FDPC.deleteSelectedSurface = function( index ) {
 	SGF.surfaces = SGF.text.match( /<Surface(.*?)<\/Surface>/gi );
 	//console.log( 'SGF.surfaces', SGF.surfaces.length );
 
-	FDPCdivGetDuplicatePlanar.innerHTML = FDPC.getCheckDuplicatePlanarCoordinates();
+	FDPCdet.open = false;
+
+	FDPCdivGetDuplicatePlanar.innerHTML = FDPC.getFixDuplicatePlanarCoordinates();
 
 };
 
 
 
-FDPC.showSelectedSurfaceGbxml = function( index, target ) {
+FDPC.deleteDuplicateSurfaces = function() {
+	//console.log( 'select.value', select );
 
-	target.innerText = SGF.surfaces[ index ];
+	const result = confirm( `OK to delete second surface\nwhen both surfaces have exactly the same character count\nor second surface contains the word "duplicate"?` );
+
+	if ( result === false ) { return; }
+
+	for ( items of FDPC.duplicates ) {
+
+		surfaceText1 = SGF.surfaces[ items[ 0 ] ];
+
+		surfaceText2 = SGF.surfaces[ items[ 1 ] ];
+
+		if ( surfaceText1.length === surfaceText2.length || surfaceText2.includes( "duplicate" ) ) {
+
+			SGF.text = SGF.text.replace( surfaceText2, '' );
+
+		};
+
+	}
+
+	SGF.surfaces = SGF.text.match( /<Surface(.*?)<\/Surface>/gi );
+	//console.log( 'SGF.surfaces', SGF.surfaces.length );
+
+	FDPCdet.open = false;
+
+	FDPCdivGetDuplicatePlanar.innerHTML = FDPC.getFixDuplicatePlanarCoordinates();
 
 };

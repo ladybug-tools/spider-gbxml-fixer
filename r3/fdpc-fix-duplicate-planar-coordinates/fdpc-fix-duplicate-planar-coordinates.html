@@ -39,7 +39,7 @@
 <script src="../ggd-get-gbxml-data.js" ></script>
 <script src="../gsa-get-surface-attributes.js" ></script>
 
-<script src="fdpc-fix-duplicate-planar-coordinates.js" ></script>
+<script src="./fdpc-fix-duplicate-planar-coordinates.js" ></script>
 
 	<nav id="navMenu" >
 
@@ -74,11 +74,38 @@
 
 <script>
 
+//FIL.urlDefaultFile = "../../test-samples/one-room-with-surface-type-errors.xml";
+FIL.urlDefaultFile = "file:///D:/temp/zzz-gbxml-testing/coventry-university-of-warwick-small.xml";
+//FIL.urlDefaultFile = "https://cdn.jsdelivr.net/gh/ladybug-tools/spider@master/gbxml-sample-files/zip/coventry-university-of-warwick-small.zip"
+
+
 const urlSourceCodeIcon = "https://pushme-pullyou.github.io/github-mark-64.png";
 const urlSourceCode = "https://github.com/ladybug-tools/spider-gbxml-fixer/tree/master/r3/";
 
 
-FIL.urlDefaultFile = "../../test-samples/one-room-with-surface-type-errors.xml"
+SGF.divFixThings =
+	`
+		<br><br>
+
+		<h2 id=SGFh1FileName >Check file: <span id=fname ></span></h2>
+
+		<p>
+			<button onclick=SGF.runAll(); >Run all checks</button>
+
+			<button onclick=SGF.closeAll(); >Close all checks</button>
+
+		</p>
+
+		<p>
+			<input type=checkbox id=SGFinpIgnoreAirSurfaceType > Ignore Air surface type
+		</p>
+
+		<div id=GGDdivGetGbxmlData ></div>
+
+		<div id=FDPCdivGetDuplicatePlanar ></div>
+
+	`;
+
 
 init();
 
@@ -94,6 +121,10 @@ function init() {
 
 	FIL.xhrRequestFileXml( FIL.urlDefaultFile );
 
+
+
+
+
 	//FIL.onHashChange();
 
 	window.addEventListener ( 'hashchange', FIL.onHashChange, false );
@@ -105,31 +136,17 @@ function init() {
 
 function onLoad() {
 
-	console.log( '', FIL.name  );
+	//console.log( '', FIL.name  );
 	GGD.getData(  FIL.text  );
 
-	htm1 = GGD.getGbxmlData(  FIL.text  );
+	divContents.innerHTML = SGF.divFixThings;
 
-	htm2 = FDPC.getFixDuplicatePlanarCoordinates();
+	fname.innerHTML = FIL.name;
 
-	divContents.innerHTML =
-	`
-		<br><br>
+	GGDdivGetGbxmlData.innerHTML = GGD.getGbxmlData(  FIL.text  );
 
-		<h2 id=SGFh1FileName >Check file: ${ decodeURI( FIL.name ) } </h2>
+	FDPCdivGetDuplicatePlanar.innerHTML = FDPC.getFixDuplicatePlanarCoordinates();
 
-		<p>
-			<button onclick=SGF.runAll(); >Run all checks</button>
-
-			<button onclick=SGF.closeAll(); >Close all checks</button>
-		</p>
-
-		<p>
-			<input type=checkbox id=SGFinpIgnoreAirSurfaceType > Ignore Air surface type
-		</p>
-		${ htm1 }
-		${ htm2 }
-	`;
 }
 
 
@@ -154,7 +171,7 @@ function getTitle() {
 	const htm =
 	`
 		<h2>
-			<a href=${ urlSourceCode } target=_top title="Source code on GitHub" >
+			<a href="${ urlSourceCode }" target=_top title="Source code on GitHub" >
 				<img src=${ urlSourceCodeIcon } height=18 >
 			</a>
 			<a href="" title="Click to reload this page" >${ document.title }</a>

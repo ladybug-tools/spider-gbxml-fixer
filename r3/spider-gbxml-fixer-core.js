@@ -38,7 +38,7 @@ SGF.divFixThings =
 	`
 		<br><br>
 
-		<h2 id=SGFh1FileName >Check file: <script></script>decodeURI( FIL.name ) } </h2>
+		<h2 id=SGFh1FileName >Check file: <script>decodeURI( FIL.name ) </script></h2>
 
 		<p>
 			<button onclick=SGF.runAll(); >Run all checks</button>
@@ -67,7 +67,7 @@ SGF.divFixThings =
 
 		<div id=FETSdivGetFixExposedToSun ></div>
 
-		<div id=FXDPCdivGetDuplicatePlanar ></div>
+		<div id=FDPCdivGetDuplicatePlanar ></div>
 
 		<div id=FXASEdivSpaceExtra ></div>
 
@@ -138,7 +138,7 @@ SGF.init = function() {
 
 	FETSdivGetFixExposedToSun.innerHTML = FETS.getSurfaceExposedToSun()
 
-	FXDPCdivGetDuplicatePlanar.innerHTML = FXDPC.getCheckDuplicatePlanarCoordinates();
+	FDPCdivGetDuplicatePlanar.innerHTML = FDPC.getFixDuplicatePlanarCoordinates();
 
 	FXASEdivSpaceExtra.innerHTML = FXASE.getFixAdjacentSpaceExtra();
 
@@ -204,7 +204,7 @@ SGF.getSurfacesAttributesByIndex = function( indexes, id = 1 ) {
 
 
 
-SGF.getSurfaceAttributes = function( surfaceXml, index ) {
+SGF.xxxgetSurfaceAttributes = function( surfaceXml, index ) {
 	//console.log( 'surfaceXml', surfaceXml );
 
 	const htmSurface = SGF.getAttributesHtml( surfaceXml );
@@ -243,7 +243,7 @@ SGF.getSurfaceAttributes = function( surfaceXml, index ) {
 
 
 
-SGF.getAttributesHtml = function( obj ) {
+SGF.xxxgetAttributesHtml = function( obj ) {
 	//console.log( 'obj', obj );
 
 	let htm ='';

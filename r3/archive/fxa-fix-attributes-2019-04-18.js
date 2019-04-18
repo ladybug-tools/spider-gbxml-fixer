@@ -34,7 +34,6 @@ FXA.currentStatus =
 		<details>
 			<summary>Change log</summary>
 			<ul>
-				<li>2019-04-18 ~ F - streamlined the operation / automated 'add missing attributes' </li>
 				<li>2019-04-12 ~ D - Change title from 'Check" to 'Fix'</li>
 				<li>2019-04-12 ~ R3 -First commit to Tester</li>
 			</ul>
@@ -48,9 +47,9 @@ FXA.getFixAttributes = function() {
 
 	const htm =
 		`
-			<details id=FXAdet ontoggle="FXAdivAttributes.innerHTML=FXA.getAttributes();" >
+			<details ontoggle="FXAdivAttributes.innerHTML=FXA.getAttributes();" >
 
-			<summary id=FXAsumAttributes class=sumHeader ><mark>Fix missing required gbXML attributes</mark>
+			<summary id=FXAsumAttributes class=sumHeader >Fix missing required gbXML attributes
 				<a id=FXASum class=helpItem href="JavaScript:MNU.setPopupShowHide(FXASum,FXA.currentStatus);" >&nbsp; ? &nbsp;</a>
 			</summary>
 				<div id=FXAdivAttributes ></div>
@@ -232,11 +231,7 @@ FXA.setChangesAttributesIssues = function() {
 
 	FXA.attributesNew = attributesNew.join( '' );
 
-	SGF.text = SGF.text.replace ( '<gbXML ', '<gbXML ' + FXA.attributesNew );
-
-	FXAdet.open = false;
-
-	FXAdivGetFixAttributes.innerHTML = FXA.getFixAttributes();
+	return FXA.attributesNew;
 
 };
 

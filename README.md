@@ -178,6 +178,14 @@ From [The case for single character git commit message prefixes]( https://smalld
 	* Many interesting comments to a short gist
 
 
+### 2019-04-18 ~ Theo
+
+Spider gbXML Fixer 'Atrax' R3.3.0
+
+* F - FDPC: 'Fix all' working / waiting for testing
+* F - FCIM: 'Fix all' working / waiting for testing
+* F - FXA: streamlined the operation / automated 'add missing attributes' / waiting for testing
+
 ### 2019-04-15 ~ Theo
 
 Spider gbXML Fixer 'Atrax' R3.1.1
