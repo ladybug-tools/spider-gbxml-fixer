@@ -20,7 +20,6 @@ FETS.currentStatus =
 		${ FETS.description }.
 	</p>
 
-
 	<p>
 		Wish List / To do:<br>
 		<ul>
@@ -189,6 +188,7 @@ FETS.getSurfaceData = function( index, text = "item" ) {
 
 	const htm = GSA.getSurfacesAttributesByIndex( index, text );
 
+	
 	return htm;
 
 };

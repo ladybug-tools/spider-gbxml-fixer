@@ -203,3 +203,12 @@ FXCIM.setCadData = function( select ) {
 	FXCIMdivIdMissing.innerHTML=FXCIM.getFixCadIdMissing();
 
 };
+
+
+FXCIM.fixAllChecked = function() {
+
+	const boxesChecked = Array.from( FETSdivSurfaces.querySelectorAll( 'input:checked') ).map( item => item.value );
+
+	const selectdItems = 23
+
+};

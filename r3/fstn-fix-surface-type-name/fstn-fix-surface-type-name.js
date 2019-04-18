@@ -1,5 +1,5 @@
 //Copyright 2019 Ladybug Tools authors. MIT License
-/* globals SGF, FIL */
+/* globals SGF, GSA, FSTNsumSurfaceType, FSTNdivSurfaceType, FSTNdet */
 /* jshint esversion: 6 */
 /* jshint loopfunc: true */
 
@@ -51,9 +51,9 @@ FSTN.getMenuSurfaceTypeName = function() {
 
 	const htm =
 		`
-			<details ontoggle="FSTNdivSurfaceType.innerHTML=FSTN.getSurfaceType();" >
+			<details id=FSTNdet ontoggle="FSTNdivSurfaceType.innerHTML=FSTN.getSurfaceType();" >
 
-			<summary id=FSTNsumSurfaceType class=sumHeader >Fix surfaces with invalid surface type name
+			<summary id=FSTNsumSurfaceType class=sumHeader ><mark>Fix surfaces with invalid surface type name</mark>
 				<a id=FSTNSum class=helpItem href="JavaScript:MNU.setPopupShowHide(FSTNSum,FSTN.currentStatus);" >&nbsp; ? &nbsp;</a>
 			</summary>
 
@@ -87,10 +87,8 @@ FSTN.getSurfaceType = function() {
 			//console.log( '', typeSource1 );
 
 			const id = surface.match( / id="(.*?)"/i )[ 1 ];
-
 			const results = FSTN.getSurfaceTypeNew( surface, typeSource );
-
-			const typeNew = results.typeNew
+			const typeNew = results.typeNew;
 			const reasons = results.reasons;
 			const error = results.error;
 
@@ -98,11 +96,11 @@ FSTN.getSurfaceType = function() {
 
 		}
 
-	} )
+	} );
 	//console.log( 'FSTN.errors', FSTN.errors );
 	//console.log( 'FSTN.surfaceTypes', FSTN.surfaceTypes );
 
-	errorsString = FSTN.errors.map( ( item, index ) =>
+	const errorsString = FSTN.errors.map( ( item, index ) =>
 		`<input type=checkbox value=${ item.id } checked >
 		<button onclick=FSTNdivSurfaceAttributeData.innerHTML=FSTN.getSurfaceAttributes(${ index },"${ item.id}"); >
 		${ item.id }</button> / from:
@@ -124,6 +122,8 @@ FSTN.getSurfaceType = function() {
 		<p>${ FSTN.surfaceTypes.length.toLocaleString() } surface types found.</p>
 
 		${ errorsString }
+
+		<p><button onclick=FSTN.fixAllChecked(); >Fix all checked</button></p>
 
 		<p>Time to check: ${ ( performance.now() - timeStart ).toLocaleString() } ms</p>
 
@@ -171,8 +171,8 @@ FSTN.getSurfaceTypeNew = function( surface, typeSource ) {
 
 	const exposedToSun0 = surface.match( /exposedToSun="(.*?)"/i );
 	const exposedToSun1 = exposedToSun0 === null ?  ["", "no attribute" ] : exposedToSun0 ;
-	exposedToSun = exposedToSun1[ 1 ] ? exposedToSun1[ 1 ] : "undefined"
-	console.log( 'exposedToSun', exposedToSun );
+	const exposedToSun = exposedToSun1[ 1 ] ? exposedToSun1[ 1 ] : "undefined";
+	//console.log( 'exposedToSun', exposedToSun );
 	//const typeSource = typeSource1[ 1 ] ? typeSource1[ 1 ] : "undefined";
 
 	let typeNew = "Shade";
@@ -182,11 +182,11 @@ FSTN.getSurfaceTypeNew = function( surface, typeSource ) {
 	if ( spaces.length === 0 ) {
 
 		typeNew = "Shade";
-		reasons += "No adjacent spaces. "
+		reasons += "No adjacent spaces. ";
 
 	} else if ( spaces.length ===  1 ) {
 
-		reasons += "Single adjacent space ID. "
+		reasons += "Single adjacent space ID. ";
 
 		if ( Number( tilt ) === 90 ) {
 
@@ -217,7 +217,7 @@ FSTN.getSurfaceTypeNew = function( surface, typeSource ) {
 
 		} else if ( Number( tilt ) === 0 ) {
 
-			reasons += "Tilt = 0. ";
+			reasons += `Tilt = ${ tilt }. `;
 
 			if ( exposedToSun === "true" ) {
 
@@ -242,11 +242,11 @@ FSTN.getSurfaceTypeNew = function( surface, typeSource ) {
 				if ( [ "ExposedFloor", "RaisedFloor", "Roof", "SlabOnGrade", "UndergroundCeiling",
 					"UndergroundSlab" ].includes( typeSource ) ) {
 
-					type = typeSource;
+					typeNew = typeSource;
 
 				} else {
 
-					type = "SlabOnGrade";
+					typeNew = "SlabOnGrade";
 					error = "Need horizontal surface ";
 
 				}
@@ -255,7 +255,7 @@ FSTN.getSurfaceTypeNew = function( surface, typeSource ) {
 
 		} else if ( Number( tilt ) === 180 ){
 
-			reasons += "Tilt = 180. ";
+			reasons += `Tilt = ${ tilt }. `;
 
 			if ( exposedToSun === "true" ) {
 
@@ -263,9 +263,11 @@ FSTN.getSurfaceTypeNew = function( surface, typeSource ) {
 
 				if ( [ "ExposedFloor", "RaisedFloor", "Roof", "UndergroundCeiling" ].includes( typeSource ) ) {
 
+					typeNew = typeSource;
 
 				} else {
 
+					typeNew = "Roof";
 					error = "ExposedToSun true";
 
 				}
@@ -287,95 +289,127 @@ FSTN.getSurfaceTypeNew = function( surface, typeSource ) {
 
 			}
 
-
-		} else {
-
 		}
 
 	} else if ( spaces.length ===  2 ) {
 
 		reasons += "Two adjacent space IDs. ";
 
-		if ( exposedToSun === "true" ) {
+		let id1 = spaces[ 0 ].match( /spaceIdRef="(.*?)"/i );
+		id1 = id1 ? id1[ 1 ] : id1;
+		let id2 = spaces[ 1 ].match( /spaceIdRef="(.*?)"/i );
+		id2 = id2 ? id2[ 1 ] : id2;
+		//console.log( '', id1, id2 );
 
-			console.log( '', surface  );
+		if ( Number( tilt ) === 90 ) {
+
+			reasons += `Tilt = ${ tilt }. `;
+
+			if ( id1 !== id2) {
+
+				reasons += "Different adjacent space IDs. ";
+				typeNew = "InteriorWall";
+
+			} else {
+
+				reasons += "Identical IDs. ";
+
+				if ( typeSource === "InteriorWall" ) {
+
+					reasons += "Interior wall with identical adjacent IDs. ";
+					typeNew = "InteriorWall";
+
+				} else {
+
+					typeNew = "Air";
+
+				}
+
+			}
+
+		} else if ( Number( tilt ) === 0 ) {
+
+			reasons += `Tilt = ${ tilt }. `;
+
+			if ( exposedToSun === "true" ) {
+
+				reasons += `ExposedToSun set to ${ exposedToSun }. `;
+
+				if ( [ "Air", "Ceiling", "InteriorFloor" ].includes( typeSource ) ) {
+
+					typeNew = typeSource;
+
+				} else { // pick a likely candidate
+
+					typeNew = "InteriorFloor";
+					error = "Need horizontal surface";
+
+				}
+
+			}
+
+		} else if ( Number( tilt ) === 180 ){
+
+			reasons += `Tilt = ${ tilt }. `;
+
+			if ( [ "Air", "InteriorFloor", "Ceiling" ].includes( typeSource ) ) {
+
+				typeNew = typeSource;
+
+			} else {
+
+				typeNew = "InteriorFloor";
+
+			}
+  
 		}
+
 
 	} else {
 
-		console.log( '', surface );
+		console.log( 'no spaces', surface );
 
 	}
 	//console.log( '',  { typeNew, reasons } );
+
 	return { typeNew, reasons, error };
 
 };
 
 
-/*
-FSTN.setTypeInvalidData = function( select ) {
 
-	const invalidData = SGF.getSurfacesAttributesByIndex( select.value, select.options[ select.selectedIndex ].innerText );
+FSTN.fixAllChecked = function() {
 
-	const options = SGF.surfaceTypes.map( ( type, index ) => {
+	const boxesChecked = Array.from( FSTNdivSurfaceType.querySelectorAll( 'input:checked' ) ).map( item => item.value );
 
-		const selected = ""; //index === selectedIndex ? "selected" : "";
-		return `<option ${ selected } >${ type }</option>`;
+	for ( let error of FSTN.errors ) {
 
-	} ).join( "" );
+		if ( boxesChecked.includes( error.id ) ) {
 
-	let index = 0;
+			//console.log( 'error', error);
 
-	const htm =
-		`
-			<p>
-				${ invalidData }
-			</p>
+			const surfaceCurrent = SGF.surfaces[ error.index ];
 
-			<p>
-				Select new surface type <select id=selSurfaceType${ index } >${ options }</select>
-				<button onclick=FSTN.setSurfaceType(${ index }); >Update data in memory</button>
-				<button onclick=FSTN.showSurfaceGbxml(${ index }); >View gbXML text</button>
-			</p>
-		`;
+			let surfaceNew;
 
-	FSTNdivTypeInvalidData.innerHTML = htm;
+			if ( error.typeSource === "no attribute" ) {
 
-};
+				surfaceNew = surfaceCurrent.replace( / id="/i, `surfaceType="${ error.typeNew }" id="` );
 
+			} else {
 
+				surfaceNew = surfaceCurrent.replace( /surfaceType="(.*?)"/i, `surfaceType="${ error.typeNew }"` );
 
-FSTN.setSurfaceType = function( index ) {
-	//console.log( 'index',FSTN.surfaceTypeInvalids[ index ]  );
+			}
 
-	const surfaceTextCurrent = SGF.surfaces[ FSTN.surfaceTypeInvalids[ index ] ];
-	//console.log( 'surfaceTextCurrent', surfaceTextCurrent );
+			SGF.text = SGF.text.replace( surfaceCurrent, surfaceNew );
+			SGF.surfaces = SGF.text.match( /<Surface(.*?)<\/Surface>/gi );
 
-	const type = document.body.querySelector( `#selSurfaceType${ index }` ).value;
-	//console.log( 'type', type );
+		}
 
-	const surfaceTextNew = surfaceTextCurrent.replace( /surfaceType="(.*)" /, `surfaceType="${ type }" ` );
-	//console.log( 'surfaceTextNew', surfaceTextNew );
+	}
 
-	SGF.text =  SGF.text.replace( surfaceTextCurrent, surfaceTextNew );
-
-	SGF.surfaces = SGF.text.match( /<Surface(.*?)<\/Surface>/gi );
+	FSTNdet.open = false;
 
 };
-
-
-
-FSTN.showSurfaceGbxml = function( index ) {
-
-	const surfaceText = SGF.surfaces[ FSTN.surfaceTypeInvalids[ index ] ];
-
-	//const div = document.body.querySelector( `#divSurfaceType${ index }` );
-
-	FSTNdivSelecteSurfaceTGbxml.innerText = surfaceText;
-
-};
-
-
-*/
-
 

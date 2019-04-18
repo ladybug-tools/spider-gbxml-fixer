@@ -39,7 +39,7 @@
 <script src="../ggd-get-gbxml-data.js" ></script>
 <script src="../gsa-get-surface-attributes.js" ></script>
 
-<script src="ft-fix-template.js" ></script>
+<script src="fdpc-fix-duplicate-planar-coordinates.js" ></script>
 
 	<nav id="navMenu" >
 
@@ -110,7 +110,7 @@ function onLoad() {
 
 	htm1 = GGD.getGbxmlData(  FIL.text  );
 
-	htm2 = FT.getSurfaceTypeInvalid();
+	htm2 = FDPC.getFixDuplicatePlanarCoordinates();
 
 	divContents.innerHTML =
 	`

@@ -93,6 +93,8 @@ GSA.getSurfaceAttributes = function( surfaceXml, id, index ) {
 			<div>${ htmRectangularGeometry } </div>
 		</details>
 
+		<!-- add CADObjectId?? -->
+
 		<details>
 			<summary> gbXML Text </summary>
 			<textarea style=height:15rem;width:100% >${ SGF.surfaces[ index ] } </textarea>

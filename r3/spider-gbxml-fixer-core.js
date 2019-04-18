@@ -73,9 +73,11 @@ SGF.divFixThings =
 
 		<div id=FXASDdivSpaceDuplicate ></div>
 
-		<div id=FXCIMdivGetCadIdMissing ></div>
+		<div id=FCIMdivGetCadIdMissing ></div>
 
 		<div id=SGFdivGetTemplate ></div>
+
+		<p>Highlighted items are ready for light testing</p>
 
 		<hr>
 
@@ -142,7 +144,7 @@ SGF.init = function() {
 
 	FXASDdivSpaceDuplicate.innerHTML = FXASD.getFixAdjacentSpaceDuplicate();
 
-	FXCIMdivGetCadIdMissing.innerHTML = FXCIM.getCadIdMissing();
+	FCIMdivGetCadIdMissing.innerHTML = FCIM.getCadIdMissing();
 
 	//SGFdivGetTemplate.innerHTML = SGF.getTemplate();
 
