@@ -204,7 +204,7 @@ SGF.getSurfacesAttributesByIndex = function( indexes, id = 1 ) {
 
 
 
-SGF.xxxgetSurfaceAttributes = function( surfaceXml, index ) {
+SGF.getSurfaceAttributes = function( surfaceXml, index ) {
 	//console.log( 'surfaceXml', surfaceXml );
 
 	const htmSurface = SGF.getAttributesHtml( surfaceXml );
@@ -235,6 +235,8 @@ SGF.xxxgetSurfaceAttributes = function( surfaceXml, index ) {
 			<summary> Rectangular Geometry </summary>
 			<div>${ htmRectangularGeometry } </div>
 		</details>
+
+		deprecated version / see gsa
 	`;
 
 	return htm;
@@ -243,7 +245,7 @@ SGF.xxxgetSurfaceAttributes = function( surfaceXml, index ) {
 
 
 
-SGF.xxxgetAttributesHtml = function( obj ) {
+SGF.getAttributesHtml = function( obj ) {
 	//console.log( 'obj', obj );
 
 	let htm ='';

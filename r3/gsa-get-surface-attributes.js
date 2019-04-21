@@ -217,9 +217,13 @@ GSA.getAttributesAdjacentSpace = function( surfaceXml ){
 
 		const spaceText1 = SGF.spaces.find( item => item.includes( spaceId1 ) );
 		//console.log( 'spaceText1', spaceText1 );
+		if ( !spaceText1  ) { return ""; }
+
 		const spaceName1 = spaceText1.match( /<Name>(.*?)<\/Name>/i )[ 1 ];
 
 		const spaceText2 = SGF.spaces.find( item => item.includes( spaceId2 ) );
+		if ( !spaceText2  ) { return ""; }
+
 		//console.log( 'spaceText2', spaceText2 );
 		const spaceName2 = spaceText2.match( /<Name>(.*?)<\/Name>/i )[ 1 ];
 
@@ -247,7 +251,11 @@ GSA.getAttributesAdjacentSpace = function( surfaceXml ){
 
 		const spaceText1 = SGF.spaces.find( item => item.includes( spaceId ) );
 		//console.log( 'spaceText1', spaceText1 );
-		const spaceName1 = spaceText1.match( /<Name>(.*?)<\/Name>/i )[ 1 ];
+
+		if ( !spaceText1  ) { return ""; }
+
+		let spaceName1 = spaceText1.match( /<Name>(.*?)<\/Name>/i );
+		spaceName1 = spaceName1 ? spaceName1[ 1 ] : "";
 
 		GSA.setAttributesStoreyAndZone( spaceId );
 

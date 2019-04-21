@@ -82,17 +82,22 @@ FT.getSurfaces = function() {
 
 		const id = surface.match( / id="(.*?)"/i )[ 1 ];
 
+		let name = surface.match( /<Name>(.*?)<\/Name>/i )
+		name = name ? name[ 1 ] : id;
+
 		let typeSource = surface.match( /surfaceType="(.*?)"/i )
 		typeSource = typeSource ? typeSource[ 1 ] : "";
 		//console.log( '', typeSource );
 
 		let exposedToSun = surface.match( /exposedToSun="(.*?)"/i );
 		//console.log( 'exposedToSun', exposedToSun );
-		//let exposedToSunBoolean = exposedToSun ? exposedToSun[ 1 ].toLowerCase() === "true" : false;
+		exposedToSun = exposedToSun ? exposedToSun[ 0 ] : "";
+
+		let exposedToSunBoolean = exposedToSun ? exposedToSun[ 1 ].toLowerCase() === "true" : "false";
 
 		//console.log( 'exposedToSun', exposedToSun );
 
-		return( { index, id, typeSource, exposedToSun } )
+		return( { index, id, name, typeSource, exposedToSun } )
 
 
 	} )
@@ -104,8 +109,9 @@ FT.getSurfaces = function() {
 
 	surfacesString = FT.surfaces.map( item =>
 		`<input type=checkbox value=${ item.id } checked >
-		<button onclick=FTdivSurfaceAttributeData.innerHTML=FT.getSurfaceData(${item.index },"${ item.id}"); >
-		${ item.id }</button> / ${ item.typeSource } from:
+		<button onclick=FTdivSurfaceAttributeData.innerHTML=FT.getSurfaceData(${item.index },"${ item.id}");
+		title="${ item.id }" >
+		${ item.name }</button> / ${ item.typeSource } from:
 		 <mark>${ item.exposedToSun }</mark> to: exposedToSun="false"
 		`
 	).join("<br>");
@@ -117,8 +123,6 @@ FT.getSurfaces = function() {
 		`Surfaces ~ ${ FT.surfaces.length.toLocaleString() } found
 			${ help }
 		`;
-
-
 
 	const htm =
 	`
