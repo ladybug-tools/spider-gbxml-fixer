@@ -34,12 +34,12 @@
 <body>
 <script src="https://rawgit.com/showdownjs/showdown/1.9.0/dist/showdown.min.js" ></script>
 
-<script src="../fil-file-open-xml-zip.js" ></script>
+<script src="../fil-file-open-xml-zip/fil-file-open-xml-zip.js" ></script>
 <script src="../spider-gbxml-fixer-core.js" ></script>
 <script src="../ggd-get-gbxml-data.js" ></script>
 <script src="../gsa-get-surface-attributes.js" ></script>
 
-<script src="fase-fix-adjacent-space-extra.js" ></script>
+<script src="fstn-fix-surface-type-name.js" ></script>
 
 	<nav id="navMenu" >
 
@@ -74,46 +74,17 @@
 
 <script>
 
-
-//FIL.urlDefaultFile = "../../test-samples/one-room-with-surface-type-errors.xml";
-FIL.urlDefaultFile = "../../test-samples/bristol-clifton-downs-broken.xml";
-
-
 const urlSourceCodeIcon = "https://pushme-pullyou.github.io/github-mark-64.png";
-const urlSourceCode = "https://github.com/ladybug-tools/spider-gbxml-fixer/tree/master/r3/";
+const urlSourceCode = "https://github.com/zzzzz/xxxxx.html";
 
 
-SGF.divFixThings =
-	`
-		<br><br>
-
-		<h2 id=SGFh1FileName >Check file: <span id=fname ></span></h2>
-
-		<p>
-			<button onclick=SGF.runAll(); >Run all checks</button>
-
-			<button onclick=SGF.closeAll(); >Close all checks</button>
-
-		</p>
-
-		<p>
-			<input type=checkbox id=SGFinpIgnoreAirSurfaceType > Ignore Air surface type
-		</p>
-
-		<div id=GGDdivGetGbxmlData ></div>
-
-		<div id=FASEdivFixAdjacentSpaceExtra ></div>
-
-	`;
-
+FIL.urlDefaultFile = "../../test-samples/one-room-with-surface-type-errors.xml"
 
 init();
 
 
 
 function init() {
-
-	divContents.innerHTML = SGF.divFixThings;
 
 	divTitle.innerHTML = getTitle();
 
@@ -123,7 +94,6 @@ function init() {
 
 	FIL.xhrRequestFileXml( FIL.urlDefaultFile );
 
-	fname.innerHTML = FIL.name;
 	//FIL.onHashChange();
 
 	window.addEventListener ( 'hashchange', FIL.onHashChange, false );
@@ -134,14 +104,36 @@ function init() {
 
 
 function onLoad() {
-	console.log( '', FIL.name  );
-	
+
+	//console.log( '', FIL.name  );
+
 	GGD.getData(  FIL.text  );
 
-	GGDdivGetGbxmlData.innerHTML = GGD.getGbxmlData(  FIL.text  );
+	htm1 = GGD.getGbxmlData(  FIL.text  );
 
-	FASEdivFixAdjacentSpaceExtra.innerHTML = FASE.getFixAdjacentSpaceExtra();
+	//htm2 = FT.getSurfaceTypeInvalid();
 
+	htm3 = FSTN.getMenuSurfaceTypeName();
+
+	divContents.innerHTML =
+	`
+		<br><br>
+
+		<h2 id=SGFh1FileName >Check file: ${ decodeURI( FIL.name ) } </h2>
+
+		<p>
+			<button onclick=SGF.runAll(); >Run all checks</button>
+
+			<button onclick=SGF.closeAll(); >Close all checks</button>
+		</p>
+
+		<p>
+			<input type=checkbox id=SGFinpIgnoreAirSurfaceType > Ignore Air surface type
+		</p>
+		${ htm1 }
+
+		${ htm3 }
+	`;
 }
 
 

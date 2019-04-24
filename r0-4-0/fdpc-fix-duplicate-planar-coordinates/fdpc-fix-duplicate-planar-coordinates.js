@@ -1,11 +1,11 @@
 
 // Copyright 2019 Ladybug Tools authors. MIT License
-/* globals SGF, FDPCsumDuplicatePlanar, FDPCdivDuplData, FDPCdivDuplicatePlanar */
+/* globals GBX, GSA, FDPCsumDuplicatePlanar, FDPCdivDuplData, FDPCdivGetDuplicatePlanar, FDPCdet */
 /* jshint esversion: 6 */
 /* jshint loopfunc:true */
 
 
-const FDPC = { "release": "0.3.0", "date": "2019-04-03" };
+const FDPC = { "release": "0.4.0", "date": "2019-04-23" };
 
 FDPC.description = `Identify two or more surfaces with the same planar geometry coordinates`;
 
@@ -17,28 +17,26 @@ FDPC.currentStatus =
 			${ FDPC.description }.
 		</p>
 
-		<details open>
+		<details>
 			<summary>Issues</summary>
 			<ul>
-				<li></li>
 			</ul>
 		</details>
 
-		<p>
-			Wish List / To do:<br>
+		<details>
+			<summary>Wish List / To do</summary>
 			<ul>
 				<li>2019-03-29 ~ Check for openings</li>
 				<li>2019-03-25 ~ Add select and update multiple surfaces at once</li>
 				<li>2019-03-19 ~ Pre-select the correct surface to delete n the select type list box</li>
 			</ul>
-		</p>
+		</details>
 
 		<details>
 			<summary>Change log</summary>
 
 			<ul>
-				<li>2019-04-18 ~ F - 'Fix all' working / waiting for testing.</li>
-				<li>2019-04-03 ~ First commit</li>
+				<li>2019-04-23 ~ First commit</li>
 			</ul>
 		</details>
 	`;
@@ -72,7 +70,7 @@ FDPC.getDuplicatePlanarCoordinates = function() {
 	const timeStart = performance.now();
 	const planars = [];
 
-	for ( let surface of SGF.surfaces ) {
+	for ( let surface of GBX.surfaces ) {
 
 		const planar = surface.match( /<PlanarGeometry>(.*?)<\/PlanarGeometry>/ );
 
@@ -86,11 +84,12 @@ FDPC.getDuplicatePlanarCoordinates = function() {
 
 		const planarsRemainder = planars.slice( index1 + 1 );
 
-		planarsRemainder.forEach( ( planar2, index2 ) => {
+		planarsRemainder.forEach( ( planar2, index ) => {
 
 			if ( planar1 === planar2 ) {
 
-				FDPC.duplicates.push( [ index1, ( index1 + index2 + 1) ] );
+				const index2 = index1 + index + 1;
+				FDPC.duplicates.push( [ index1, index2] );
 			}
 
 		} );
@@ -100,7 +99,7 @@ FDPC.getDuplicatePlanarCoordinates = function() {
 
 	const options = FDPC.duplicates.map( ( arr, count ) => arr.map( index => {
 
-		const surface = SGF.surfaces[ index ];
+		const surface = GBX.surfaces[ index ];
 		return `<option value="${ arr.join() }" style=background-color:${ count % 2 === 0 ? "#eee" : "" };
 			title="${ surface.match( / id="(.*?)"/i )[ 1 ] }" >
 			${ count + 1 } ${ surface.match( /<Name>(.*?)<\/Name>/i )[ 1 ] }
@@ -153,13 +152,13 @@ FDPC.setDuplicateData = function( select ) {
 	const items = select.value.split( ",");
 	//console.log( '', items );
 
-	surfaceText1 = SGF.surfaces[ items[ 0 ] ];
+	const surfaceText1 = GBX.surfaces[ items[ 0 ] ];
 	const id1 = surfaceText1.match( / id="(.*?)"/i )[ 1 ];
 
-	surfaceText2 = SGF.surfaces[ items[ 1 ] ];
+	const surfaceText2 = GBX.surfaces[ items[ 1 ] ];
 	const id2 = surfaceText2.match( / id="(.*?)"/i )[ 1 ];
 
-	console.log( '', surfaceText1.length, surfaceText2.length );
+	//console.log( '', surfaceText1.length, surfaceText2.length );
 
 	const htm =
 		`
@@ -204,13 +203,13 @@ FDPC.deleteSelectedSurface = function( index ) {
 
 	if ( result === false ) { return; }
 
-	const surfaceText = SGF.surfaces[ index ];
+	const surfaceText = GBX.surfaces[ index ];
 
-	SGF.text = SGF.text.replace( surfaceText, '' );
-	//console.log( 'len2', SGF.text.length );
+	GBX.text = GBX.text.replace( surfaceText, '' );
+	//console.log( 'len2', GBX.text.length );
 
-	SGF.surfaces = SGF.text.match( /<Surface(.*?)<\/Surface>/gi );
-	//console.log( 'SGF.surfaces', SGF.surfaces.length );
+	GBX.surfaces = GBX.text.match( /<Surface(.*?)<\/Surface>/gi );
+	//console.log( 'GBX.surfaces', GBX.surfaces.length );
 
 	FDPCdet.open = false;
 
@@ -223,29 +222,87 @@ FDPC.deleteSelectedSurface = function( index ) {
 FDPC.deleteDuplicateSurfaces = function() {
 	//console.log( 'select.value', select );
 
-	const result = confirm( `OK to delete second surface\nwhen both surfaces have exactly the same character count\nor second surface contains the word "duplicate"?` );
+	//const result = confirm( `OK to delete second surface\nwhen both surfaces have exactly the same character count\nor second surface contains the word "duplicate"?` );
 
-	if ( result === false ) { return; }
+	//if ( result === false ) { return; }
 
-	for ( items of FDPC.duplicates ) {
+	for ( let items of FDPC.duplicates ) {
 
-		surfaceText1 = SGF.surfaces[ items[ 0 ] ];
+		const surfaceText1 = GBX.surfaces[ items[ 0 ] ];
+		const spaceRefs1 = surfaceText1.match( /spaceIdRef="(.*?)"/gi );
+		const name = surfaceText1.match( /<name>(.*?)<\/name/i )[ 1 ];
+		//console.log( 'spaceRefs1', spaceRefs1 );
 
-		surfaceText2 = SGF.surfaces[ items[ 1 ] ];
+		const surfaceText2 = GBX.surfaces[ items[ 1 ] ];
 
 		if ( surfaceText1.length === surfaceText2.length || surfaceText2.includes( "duplicate" ) ) {
 
-			SGF.text = SGF.text.replace( surfaceText2, '' );
+			GBX.text = GBX.text.replace( surfaceText2, '' );
 
-		};
+		} else {
+
+			for ( let ref of spaceRefs1 ) {
+
+				const id = ref.match( /spaceIdRef="(.*?)"/i )[ 1 ];
+				//console.log( 'id', id );
+				const spaceText = GBX.spaces.find( space => space.includes( id ) );
+				//console.log( 'spaceText', spaceText );
+				const match = FDPC.compareCoordinates( items[ 0 ], spaceText );
+
+				if ( !match ){
+
+					console.log( 'no match id', id, name );
+
+				}
+
+			}
+
+
+		}
 
 	}
 
-	SGF.surfaces = SGF.text.match( /<Surface(.*?)<\/Surface>/gi );
-	//console.log( 'SGF.surfaces', SGF.surfaces.length );
+	GBX.surfaces = GBX.text.match( /<Surface(.*?)<\/Surface>/gi );
+	//console.log( 'GBX.surfaces', GBX.surfaces.length );
 
 	FDPCdet.open = false;
 
 	FDPCdivGetDuplicatePlanar.innerHTML = FDPC.getFixDuplicatePlanarCoordinates();
+
+};
+
+
+FDPC.compareCoordinates = function( surfaceIndex, spaceText ) {
+	//console.log( 'spaceIndex', spaceIndex );
+	const planarSurface = GBX.surfaces[ surfaceIndex ].match( /<PlanarGeometry(.*?)<\/PlanarGeometry>/i );
+	//console.log( 'planarSurface1', planarSurface1 );
+	const coordinatesSurface = planarSurface[ 1 ].match( /<Coordinate>(.*?)<\/Coordinate>/gi );
+	//console.log( 'coordinatesSurface', coordinatesSurface );
+
+	//const planarGeo = spaceText.match( /<PlanarGeometry(.*?)<\/PlanarGeometry>/i )[ 1 ];
+	const coordinatesSpace = spaceText.match( /<Coordinate>(.*?)<\/Coordinate>/gi );
+	//console.log( 'coordinatesSpace', coordinatesSpace );
+
+	let count = 0;
+
+	for ( let coordinate of coordinatesSurface ) {
+
+		if ( coordinatesSpace.includes( coordinate ) ) {
+
+			//console.log( 'match', 23 );
+			count ++;
+
+		}
+
+	}
+
+	const match = ( count === coordinatesSurface.length ) ? true : false;
+	//console.log( '', count, coordinatesSurface.length  );
+	if ( !match ) { console.log( 'match', match, count, coordinatesSurface.length ); }
+
+	if ( !match ) { console.log( 'coordinatesSurface', coordinatesSurface); }
+
+	if ( !match ) { console.log( 'coordinatesSpace', coordinatesSpace); }
+	return match;
 
 };

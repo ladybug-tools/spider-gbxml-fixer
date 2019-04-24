@@ -1,0 +1,171 @@
+//Copyright 2019 Ladybug Tools authors. MIT License
+/* globals FIL, divContents, GGD, GCS, OCV, GBXh1FileName, */
+/* jshint esversion: 6 */
+/* jshint loopfunc: true */
+
+const GBX = { release: "0.4.0", date: "2019-04-22" };
+
+GBX.description = `Run basic checks on gbXML files and identify, report and fix issues`;
+
+
+GBX.currentStatus =
+	`
+		<h3>Get Spider gbXM Fixer (GBX) ${ GBX.release } status ${ GBX.date }</h3>
+
+		<p>${ GBX.description }</p>
+		<p>
+			<a href="https://github.com/ladybug-tools/spider-gbxml-tools/blob/master/sandbox/spider-gbxml-fixer/r2/spider-gbxml-fixer-core.js" target="_blank">
+			spider-gbxml-fixer-core.js source code</a>
+		</p>
+		<details>
+			<summary>Wish List / To Do</summary>
+			<ul>
+				<li></li>
+			</ul>
+		</details>
+		<details>
+			<summary>Change log</summary>
+			<ul>
+  				<li>2019-04-22 ~ F - First commit</li>
+			</ul>
+		</details>
+	`;
+
+
+GBX.divFixThings =
+	`
+		<br><br>
+
+		<h2 id=GBXh1FileName >Check file: <script>decodeURI( FIL.name ) </script></h2>
+
+		<p>
+			<button onclick=GBX.runAll(); >Run all checks</button>
+
+			<button onclick=GBX.closeAll(); >Close all checks</button>
+
+		</p>
+
+		<p>
+			<input type=checkbox id=GBXinpIgnoreAirSurfaceType > Ignore Air surface type
+		</p>
+
+		<div id=GGDdivGetGbxmlData ></div>
+
+		<div id=GCSdivGetCheckStrings ></div>
+
+		<div id=GCOdivGetCheckOffset ></div>
+
+		<div id=OCVdivGetOpeningsCheckVertices ></div>
+
+		<div id=FXAdivGetFixAttributes ></div>
+
+		<div id=FXSTIdivGetSurfaceTypeInvalid ></div>
+
+		<div id=FSTNdivGetSurfaceTypeName ></div>
+
+		<div id=FETSdivGetFixExposedToSun ></div>
+
+		<div id=FDPCdivGetDuplicatePlanar ></div>
+
+		<div id=FASEdivSpaceExtra ></div>
+
+		<div id=FASDdivSpaceDuplicate ></div>
+
+		<div id=FCIMdivGetCadIdMissing ></div>
+
+		<div id=GBXdivGetTemplate ></div>
+
+		<p>Highlighted items are ready for light testing</p>
+
+		<hr>
+
+		<center title="hello!" ><a href=javascript:window.scrollTo(0,0); style=text-decoration:none; > <img src="https://ladybug.tools/artwork/icons_bugs/ico/spider.ico" height=24 > </a></center>
+
+	`;
+
+
+GBX.colorsDefault = {
+
+	InteriorWall: 0x008000,
+	ExteriorWall: 0xFFB400,
+	Roof: 0x800000,
+	InteriorFloor: 0x80FFFF,
+	ExposedFloor: 0x40B4FF,
+	Shade: 0xFFCE9D,
+	UndergroundWall: 0xA55200,
+	UndergroundSlab: 0x804000,
+	Ceiling: 0xFF8080,
+	Air: 0xFFFF00,
+	UndergroundCeiling: 0x408080,
+	RaisedFloor: 0x4B417D,
+	SlabOnGrade: 0x804000,
+	FreestandingColumn: 0x808080,
+	EmbeddedColumn: 0x80806E,
+	Undefined: 0x88888888
+
+};
+
+GBX.colors = Object.assign( {}, GBX.colorsDefault ); // create working copy of default colors
+
+GBX.surfaceTypes = Object.keys( GBX.colors );
+
+
+
+GBX.init = function() {
+
+	divContents.innerHTML = GBX.divFixThings;
+
+	GBXh1FileName.innerHTML = `File: ${ decodeURI( FIL.name ) }`;
+
+	GGD.getData( FIL.text );
+
+	GGDdivGetGbxmlData.innerHTML = GGD.getGbxmlData( FIL.text );
+
+	GCSdivGetCheckStrings.innerHTML = GCS.getCheckStrings();
+
+	GCOdivGetCheckOffset.innerHTML = GCO.getCheckOffset();
+
+	OCVdivGetOpeningsCheckVertices.innerHTML = OCV.getOpeningsCheckVertices();
+
+	FXAdivGetFixAttributes.innerHTML = FXA.getFixAttributes();
+
+	FSTNdivGetSurfaceTypeName.innerHTML = FSTN.getMenuSurfaceTypeName();
+
+	FETSdivGetFixExposedToSun.innerHTML = FETS.getSurfaceExposedToSun()
+
+	FDPCdivGetDuplicatePlanar.innerHTML = FDPC.getFixDuplicatePlanarCoordinates();
+
+	FASEdivSpaceExtra.innerHTML = FASE.getFixAdjacentSpaceExtra();
+
+	FASDdivSpaceDuplicate.innerHTML = FASD.getFixAdjacentSpaceDuplicate();
+
+	FCIMdivGetCadIdMissing.innerHTML = FCIM.getCadIdMissing();
+
+	//GBXdivGetTemplate.innerHTML = GBX.getTemplate();
+
+};
+
+
+
+////////// utilities
+
+
+GBX.runAll = function(){
+
+	const details = divContents.querySelectorAll( 'details' );
+
+	for ( let item of details ) { item.open = false; }
+
+	for ( let item of details ) { item.open = true; }
+
+};
+
+
+GBX.closeAll = function(){
+
+	const details = divContents.querySelectorAll( 'details' );
+
+	for ( let item of details ) { item.open = false; }
+
+};
+

@@ -69,7 +69,7 @@ SGF.divFixThings =
 
 		<div id=FDPCdivGetDuplicatePlanar ></div>
 
-		<div id=FXASEdivSpaceExtra ></div>
+		<div id=FASEdivSpaceExtra ></div>
 
 		<div id=FXASDdivSpaceDuplicate ></div>
 
@@ -140,7 +140,7 @@ SGF.init = function() {
 
 	FDPCdivGetDuplicatePlanar.innerHTML = FDPC.getFixDuplicatePlanarCoordinates();
 
-	FXASEdivSpaceExtra.innerHTML = FXASE.getFixAdjacentSpaceExtra();
+	FASEdivSpaceExtra.innerHTML = FASE.getFixAdjacentSpaceExtra();
 
 	FXASDdivSpaceDuplicate.innerHTML = FXASD.getFixAdjacentSpaceDuplicate();
 
@@ -178,7 +178,7 @@ SGF.closeAll = function(){
 
 
 
-SGF.getSurfacesAttributesByIndex = function( indexes, id = 1 ) {
+SGF.xxxgetSurfacesAttributesByIndex = function( indexes, id = 1 ) {
 
 	indexes = Array.isArray( indexes ) ? indexes : [ indexes ];
 	//console.log( 'indexes', indexes );

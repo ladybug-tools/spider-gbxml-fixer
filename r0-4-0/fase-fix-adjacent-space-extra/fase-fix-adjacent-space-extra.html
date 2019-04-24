@@ -34,7 +34,7 @@
 <body>
 <script src="https://rawgit.com/showdownjs/showdown/1.9.0/dist/showdown.min.js" ></script>
 
-<script src="../fil-file-open-xml-zip.js" ></script>
+<script src="../fil-file-open-xml-zip/fil-file-open-xml-zip.js" ></script>
 <script src="../spider-gbxml-fixer-core.js" ></script>
 <script src="../ggd-get-gbxml-data.js" ></script>
 <script src="../gsa-get-surface-attributes.js" ></script>
@@ -135,7 +135,7 @@ function init() {
 
 function onLoad() {
 	console.log( '', FIL.name  );
-	
+
 	GGD.getData(  FIL.text  );
 
 	GGDdivGetGbxmlData.innerHTML = GGD.getGbxmlData(  FIL.text  );

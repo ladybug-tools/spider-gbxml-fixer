@@ -1,5 +1,5 @@
 // Copyright 2019 Ladybug Tools authors. MIT License
-/* globals SGF, FASEselAdjacentSpaceExtra, FASEsumSpaceExtra, FASEdivSpaceExtraData, FASEdivSpaceExtra  */
+/* globals GBX, FASEselAdjacentSpaceExtra, FASEsumSpaceExtra, FASEdivSpaceExtraData, FASEdivSpaceExtra  */
 /* jshint esversion: 6 */
 /* jshint loopfunc: true */
 
@@ -71,7 +71,7 @@ FASE.getAdjacentSpaceExtra = function() {
 
 	FASE.extras = [];
 
-	const surfaces = SGF.surfaces;
+	const surfaces = GBX.surfaces;
 
 	// refactor to a reduce??
 	surfaces.forEach( (surface, index ) => {
@@ -177,10 +177,10 @@ FASE.setSpaceExtraData = function( select ) {
 
 FASE.adjacentSpaceDelete = function( index ) {
 
-	extra = FASE.extras[ index ];
+	const extra = FASE.extras[ index ];
 	//console.log( 'extra', extra );
 
-	let surfaceTextCurrent = SGF.surfaces[ extra.index ];
+	let surfaceTextCurrent = GBX.surfaces[ extra.index ];
 	//console.log( 'surfaceTextCurrent', surfaceTextCurrent );
 
 	if ( extra.surfaceType === "Shade" ) {
@@ -198,7 +198,7 @@ FASE.adjacentSpaceDelete = function( index ) {
 			const surfaceTextNew = surfaceTextCurrent.replace( match, '' );
 			//console.log( 'surfaceTextNew', surfaceTextNew );
 
-			SGF.text = SGF.text.replace( surfaceTextCurrent, surfaceTextNew );
+			GBX.text = GBX.text.replace( surfaceTextCurrent, surfaceTextNew );
 
 			surfaceTextCurrent = surfaceTextNew;
 
@@ -217,7 +217,7 @@ FASE.adjacentSpaceDelete = function( index ) {
 
 		for ( spaceId of spaceIds ) { // check for actual space Ids
 
-			for ( let space of SGF.spaces ) {
+			for ( let space of GBX.spaces ) {
 
 				if ( space.includes( spaceId ) === true ) {
 
@@ -249,7 +249,7 @@ FASE.adjacentSpaceDelete = function( index ) {
 			for ( keeper of keepers ) {
 
 				const planarSurface = surfaceTextCurrent.match( /<PlanarGeometry(.*?)<\/PlanarGeometry>/i );
-				console.log( 'planarSurface', planarSurface );
+				//console.log( 'planarSurface', planarSurface );
 				const coordinatesSurface = planarSurface[ 1 ].match( /<Coordinate>(.*?)<\/Coordinate>/gi );
 				//console.log( 'coordinatesSurface', coordinatesSurface );
 
@@ -300,14 +300,14 @@ FASE.adjacentSpaceDelete = function( index ) {
 				const surfaceTextNew = surfaceTextCurrent.replace( match, '' );
 				//console.log( 'surfaceTextNew', surfaceTextNew );
 
-				SGF.text = SGF.text.replace( surfaceTextCurrent, surfaceTextNew );
+				GBX.text = GBX.text.replace( surfaceTextCurrent, surfaceTextNew );
 
 			}
 
 		}
 	}
 
-	SGF.surfaces = SGF.text.match( /<Surface(.*?)<\/Surface>/gi );
+	GBX.surfaces = GBX.text.match( /<Surface(.*?)<\/Surface>/gi );
 
 	FASEdet.open = false;
 
