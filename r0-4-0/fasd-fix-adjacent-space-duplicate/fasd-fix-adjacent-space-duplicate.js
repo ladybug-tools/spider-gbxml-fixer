@@ -133,7 +133,7 @@ FASD.getAdjacentSpaceDuplicate = function() {
 			</p>
 
 			<p>
-				<button onclick=FASD.fixAdjacentSpaces(); >fix selected</button>
+				<button onclick=FASD.fixAdjacentSpaces(); >fix selected</button> work-in-progress
 			</p>
 
 			<div id="FASDdivAdjacentSpaceDuplicateData" >Click a surface name above to view its details and update its adjacent spaces</div>
