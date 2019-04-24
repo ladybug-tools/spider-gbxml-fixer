@@ -21,8 +21,8 @@ _JavaScript utilities to help you identify and fix common errors in gbXML files_
 #### Stable release with demo: [Sample test run]( https://www.ladybug.tools/spider-gbxml-fixer/#https://cdn.jsdelivr.net/gh/ladybug-tools/spider@master/gbxml-sample-files/bristol-clifton-downs-broken.xml )
 
 * Always links to the release that has been tested
-### Bookmark this link for latest:<br>https://www.ladybug.tools/spider-gbxml-fixer/dev/
 
+### Bookmark this link for latest:<br>https://www.ladybug.tools/spider-gbxml-fixer/dev/
 
 #### Latest release with demo: [Sample test run]( https://www.ladybug.tools/spider-gbxml-fixer/dev/#https://cdn.jsdelivr.net/gh/ladybug-tools/spider@master/gbxml-sample-files/bristol-clifton-downs-broken.xml )
 

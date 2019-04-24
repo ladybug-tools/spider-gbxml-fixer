@@ -1,11 +1,11 @@
 // Copyright 2019 Ladybug Tools authors. MIT License
-/* globals GBX, GBXinpIgnoreAirSurfaceType, FASDsumSpaceDuplicate,
-	FASDdivAdjacentSpaceDuplicateData, FASDdivSpaceDuplicate, FASDdivCheckGbxml */
+/* globals GBX, GBXinpIgnoreAirSurfaceType, GSA, FASDsumAdjacentSpaceDuplicate,
+	FASDdivAdjacentSpaceDuplicateData, FASDdivSpaceDuplicate */
 /* jshint esversion: 6 */
 /* jshint loopfunc: true */
 
 
-const FASD = { "release": "1.2", "date": "2019-04-01" };
+const FASD = { "release": "0.4.0", "date": "2019-04-24" };
 
 
 FASD.description = `Fix air, InteriorWall, InteriorFloor, or Ceiling surfaces where both adjacent space IDs point to the same space`;
@@ -28,7 +28,7 @@ FASD.currentStatus =
 		<details>
 			<summary>Change log</summary>
 			<ul>
-				<li>2019-04-03 ~ First commit</li>
+				<li>2019-04-24 ~ First commit</li>
 			</ul>
 		</details>
 	`;
@@ -41,9 +41,10 @@ FASD.getFixAdjacentSpaceDuplicate = function() {
 		`
 			<details ontoggle="FASDdivAdjacentSpaceDuplicate.innerHTML=FASD.getAdjacentSpaceDuplicate();" >
 
-			<summary id=FASDsumAdjacentSpaceDuplicate class=sumHeader >Fix surfaces with duplicate adjacent spaces
-				<a id=FASDSum class=helpItem href="JavaScript:MNU.setPopupShowHide(FASDSum,FASD.currentStatus);" >&nbsp; ? &nbsp;</a>
-			</summary>
+				<summary id=FASDsumAdjacentSpaceDuplicate class=sumHeader >Fix surfaces with duplicate adjacent spaces
+					<a id=FASDSum class=helpItem href="JavaScript:MNU.setPopupShowHide(FASDSum,FASD.currentStatus);" >&nbsp; ? &nbsp;</a>
+				</summary>
+
 				<div id=FASDdivAdjacentSpaceDuplicate ></div>
 
 			</details>
@@ -60,13 +61,13 @@ FASD.getAdjacentSpaceDuplicate = function() {
 
 	const timeStart = performance.now();
 	const twoSpaces = [ "Air", "InteriorWall", "InteriorFloor", "Ceiling" ];
-	let invalidAdjacentSpaceDuplicate = [];
+	FASD.duplicates = [];
 
 	GBX.surfaces.forEach( ( surface, index ) => {
 
-		const spaceIdRef = surface.match( /spaceIdRef="(.*?)"/gi );
+		const spaceIdRefs = surface.match( /spaceIdRef="(.*?)"/gi );
 
-		if ( spaceIdRef && spaceIdRef.length && spaceIdRef[ 0 ] === spaceIdRef[ 1 ] ) {
+		if ( spaceIdRefs && spaceIdRefs.length && spaceIdRefs[ 0 ] === spaceIdRefs[ 1 ] ) {
 			//console.log( 'spaceIdRef', spaceIdRef );
 
 			const surfaceType = surface.match( /surfaceType="(.*?)"/i )[ 1 ];
@@ -74,18 +75,18 @@ FASD.getAdjacentSpaceDuplicate = function() {
 
 			if ( twoSpaces.includes( surfaceType ) ) {
 
-				invalidAdjacentSpaceDuplicate.push( index );
+				FASD.duplicates.push( index );
 
 			}
 
 		}
 
 	} );
-	//console.log( 'invalidAdjacentSpaceDuplicate', invalidAdjacentSpaceDuplicate );
+	//console.log( 'FASD.duplicates', FASD.duplicate );
 
 	if ( GBXinpIgnoreAirSurfaceType.checked === true ) {
 
-		invalidAdjacentSpaceDuplicate = invalidAdjacentSpaceDuplicate.filter( id => {
+		FASD.duplicates = FASD.duplicates.filter( id => {
 
 			const surfaceText = GBX.surfaces[ id ];
 			//console.log( 'surfaceText', surfaceText );
@@ -102,9 +103,9 @@ FASD.getAdjacentSpaceDuplicate = function() {
 	const help = `<a id=FASDHelp class=helpItem href="JavaScript:MNU.setPopupShowHide(FASDHelp,FASD.currentStatus);" >&nbsp; ? &nbsp;</a>`;
 
 	FASDsumAdjacentSpaceDuplicate.innerHTML =
-	`Fix surfaces with duplicate adjacent spaces ~ ${ invalidAdjacentSpaceDuplicate.length.toLocaleString() } found ${ help }`;
+	`Fix surfaces with duplicate adjacent spaces ~ ${ FASD.duplicates.length.toLocaleString() } found ${ help }`;
 
-	const options = invalidAdjacentSpaceDuplicate.map( index => {
+	const options = FASD.duplicates.map( index => {
 
 		const surface = GBX.surfaces[ index ];
 		//console.log( 'sf', surface );
@@ -116,7 +117,7 @@ FASD.getAdjacentSpaceDuplicate = function() {
 		name = name? name.pop() : id;
 		//console.log( 'name', name );
 
-		return `<option value=${ index } title="${ id ? id[ 1 ] : 44 }" >${ name ? name : "no name" }</option>`;
+		return `<option value=${ index } title="${ id }" >${ name ? name : "no name" }</option>`;
 
 	} );
 	//console.log( 'options', options );
@@ -125,10 +126,14 @@ FASD.getAdjacentSpaceDuplicate = function() {
 		`
 			<p><i>Air, InteriorWall, InteriorFloor, or Ceiling surfaces where both adjacent space IDs point to the same space</i></p>
 
-			${ invalidAdjacentSpaceDuplicate.length.toLocaleString() } found<br>
+			${ FASD.duplicates.length.toLocaleString() } found<br>
 
 			<p>
-				<select onclick=FASD.setSpaceDuplicateData(this); size=5 style=min-width:8rem; >${ options }</select>
+				<select id=FASDselSurface onclick=FASD.setSpaceDuplicateData(this); size=5 style=min-width:8rem; >${ options }</select>
+			</p>
+
+			<p>
+				<button onclick=FASD.fixAdjacentSpaces(); >fix selected</button>
 			</p>
 
 			<div id="FASDdivAdjacentSpaceDuplicateData" >Click a surface name above to view its details and update its adjacent spaces</div>
@@ -136,7 +141,8 @@ FASD.getAdjacentSpaceDuplicate = function() {
 			<div id=FASDdivCheckGbxml ></div>
 
 			<p>
-				<button onclick=FASDdivSpaceDuplicate.innerHTML=FASD.getFixAdjacentSpaceDuplicate(); >Run check again</button>
+				<button onclick=FASDdivSpaceDuplicate.innerHTML=FASD.getFixAdjacentSpaceDuplicate(); >
+					Run check again</button>
 			</p>
 
 			<p>
@@ -173,6 +179,7 @@ FASD.setSpaceDuplicateData = function( select ) {
 	const options = GBX.spaces.map( (space, index ) => {
 
 		const id = space.match( / id="(.*?)"/i )[ 1 ];
+		//console.log( 'id', id );
 
 		const selected = id === spaceIds[ 0 ] ? "selected" : "";
 
@@ -184,9 +191,11 @@ FASD.setSpaceDuplicateData = function( select ) {
 	const htm = spaceIds.reduce( ( text, spaceId, index ) => text +
 		`
 			<p>
-				spaceIdRef ${ index + 1 }: from <span class=attributeValue >${ spaceId } / ${ spaceName }</span> to
+				spaceIdRef ${ index + 1 }: from <span class=attributeValue >
+					${ spaceId } / ${ spaceName }</span> to
 				<select id=FASDselSpaceIdNew${ index } >${ options }</select>
-				<button onclick=FASD.adjacentSpaceUpdate(${ index },${ select.value }); value=${ index } >update reference</button>
+				<button onclick=FASD.adjacentSpaceUpdate(${ index },${ select.value }); value=${ index } >
+					update reference</button>
 			</p>
 		`,
 	"" );
@@ -198,10 +207,6 @@ FASD.setSpaceDuplicateData = function( select ) {
 			${ attributes }
 
 			${ htm }
-
-			<p>
-				<button onclick=FASD.showSurfaceGbxml(${ select.value }); >view gbXML text</button>
-			</p>
 
 		`;
 
@@ -247,11 +252,58 @@ FASD.adjacentSpaceUpdate = function( index, surfaceId ) {
 };
 
 
+FASD.fixAdjacentSpaces = function( select) {
 
-FASD.showSurfaceGbxml = function( id ) {
+	index = FASDselSurface.selectedIndex;
+	//console.log( 'index', FASDselSurface.selectedIndex );
 
-	const surfaceText = GBX.surfaces[ id ];
+	surfaceIndex = FASD.duplicates[ index ];
+	//console.log( 'surfaceIndex', surfaceIndex );
 
-	FASDdivCheckGbxml.innerText = surfaceText;
+	surfaceText = GBX.surfaces[ surfaceIndex ];
+	//console.log( '', surfaceText );
 
-};
+	const planarSurface = surfaceText.match( /<PlanarGeometry(.*?)<\/PlanarGeometry>/i );
+	//console.log( 'planarSurface', planarSurface );
+
+	const coordinatesSurface = planarSurface[ 1 ].match( /<Coordinate>(.*?)<\/Coordinate>/gi );
+	//console.log( 'coordinatesSurface', coordinatesSurface );
+
+
+	for ( spaceText of GBX.spaces ) {
+
+		const coordinatesSpace = spaceText.match( /<Coordinate>(.*?)<\/Coordinate>/gi );
+		//console.log( 'coordinatesSpace', coordinatesSpace );
+
+		let count = 0;
+
+		for ( let coordinate of coordinatesSurface ) {
+
+			if ( coordinatesSpace.includes( coordinate ) ) {
+
+				//console.log( 'match', 23 );
+				count ++;
+
+			}
+
+		}
+
+		const match = ( count === coordinatesSurface.length ) ? true : false;
+		//console.log( '', count, coordinatesSurface.length  );
+		if ( match ) { console.log( 'match', match, count, coordinatesSurface.length ); }
+
+		//if ( match ) { console.log( 'spaceText', spaceText ); }
+
+
+	}
+
+
+
+
+
+
+
+
+
+
+}
