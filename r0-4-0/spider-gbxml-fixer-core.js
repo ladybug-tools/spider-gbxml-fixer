@@ -144,7 +144,7 @@ GBX.init = function() {
 
 	//GBXdivGetTemplate.innerHTML = GBX.getTemplate();
 
-	viewer = "http://www.ladybug.tools/spider-gbxml-tools/spider-gbxml-viewer/r15/spider-gbxml-viewer15.html";
+	viewer = "https://www.ladybug.tools/spider-gbxml-tools/spider-gbxml-viewer/r15/spider-gbxml-viewer15.html";
 
 	if ( !FIL.files ) {
 
