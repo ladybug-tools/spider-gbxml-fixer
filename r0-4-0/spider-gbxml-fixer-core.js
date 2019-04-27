@@ -75,8 +75,6 @@ GBX.divFixThings =
 
 		<div id=GBXdivGetTemplate ></div>
 
-		<p>Highlighted items are ready for light testing</p>
-
 		<hr>
 
 		<center title="hello!" ><a href=javascript:window.scrollTo(0,0); style=text-decoration:none; > <img src="https://ladybug.tools/artwork/icons_bugs/ico/spider.ico" height=24 > </a></center>

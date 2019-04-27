@@ -55,6 +55,14 @@
 			<button id=but onclick=location.hash=this.innerHTML; >../../test-samples/one-room-with-surface-type-errors.xml</button>
 		</p>
 
+		<p>
+			<button id=but onclick=location.hash=this.innerHTML; >https://cdn.jsdelivr.net/gh/ladybug-tools/spider@master/gbxml-sample-files/bristol-clifton-downs-broken.xml</button>
+		</p>
+
+		<p>
+			<button id=but onclick=location.hash=this.innerHTML; >https://cdn.jsdelivr.net/gh/ladybug-tools/spider@master/gbxml-sample-files/zip/coventry-university-of-warwick-small.zip</button>
+		</p>
+
 	</nav>
 
 	<nav id="navPopUp" >
@@ -71,18 +79,23 @@
 <script>
 
 
-FIL.urlDefaultFile = "../../test-samples/one-room-with-surface-type-errors.xml";
+//FIL.urlDefaultFile = "../../test-samples/one-room-with-surface-type-errors.xml";
+//FIL.urlDefaultFile = "https://cdn.jsdelivr.net/gh/ladybug-tools/spider@master/gbxml-sample-files/bristol-clifton-downs-broken.xml";
+FIL.urlDefaultFile = "https://cdn.jsdelivr.net/gh/ladybug-tools/spider@master/gbxml-sample-files/zip/coventry-university-of-warwick-small.zip";
 
 const urlSourceCodeIcon = "https://ladybug.tools/spider/images/github-mark.png";
 const urlSourceCode = "https://github.com/ladybug-tools/spider-gbxml-fixer/tree/master/r0-4-0/";
 
-const divThings =
+const content =
 	`
 		<br><br>
 
 		<h2 >Check file: <span id=fname ></span></h2>
 
-		<p id=pLength ></p>
+		<div id=divLength ></div>
+
+		<div id=divText ></div>
+
 	`;
 
 
@@ -92,7 +105,7 @@ init();
 
 function init() {
 
-	divContents.innerHTML = divThings;
+	divContents.innerHTML = content;
 
 	divTitle.innerHTML = getTitle();
 
@@ -100,11 +113,12 @@ function init() {
 
 	FILdivFileSave.innerHTML = FIL.getMenuFileSave();
 
-	FIL.xhrRequestFileXml( FIL.urlDefaultFile );
+	//FIL.xhrRequestFileXml( FIL.urlDefaultFile );
 
-	//FIL.onHashChange();
+	FIL.onHashChange();
 
-	window.addEventListener ( 'hashchange', FIL.onHashChange, false );
+	//window.addEventListener ( 'hashchange', FIL.onHashChange, false );
+
 	document.body.addEventListener( 'onXmlFileLoad', onLoad, false );
 
 }
@@ -117,7 +131,9 @@ function onLoad() {
 
 	fname.innerHTML = FIL.name;
 
-	pLength.innerHTML = `${ FIL.text.length.toLocaleString() } bytes`;
+	divLength.innerHTML = `<p>${ FIL.text.length.toLocaleString() } bytes</p>`;
+
+	divText.innerText = FIL.text.slice( 0, 2000 );
 
 }
 

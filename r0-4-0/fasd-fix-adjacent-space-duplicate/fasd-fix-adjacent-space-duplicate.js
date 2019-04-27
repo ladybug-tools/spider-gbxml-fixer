@@ -39,7 +39,7 @@ FASD.getFixAdjacentSpaceDuplicate = function() {
 
 	const htm =
 		`
-			<details ontoggle="FASDdivAdjacentSpaceDuplicate.innerHTML=FASD.getAdjacentSpaceDuplicate();" >
+			<details id=FASDdet ontoggle="FASDdivAdjacentSpaceDuplicate.innerHTML=FASD.getAdjacentSpaceDuplicate();" >
 
 				<summary id=FASDsumAdjacentSpaceDuplicate class=sumHeader >Fix surfaces with duplicate adjacent spaces
 					<a id=FASDSum class=helpItem href="JavaScript:MNU.setPopupShowHide(FASDSum,FASD.currentStatus);" >&nbsp; ? &nbsp;</a>
@@ -133,7 +133,9 @@ FASD.getAdjacentSpaceDuplicate = function() {
 			</p>
 
 			<p>
-				<button onclick=FASD.fixAdjacentSpaces(); >fix selected</button> work-in-progress
+				<button onclick=FASD.fixAdjacentSpacesAll(); >fix all</button>
+
+				<button onclick=FASD.fixAdjacentSpacesSelected(); >fix selected</button>
 			</p>
 
 			<div id="FASDdivAdjacentSpaceDuplicateData" >Click a surface name above to view its details and update its adjacent spaces</div>
@@ -252,23 +254,44 @@ FASD.adjacentSpaceUpdate = function( index, surfaceId ) {
 };
 
 
-FASD.fixAdjacentSpaces = function( select) {
+FASD.fixAdjacentSpacesAll = function() {
 
-	index = FASDselSurface.selectedIndex;
+	const length = FASDselSurface.length;
+
+	for ( let i = 0; i < length; i++ ) {
+
+		FASD.fixAdjacentSpaces( i );
+
+	}
+
+};
+
+FASD.fixAdjacentSpacesSelected = function( select) {
+
+	const index = FASDselSurface.selectedIndex;
 	//console.log( 'index', FASDselSurface.selectedIndex );
 
-	surfaceIndex = FASD.duplicates[ index ];
+	FASD.fixAdjacentSpaces( index );
+
+};
+
+
+FASD.fixAdjacentSpaces = function( index) {
+
+	const surfaceIndex = FASD.duplicates[ index ];
 	//console.log( 'surfaceIndex', surfaceIndex );
 
-	surfaceText = GBX.surfaces[ surfaceIndex ];
+	const surfaceText = GBX.surfaces[ surfaceIndex ];
 	//console.log( '', surfaceText );
 
-	const planarSurface = surfaceText.match( /<PlanarGeometry(.*?)<\/PlanarGeometry>/i );
-	//console.log( 'planarSurface', planarSurface );
+	const surfacePlanar = surfaceText.match( /<PlanarGeometry(.*?)<\/PlanarGeometry>/i );
+	//console.log( 'surfacePlanar', surfacePlanar );
 
-	const coordinatesSurface = planarSurface[ 1 ].match( /<Coordinate>(.*?)<\/Coordinate>/gi );
-	//console.log( 'coordinatesSurface', coordinatesSurface );
+	const surfaceCoordinates = surfacePlanar[ 1 ].match( /<Coordinate>(.*?)<\/Coordinate>/gi );
+	//console.log( 'surfaceCoordinates', surfaceCoordinates );
 
+
+	const matches = [];
 
 	for ( spaceText of GBX.spaces ) {
 
@@ -277,10 +300,9 @@ FASD.fixAdjacentSpaces = function( select) {
 
 		let count = 0;
 
-		for ( let coordinate of coordinatesSurface ) {
+		for ( let coordinate of surfaceCoordinates ) {
 
 			if ( coordinatesSpace.includes( coordinate ) ) {
-
 				//console.log( 'match', 23 );
 				count ++;
 
@@ -288,22 +310,214 @@ FASD.fixAdjacentSpaces = function( select) {
 
 		}
 
-		const match = ( count === coordinatesSurface.length ) ? true : false;
-		//console.log( '', count, coordinatesSurface.length  );
-		if ( match ) { console.log( 'match', match, count, coordinatesSurface.length ); }
+		matches.push( count );
 
-		//if ( match ) { console.log( 'spaceText', spaceText ); }
+	}
 
+	matchExact = getMatches( 0 );
+	match2 = getMatches( 2 );
+	match4 = getMatches( 4 );
+	match6 = getMatches( 6 );
+	match8 = getMatches( 8 );
+
+	if ( matchExact.length >= 2 ) {
+
+		getDataExact( matchExact );
+
+	} else if ( match2.length >= 2 ) {
+
+		getDataExact( match2 );
+
+	} else if ( match4.length >= 2 ) {
+
+		getData( match4 );
+
+	} else if ( match6.length >= 2 ) {
+
+		getData( match6 );
+
+	} else if ( match8.length >= 2 ) {
+
+		getData( match8 );
 
 	}
 
 
 
 
+	function getMatches( limit = 0 ) {
+
+		arr = [];
+
+		matches.forEach( ( count, spaceIndex ) => {
+
+			surfacesCount = surfaceCoordinates.length;
+			if ( surfacesCount - count <= limit ) {
+
+				arr.push( { count, spaceIndex, surfaceIndex, surfacesCount } );
+
+			}
+		});
+
+		return arr;
+
+	}
+
+
+	function getDataExact( matches ) {
+
+		matches.forEach( match => {
+			//console.log( '', match );
+
+			const surfaceTextCurrent = GBX.surfaces[ match.surfaceIndex ];
+			const surfaceSpaceIds = surfaceTextCurrent.match( / spaceIdRef="(.*?)"/gi );
+			surfaceSpaceId = surfaceSpaceIds[ 1 ].match( / spaceIdRef="(.*?)"/i )[ 1 ];
+			//console.log( 'surfaceSpaceId', surfaceSpaceId );
+			const space = GBX.spaces[ match.spaceIndex ];
+
+			const spaceId = space.match( / id="(.*?)"/i )[ 1 ];
+			//console.log( 'spaceId', spaceId );
+
+			if ( surfaceSpaceId !== spaceId ) {
+				//console.log( 'spaceId', spaceId );
+
+				name = space.match( /<Name>(.*?)<\/Name>/i )[ 1 ];
+				//console.log( 'name', name );
+
+				surfaceTextNew = surfaceTextCurrent.replace( / spaceIdRef="(.*?)"/i, ` spaceIdRef="${ spaceId }"` );
+				//console.log( 'surfaceTextNew', surfaceTextNew );
+
+				GBX.text = GBX.text.replace( surfaceTextCurrent, surfaceTextNew );
+
+				GBX.surfaces = GBX.text.match( /<Surface(.*?)<\/Surface>/gi );
+
+				FASDdet.open = false;
+
+				FASDdivSpaceDuplicate.innerHTML = FASD.getFixAdjacentSpaceDuplicate();
+
+
+			} else {
+
+				//console.log( 'same spaceId', spaceId, surfaceSpaceId );
+			}
+
+		} );
+
+		//console.log( 'matches', matches  );
+
+	}
 
 
 
+	function getData( matches ) {
 
+		const surfaceTextCurrent = GBX.surfaces[ matches[ 0 ].surfaceIndex ];
+		const surfaceType = surfaceTextCurrent.match( / surfaceType="(.*?)"/i )[ 1 ];
+		//console.log( 'surfaceType', surfaceType );
 
+		spaceId0 = surfaceTextCurrent.match( / spaceIdRef="(.*?)"/i )[ 1 ];
+		//console.log( 'spaceId0', spaceId0 );
+
+		const space0 = GBX.spaces.find( space => space.includes( spaceId0 ) );
+		const storeyId0 = space0.match( /buildingStoreyIdRef="(.*?)"/i )[ 1 ];
+		const storeyText0 = GBX.storeys.find( storey => storey.includes( storeyId0 ) );
+		//console.log( 'storeyText0', storeyText0 );
+		const storeyLevel0 = storeyText0.match( /<Level>(.*?)<\/Level>/i )[ 1 ];
+
+		matches.forEach( match => {
+			//console.log( '', match );
+
+			if ( match.count === match.surfacesCount ) {
+
+			} else {
+
+				spaceTry = GBX.spaces[ match.spaceIndex ];
+				storeyIdTry = spaceTry.match( /buildingStoreyIdRef="(.*?)"/i )[ 1 ];
+				//console.log( 'storeyIdTry', storeyIdTry );
+				storeyTextTry= GBX.storeys.find( storey => storey.includes( storeyIdTry ) );
+				storeyLevelTry = storeyTextTry.match( /<Level>(.*?)<\/Level>/i )[ 1 ];
+				//console.log( 'storeyLevelTry', storeyLevelTry );
+
+				if ( [ "Ceiling" ].includes( surfaceType )  ) {
+
+					if ( storeyLevelTry > storeyLevel0 ) {
+
+						spaceTryId = spaceTry.match( / id="(.*?)"/i )[ 1 ];
+						surfaceTextNew = surfaceTextCurrent.replace( / spaceIdRef="(.*?)"/i, ` spaceIdRef="${ spaceTryId }"` );
+						//console.log( 'surfaceTextNew', surfaceTextNew );
+
+						GBX.text = GBX.text.replace( surfaceTextCurrent, surfaceTextNew );
+
+						GBX.surfaces = GBX.text.match( /<Surface(.*?)<\/Surface>/gi );
+
+						FASDdet.open = false;
+
+						FASDdivSpaceDuplicate.innerHTML = FASD.getFixAdjacentSpaceDuplicate();
+
+					}
+
+				} else if ( [ "InteriorFloor" ].includes( surfaceType ) ) {
+					//console.log( 'InteriorFloor match', match );
+					//console.log( 'storeyLevel0', storeyLevel0 );
+					//console.log( 'storeyLevelTry', storeyLevelTry );
+
+					if ( storeyLevelTry < storeyLevel0 ) {
+
+						spaceTryId = spaceTry.match( / id="(.*?)"/i )[ 1 ];
+						//console.log( 'spaceTryId', spaceTryId );
+
+						surfaceTextNew = surfaceTextCurrent.replace( / spaceIdRef="(.*?)"/i, ` spaceIdRef="${ spaceTryId }"` );
+						//console.log( 'surfaceTextNew', surfaceTextNew );
+
+						GBX.text = GBX.text.replace( surfaceTextCurrent, surfaceTextNew );
+
+						GBX.surfaces = GBX.text.match( /<Surface(.*?)<\/Surface>/gi );
+
+						FASDdet.open = false;
+
+						FASDdivSpaceDuplicate.innerHTML = FASD.getFixAdjacentSpaceDuplicate();
+
+					}
+
+				} else if ( [ "InteriorWall" ].includes( surfaceType ) ) {
+
+					if ( storeyLevelTry === storeyLevel0 ) {
+
+						console.log( 'IW match', match );
+						spaceTry = GBX.spaces[ match.spaceIndex ];
+						//console.log( 'spaceTry', spaceTry );
+
+					} else {
+
+						console.log( 'IW match levels differe',  );
+
+					}
+
+				} else if ( [ "Air" ].includes( surfaceType ) ) {
+
+					console.log( 'Air match', match );
+
+				} else {
+
+					console.log( 'oops match', match );
+					console.log( 'surfaceType', surfaceType );
+					//console.log( 'storeyLevel0', storeyLevel0 );
+					//console.log( 'storeyLevelTry', storeyLevelTry );
+
+				}
+
+			}
+
+			//surfaceSpaceId = surfaceSpaceIds[ 1 ].match( / spaceIdRef="(.*?)"/i )[ 1 ];
+			//spaceId = space.match( / id="(.*?)"/i )[ 1 ];
+			//name = space.match( /<Name>(.*?)<\/Name>/i )[ 1 ];
+			//console.log( 'name', match.count, storey, name );
+			//console.log( 'spaceId', spaceId, surfaceSpaceId );
+
+		} );
+
+		//console.log( 'matches', matches  );
+
+	}
 
 }

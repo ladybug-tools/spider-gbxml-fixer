@@ -48,7 +48,7 @@ FASE.getFixAdjacentSpaceExtra = function() {
 		`
 			<details id=FASEdet ontoggle="FASEdivAdjacentSpaceExtra.innerHTML=FASE.getAdjacentSpaceExtra();" >
 
-				<summary id=FASEsumAdjacentSpaceExtra class=sumHeader ><mark>Fix surfaces with an extra adjacent space</mark>
+				<summary id=FASEsumAdjacentSpaceExtra class=sumHeader >Fix surfaces with an extra adjacent space
 					<a id=FASESum class=helpItem href="JavaScript:MNU.setPopupShowHide(FASESum,FASE.currentStatus);" >&nbsp; ? &nbsp;</a>
 				</summary>
 

@@ -60,6 +60,14 @@
 			<button id=but onclick=location.hash=this.innerHTML; >../../test-samples/one-room-with-surface-type-errors.xml</button>
 		</p>
 
+		<p>
+			<button id=but onclick=location.hash=this.innerHTML; >https://cdn.jsdelivr.net/gh/ladybug-tools/spider@master/gbxml-sample-files/bristol-clifton-downs-broken.xml</button>
+		</p>
+
+		<p>
+			<button id=but onclick=location.hash=this.innerHTML; >https://cdn.jsdelivr.net/gh/ladybug-tools/spider@master/gbxml-sample-files/zip/coventry-university-of-warwick-small.zip</button>
+		</p>
+
 	</nav>
 
 	<nav id="navPopUp" >
@@ -76,10 +84,11 @@
 <script>
 
 
-FIL.urlDefaultFile = "../../test-samples/bristol-clifton-downs-broken.xml";
+//FIL.urlDefaultFile = "../../test-samples/bristol-clifton-downs-broken.xml";
+FIL.urlDefaultFile = "https://cdn.jsdelivr.net/gh/ladybug-tools/spider@master/gbxml-sample-files/zip/coventry-university-of-warwick-small.zip";
 
 const urlSourceCodeIcon = "https://ladybug.tools/spider/images/github-mark.png";
-const urlSourceCode = "https://github.com/ladybug-tools/spider-gbxml-fixer/tree/master/r3/";
+const urlSourceCode = "https://github.com/ladybug-tools/spider-gbxml-fixer/tree/master/r0-4-0/";
 
 
 const divFixThings =
@@ -120,13 +129,15 @@ function init() {
 
 	FILdivFileSave.innerHTML = FIL.getMenuFileSave();
 
-	FIL.xhrRequestFileXml( FIL.urlDefaultFile );
+	//FIL.xhrRequestFileXml( FIL.urlDefaultFile );
 
-	fname.innerHTML = FIL.name;
-	//FIL.onHashChange();
+	FIL.onHashChange();
 
-	window.addEventListener ( 'hashchange', FIL.onHashChange, false );
+	//window.addEventListener ( 'hashchange', FIL.onHashChange, false );
 	document.body.addEventListener( 'onXmlFileLoad', onLoad, false );
+
+	//document.body.addEventListener( 'onXmlFileLoad', GBX.init, false ); // hash changed, file loaded so let's go
+
 
 }
 
@@ -134,7 +145,9 @@ function init() {
 
 function onLoad() {
 
+	fname.innerHTML = FIL.name;
 	console.log( '', FIL.name  );
+
 	GGD.getData(  FIL.text  );
 
 	GGDdivGetGbxmlData.innerHTML = GGD.getGbxmlData(  FIL.text  );

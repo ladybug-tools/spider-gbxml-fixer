@@ -50,7 +50,7 @@ FXA.getFixAttributes = function() {
 		`
 			<details id=FXAdet ontoggle="FXAdivAttributes.innerHTML=FXA.getAttributes();" >
 
-			<summary id=FXAsumAttributes class=sumHeader ><mark>Fix missing required gbXML attributes</mark>
+			<summary id=FXAsumAttributes class=sumHeader >Fix missing required gbXML attributes
 				<a id=FXASum class=helpItem href="JavaScript:MNU.setPopupShowHide(FXASum,FXA.currentStatus);" >&nbsp; ? &nbsp;</a>
 			</summary>
 				<div id=FXAdivAttributes ></div>
