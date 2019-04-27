@@ -38,6 +38,9 @@ GBX.divFixThings =
 
 		<h2 id=GBXh1FileName >Check file: <script>decodeURI( FIL.name ) </script></h2>
 
+		<iframe id=GBXifr style=height:300px;width:600px; ></iframe><br>
+		<i>model preview currently works just with files loaded via the URL</i>
+
 		<p>
 			<button onclick=GBX.runAll(); >Run all checks</button>
 
@@ -140,6 +143,21 @@ GBX.init = function() {
 	FCIMdivGetCadIdMissing.innerHTML = FCIM.getCadIdMissing();
 
 	//GBXdivGetTemplate.innerHTML = GBX.getTemplate();
+
+	viewer = "http://www.ladybug.tools/spider-gbxml-tools/spider-gbxml-viewer/r15/spider-gbxml-viewer15.html";
+
+	if ( !FIL.files ) {
+
+		const url = location.hash ? location.hash : "#" + FIL.urlDefaultFile;
+		console.log( 'url', url );
+		GBXifr.src = `${ viewer }${ url }`;
+
+	} else {
+
+		GBXifr.src = "";
+
+	}
+
 
 };
 
