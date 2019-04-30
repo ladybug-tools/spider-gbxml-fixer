@@ -16,21 +16,18 @@ _<small>Spider gbXML Fixer</small>_
 _JavaScript utilities to help you identify and fix common errors in gbXML files_
 
 
-### Bookmark this link for stable:<br>https://www.ladybug.tools/spider-gbxml-fixer/
-
-#### Stable release with demo: [Sample test run]( https://www.ladybug.tools/spider-gbxml-fixer/#https://cdn.jsdelivr.net/gh/ladybug-tools/spider@master/gbxml-sample-files/bristol-clifton-downs-broken.xml )
+### Bookmark this link for the stable release:<br>https://www.ladybug.tools/spider-gbxml-fixer/
 
 * Always links to the release that has been tested
-
-### Bookmark this link for latest:<br>https://www.ladybug.tools/spider-gbxml-fixer/dev/
-
-#### Latest release with demo: [Sample test run]( https://www.ladybug.tools/spider-gbxml-fixer/dev/#https://cdn.jsdelivr.net/gh/ladybug-tools/spider@master/gbxml-sample-files/bristol-clifton-downs-broken.xml )
+<!--
+### Bookmark this link for latest release:<br>https://www.ladybug.tools/spider-gbxml-fixer/dev/
 
 * Always links to the version currently being worked on
 * Loads and checks a sample file from the [Spider gbXML sample files]( https://www.ladybug.tools/spider/#gbxml-sample-files/README.md ) folder
+-->
 
 <details>
-<summary class=sumHeader title="Includes our mision and vision statements" >Concept / the problem to be solved</summary>
+<summary class=sumHeader title="Includes our mission and vision statements" >Concept / the problem to be solved</summary>
 
 [GbXML]( http://www.gbxml.org/About_GreenBuildingXML_gbXML ) data files follow an industry-standard format and used to the transfer 3D building project data between computer aided design (CAD) program and energy analysis programs. The good people who create CAD and energy analysis applications are primarily software programmers. They have infrequent access to large numbers of actual building test cases nor can they simulate large varieties of practice-specific energy simulation workflows. The current often-repeated outcome is that building engineering practices devote much time to dealing with issues in transferring data back and forth between CAD applications and energy analysis programs - and thus losing time for creating better simulations.
 
