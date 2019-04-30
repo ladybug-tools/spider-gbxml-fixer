@@ -8,15 +8,16 @@
 <meta name = "date" content = "2019-04-22" >
 <meta name = "release" content = "0.4.0" >
 <title>Spider gbXML Fixer 'Atrax'</title>
+<link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" >
+<link rel="stylesheet" href="https://pushme-pullyou.github.io/tootoo14/js-14-0/style.css">
 </head>
 <!-- //Copyright 2019 Ladybug Tools authors. MIT License -->
 <body>
-<link rel="stylesheet" href="https://pushme-pullyou.github.io/tootoo13/js-tootoo13-3-0/style.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.5/jszip.min.js" ></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js" ></script>
 
 <!-- menus generally -->
-<script src="https://pushme-pullyou.github.io/tootoo13/js-tootoo13-3-0/mnu-menu.js" ></script>
+<script src="https://pushme-pullyou.github.io/tootoo14/js-14-0/mnu-menu/mnu-menu.js" ></script>
 <script src="https://pushme-pullyou.github.io/tootoo13/js-tootoo13-3-0/sfm-selected-files-markdown.js" ></script>
 <script src="https://www.ladybug.tools/spider-gbxml-tools/spider-gbxml-viewer/r15/js-gbxml/gal-sample-files-gallery-gbxml.js" ></script>
 
@@ -25,11 +26,11 @@
 <script src="fil-file-open-xml-zip/fil-file-open-xml-zip.js" ></script>
 
 <!-- Edit Menu -->
-<script src="ggd-get-gbxml-data.js" ></script>
-<script src="gcs-get-check-strings.js" ></script>
-<script src="gco-get-check-offset.js" ></script>
-<script src="ocv-openings-check-vertices.js" ></script>
-<script src="fxa-fix-attributes.js" ></script>
+<script src="ggd-get-gbxml-data/ggd-get-gbxml-data.js" ></script>
+<script src="gcs-get-check-strings/gcs-get-check-strings.js" ></script>
+<script src="gco-get-check-offset/gco-get-check-offset.js" ></script>
+<script src="ocv-openings-check-vertices/ocv-openings-check-vertices.js" ></script>
+<script src="fxa-fix-attributes/fxa-fix-attributes.js" ></script>
 
 <script src="fstn-fix-surface-type-name/fstn-fix-surface-type-name.js" ></script>
 <script src="fets-fix-exposed-to-sun/fets-fix-exposed-to-sun.js" ></script>
@@ -39,10 +40,14 @@
 <script src="fcim-fix-cad-id-missing/fcim-fix-cad-id-missing.js" ></script>
 
 <script src="spider-gbxml-fixer-core.js" ></script>
-<script src="gsa-get-surface-attributes.js" ></script>
+<script src="gsa-get-surface-attributes/gsa-get-surface-attributes.js" ></script>
 
 <!-- Settings menu -->
-<script src="https://pushme-pullyou.github.io/tootoo13/js-tootoo13-1/thm-theme-select.js" ></script>
+<!--
+
+
+	<script src="https://pushme-pullyou.github.io/tootoo13/js-tootoo13-1/thm-theme-select.js" ></script>
+-->
 
 <script>
 
@@ -105,8 +110,8 @@ MNU.currentStatusCore =
 FIL.urlDefaultFile = "https://cdn.jsdelivr.net/gh/ladybug-tools/spider@master/gbxml-sample-files/zip/coventry-university-of-warwick-small.zip";
 
 
-THM.themeUrlStorage = 'spider-gbxml-fixer-theme-url';
-THM.cssBasic = "https://pushme-pullyou.github.io/tootoo13/js-tootoo13-2/style.css";
+//THM.themeUrlStorage = 'spider-gbxml-fixer-theme-url';
+//THM.cssBasic = "https://pushme-pullyou.github.io/tootoo13/js-tootoo13-2/style.css";
 
 // For main menu header
 MNU.urlSourceCode = "https://github.com/ladybug-tools/spider-gbxml-fixer/tree/master/r0-4-0/";
@@ -130,86 +135,93 @@ MNU.footerIssues = "https://github.com/ladybug-tools/spider/issues";
 </script>
 
 
-	<nav id="navMenu" >
+	<nav id="navPanel" >
 
-		<header>
+		<section id="secContent" >
 
-			<div id="MNUdivHeader" ></div>
+			<header>
 
-			<section class="navSubMenu" >
+				<div id="MNUdivHeader" ></div>
 
-				<p>
-					See <a href="http://www.ladybug.tools/spider-gbxml-tools/spider-gbxml-viewer/" target="_blank">Spider gbXML Viewer 'Maevia'</a>
-				</p>
+				<div >
 
-				<p>
-					See <a href="http://gbxml.org/schema_doc/6.01/GreenBuildingXML_Ver6.01.html" target="_blank">Schema GreenBuildingXML_Ver6.01.xsd </a>
-				</p>
+					<p>
+						See <a href="http://www.ladybug.tools/spider-gbxml-tools/spider-gbxml-viewer/" target="_blank">Spider gbXML Viewer 'Maevia'</a>
+					</p>
 
-			</section>
+					<p>
+						See <a href="http://gbxml.org/schema_doc/6.01/GreenBuildingXML_Ver6.01.html" target="_blank">Schema GreenBuildingXML_Ver6.01.xsd </a>
+					</p>
 
-		</header>
+				</div>
 
-		<details class=navSubMenu open >
+			</header>
 
-			<summary class="sumMenuTitle" >File menu</summary>
+			<details class=navSubMenu open >
 
-			<section id="SFMsecPrototypes" ></section>
+				<summary class="sumMenuTitle" >File menu</summary>
 
-			<section id="GALdivSampleFilesGallery"></section>
+				<div id="SFMsecPrototypes" ></div>
 
-			<section id="FILdivFileOpen"></section>
+				<div id="GALdivSampleFilesGallery"></div>
 
-			<section id="FILdivFileSave"></section>
+				<div id="FILdivFileOpen"></div>
 
-		</details>
+				<div id="FILdivFileSave"></div>
 
-		<details class=navSubMenu open >
+			</details>
 
-			<summary class=sumMenuTitle >Settings menu</summary>
+			<details class=navSubMenu open >
 
-			<section id=THMsecMenuThemeSelect ></section>
+				<summary class=sumMenuTitle >Settings menu</summary>
 
-			<section id=TMPsecMenuTemplate ></section>
+				<div id=THMsecMenuThemeSelect ></div>
 
-		</details>
+				<div id=TMPsecMenuTemplate ></div>
 
-
-		<footer class=navSubMenu >
-
-			<section id="MNUdivFooter" ></section>
-
-		</footer>
+			</details>
 
 
-		<h1 onclick="navMenu.scrollTop=0;" style="cursor:pointer;text-align:center;" title="go to top of menu" >
-			<img alt="spider icon" src="https://ladybug.tools/artwork/icons_bugs/ico/spider.ico" height=18 >
-		</h1>
+			<footer class=navSubMenu >
 
-	</nav>
+				<div id="MNUdivFooter" ></div>
 
-
-	<div>
-
-		<button id="butHamburger" onclick=MNU.toggleNavLeft(); title="click here to hide this menu"> slide &#9776; </button>
-
-	</div>
+			</footer>
 
 
-	<nav id="navPopUp" >
+			<h1 onclick="navMenu.scrollTop=0;" style="cursor:pointer;text-align:center;" title="go to top of menu" >
+				<img alt="spider icon" src="https://ladybug.tools/artwork/icons_bugs/ico/spider.ico" height=18 >
+			</h1>
 
-		<div id="divPopUpData" ></div>
-
-		<div id="divMessage" ></div>
+		</section>
 
 	</nav>
 
+	<main id=main >
 
-	<div id="divContainer" >
+			<div id=divContents >
 
-		<div id="divContents" ></div>
+				<p>
+					lorem ipsum, quia dolor sit, amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem. ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? quis autem vel eum iure reprehenderit, qui in ea voluptate velit esse, quam nihil molestiae consequatur, vel illum, qui dolorem eum fugiat, quo voluptas nulla pariatur?
+				</p>
+			</div>
 
-	</div>
+		</main>
+
+
+		<nav>
+
+			<a href="" id="butViewSource" target=_blank; hidden >view source</a>
+
+		</nav>
+
+		<nav id="navPopup" hidden >
+
+			<div id="divPopupData" ></div>
+
+			<div id="divMessage" ></div>
+
+		</nav>
 
 <script>
 
@@ -230,11 +242,11 @@ function init() {
 	FILdivFileSave.innerHTML=FIL.getMenuFileSave();
 
 	// Settings menu
-	THMsecMenuThemeSelect.innerHTML = THM.getMenuThemeSelect();
+	//THMsecMenuThemeSelect.innerHTML = THM.getMenuThemeSelect();
 
 	MNUdivFooter.innerHTML = MNU.getNavFooter(); // not essential
 
-	THM.init();
+	//THM.init();
 
 	FIL.onHashChange(); // checks location hash, if none set default file ( the read me ) to open
 

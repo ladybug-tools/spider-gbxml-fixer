@@ -7,71 +7,75 @@
 <meta name = "keywords" content = "JavaScript,GitHub,FOSS" >
 <meta name = "date" content = "2019-02-07" >
 <title></title>
-<style>
-
-	body { font: 12pt monospace; margin: 0 auto 0 400px; max-width: 800px; }
-	a { color: crimson; text-decoration: none; }
-	a:hover, a:focus { background-color: yellow; color: #aaa; text-decoration: underline }
-
-	button, input[type=button] { background-color: #ddd; border: none; color: #322; cursor: pointer; padding: 3px 5px; }
-	button:hover { background: #ccc; color: #fff }
-
-	.sumMenuTitle { background-color: #ccc; color: #888; margin: 10px 0; text-align: center; }
-	.sumHeader { font-size:1.3rem; }
-
-	.dragDropArea { border: 1px dashed gray; box-sizing: border-box; margin: 10px; padding: 0 10px; }
-
-	#navMenu { background-color: #eee; left: 0; margin: 20px; max-width: 300px; padding: 0 10px;
-		position: fixed; top: 0; }
-
-	#navPopUp { background-color: #eee; border-radius: 8px; display: block; max-height: 95%; max-width: 25%;
-		opacity: 0.95; overflow: auto; padding: 0 5px 10px 5px; position: fixed;
-		resize: both; right: 1rem; top: 1rem; z-index: 10; };
-
-
-</style>
+<link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" >
+<link rel="stylesheet" href="https://pushme-pullyou.github.io/tootoo14/js-14-0/style.css">
 </head>
 <body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.5/jszip.min.js" ></script>
 <script src="https://rawgit.com/showdownjs/showdown/1.9.0/dist/showdown.min.js" ></script>
+<script src="https://pushme-pullyou.github.io/tootoo14/js-14-0/mnu-menu/mnu-menu.js" ></script>
 
-<script src="fil-file-open-xml-zip.js" ></script>
+<script src="../fil-file-open-xml-zip/fil-file-open-xml-zip.js" ></script>
 <script src="../spider-gbxml-fixer-core.js" ></script>
-<script src="../ggd-get-gbxml-data.js" ></script>
-<script src="../gsa-get-surface-attributes.js" ></script>
+<script src="../ggd-get-gbxml-data/ggd-get-gbxml-data.js" ></script>
+<script src="../gsa-get-surface-attributes/gsa-get-surface-attributes.js" ></script>
 
-<script src="ft-fix-template.js" ></script>
+<script src="../ft-fix-template/ft-fix-template.js" ></script>
 
-	<nav id="navMenu" >
+	<nav id="navPanel" >
 
-		<div id="divTitle" ></div>
+		<section id="secContent" >
 
-		<details class=navSubMenu open >
+			<header>
 
-			<summary class=sumMenuTitle >File Menu</summary>
+				<div id="divTitle" ></div>
 
-			<section id="FILdivFileOpen"></section>
+			</header>
 
-			<section id="FILdivFileSave"></section>
 
-		</details>
+			<details class=navSubMenu open >
 
-		<p>
-			<button id=but onclick=location.hash=this.innerHTML; >../../test-samples/one-room-with-surface-type-errors.xml</button>
-		</p>
+				<summary class=sumMenuTitle >File Menu</summary>
 
+				<section id="FILdivFileOpen"></section>
+
+				<section id="FILdivFileSave"></section>
+
+			</details>
+
+			<p>
+				<button id=but onclick=location.hash=this.innerHTML; >../../test-samples/one-room-with-surface-type-errors.xml</button>
+			</p>
+
+		</section>
 	</nav>
 
-	<nav id="navPopUp" >
 
-			<div id="divPopUpData" ></div>
+	<main id=main >
+
+			<div id=divContents >
+
+				<p>
+					lorem ipsum, quia dolor sit, amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem. ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? quis autem vel eum iure reprehenderit, qui in ea voluptate velit esse, quam nihil molestiae consequatur, vel illum, qui dolorem eum fugiat, quo voluptas nulla pariatur?
+				</p>
+			</div>
+
+		</main>
+
+
+		<nav>
+
+			<a href="" id="butViewSource" target=_blank; hidden >view source</a>
+
+		</nav>
+
+		<nav id="navPopup" hidden >
+
+			<div id="divPopupData" ></div>
 
 			<div id="divMessage" ></div>
 
-	</nav>
-
-	<div id="divContents" ></div>
-
+		</nav>
 
 <script>
 
@@ -82,7 +86,7 @@ const urlSourceCodeIcon = "https://ladybug.tools/spider/images/github-mark.png";
 const urlSourceCode = "https://github.com/ladybug-tools/spider-gbxml-fixer/tree/master/r3/";
 
 
-SGF.divFixThings =
+divFixThings =
 	`
 		<br><br>
 
@@ -112,7 +116,7 @@ init();
 
 function init() {
 
-	divContents.innerHTML = SGF.divFixThings;
+	divContents.innerHTML = divFixThings;
 
 	divTitle.innerHTML = getTitle();
 
@@ -142,22 +146,6 @@ function onLoad() {
 	TMPCdivTemplate.innerHTML = FT.getSurfaceTypeInvalid();
 
 }
-
-
-
-//////////
-
-const MNU = {};
-
-
-MNU.setPopupShowHide = function( id, text ) {
-	//console.log( 'id', id );
-
-	id.classList.toggle( "active" );
-
-	divPopUpData.innerHTML = id.classList.contains( 'active' ) ? text : '';
-
-};
 
 
 

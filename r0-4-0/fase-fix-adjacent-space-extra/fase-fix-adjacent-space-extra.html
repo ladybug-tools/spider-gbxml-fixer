@@ -36,7 +36,7 @@
 
 <script src="../fil-file-open-xml-zip/fil-file-open-xml-zip.js" ></script>
 <script src="../spider-gbxml-fixer-core.js" ></script>
-<script src="../ggd-get-gbxml-data.js" ></script>
+<script src="../ggd-get-gbxml-data/ggd-get-gbxml-data.js" ></script>
 <script src="../gsa-get-surface-attributes.js" ></script>
 
 <script src="fase-fix-adjacent-space-extra.js" ></script>
@@ -83,7 +83,7 @@ const urlSourceCodeIcon = "https://pushme-pullyou.github.io/github-mark-64.png";
 const urlSourceCode = "https://github.com/ladybug-tools/spider-gbxml-fixer/tree/master/r3/";
 
 
-SGF.divFixThings =
+divFixThings =
 	`
 		<br><br>
 
@@ -113,7 +113,7 @@ init();
 
 function init() {
 
-	divContents.innerHTML = SGF.divFixThings;
+	divContents.innerHTML = divFixThings;
 
 	divTitle.innerHTML = getTitle();
 

@@ -53,7 +53,7 @@ FT.getSurfaceTypeInvalid = function() {
 			<details ontoggle="FTdivSurface.innerHTML=FT.getSurfaces();" >
 
 				<summary id=FTsumSurfaces class=sumHeader >Get surfaces
-					<a id=FTsum class=helpItem href="JavaScript:MNU.setPopupShowHide(FTsum,FT.currentStatus);" >&nbsp; ? &nbsp;</a>
+					<a id=FTsum class=helpItem href="JavaScript:MNU.setPopupShowHide(FTsum,'README.md');" >&nbsp; ? &nbsp;</a>
 				</summary>
 
 				<div id=FTdivSurface ></div>
@@ -78,7 +78,7 @@ FT.getSurfaces = function() {
 
 	FT.surfaces = [];
 
-	FT.surfaces = SGF.surfaces.map( ( surface, index ) => {
+	FT.surfaces = GBX.surfaces.map( ( surface, index ) => {
 
 		const id = surface.match( / id="(.*?)"/i )[ 1 ];
 
