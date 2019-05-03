@@ -6,12 +6,10 @@
 <meta name = "description" content = "Open files with FileReader() or XMLHttpRequest()" >
 <meta name = "keywords" content = "JavaScript,GitHub,FOSS" >
 <meta name = "date" content = "2019-02-07" >
-<meta name = "release" content = "14.0.0" >
-<title>FT Fix Template</title>
+<title></title>
 <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" >
 <link rel="stylesheet" href="https://pushme-pullyou.github.io/tootoo14/js-14-0/style.css">
 </head>
-
 <body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.5/jszip.min.js" ></script>
 <script src="https://rawgit.com/showdownjs/showdown/1.9.0/dist/showdown.min.js" ></script>
@@ -32,7 +30,7 @@
 
 			<header>
 
-				<div id="MNUdivHeader" ></div>
+				<div id="divTitle" ></div>
 
 			</header>
 
@@ -69,14 +67,11 @@
 
 	</nav>
 
+	<nav id="navPopup" hidden style=z-index:1; >
 
-	<nav id="navPopup" hidden >
+		<div id="divPopupData" style=z-index:1;></div>
 
-		<div style=text-align:right; ><button onclick="MNU.setPopupShowHide(MNU.popupId,'');"" >×</button></div>
-
-		<div id="MNUdivPopupData" ></div>
-
-		<div id="MNUdivPopupMessage" ></div>
+		<div id="divMessage" ></div>
 
 	</nav>
 
@@ -119,10 +114,9 @@ init();
 
 function init() {
 
-	MNUdivHeader.innerHTML = MNU.getNavHeader();
-
 	divContents.innerHTML = divFixThings;
 
+	divTitle.innerHTML = getTitle();
 
 	FILdivFileOpen.innerHTML = FIL.getMenuFileOpen();
 

@@ -7,7 +7,7 @@
 <meta name = "keywords" content = "JavaScript,GitHub,FOSS" >
 <meta name = "date" content = "2019-02-07" >
 <meta name = "release" content = "14.0.0" >
-<title>FT Fix Template</title>
+<title>FASA Fix Air Space Adjacent </title>
 <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" >
 <link rel="stylesheet" href="https://pushme-pullyou.github.io/tootoo14/js-14-0/style.css">
 </head>
@@ -22,7 +22,7 @@
 <script src="../ggd-get-gbxml-data/ggd-get-gbxml-data.js" ></script>
 <script src="../gsa-get-surface-attributes/gsa-get-surface-attributes.js" ></script>
 
-<script src="../ft-fix-template/ft-fix-template.js" ></script>
+<script src="../fasa-fix-air-single-adjacent/fasa-fix-air-single-adjacent.js" ></script>
 
 	<nav id="navPanel" >
 
@@ -41,14 +41,22 @@
 
 				<summary class=sumMenuTitle >File Menu</summary>
 
-				<section id="FILdivFileOpen"></section>
+				<div id="FILdivFileOpen"></div>
 
-				<section id="FILdivFileSave"></section>
+				<div id="FILdivFileSave"></div>
 
 			</details>
 
 			<p>
 				<button id=but onclick=location.hash=this.innerHTML; >../../test-samples/one-room-with-surface-type-errors.xml</button>
+			</p>
+
+			<p>
+				<button id=but onclick=location.hash=this.innerHTML; >file:///D:/temp/zzz-gbxml-testing/bristol-clifton-downs-broken-fix.xml</button>
+			</p>
+
+			<p>
+				<button id=but onclick=location.hash=this.innerHTML; >file:///D:/temp/zzz-gbxml-testing/BHoMgbXML_GH_Airport.zip</button>
 			</p>
 
 		</section>
@@ -83,7 +91,10 @@
 <script>
 
 
-FIL.urlDefaultFile = "../../test-samples/one-room-with-surface-type-errors.xml";
+//FIL.urlDefaultFile = "../../test-samples/one-room-with-surface-type-errors.xml";
+//FIL.urlDefaultFile = "../../test-samples/bristol-clifton-downs-broken.xml";
+//FIL.urlDefaultFile = "https://cdn.jsdelivr.net/gh/ladybug-tools/spider@master/gbxml-sample-files/zip/coventry-university-of-warwick-small.zip";
+FIL.urlDefaultFile = "file:///D:/temp/zzz-gbxml-testing/BHoMgbXML_GH_Airport.zip";
 
 const urlSourceCodeIcon = "https://ladybug.tools/spider/images/github-mark.png";
 const urlSourceCode = "https://github.com/ladybug-tools/spider-gbxml-fixer/tree/master/r3/";
@@ -108,7 +119,7 @@ divFixThings =
 
 		<div id=GGDdivGetGbxmlData ></div>
 
-		<div id=TMPCdivTemplate ></div>
+		<div id=FASAdivFixAirSingleAdjacent ></div>
 
 	`;
 
@@ -123,57 +134,36 @@ function init() {
 
 	divContents.innerHTML = divFixThings;
 
+	//fname.innerHTML = FIL.name;
 
 	FILdivFileOpen.innerHTML = FIL.getMenuFileOpen();
 
 	FILdivFileSave.innerHTML = FIL.getMenuFileSave();
 
-	FIL.xhrRequestFileXml( FIL.urlDefaultFile );
 
-	fname.innerHTML = FIL.name;
-	//FIL.onHashChange();
+	FIL.onHashChange(); // checks location hash, if none set default file ( the read me ) to open
 
-	window.addEventListener ( 'hashchange', FIL.onHashChange, false );
-	document.body.addEventListener( 'onXmlFileLoad', onLoad, false );
+	document.body.addEventListener( 'onXmlFileLoad', onLoadFile, false ); // hash changed, file loaded so let's go
+
 
 }
 
 
 
-function onLoad() {
+function onLoadFile() {
+	console.log( 'FIL.name', FIL.name  );
+	//console.log( 'FIL.text', FIL.text );
 
-	console.log( '', FIL.name  );
+	GBXh1FileName.innerHTML = `File: ${ decodeURI( FIL.name ) }`;
+
 	GGD.getData(  FIL.text  );
 
 	GGDdivGetGbxmlData.innerHTML = GGD.getGbxmlData(  FIL.text  );
 
-	TMPCdivTemplate.innerHTML = FT.getSurfaceTypeInvalid();
+	FASAdivFixAirSingleAdjacent.innerHTML = FASA.getMenuAirSingleAdjacent();
 
 }
 
-
-
-function getTitle() {
-
-	document.title = document.title ? document.title : location.href.split( '/' ).pop().slice( 0, - 5 ).replace( /-/g, ' ' );
-
-	const htm =
-	`
-		<h2>
-			<a href=${ urlSourceCode } target=_top title="Source code on GitHub" >
-				<img src=${ urlSourceCodeIcon } height=18 >
-			</a>
-			<a href="" title="Click to reload this page" >${ document.title }</a>
-		</h2>
-
-		<p>
-			${ FIL.description }
-		</p>
-	`;
-
-	return htm;
-
-}
 
 </script>
 </body>

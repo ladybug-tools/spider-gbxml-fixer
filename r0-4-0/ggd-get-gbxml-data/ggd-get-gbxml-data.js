@@ -41,8 +41,8 @@ GGD.getGbxmlData = function() {
 		`
 			<details ontoggle="GGDdivGbxmlData.innerHTML=GGD.getData(GBX.text);" >
 
-				<summary id=GGDsumGetGbxmlData class=sumHeader >Show gbXML file statistics
-					<a id=ggdSum class=helpItem href="JavaScript:MNU.setPopupShowHide(ggdSum,GGD.currentStatus);" >&nbsp; ? &nbsp;</a>
+				<summary id=GGDsumGetGbxmlData >Show gbXML file statistics
+					<button id=butGGD class=butHelp onclick="MNU.setPopupShowHide(butGGD,'../ggd-get-gbxml-data/README.md');" >?</button>
 				</summary>
 
 				<div id=GGDdivGbxmlData ></div>

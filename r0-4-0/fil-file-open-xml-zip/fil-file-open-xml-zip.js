@@ -282,7 +282,7 @@ FIL.onInputFileOpen = function( files ) {
 	FIL.timeStart = performance.now();
 
 	FIL.files = files;
-	
+
 
 	const file = files.files[ 0 ];
 	const type = file.type;
@@ -477,7 +477,7 @@ FIL.onProgress = function( size = 0, note = '' ) {
 
 	FILdetFileOpen.open = true;
 
-	FILdetFileOpen.scrollIntoView();
+	//FILdetFileOpen.scrollIntoView();
 
 	const timeToLoad = ( performance.now() - FIL.timeStart ).toLocaleString();
 

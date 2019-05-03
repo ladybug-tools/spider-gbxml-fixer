@@ -52,8 +52,8 @@ FT.getSurfaceTypeInvalid = function() {
 		`
 			<details ontoggle="FTdivSurface.innerHTML=FT.getSurfaces();" >
 
-				<summary id=FTsumSurfaces class=sumHeader >Get surfaces
-					<a id=FTsum class=helpItem href="JavaScript:MNU.setPopupShowHide(FTsum,'README.md');" >&nbsp; ? &nbsp;</a>
+				<summary id=FTsumSurfaces >Get surfaces
+					<button id=butFT class=butHelp onclick="MNU.setPopupShowHide(butFT,'../ft-fix-template/README.md');" >?</button>
 				</summary>
 
 				<div id=FTdivSurface ></div>
@@ -121,7 +121,8 @@ FT.getSurfaces = function() {
 
 	FTsumSurfaces.innerHTML =
 		`Surfaces ~ ${ FT.surfaces.length.toLocaleString() } found
-			${ help }
+		<button id=butFT2 class=butHelp onclick="MNU.setPopupShowHide(butFT2,'ggggg');" >?</button>
+
 		`;
 
 	const htm =

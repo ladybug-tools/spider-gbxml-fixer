@@ -49,7 +49,7 @@ FDPC.getFixDuplicatePlanarCoordinates = function() {
 		`
 			<details id=FDPCdet  ontoggle="FDPCdivDuplicatePlanar.innerHTML=FDPC.getDuplicatePlanarCoordinates();" >
 
-				<summary id=FDPCsumDuplicatePlanar class=sumHeader >Fix surfaces with duplicate planar coordinates
+				<summary id=FDPCsumDuplicatePlanar >Fix surfaces with duplicate planar coordinates
 					<a id=FDPCSum class=helpItem href="JavaScript:MNU.setPopupShowHide(FDPCSum,FDPC.currentStatus);" >&nbsp; ? &nbsp;</a>
 				</summary>
 

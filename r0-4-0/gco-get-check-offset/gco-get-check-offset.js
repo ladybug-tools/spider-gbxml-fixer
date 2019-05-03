@@ -40,7 +40,7 @@ GCO.getCheckOffset = function() {
 		`
 			<details ontoggle="GCOdivCheckOffset.innerHTML=GCO.getOffset();" >
 
-			<summary id=GCOsumCheckOffset class=sumHeader >Check project offset distance from origin
+			<summary id=GCOsumCheckOffset >Check project offset distance from origin
 				<a id=GCOSum class=helpItem href="JavaScript:MNU.setPopupShowHide(GCOSum,GCO.currentStatus);" >&nbsp; ? &nbsp;</a>
 			</summary>
 				<div id=GCOdivCheckOffset ></div>

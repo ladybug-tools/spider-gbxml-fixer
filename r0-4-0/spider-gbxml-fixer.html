@@ -5,7 +5,7 @@
 <meta name = "viewport" content= "width=device-width, initial-scale=1" >
 <meta name = "description" content = "This menu is a component of a basic html content management script with sliding menu, css theme selection, Markdown to HTML, drag and drop file reading capability, access to frequently used pages and more" >
 <meta name = "keywords" content = "JavaScript,GitHub,FOSS" >
-<meta name = "date" content = "2019-04-22" >
+<meta name = "date" content = "2019-05-01" >
 <meta name = "release" content = "0.4.0" >
 <title>Spider gbXML Fixer 'Atrax'</title>
 <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" >
@@ -37,6 +37,7 @@
 <script src="fdpc-fix-duplicate-planar-coordinates/fdpc-fix-duplicate-planar-coordinates.js" ></script>
 <script src="fase-fix-adjacent-space-extra/fase-fix-adjacent-space-extra.js" ></script>
 <script src="fasd-fix-adjacent-space-duplicate/fasd-fix-adjacent-space-duplicate.js" ></script>
+<script src="fasa-fix-air-single-adjacent/fasa-fix-air-single-adjacent.js" ></script>
 <script src="fcim-fix-cad-id-missing/fcim-fix-cad-id-missing.js" ></script>
 
 <script src="spider-gbxml-fixer-core.js" ></script>
@@ -47,66 +48,106 @@
 	<script src="https://pushme-pullyou.github.io/tootoo13/js-tootoo13-1/thm-theme-select.js" ></script>
 -->
 
+
+	<nav id="navPanel" >
+
+		<button id="expandButton" onclick="navPanel.classList.toggle('collapsed');" >☰</button>
+
+		<section id="secContent" >
+
+			<header>
+
+				<div id="MNUdivHeader" ></div>
+
+			</header>
+
+				<div >
+
+					<p>
+						See <a href="http://www.ladybug.tools/spider-gbxml-tools/spider-gbxml-viewer/" target="_blank">Spider gbXML Viewer 'Maevia'</a>
+					</p>
+
+					<p>
+						See <a href="http://gbxml.org/schema_doc/6.01/GreenBuildingXML_Ver6.01.html" target="_blank">Schema GreenBuildingXML_Ver6.01.xsd </a>
+					</p>
+
+				</div>
+
+
+			<details open >
+
+				<summary class="sumMenuTitle" >File menu</summary>
+
+				<div id="SFMsecPrototypes" ></div>
+
+				<div id="GALdivSampleFilesGallery"></div>
+
+				<div id="FILdivFileOpen"></div>
+
+				<div id="FILdivFileSave"></div>
+
+			</details>
+
+			<details open >
+
+				<summary class=sumMenuTitle >Settings menu</summary>
+
+				<div id=THMsecMenuThemeSelect ></div>
+
+				<div id=TMPsecMenuTemplate ></div>
+
+			</details>
+
+
+			<footer>
+
+				<div id="MNUdivFooter" ></div>
+
+			<h1 onclick="navPanel.scrollTop=0;" style="cursor:pointer;text-align:center;" title="go to top of menu" >
+				<img alt="spider icon" src="https://ladybug.tools/artwork/icons_bugs/ico/spider.ico" height=18 >
+			</h1>
+
+			</footer>
+
+
+
+
+		</section>
+
+	</nav>
+
+	<main id=main >
+
+		<div id=divContents ></div>
+
+	</main>
+
+
+	<nav>
+
+		<a href="" id="butViewSource" target=_blank; hidden >view source</a>
+
+	</nav>
+
+
+	<nav id="navPopup" hidden >
+
+		<div style=text-align:right; ><button onclick="MNU.setPopupShowHide(MNU.popupId,'');"" >×</button></div>
+
+		<div id="MNUdivPopupData" ></div>
+
+		<div id="MNUdivPopupMessage" ></div>
+
+	</nav>
+
 <script>
-
-// following belongs lower but moved here to be easier to see amd update
-
-MNU.description =
-	`
-		Mission: run a series of basics checks on <a href="https://gbXML.org" target="_blank">gbXML</a> files and identify, report and help you fix any errors
-	`;
-
-MNU.currentStatusCore =
-	`
-		<h3>
-			Spider gbXML Fixer 'Atrax'
-			R${ document.head.querySelector( '[ name=release ]' ).content }
-			~
-			${ document.head.querySelector( '[ name=date ]' ).content }
-		</h3>
-
-		<p>
-			<a title="By Tirin at the English language Wikipedia, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=128531"
-				href="https://en.wikipedia.org/wiki/Sydney_funnel-web_spider">
-				<img width="256" alt="Sydney funnel-web spider" src="https://upload.wikimedia.org/wikipedia/commons/9/9f/Atrax_robustus.jpg" ><br>
-				<i>Atrax robustus</i></a> - 'Atrax' is the code name for this release of the Ladybug Tools / Spider gbXML Fixer
-		</p>
-
-		<p>${ MNU.description }</p>
-
-		<p>
-			<a href="https://github.com/ladybug-tools/spider-gbxml-tools/blob/master/spider-gbxml-fixer/" target="_blank">
-				Spider gbXML Fixer source code</a>
-		</p>
-
-		<details>
-
-			<summary>Change log</summary>
-
-			<ul>
-				<li>2019-04-22 ~ R0.4.0 ~ First commit</li>
-			</ul>
-
-		</details>
-
-		<details>
-
-			<summary>TooToo Content Manager</summary>
-
-			<p>This web page is built with:</p>
-
-			${ MNU.descriptionTooToo }
-
-		</details>
-	`;
-
 
 
 //FIL.urlDefaultFile = "../README.md";
 // useful when testing / un-comment
 //FIL.urlDefaultFile = "https://cdn.jsdelivr.net/gh/ladybug-tools/spider@master/gbxml-sample-files/bristol-clifton-downs-broken.xml";
-FIL.urlDefaultFile = "https://cdn.jsdelivr.net/gh/ladybug-tools/spider@master/gbxml-sample-files/zip/coventry-university-of-warwick-small.zip";
-
+//FIL.urlDefaultFile = "https://cdn.jsdelivr.net/gh/ladybug-tools/spider@master/gbxml-sample-files/zip/coventry-university-of-warwick-small.zip";
+FIL.urlDefaultFile = "file:///D:/temp/zzz-gbxml-testing/BHoMgbXML_GH_Airport.zip";
 
 //THM.themeUrlStorage = 'spider-gbxml-fixer-theme-url';
 //THM.cssBasic = "https://pushme-pullyou.github.io/tootoo13/js-tootoo13-2/style.css";
@@ -130,100 +171,6 @@ MNU.appUrl   = ""; // "https://www.ladybug.tools/spider-gbxml-tools/";
 MNU.footerUrl = "https://ladybug-tools.github.io/spider/#";
 MNU.footerTarget = "target=_blank";
 MNU.footerIssues = "https://github.com/ladybug-tools/spider/issues";
-
-</script>
-
-
-	<nav id="navPanel" >
-
-		<section id="secContent" >
-
-			<header>
-
-				<div id="MNUdivHeader" ></div>
-
-				<div >
-
-					<p>
-						See <a href="http://www.ladybug.tools/spider-gbxml-tools/spider-gbxml-viewer/" target="_blank">Spider gbXML Viewer 'Maevia'</a>
-					</p>
-
-					<p>
-						See <a href="http://gbxml.org/schema_doc/6.01/GreenBuildingXML_Ver6.01.html" target="_blank">Schema GreenBuildingXML_Ver6.01.xsd </a>
-					</p>
-
-				</div>
-
-			</header>
-
-			<details class=navSubMenu open >
-
-				<summary class="sumMenuTitle" >File menu</summary>
-
-				<div id="SFMsecPrototypes" ></div>
-
-				<div id="GALdivSampleFilesGallery"></div>
-
-				<div id="FILdivFileOpen"></div>
-
-				<div id="FILdivFileSave"></div>
-
-			</details>
-
-			<details class=navSubMenu open >
-
-				<summary class=sumMenuTitle >Settings menu</summary>
-
-				<div id=THMsecMenuThemeSelect ></div>
-
-				<div id=TMPsecMenuTemplate ></div>
-
-			</details>
-
-
-			<footer class=navSubMenu >
-
-				<div id="MNUdivFooter" ></div>
-
-			</footer>
-
-
-			<h1 onclick="navMenu.scrollTop=0;" style="cursor:pointer;text-align:center;" title="go to top of menu" >
-				<img alt="spider icon" src="https://ladybug.tools/artwork/icons_bugs/ico/spider.ico" height=18 >
-			</h1>
-
-		</section>
-
-	</nav>
-
-	<main id=main >
-
-			<div id=divContents >
-
-				<p>
-					lorem ipsum, quia dolor sit, amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt, ut labore et dolore magnam aliquam quaerat voluptatem. ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? quis autem vel eum iure reprehenderit, qui in ea voluptate velit esse, quam nihil molestiae consequatur, vel illum, qui dolorem eum fugiat, quo voluptas nulla pariatur?
-				</p>
-			</div>
-
-		</main>
-
-
-		<nav>
-
-			<a href="" id="butViewSource" target=_blank; hidden >view source</a>
-
-		</nav>
-
-		<nav id="navPopup" hidden >
-
-			<div id="divPopupData" ></div>
-
-			<div id="divMessage" ></div>
-
-		</nav>
-
-<script>
-
 
 
 init();

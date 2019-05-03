@@ -41,7 +41,7 @@ FASD.getFixAdjacentSpaceDuplicate = function() {
 		`
 			<details id=FASDdet ontoggle="FASDdivAdjacentSpaceDuplicate.innerHTML=FASD.getAdjacentSpaceDuplicate();" >
 
-				<summary id=FASDsumAdjacentSpaceDuplicate class=sumHeader >Fix surfaces with duplicate adjacent spaces
+				<summary id=FASDsumAdjacentSpaceDuplicate >Fix surfaces with duplicate adjacent spaces
 					<a id=FASDSum class=helpItem href="JavaScript:MNU.setPopupShowHide(FASDSum,FASD.currentStatus);" >&nbsp; ? &nbsp;</a>
 				</summary>
 

@@ -53,7 +53,7 @@ FSTN.getMenuSurfaceTypeName = function() {
 		`
 			<details id=FSTNdet ontoggle="FSTNdivSurfaceType.innerHTML=FSTN.getSurfaceType();" >
 
-			<summary id=FSTNsumSurfaceType class=sumHeader >Fix surfaces with invalid surface type name
+			<summary id=FSTNsumSurfaceType >Fix surfaces with invalid surface type name
 				<a id=FSTNSum class=helpItem href="JavaScript:MNU.setPopupShowHide(FSTNSum,FSTN.currentStatus);" >&nbsp; ? &nbsp;</a>
 			</summary>
 

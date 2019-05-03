@@ -39,7 +39,7 @@ FCIM.getCadIdMissing = function() {
 		`
 			<details id=FCIMdet ontoggle="FCIMdivCadIdMissing.innerHTML=FCIM.getFixCadIdMissing();" >
 
-			<summary id=FCIMsumCadIdMissing class=sumHeader >Fix Surfaces with CAD object ID missing
+			<summary id=FCIMsumCadIdMissing >Fix Surfaces with CAD object ID missing
 				<a id=FCIMSum class=helpItem href="JavaScript:MNU.setPopupShowHide(FCIMSum,FCIM.currentStatus);" >&nbsp; ? &nbsp;</a>
 			</summary>
 

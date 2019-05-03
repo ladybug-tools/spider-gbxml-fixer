@@ -55,7 +55,7 @@ FETS.getSurfaceExposedToSun = function() {
 	`
 		<details id=FETSdet ontoggle="FETSdivSurfaces.innerHTML=FETS.getSurfaceExposedToSunErrors();" >
 
-			<summary id=FETSsumSurfaces class=sumHeader >Fix surfaces with invalid ExposedToSun
+			<summary id=FETSsumSurfaces >Fix surfaces with invalid ExposedToSun
 				<a id=FETSSum class=helpItem href="JavaScript:MNU.setPopupShowHide(FETSSum,FETS.currentStatus);" >&nbsp; ? &nbsp;</a>
 			</summary>
 

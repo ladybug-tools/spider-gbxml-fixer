@@ -1,17 +1,18 @@
-// Copyright 2019 Ladybug Tools authors. MIT License
+
 /* globals GBX, FASEselAdjacentSpaceExtra, FASEsumSpaceExtra, FASEdivSpaceExtraData, FASEdivSpaceExtra  */
 /* jshint esversion: 6 */
 /* jshint loopfunc: true */
 
 
 
-const FASE = { "release": "3.0.0", "date": "2019-04-19" };
+const FASE = {
 
+	"description": "Checks for a surface with more adjacent spaces and required",
+	"date": "2019-04-19",
+	"copyright": "Copyright 2019 Ladybug Tools authors. MIT License",
+	"release": "0.4.0"
 
-FASE.description =
-	`
-		Checks for a surface with more adjacent spaces and required
-	`;
+};
 
 
 FASE.currentStatus =
@@ -48,7 +49,7 @@ FASE.getFixAdjacentSpaceExtra = function() {
 		`
 			<details id=FASEdet ontoggle="FASEdivAdjacentSpaceExtra.innerHTML=FASE.getAdjacentSpaceExtra();" >
 
-				<summary id=FASEsumAdjacentSpaceExtra class=sumHeader >Fix surfaces with an extra adjacent space
+				<summary id=FASEsumAdjacentSpaceExtra >Fix surfaces with an extra adjacent space
 					<a id=FASESum class=helpItem href="JavaScript:MNU.setPopupShowHide(FASESum,FASE.currentStatus);" >&nbsp; ? &nbsp;</a>
 				</summary>
 
@@ -130,14 +131,13 @@ FASE.getAdjacentSpaceExtra = function() {
 			</p>
 
 			<p><button onclick=FASE.deleteAllSpacesExtra(); >Fix all</button></p>
+
 			<div id="FASEdivSpaceExtraData" >Click a surface name above to view its details and delete extra space. Tool tip shows the ID of the surface.</div>
 
 
-			<div id=FASEdivSelectedSurfaceGbXML ></div>
+			<div id=xxxFASEdivSelectedSurfaceGbXML ></div>
 
-			<p>
-				Click 'Save file' button in File menu to save changes to a file.
-			</p>
+			<p>Click 'Save file' button in File menu to save changes to a file.</p>
 
 			<p>Time to check: ${ ( performance.now() - timeStart ).toLocaleString() } ms</p>
 		`;

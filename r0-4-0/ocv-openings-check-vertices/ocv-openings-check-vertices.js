@@ -42,7 +42,7 @@ OCV.getOpeningsCheckVertices = function() {
 		`
 			<details ontoggle="OCVdivOpeningsVertices.innerHTML=OCV.getOpeningsVertices();" >
 
-			<summary id=OCVsumOpeningsVertices class=sumHeader >Check for openings with more than four vertices
+			<summary id=OCVsumOpeningsVertices >Check for openings with more than four vertices
 				${ OCV.help }
 			</summary>
 				<div id=OCVdivOpeningsVertices ></div>
