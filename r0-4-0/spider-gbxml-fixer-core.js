@@ -124,7 +124,7 @@ GBX.init = function() {
 	GGD.getData( FIL.text );
 
 	GGDdivGetGbxmlData.innerHTML = GGD.getGbxmlData( FIL.text );
-	
+
 
 	GCSdivGetCheckStrings.innerHTML = GCS.getCheckStrings();
 
@@ -156,7 +156,7 @@ GBX.init = function() {
 
 		const url = location.hash ? location.hash : "#" + FIL.urlDefaultFile;
 		console.log( 'url', url );
-		//GBXifr.src = `${ viewer }${ url }`;
+		GBXifr.src = `${ viewer }${ url }`;
 
 	} else {
 
@@ -181,6 +181,7 @@ GBX.runAll = function(){
 	for ( let item of details ) { item.open = true; }
 
 };
+
 
 
 GBX.closeAll = function(){
