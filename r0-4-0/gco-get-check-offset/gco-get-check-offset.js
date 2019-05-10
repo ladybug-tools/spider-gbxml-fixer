@@ -4,7 +4,7 @@
 /* jshint loopfunc: true */
 
 
-GCO = { release: "2.0.0", date: "2019-04-03" };
+GCO = { release: "0.4.1", date: "2019-05-10" };
 
 GCO.description = `Check offset `;
 
@@ -40,9 +40,10 @@ GCO.getCheckOffset = function() {
 		`
 			<details ontoggle="GCOdivCheckOffset.innerHTML=GCO.getOffset();" >
 
-			<summary id=GCOsumCheckOffset >Check project offset distance from origin
-				<a id=GCOSum class=helpItem href="JavaScript:MNU.setPopupShowHide(GCOSum,GCO.currentStatus);" >&nbsp; ? &nbsp;</a>
-			</summary>
+				<summary id=GCOsumCheckOffset >Check project offset distance from origin
+					<button id=butGCO class=butHelp onclick="MNU.setPopupShowHide(butGCO,'./gco-get-check-offset/README.md');" >?</button>
+				</summary>
+
 				<div id=GCOdivCheckOffset ></div>
 
 			</details>
@@ -68,7 +69,10 @@ GCO.getOffset = function() {
 		} );
 
 
-	GCOsumCheckOffset.innerHTML = `Check maximum offset distance from origin ~ ${ max.toLocaleString() } units`;
+	GCOsumCheckOffset.innerHTML =
+		`Check maximum offset distance from origin ~ ${ max.toLocaleString() } units
+			<button id=butGCO class=butHelp onclick="MNU.setPopupShowHide(butGCO,'./gco-get-check-offset/README.md');" >?</button>
+		`;
 
 	const offsetHtm =
 
