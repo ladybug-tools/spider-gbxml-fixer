@@ -1,7 +1,11 @@
 # [Get gbXML Data GGD Read Me]( #ggd-get-gbxml-data/README.md )
 
+_Carries out an initial parse of the gbXML data and set up variables for use by other modules_
+
 <details style>
 <summary>Concept</summary>
+
+Createsthe GGD object and populates
 
 </details>
 <details>

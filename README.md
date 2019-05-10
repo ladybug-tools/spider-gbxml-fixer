@@ -3,18 +3,23 @@
 
 <div><input type=button class = "btn btn-secondary btn-sm" onclick=window.location.href="https://github.com/ladybug-tools/spider-gbxml-fixer/"
 value="You are now in a GitHub web page view - Click this button to view this read me file as source code" ></div>
-
-<br>
 -->
 
 # [Spider gbXML Fixer 'Atrax' Read Me]( #../README.md )
+
+_JavaScript utilities to help you identify and fix common errors in [gbXML]( http://gbxml.org ) files_
 
 <!--
 <iframe src=https://www.ladybug.tools/spider-gbxml-fixer/spider-gbxml-fixer.html width=100% height=500px >Iframes are not viewable in GitHub source code views</iframe>
 _<small>Spider gbXML Fixer</small>_
 -->
 
-_JavaScript utilities to help you identify and fix common errors in [gbXML]( http://gbxml.org ) files_
+
+<a title="By Tirin at the English language Wikipedia, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=128531"
+href="https://en.wikipedia.org/wiki/Sydney_funnel-web_spider">
+<img width="256" alt="Sydney funnel-web spider" src="https://upload.wikimedia.org/wikipedia/commons/9/9f/Atrax_robustus.jpg" ><br>
+<i>Atrax robustus</i></a> - 'Atrax' is the code name for this release of the Ladybug Tools / Spider gbXML Fixer
+
 
 
 ### Bookmark this link for the stable release:<br>[https://www.ladybug.tools/spider-gbxml-fixer/]( https://www.ladybug.tools/spider-gbxml-fixer/ "Always links to the release that has been tested" )
@@ -27,37 +32,69 @@ _JavaScript utilities to help you identify and fix common errors in [gbXML]( htt
 -->
 
 <details>
+
+<summary class=sumHeader title="How can we help you?" >Features and Benefits</summary>
+
+Spider gbXML Fixer enables you t0:
+
+* Access online and local gbXML file via URL, file ope dialog box and drag&drop
+* Run an extensive set of checks - with most checks also providing automated fixes
+* Save fixed models as .XML or .ZIP files
+
+The following are the checks and fixes currently implemented
+
+* Inspect files in real-time 3D
+* Check for valid text and numbers
+* Check project offset distance from origin
+* Check for openings with more than four vertices
+* Fix missing required gbXML attributes
+* Fix surfaces with invalid surface type name
+* Fix surfaces with invalid ExposedToSun
+* Fix surfaces with duplicate planar coordinates
+* Fix surfaces with an extra adjacent space
+* Fix surfaces with duplicate adjacent spaces
+* Fix air surfaces with single adjacent space
+* Fix Surfaces with CAD object ID missing
+
+Using the Fixer should be much easier than doing searching for and replacong text in a gbXML file and should faster than using the Spider Viewers.
+
+</details>
+
+<details>
+
 <summary class=sumHeader title="Includes our mission and vision statements" >Concept / the problem to be solved</summary>
 
 [GbXML]( http://www.gbxml.org/About_GreenBuildingXML_gbXML ) data files follow an industry-standard format and used to the transfer 3D building project data between computer aided design (CAD) program and energy analysis programs. The good people who create CAD and energy analysis applications are primarily software programmers. They have infrequent access to large numbers of actual building test cases nor can they simulate large varieties of practice-specific energy simulation workflows. The current often-repeated outcome is that building engineering practices devote much time to dealing with issues in transferring data back and forth between CAD applications and energy analysis programs - and thus losing time for creating better simulations.
 
-Many of the issues to be found in parsing gbXML files are clerical matters that may be identified using simple text search routines. Full 3D viewing of these types of errors is not needed and may actually slow things down.
+Many of the issues to be found in parsing gbXML files are clerical matters that may be identified using simple text search and replace routines. Full 3D viewing of these types of errors is not needed and may actually slow things down.
 
 The desired solution is a utility that enables seamless gbXML data transfer between applications without human intervention.
 
 ### Mission for Spider gbXML Fixer / currently
 
 * Run basic text-based checks on gbXML files and uncover, identify, report and fix any errors or issues
-* Help you access scripts that work well in your practice, your workflow and your skill set so that your projects are designed and built faster, cheaper and better
+* Help you access, edit and improve scripts that are customized for your needs and work well in your practice, your workflow and your skill set so that your projects are designed and built faster, cheaper and better
 
 ### Vision / future
 
-* All errors are fixed and changes saved with the click of a single button or just running the script on a server
+* All errors are fixed and changes are saved with the click of a single button or just running the script on a server
 
 
 ### Notes
 
 * Not all issues in gbXML files are simple, text-based issues. Some issues will require full a 3D visualization in order to be discovered and fixed. An intention is to make the workflow between a text-based fixer and full 3D fixer as seamless as possible.
-* If you identify a frequently occurring error in ggXML files and supply sample files that exhibit the error, the Spider team will be pleased to build a an open-source module that identifies and fixes your issues
-* The script is still at an early stage. Many more checks may be added. The user interface needs streamlining. And so on.
+* If you identify a frequently occurring error in gbXML files and supply sample files that exhibit the error, the Spider team will be pleased to build a an open-source module that identifies and fixes your issues
+* Currently 'Atrax' links to scripts from TooToo14 and 'Maevia'. As and when this script matures, these dependencies may be eliminated
+* The script is still at an early stage. Many more checks may be added. The user interface needs streamlining. And so on
 
 </details>
 
 
 <details>
+
 <summary class=sumHeader title="How to use Atrax" >Instructions / usage / things you can do</summary>
 
-Overview of the Spider menu system
+#### Overview of the Spider menu system
 
 * The left menu is composed of several panels that resemble the drop-down menus in desktop programs. The panels are 'File', 'Settings' and 'Help'. The 'Edit' menu in Fixer is the main content window
 * Every menu panel has its own JavaScript file or files that includes help and other useful information in a pop-up window
@@ -73,7 +110,8 @@ Overview of the Spider menu system
 * Click on title in the left menu to reload the web page
 	* Reloads the data file if the source is a URL
 
-**File Menu** - Opening files and saving changes
+
+#### File Menu - Opening files and saving changes
 
 * 'Open gbXML sample files' - click to access the Spider gbXML sample files
 	* Then click any of the buttons to to view a list of files you can open
@@ -81,10 +119,10 @@ Overview of the Spider menu system
 * 'Open gbXML or ZIP file' - click 'Choose file' and load a gbXML files or a ZIP file containing a gbXML file
 	* Drag & drop a gbXML or ZIP file to the area inside the dotted lines in the left menu
 * 'Save file' - Click on to save any changes you have made to a new file
-	* You may save the changes either to an XML file or and XML file compressed into a ZIP file
+	* You may save the changes either to an XML file or an XML file compressed into a ZIP file
 
 
-**Edit menu**
+#### Edit menu
 
 * Checking and fixing errors in main content area
 * Once a file is opened a menu appears in the main content area that allows you to identify and fix any issues found in the file
@@ -95,19 +133,24 @@ Overview of the Spider menu system
 * In some workflows an Air surface type with duplicate adjacent spaces is acceptable. You may adjust the settings so an error is not issued.
 
 
-**Settings menu**
+#### Settings menu
+
+* 2019-05-09 ~ Not yet implemented here
 * Click on 'Select Theme and choose a [Bootswatch]( https://bootswatch.com/ ) theme such as 'United'
 
 
-**Help menu**
+#### Help menu
+
 * Click to see the links to many support files
 
 
-Debugging
+#### Debugging
+
 * Press Control-U/Command-Option-U to view the source code
 * Press Control-Shift-J/Command-Option-J to see if the JavaScript console reports any errors
 
-Enhancing the script
+#### Enhancing the script
+
 * Try adding a new menu module
 * Translate into another language
 
@@ -115,6 +158,7 @@ Enhancing the script
 
 
 <details>
+
 <summary class=sumHeader title-"What you you really want?" >To Do / Wish List</summary>
 
 * 2019-04-03 ~ Identify surface edges with multiple vertices where two are sufficient
@@ -127,6 +171,7 @@ Enhancing the script
 
 
 <details>
+
 <summary class=sumHeader title="Bugs we know about already" >Issues</summary>
 
 * 2019-04-08 ~ When reloading a file, the 'undefined' in main content window
@@ -136,6 +181,7 @@ Enhancing the script
 </details>
 
 <details>
+
 <summary class=sumHeader title="The back story on things"  >Links of Interest</summary>
 
 ### _Atrax robustus_

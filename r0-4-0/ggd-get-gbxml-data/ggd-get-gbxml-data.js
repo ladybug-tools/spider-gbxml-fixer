@@ -9,7 +9,7 @@ const GGD = { release: "2.1.0", date: "2019-04-05" };
 GGD.description = `Gather data to be used by other modules and report statistics`;
 
 
-GGD.currentStatus =
+GGD.vvvvcurrentStatus =
 	`
 		<h3>Get gbXML Data (GGD) ${ GGD.release } status ${ GGD.date }</h3>
 
@@ -42,7 +42,7 @@ GGD.getGbxmlData = function() {
 			<details ontoggle="GGDdivGbxmlData.innerHTML=GGD.getData(GBX.text);" >
 
 				<summary id=GGDsumGetGbxmlData >Show gbXML file statistics
-					<button id=butGGD class=butHelp onclick="MNU.setPopupShowHide(butGGD,'../ggd-get-gbxml-data/README.md');" >?</button>
+					<button id=butGGD class=butHelp onclick="MNU.setPopupShowHide(butGGD,'./ggd-get-gbxml-data/README.md');" >?</button>
 				</summary>
 
 				<div id=GGDdivGbxmlData ></div>

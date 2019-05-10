@@ -1,48 +1,15 @@
-// Copyright 2019 Ladybug Tools authors. MIT License
-/* globals GBX, JSZip, FILdivFileOpen, FILdivProgress, FILdetFileOpen, FILinpFilePath */
+/* globals MNU, inpOpenFile, GBX, JSZip, showdown, FILdivFileOpen, FILdivProgress, FILdetFileOpen, FILinpFilePath */
 // jshint esversion: 6
 
 
-const FIL = { "release": "0.4.0", "date": "2019-04-23" };
+const FIL = {
+	"copyright": "Copyright 2019 Ladybug Tools authors. MIT License",
+	"date": "2019-05-09",
+	"description": "Open and save gbXML and ZIP files using location.hash, the operating system file dialog box or drag&drop",
+	"helpFile": "../fil-file-open-xml-zip/README.md",
+	"release": "0.4.1",
+};
 
-FIL.description =
-	`
-		Open and save gbXML and ZIP files using location.hash,
-		the operating system file dialog box or drag&drop.
-	`;
-
-FIL.currentStatus =
-	`
-		<h3>FIL ${ FIL.release } status ${ FIL.date }</h3>
-
-		<p>${ FIL.description }</p>
-
-		<p>
-			<a href="https://github.com/ladybug-tools/spider-gbxml-fixer/" target="_blank">
-			fil-file-open-xml-zip.js source code</a>
-		</p>
-
-		<details>
-
-			<summary>Wish List / To Do</summary>
-
-			<ul>
-				<li>2019-03-23 ~ Handle more file types</li>
-			</ul>
-
-		</details>
-
-		<details>
-
-			<summary>Change log</summary>
-
-			<ul>
-				<li>2019-04-22 ~ F - First commit</li>
-			</ul>
-
-		</details>
-
-	`;
 
 
 FIL.reader = new FileReader();
@@ -65,13 +32,13 @@ FIL.getMenuFileOpen = function() {  // called from main HTML file
 		<details id=FILdetFileOpen open >
 
 			<summary>Open gbXML or ZIP file
-				<a id=filSum class=helpItem href="JavaScript:MNU.setPopupShowHide(filSum,FIL.currentStatus);" >&nbsp; ? &nbsp;</a>
+				<button id=butFIL class=butHelp onclick="MNU.setPopupShowHide(butFIL,FIL.helpFile);" >?</button>
 			</summary>
 
 			<div class="dragDropArea" >
 
 				<p>
-					<input type=file id=inpOpenFile onchange=FIL.onInputFileOpen(this); accept=".xml, .zip" >
+					<input type=file id=inpOpenFile onchange=FIL.onInputFileOpen(this); accept=".xml, .zip, .md" >
 				</p>
 				<p>
 					<button onclick=FIL.reloadFile(); >reload file</button>
@@ -111,21 +78,17 @@ FIL.getMenuFileSave = function() {
 	<details>
 
 		<summary>Save file
-			<a id=filSav class=helpItem href="JavaScript:MNU.setPopupShowHide(filSav,FIL.currentStatus);" >&nbsp; ? &nbsp;</a>
+			<button id=butFILSave class=butHelp onclick="MNU.setPopupShowHide(butFILSave,FIL.helpFile);" >?</button>
 		</summary>
 
-		<div id = "divSaveFile" >
+		<p>
+			<button onclick=FIL.butSaveFile(); >Save file as gbXML</button>
+		</p>
+		<p>
+			<button onclick=FIL.butSaveFileZip(); >Save file as gbXML in ZIP</button>
+		</p>
 
-			<p>
-				<button onclick=FIL.butSaveFile(); >Save file as gbXML</button>
-			</p>
-			<p>
-				<button onclick=FIL.butSaveFileZip(); >Save file as gbXML in ZIP</button>
-			</p>
-
-			<hr>
-
-		</div>
+		<hr>
 
 	</details>
 
@@ -151,6 +114,10 @@ FIL.onHashChange = function() {
 	} else if ( FIL.name.toLowerCase().endsWith( '.zip' )) {
 
 		FIL.xhrRequestFileZip( url, FIL.callbackUrlUtf16 );
+
+	} else if ( FIL.name.toLowerCase().endsWith( '.md' )) {
+
+		FIL.requestFileText( url );
 
 	} else {
 
@@ -209,8 +176,11 @@ FIL.callbackUrlUtf16 = function( xhr ) {
 
 		zip.forEach( ( relativePath, zipEntry ) => names.push( zipEntry.name ) );
 
-		// Read from the zip file!
+		// Read first file from the zip file!
 		const uint8array = zip.file( names[ 0 ] ).async( "uint8array" );
+		//console.log( 'names[ 0 ]', names[ 0 ] );
+
+		FIL.name = names[ 0 ];
 
 		return uint8array;
 
@@ -274,6 +244,19 @@ FIL.callbackUrlUtf16 = function( xhr ) {
 
 
 
+FIL.requestFileText = function( url ) {
+
+	FIL.timeStart = performance.now();
+
+	FIL.xhr.open( 'GET', url, true );
+	FIL.xhr.onerror = function( xhr ) { console.log( 'error:', xhr  ); };
+	FIL.xhr.onprogress = function( xhr ) { FIL.onProgress( xhr.loaded, FIL.note ); };
+	FIL.xhr.onload = function( xhr ) { FIL.callbackMarkdown( xhr.target.response ); };
+	FIL.xhr.send( null );
+
+};
+
+
 ////////// Handle OS file dialog events
 
 FIL.onInputFileOpen = function( files ) {
@@ -282,7 +265,6 @@ FIL.onInputFileOpen = function( files ) {
 	FIL.timeStart = performance.now();
 
 	FIL.files = files;
-
 
 	const file = files.files[ 0 ];
 	const type = file.type;
@@ -298,7 +280,9 @@ FIL.onInputFileOpen = function( files ) {
 
 	} else {
 
-		console.log( 'not supported', type );
+		FIL.onFileOpenText( files );
+
+		//console.log( 'not supported', type );
 
 	}
 
@@ -364,7 +348,10 @@ FIL.fileOpenXml = function( files ) {
 
 	FIL.name = files.files[ 0 ].name;
 	FIL.reader.onprogress = function( event ) { FIL.onProgress( event.loaded, FIL.note ); };
-	FIL.reader.onload = function( event ) { FIL.text = FIL.reader.result; FIL.onProgress( event.loaded, "loaded" ); };
+	FIL.reader.onload = function( event ) {
+		FIL.text = FIL.reader.result;
+		FIL.onProgress( event.loaded, "loaded" );
+	};
 	FIL.reader.readAsText( files.files[ 0 ] );
 
 };
@@ -385,6 +372,7 @@ FIL.fileOpenZip = function( files ) {
 
 		zip.forEach( ( relativePath, zipEntry ) => names.push( zipEntry.name ) );
 		FIL.name = names[ 0 ];
+		console.log( 'FIL.name', FIL.name );
 
 		const arrTemp = zip.files[ FIL.name].async(
 			"uint8array",
@@ -430,6 +418,38 @@ FIL.fileOpenZip = function( files ) {
 };
 
 
+FIL.onFileOpenText = function( files ) {
+
+	FIL.files = files;
+	FIL.timeStart = performance.now();
+
+	const file = files.files[ 0 ];
+	//console.log( '', file );
+
+	FIL.reader.onload = function( event ) {
+		//console.log( 'FIL.reader', FIL.reader );
+
+		FIL.displayMarkdown( FIL.reader.result )
+
+	};
+
+	FIL.reader.readAsText( file );
+
+};
+
+
+
+FIL.displayMarkdown = function( markdown ) {
+	//console.log( 'Markdown', markdown );
+
+	showdown.setFlavor('github');
+	const converter = new showdown.Converter();
+	const html = converter.makeHtml( markdown );
+
+	MNU.setPopupShowHide( inpOpenFile, html );
+
+};
+
 
 ////////// File Save
 
@@ -460,7 +480,7 @@ FIL.butSaveFileZip = function() {
 
 		let a = document.body.appendChild( document.createElement( 'a' ) );
 		a.href = window.URL.createObjectURL( blob );
-		a.download = FIL.name.replace( /.xml/i, '.zip' );
+		a.download = FIL.name.replace( /\.xml/i, '.zip' );
 		a.click();
 		a = null;
 

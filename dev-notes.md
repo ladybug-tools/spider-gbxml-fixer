@@ -2,6 +2,16 @@
 # Dev Notes
 
 
+### 2019-05-06 ~ Theo
+
+To do
+
+* tootoo links and read me's working and helpful
+* Test fixed results against latest open studio
+* keep fixing other readme files
+
+
+
 ### 2019-04-03 ~ Theo
 
 In R1 what is loaded at run time depends on the HTML in the template element. The JavaScript module cannot be moved or commented out without also editing the HTML in the template in the main HTML file.

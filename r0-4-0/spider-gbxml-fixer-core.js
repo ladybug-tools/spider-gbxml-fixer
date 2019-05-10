@@ -5,10 +5,10 @@
 
 const GBX = { release: "0.4.0", date: "2019-04-22" };
 
-GBX.description = `Run basic checks on gbXML files and identify, report and fix issues`;
+GBX.description = `Run basic checks on gbXML files to identify, report and fix issues`;
 
 
-GBX.currentStatus =
+GBX.xxxxcurrentStatus =
 	`
 		<h3>Get Spider gbXM Fixer (GBX) ${ GBX.release } status ${ GBX.date }</h3>
 
