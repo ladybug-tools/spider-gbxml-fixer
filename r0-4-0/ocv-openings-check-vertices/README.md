@@ -4,12 +4,15 @@
 
 <summary>Concept</summary>
 
+Openings: check openings with more than four vertices
+
 </details>
 
 <details>
 
 <summary>To Do / Wish List</summary>
 
+* 2019-04-03 ~ Delete any extra vertices in edges
 
 </details>
 

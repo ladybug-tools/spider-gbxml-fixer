@@ -4,12 +4,17 @@
 /* jshint loopfunc: true */
 
 
-const OCV = { release: "2.0.0", date: "2019-04-03" };
+const OCV = {
 
-OCV.description = `Openings: check openings with more than four vertices`;
+	"date": "2019-04-03",
+	"description": "Openings: check openings with more than four vertices",
+	"helpFile": "./ocv-openings-check-vertices/README.md",
+	"release": "0.4.0"
+
+};
 
 
-OCV.currentStatus =
+OCV.xxxcurrentStatus =
 	`
 		<h3>Get Openings Check Vertices(OCV) ${ OCV.release } status ${ OCV.date }</h3>
 
@@ -36,7 +41,7 @@ OCV.currentStatus =
 
 OCV.getOpeningsCheckVertices = function() {
 
-	OCV.help = `<a id=OCVHelp class=helpItem href="JavaScript:MNU.setPopupShowHide(OCVHelp,OCV.currentStatus);" >&nbsp; ? &nbsp;</a>`;
+	OCV.help = `<button id=butOCV class=butHelp onclick="MNU.setPopupShowHide(butOCV,OCV.helpFile);" >?</button>`;
 
 	const htm =
 		`

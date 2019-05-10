@@ -6,10 +6,10 @@
 const TMP = {
 
 	"copyright": "Copyright 2019 Ladybug Tools authors. MIT License",
-	"date": "2019-05-09",
+	"date": "2019-05-10",
 	"description": "template for checking surfaces",
 	"helpFile": "../tmp-template/README.md",
-	"release": "0.4.0"
+	"release": "0.4.1"
 
 };
 
@@ -96,7 +96,7 @@ TMP.getSurfaces = function() {
 
 	TMPsumSurfaces.innerHTML =
 		`Surfaces ~ ${ TMP.surfaces.length.toLocaleString() } found
-		<button id=butTMP class=butHelp onclick="MNU.setPopupShowHide(butTMP,TMP.helpFile);" >?</button>
+			<button id=butTMP class=butHelp onclick="MNU.setPopupShowHide(butTMP,TMP.helpFile);" >?</button>
 		`;
 
 	const htm =
