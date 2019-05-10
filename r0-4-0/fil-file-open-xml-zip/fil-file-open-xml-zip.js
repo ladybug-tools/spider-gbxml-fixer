@@ -6,7 +6,7 @@ const FIL = {
 	"copyright": "Copyright 2019 Ladybug Tools authors. MIT License",
 	"date": "2019-05-09",
 	"description": "Open and save gbXML and ZIP files using location.hash, the operating system file dialog box or drag&drop",
-	"helpFile": "../fil-file-open-xml-zip/README.md",
+	"helpFile": "../r0-4-0/fil-file-open-xml-zip/README.md",
 	"release": "0.4.1",
 };
 
@@ -138,7 +138,7 @@ FIL.xhrRequestFileXml = function( url ) {
 	FIL.xhr.open( 'GET', url, true );
 	FIL.xhr.onerror = function( xhr ) { console.log( 'error:', xhr  ); };
 	FIL.xhr.onprogress = function( xhr ) { FIL.onProgress( xhr.loaded, FIL.note ); };
-	FIL.xhr.onload = function( xhr ) { FIL.text = xhr.target.response; FIL.onProgress( xhr.loaded, "loaded" ); };
+	FIL.xhr.onload = function( xhr ) { FIL.text = xhr.target.response; FIL.onProgress( xhr.loaded, "load complete" ); };
 	FIL.xhr.send( null );
 
 };
@@ -232,7 +232,7 @@ FIL.callbackUrlUtf16 = function( xhr ) {
 			//const event = new Event( 'onZipFileParse' );
 			//document.body.dispatchEvent( event );
 
-			FIL.onProgress( text.length, "loaded" );
+			FIL.onProgress( text.length, "load complete" );
 
 		},
 
@@ -350,7 +350,7 @@ FIL.fileOpenXml = function( files ) {
 	FIL.reader.onprogress = function( event ) { FIL.onProgress( event.loaded, FIL.note ); };
 	FIL.reader.onload = function( event ) {
 		FIL.text = FIL.reader.result;
-		FIL.onProgress( event.loaded, "loaded" );
+		FIL.onProgress( event.loaded, "load complete" );
 	};
 	FIL.reader.readAsText( files.files[ 0 ] );
 
@@ -406,7 +406,7 @@ FIL.fileOpenZip = function( files ) {
 		}
 
 
-		FIL.onProgress( FIL.text.length, "loaded" ); // creates event
+		FIL.onProgress( FIL.text.length, "load complete" ); // creates event
 
 		//const event = new Event( 'onXmlFileLoad' );
 		//document.body.dispatchEvent( event );
@@ -514,7 +514,7 @@ FIL.onProgress = function( size = 0, note = '' ) {
 
 	FILdivProgress.innerHTML = htm;
 
-	if ( note === "loaded" ){
+	if ( note === "load complete" ){
 		//console.log( 'loaded', size );
 
 		const event = new Event( 'onXmlFileLoad' );
