@@ -164,7 +164,7 @@ FASA.setAirSingleAdjacentData = function( select ) {
 	const htm =
 	`
 		<p>
-		gbXML adjace space text: <br>
+		gbXML adjacent space text: <br>
 		<textarea style=width:100%; >${ surface.adjacentSpaceArr.join( "\n" ) }</textarea>
 		</p>
 		${ GSA.getSurfacesAttributesByIndex( surface.index, surface.name ) }

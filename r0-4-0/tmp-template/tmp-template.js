@@ -93,9 +93,9 @@ TMP.getSurfaces = function() {
 	*/
 
 
-	const options = TMP.surfaces.map( extra => {
+	const options = TMP.surfaces.map( surface => {
 
-		return `<option value=${ extra.index } title="${ extra.id }" >${ extra.name }</option>`;
+		return `<option value=${ surface.index } title="${ surface.id }" >${ surface.name }</option>`;
 
 	} );
 
@@ -108,7 +108,18 @@ TMP.getSurfaces = function() {
 
 		<p>${ TMP.surfaces.length.toLocaleString() } surface types found.</p>
 
-		${ surfacesString }
+
+		<p>
+			<select id=TMPselSurfaces onclick=TMP.setSurfaceData(this); size=5 style=min-width:8rem; >
+				${ options }
+			</select>
+		</p>
+
+		<p><button onclick=TMP.changeAllSurfaces(); >Fix all</button></p>
+
+		<div id="TMPdivSurfaceData" >Click a surface name above to view its details and change its surface type. Tool tip shows the ID of the surface.</div>
+
+		<!-- <p>Click 'Save file' button in File menu to save changes to a file.</p> -->
 
 		<p>Time to check: ${ ( performance.now() - timeStart ).toLocaleString() } ms</p>
 
@@ -120,10 +131,13 @@ TMP.getSurfaces = function() {
 
 
 
-TMP.getSurfaceData = function( index, text = "item" ) {
+TMP.setSurfaceData = function( select ) {
 
-	const htm = GSA.getSurfacesAttributesByIndex( index, text );
+	const surface = TMP.surfaces[ select.selectedIndex ];
+	//console.log( 'surface', surface );
 
-	return htm;
+	const htm = GSA.getSurfacesAttributesByIndex( select.selectedIndex, surface.name );
+
+	TMPdivSurfaceData.innerHTML = htm;
 
 };
