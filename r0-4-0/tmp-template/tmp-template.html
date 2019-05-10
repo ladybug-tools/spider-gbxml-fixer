@@ -3,11 +3,11 @@
 <head>
 <meta charset = "utf-8" >
 <meta name = "viewport" content= "width=device-width, initial-scale=1" >
-<meta name = "description" content = "Open files with FileReader() or XMLHttpRequest()" >
+<meta name = "description" content = "Template" >
 <meta name = "keywords" content = "JavaScript,GitHub,FOSS" >
-<meta name = "date" content = "2019-02-07" >
-<meta name = "release" content = "14.0.0" >
-<title>TMP Fix Template</title>
+<meta name = "date" content = "2019-05-10" >
+<meta name = "release" content = "0.4.0" >
+<title>TMP Template</title>
 <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" >
 <link rel="stylesheet" href="https://pushme-pullyou.github.io/tootoo14/js-14-0/style.css">
 </head>
@@ -53,7 +53,7 @@
 
 			<footer>
 
-				<div id="MNUdivFooter" ></div>
+				<div id="MNUdivFooterPopup" ></div>
 
 				<p>test files </p>
 
@@ -133,7 +133,7 @@ divFixThings =
 
 init();
 
-
+FIL.helpFile = "../fil-file-open-xml-zip/README.md";
 
 function init() {
 
@@ -148,7 +148,7 @@ function init() {
 
 	FILdivFileSave.innerHTML = FIL.getMenuFileSave();
 
-	MNUdivFooter.innerHTML = MNU.getNavFooter();
+	MNUdivFooterPopup.innerHTML = MNU.getNavFooterPopup();
 
 	//FIL.xhrRequestFileXml( FIL.urlDefaultFile );
 	FIL.onHashChange();
