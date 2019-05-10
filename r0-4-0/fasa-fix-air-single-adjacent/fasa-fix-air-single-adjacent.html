@@ -90,14 +90,15 @@
 
 <script>
 
+MNU.urlSourceCode = "https://github.com/ladybug-tools/spider-gbxml-fixer";
+MNU.description = FASA.description;
 
 //FIL.urlDefaultFile = "../../test-samples/one-room-with-surface-type-errors.xml";
 //FIL.urlDefaultFile = "../../test-samples/bristol-clifton-downs-broken.xml";
 //FIL.urlDefaultFile = "https://cdn.jsdelivr.net/gh/ladybug-tools/spider@master/gbxml-sample-files/zip/coventry-university-of-warwick-small.zip";
-FIL.urlDefaultFile = "file:///D:/temp/zzz-gbxml-testing/BHoMgbXML_GH_Airport.zip";
+FIL.urlDefaultFile = "https://cdn.jsdelivr.net/gh/ladybug-tools/spider@master/gbxml-sample-files/zip/pittsburg-airport.zip";
 
-const urlSourceCodeIcon = "https://ladybug.tools/spider/images/github-mark.png";
-const urlSourceCode = "https://github.com/ladybug-tools/spider-gbxml-fixer/tree/master/r3/";
+FIL.helpFile = "../fil-file-open-xml-zip/README.md";
 
 
 divFixThings =
@@ -144,7 +145,6 @@ function init() {
 	FIL.onHashChange(); // checks location hash, if none set default file ( the read me ) to open
 
 	document.body.addEventListener( 'onXmlFileLoad', onLoadFile, false ); // hash changed, file loaded so let's go
-
 
 }
 

@@ -23,14 +23,17 @@ TMP.types = [
 
 
 
-TMP.getSurfaceType = function() {
+TMP.getMenuTemplate = function() {
+
+	TMP.help = `<button id=butTMP class=butHelp onclick="MNU.setPopupShowHide(butTMP,TMP.helpFile);" >?</button>`;
+
 
 	const htm =
 		`
 			<details ontoggle="TMPdivSurface.innerHTML=TMP.getSurfaces();" >
 
 				<summary id=TMPsumSurfaces >Get surfaces
-					<button id=butTMP class=butHelp onclick="MNU.setPopupShowHide(butTMP,TMP.helpFile);" >?</button>
+					${ TMP.help }
 				</summary>
 
 				<div id=TMPdivSurface ></div>
@@ -69,21 +72,16 @@ TMP.getSurfaces = function() {
 		let exposedToSun = surface.match( /exposedToSun="(.*?)"/i );
 		//console.log( 'exposedToSun', exposedToSun );
 		exposedToSun = exposedToSun ? exposedToSun[ 0 ] : "";
-
-		let exposedToSunBoolean = exposedToSun ? exposedToSun[ 1 ].toLowerCase() === "true" : "false";
-
-		//console.log( 'exposedToSun', exposedToSun );
+		//let exposedToSunBoolean = exposedToSun ? exposedToSun[ 1 ].toLowerCase() === "true" : "false";
 
 		return( { index, id, name, typeSource, exposedToSun } );
-
 
 	} );
 
 	console.log( 'TMP.surfaces', TMP.surfaces );
 	//console.log( 'TMP.surfaceTypes', TMP.surfaceTypes );
 
-	//errors = TMP.errors.map( item => `id: ${ item.id } current surface type: ${ item.typeSource } ${ item.exposedToSun }` );
-
+	/*
 	const surfacesString = TMP.surfaces.map( item =>
 		`<input type=checkbox value=${ item.id } checked >
 		<button onclick=TMPdivSurfaceAttributeData.innerHTML=TMP.getSurfaceData(${item.index },"${ item.id}");
@@ -92,12 +90,17 @@ TMP.getSurfaces = function() {
 		 <mark>${ item.exposedToSun }</mark> to: exposedToSun="false"
 		`
 	).join("<br>");
+	*/
 
 
-	TMPsumSurfaces.innerHTML =
-		`Surfaces ~ ${ TMP.surfaces.length.toLocaleString() } found
-			<button id=butTMP class=butHelp onclick="MNU.setPopupShowHide(butTMP,TMP.helpFile);" >?</button>
-		`;
+	const options = TMP.surfaces.map( extra => {
+
+		return `<option value=${ extra.index } title="${ extra.id }" >${ extra.name }</option>`;
+
+	} );
+
+
+	TMPsumSurfaces.innerHTML = `Surfaces ~ ${ TMP.surfaces.length.toLocaleString() } found ${ TMP.help }`;
 
 	const htm =
 	`

@@ -5,11 +5,12 @@
 
 const FASA = {
 	"copyright": "Copyright 2019 Ladybug Tools authors. MIT License",
-	"date": "2019-04-09",
+	"date": "2019-05-10",
 	"description":
 		"Identify all the surfaces of a model of type \"Air\" that have a single adjacent space attribute. " +
 		"Allow you to change the surface type to \"Roof\". ",
-	"release": "1.0.0",
+	"helpFile": "../fasa-fix-air-single-adjacent/README.md",
+	"release": "0.4.1",
 
 };
 
@@ -17,12 +18,14 @@ const FASA = {
 
 FASA.getMenuAirSingleAdjacent = function() {
 
+	FASA.help = `<button id=butFASA class=butHelp onclick="MNU.setPopupShowHide(butFASA,FASA.helpFile);" >?</button>`;
+
 	const htm =
 		`
 			<details id=FASAdet ontoggle="FASAdivAirSingleAdjacent.innerHTML=FASA.getAirSingleAdjacent();" >
 
 				<summary id=FASAsumSurfaces >Fix air surfaces with single adjacent space
-					<button id=butFASA class=butHelp onclick="MNU.setPopupShowHide(butFASA,'./fasa-fix-air-single-adjacent/README.md');" >?</button>
+					${ FASA.help }
 				</summary>
 
 				<div id=FASAdivAirSingleAdjacent ></div>
@@ -118,8 +121,7 @@ FASA.getAirSingleAdjacent = function() {
 
 	FASAsumSurfaces.innerHTML =
 		`Get air surfaces with single adjacent space ~ ${ FASA.surfaces.length.toLocaleString() } found
-		<button id=butAir2 class=butHelp onclick="MNU.setPopupShowHide(butAir2,'./fasa-fix-air-single-adjacent/README.md');" >?</button>
-
+			${ FASA.help }
 		`;
 
 	const htm =

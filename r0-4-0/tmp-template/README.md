@@ -21,7 +21,13 @@
 </details>
 
 <details>
+
 <summary>Change Log</summary>
+
+### 2019-05-10 ~ Theo
+
+* F - Add popup help and readme
+* R - Refactor popup help button abstracted as variable
 
 ### 2019-04-30 ~ Theo
 

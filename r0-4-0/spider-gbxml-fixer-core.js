@@ -148,7 +148,6 @@ GBX.init = function() {
 
 	FCIMdivGetCadIdMissing.innerHTML = FCIM.getCadIdMissing();
 
-	//GBXdivGetTemplate.innerHTML = GBX.getTemplate();
 
 	viewer = "https://www.ladybug.tools/spider-gbxml-tools/spider-gbxml-viewer/r15/spider-gbxml-viewer15.html";
 
