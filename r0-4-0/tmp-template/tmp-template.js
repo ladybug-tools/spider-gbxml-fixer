@@ -8,6 +8,7 @@ const TMP = {
 	"copyright": "Copyright 2019 Ladybug Tools authors. MIT License",
 	"date": "2019-05-09",
 	"description": "template for checking surfaces",
+	"helpFile": "../tmp-template/README.md",
 	"release": "0.4.0"
 
 };
@@ -29,7 +30,7 @@ TMP.getSurfaceType = function() {
 			<details ontoggle="TMPdivSurface.innerHTML=TMP.getSurfaces();" >
 
 				<summary id=TMPsumSurfaces >Get surfaces
-					<button id=butTMP class=butHelp onclick="MNU.setPopupShowHide(butTMP,'../ft-fix-template/README.md');" >?</button>
+					<button id=butTMP class=butHelp onclick="MNU.setPopupShowHide(butTMP,TMP.helpFile);" >?</button>
 				</summary>
 
 				<div id=TMPdivSurface ></div>
@@ -95,7 +96,7 @@ TMP.getSurfaces = function() {
 
 	TMPsumSurfaces.innerHTML =
 		`Surfaces ~ ${ TMP.surfaces.length.toLocaleString() } found
-		<button id=butTMP2 class=butHelp onclick="MNU.setPopupShowHide(butTMP2,'ggggg');" >?</button>
+		<button id=butTMP class=butHelp onclick="MNU.setPopupShowHide(butTMP,TMP.helpFile);" >?</button>
 		`;
 
 	const htm =

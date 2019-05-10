@@ -1,19 +1,25 @@
-# [ZZZZZ Read Me]( #xxxxx/README.md )
+# [Template TMP Read Me]( #tm-template/README.md )
 
-<details style>
+<details>
+
 <summary>Concept</summary>
 
 </details>
+
 <details>
+
 <summary>To Do / Wish List</summary>
 
 
 </details>
+
 <details>
+
 <summary>Issues</summary>
 
 
 </details>
+
 <details>
 <summary>Change Log</summary>
 
