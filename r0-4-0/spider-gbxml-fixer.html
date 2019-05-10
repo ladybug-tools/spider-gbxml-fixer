@@ -5,8 +5,8 @@
 <meta name = "viewport" content= "width=device-width, initial-scale=1" >
 <meta name = "description" content = "JavaScript utilities to help you identify and fix common errors in gbXML files" >
 <meta name = "keywords" content = "JavaScript,GitHub,FOSS" >
-<meta name = "date" content = "2019-05-01" >
-<meta name = "release" content = "0.4.6" >
+<meta name = "date" content = "2019-05-10" >
+<meta name = "release" content = "0.4.7" >
 <title>Spider gbXML Fixer 'Atrax'</title>
 <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" >
 <link rel="stylesheet" href="https://pushme-pullyou.github.io/tootoo14/js-14-0/style.css">
@@ -190,6 +190,7 @@ function init() {
 	// Settings menu
 	//THMsecMenuThemeSelect.innerHTML = THM.getMenuThemeSelect();
 
+	// Help menu
 	MNUdivFooterPopup.innerHTML = MNU.getNavFooterPopup();
 
 	//THM.init();
@@ -197,6 +198,11 @@ function init() {
 	FIL.onHashChange(); // checks location hash, if none set default file ( the read me ) to open
 
 	document.body.addEventListener( 'onXmlFileLoad', GBX.init, false ); // hash changed, file loaded so let's go
+
+	const rel = document.head.querySelector( '[ name=release ]' ).content;
+	const date = document.head.querySelector( '[ name=date ]' ).content;
+	
+	MNUdivPopupMessage.innerHTML = `R${ rel } - ${ date }`;
 
 }
 
