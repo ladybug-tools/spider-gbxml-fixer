@@ -172,9 +172,7 @@ The desired solution is a utility that enables seamless gbXML data transfer betw
 
 <summary class=sumHeader title="Bugs we know about already" >Issues</summary>
 
-* 2019-04-08 ~ When reloading a file, the 'undefined' in main content window
-* 2019-04-02 ~ Toggling the display of a module and clicking the 'Run check again' perform the identical action. It would be nice to decide which is preferable.
-* 2019-04-02 ~ Once a change is effected, some modules re-run the check automatically and others do not. It would be nice to decide which behavior is preferable.
+* 2019-05-10 ~ Opening a ZIP file with the dialog does not work
 
 </details>
 
@@ -218,6 +216,12 @@ From [The case for single character git commit message prefixes]( https://smalld
 * https://gist.github.com/jashkenas/cbd2b088e20279ae2c8e
 	* Many interesting comments to a short gist
 
+
+### 2019-05-10 ~ Theo
+
+Spider gbXML Fixer 'Atrax' R0.4.7
+
+*
 
 ### 2019-05-06 ~ Theo
 
