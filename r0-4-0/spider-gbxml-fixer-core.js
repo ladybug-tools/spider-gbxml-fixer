@@ -39,7 +39,8 @@ GBX.divFixThings =
 		<h2 id=GBXh1FileName >Check file: <script>decodeURI( FIL.name ) </script></h2>
 
 		<iframe id=GBXifr style=height:300px;width:600px; ></iframe><br>
-		<i>model preview currently works just with files loaded via the URL</i>
+		
+		<i>Preview model is for visual verification only and is not connected to fixer</i>
 
 		<p>
 			<button onclick=GBX.runAll(); >Run all checks</button>
@@ -149,17 +150,30 @@ GBX.init = function() {
 	FCIMdivGetCadIdMissing.innerHTML = FCIM.getCadIdMissing();
 
 
-	viewer = "https://www.ladybug.tools/spider-gbxml-tools/spider-gbxml-viewer/r15/spider-gbxml-viewer15.html";
+	GBX.viewer = "../../spider-gbxml-tools/spider-gbxml-viewer/r15/spider-gbxml-viewer15.html";
+	const url = location.hash ? location.hash : "#" + FIL.urlDefaultFile;
 
 	if ( !FIL.files ) {
 
-		const url = location.hash ? location.hash : "#" + FIL.urlDefaultFile;
 		console.log( 'url', url );
-		GBXifr.src = `${ viewer }${ url }`;
+
+		GBXifr.src = `${ GBX.viewer }${ url }`;
 
 	} else {
 
-		GBXifr.src = "";
+		//GBXifr.src = "";
+
+		url2 = "#https://cdn.jsdelivr.net/gh/ladybug-tools/spider-gbxml-fixer@master/test-samples/one-room-original.xml";
+
+		GBXifr.src = `${ GBX.viewer }${ url2 }`;
+
+
+		GBXifr.onload = function() {
+
+			//console.log( 'IL.reader.result', FIL.reader.result );
+			GBXifr.contentWindow.GBX.parseFile( FIL.reader.result );
+
+		}
 
 	}
 

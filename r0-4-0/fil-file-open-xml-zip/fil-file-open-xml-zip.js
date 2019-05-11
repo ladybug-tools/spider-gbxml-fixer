@@ -11,7 +11,7 @@ const FIL = {
 };
 
 
-
+FIL.urlDefaultFile = "../../test-samples/one-room-with-surface-type-errors.xml";
 FIL.reader = new FileReader();
 FIL.xhr = new XMLHttpRequest(); // declare now to load event listeners in other modules
 
@@ -255,6 +255,7 @@ FIL.requestFileText = function( url ) {
 	FIL.xhr.send( null );
 
 };
+
 
 
 ////////// Handle OS file dialog events

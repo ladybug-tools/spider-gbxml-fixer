@@ -35,13 +35,13 @@ href="https://en.wikipedia.org/wiki/Sydney_funnel-web_spider">
 
 <summary class=sumHeader title="How can we help you?" >Features and Benefits</summary>
 
-Spider gbXML Fixer enables you t0:
+Spider gbXML Fixer enables you to:
 
-* Access online and local gbXML file via URL, file ope dialog box and drag&drop
+* Access online and local gbXML files via URL, file ope dialog box and drag&drop
 * Run an extensive set of checks - with most checks also providing automated fixes
 * Save fixed models as .XML or .ZIP files
 
-The following are the checks and fixes currently implemented
+The following are the checks and fixes currently implemented:
 
 * Inspect files in real-time 3D
 * Check for valid text and numbers
@@ -56,7 +56,7 @@ The following are the checks and fixes currently implemented
 * Fix air surfaces with single adjacent space
 * Fix Surfaces with CAD object ID missing
 
-Using the Fixer should be much easier than doing searching for and replacong text in a gbXML file and should faster than using the Spider Viewers.
+Using the Fixer should be much easier than doing searching for and replacing text in a gbXML file and should be faster than using the Spider Viewers.
 
 </details>
 
@@ -159,12 +159,10 @@ The desired solution is a utility that enables seamless gbXML data transfer betw
 
 <details>
 
-<summary class=sumHeader title-"What you you really want?" >To Do / Wish List</summary>
+<summary class=sumHeader title="What you you really want?" >To Do / Wish List</summary>
 
+* 2019-05-10 ~ Add fix for interior surfaces with single adjacent space
 * 2019-04-03 ~ Identify surface edges with multiple vertices where two are sufficient
-* 2019-03-12 ~ Add as many tests currently in Spider gbXML Viewer as possible that do not require 3D
-* 2019-03-12 ~ Add more and better fixing the issues where possible
-* 2019-03-12 ~ Add check for opening vertices greater then four
 * 2019-03-12 ~ Add check for openings larger or outside their parent surface
 
 </details>

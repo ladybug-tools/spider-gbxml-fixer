@@ -97,7 +97,7 @@ GSA.getSurfaceAttributes = function( surfaceXml, id, index ) {
 
 		<details>
 			<summary> gbXML Text </summary>
-			<textarea style=height:15rem;width:100% >${ GBX.surfaces[ index ] } </textarea>
+			<textarea style=height:15rem;width:100% value="${ GBX.surfaces[ index ] }"></textarea>
 		</details>
 
 	`;
