@@ -39,7 +39,7 @@ GBX.divFixThings =
 		<h2 id=GBXh1FileName >Check file: <script>decodeURI( FIL.name ) </script></h2>
 
 		<iframe id=GBXifr style=height:300px;width:600px; ></iframe><br>
-		
+
 		<i>Preview model is for visual verification only and is not connected to fixer</i>
 
 		<p>
@@ -114,6 +114,8 @@ GBX.colors = Object.assign( {}, GBX.colorsDefault ); // create working copy of d
 
 GBX.surfaceTypes = Object.keys( GBX.colors );
 
+GBX.viewer = "../spider-gbxml-tools/spider-gbxml-viewer/r15/spider-gbxml-viewer15.html";
+
 
 
 GBX.init = function() {
@@ -150,7 +152,7 @@ GBX.init = function() {
 	FCIMdivGetCadIdMissing.innerHTML = FCIM.getCadIdMissing();
 
 
-	GBX.viewer = "../../spider-gbxml-tools/spider-gbxml-viewer/r15/spider-gbxml-viewer15.html";
+
 	const url = location.hash ? location.hash : "#" + FIL.urlDefaultFile;
 
 	if ( !FIL.files ) {

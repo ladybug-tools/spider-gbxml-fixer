@@ -14,12 +14,7 @@ const FASST = {
 };
 
 
-FASST.types = [
-
-	"InteriorWall", "ExteriorWall", "Roof", "InteriorFloor", "ExposedFloor", "Shade", "UndergroundWall",
-	"UndergroundSlab", "Ceiling", "Air", "UndergroundCeiling", "RaisedFloor", "SlabOnGrade",
-	"FreestandingColumn", "EmbeddedColumn"
-];
+FASST.typesTwoAdjacentSpaces = [ "InteriorWall", "InteriorFloor", "Ceiling", "Air" ];
 
 
 
@@ -56,57 +51,49 @@ FASST.getSurfaces = function() {
 
 	FASSTdivSurfaceAttributeData.innerHTML = "";
 
-	FASST.surfaces = [];
+	FASST.surfacesTwoSpaces = [];
 
-	FASST.surfaces = GBX.surfaces.map( ( surface, index ) => {
+	GBX.surfaces.forEach( ( surface, index ) => {
 
+		const spaceIdRefs = surface.match( /spaceIdRef="(.*?)"/gi );
+
+		if ( spaceIdRefs && spaceIdRefs.length && spaceIdRefs.length >= 2 ) {
+			//console.log( 'spaceIdRef', spaceIdRef );
+
+			const surfaceType = surface.match( /surfaceType="(.*?)"/i )[ 1 ];
+
+			if ( FASST.typesTwoAdjacentSpaces.includes( surfaceType ) === false ) {
+
+				//console.log( 'surfaceType', surfaceType );
+				FASST.surfacesTwoSpaces.push( index );
+
+			}
+
+		}
+
+	} );
+	//console.log( 'FASST.surfacesTwoSpaces', FASST.surfacesTwoSpaces );
+
+	const options = FASST.surfacesTwoSpaces.map( index => {
+
+		const surface = GBX.surfaces[ index ];
 		const id = surface.match( / id="(.*?)"/i )[ 1 ];
 
-		let name = surface.match( /<Name>(.*?)<\/Name>/i );
-		name = name ? name[ 1 ] : id;
+		const names = surface.match( /<Name>(.*?)<\/Name>/i );
+		const name = names ? names[ 1 ] : id;
 
-		let typeSource = surface.match( /surfaceType="(.*?)"/i );
-		typeSource = typeSource ? typeSource[ 1 ] : "";
-		//console.log( '', typeSource );
-
-		let exposedToSun = surface.match( /exposedToSun="(.*?)"/i );
-		//console.log( 'exposedToSun', exposedToSun );
-		exposedToSun = exposedToSun ? exposedToSun[ 0 ] : "";
-		//let exposedToSunBoolean = exposedToSun ? exposedToSun[ 1 ].toLowerCase() === "true" : "false";
-
-		return( { index, id, name, typeSource, exposedToSun } );
-
-	} );
-
-	console.log( 'FASST.surfaces', FASST.surfaces );
-	//console.log( 'FASST.surfaceTypes', FASST.surfaceTypes );
-
-	/*
-	const surfacesString = FASST.surfaces.map( item =>
-		`<input type=checkbox value=${ item.id } checked >
-		<button onclick=FASSTdivSurfaceAttributeData.innerHTML=FASST.getSurfaceData(${item.index },"${ item.id}");
-		title="${ item.id }" >
-		${ item.name }</button> / ${ item.typeSource } from:
-		 <mark>${ item.exposedToSun }</mark> to: exposedToSun="false"
-		`
-	).join("<br>");
-	*/
-
-
-	const options = FASST.surfaces.map( surface => {
-
-		return `<option value=${ surface.index } title="${ surface.id }" >${ surface.name }</option>`;
+		return `<option value=${ index } title="${ id }" >${ name }</option>`;
 
 	} );
 
 
-	FASSTsumSurfaces.innerHTML = `Surfaces ~ ${ FASST.surfaces.length.toLocaleString() } found ${ FASST.help }`;
+	FASSTsumSurfaces.innerHTML = `Surfaces ~ ${ FASST.surfacesTwoSpaces.length.toLocaleString() } found ${ FASST.help }`;
 
 	const htm =
 	`
 		<p><i>Surfaces</i></p>
 
-		<p>${ FASST.surfaces.length.toLocaleString() } surface types found.</p>
+		<p>${ FASST.surfacesTwoSpaces.length.toLocaleString() } surface types found.</p>
 
 
 		<p>
@@ -132,12 +119,13 @@ FASST.getSurfaces = function() {
 
 
 FASST.setSurfaceData = function( select ) {
+	//console.log( 'value', select.value );
 
-	const surface = FASST.surfaces[ select.selectedIndex ];
-	//console.log( 'surface', surface );
-
-	const htm = GSA.getSurfacesAttributesByIndex( select.selectedIndex, surface.name );
+	const htm = GSA.getSurfacesAttributesByIndex( select.value, select.selectedOptions[ 0 ].innerHTML );
 
 	FASSTdivSurfaceData.innerHTML = htm;
+
+	const det = FASSTdivSurfaceData.querySelectorAll( 'details');
+	det[ 0 ].open = true;
 
 };
