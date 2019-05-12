@@ -251,7 +251,7 @@ FIL.requestFileText = function( url ) {
 	FIL.xhr.open( 'GET', url, true );
 	FIL.xhr.onerror = function( xhr ) { console.log( 'error:', xhr  ); };
 	FIL.xhr.onprogress = function( xhr ) { FIL.onProgress( xhr.loaded, FIL.note ); };
-	FIL.xhr.onload = function( xhr ) { FIL.callbackMarkdown( xhr.target.response ); };
+	FIL.xhr.onload = function( xhr ) { FIL.displayMarkdown( xhr.target.response ); };
 	FIL.xhr.send( null );
 
 };
