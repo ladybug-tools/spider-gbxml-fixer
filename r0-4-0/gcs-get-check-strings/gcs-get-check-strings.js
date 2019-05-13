@@ -4,12 +4,19 @@
 /* jshint loopfunc: true */
 
 
-GCS = { release: "2.0.1", date: "2019-04-04" };
+GCS = {
+	"helpFile": "./r0-4-0/gcs-get-check-strings/README.md",
+	"release": "0.0.2",
+	"date": "2019-05-12"
+};
 
 GCS.description = `Check and report on elements with inappropriate null, zero or blank values values`;
 
+GCS.help = `<button id=butGCS class=butHelp onclick="MNU.setPopupShowHide(butGCS,GCS.helpFile);" >?</button>`;
 
-GCS.currentStatus =
+
+
+GCS.xxxcurrentStatus =
 	`
 		<h3>Get Get Strings(GCS) ${ GCS.release } status ${ GCS.date }</h3>
 
@@ -50,7 +57,7 @@ GCS.getCheckStrings = function() {
 			<details ontoggle="GCSdivCheckStrings.innerHTML=GCS.getData();" >
 
 			<summary id=GCSsumGetCheckStrings >Check for valid text and numbers
-				<button id=butGCS class=butHelp onclick="MNU.setPopupShowHide(butGCS,'./r0-4-0/gcs-get-check-strings/README.md');" >?</button>
+				${ GCS.help }
 
 			</summary>
 
@@ -120,7 +127,9 @@ GCS.getData = function() {
 	const errors = area + vol + string;
 	//console.log( 'errors ', errors );
 
-	GCSsumGetCheckStrings.innerHTML = `Check for valid text and numbers ~ ${ errors } errors found ${ GCS.help }`;
+	GCSsumGetCheckStrings.innerHTML =
+		`Check for valid text and numbers ~ ${ errors } errors found ${ GCS.help }
+		`;
 
 	const generalHtm =
 		`
