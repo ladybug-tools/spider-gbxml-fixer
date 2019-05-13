@@ -1,6 +1,6 @@
 # [Openings Check Vertices OCV Read Me]( #ocv-openings-check-vertices/README.md )
 
-<details>
+<detail open>
 
 <summary>Concept</summary>
 

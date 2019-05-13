@@ -42,7 +42,7 @@ GGD.getGbxmlData = function() {
 			<details ontoggle="GGDdivGbxmlData.innerHTML=GGD.getData(GBX.text);" >
 
 				<summary id=GGDsumGetGbxmlData >Show gbXML file statistics
-					<button id=butGGD class=butHelp onclick="MNU.setPopupShowHide(butGGD,'./ggd-get-gbxml-data/README.md');" >?</button>
+					<button id=butGGD class=butHelp onclick="MNU.setPopupShowHide(butGGD,'./r0-4-0/ggd-get-gbxml-data/README.md');" >?</button>
 				</summary>
 
 				<div id=GGDdivGbxmlData ></div>

@@ -1,4 +1,4 @@
-/* globals GBX, GSA, FASSTsumSurfaces */
+/* globals GBX, GSA, FASSTsumSurfaces, FASSTdivSurfaceAttributeData, FASSTdivSurfaceData, FASSTdet */
 /* jshint esversion: 6 */
 /* jshint loopfunc: true */
 
@@ -6,17 +6,15 @@
 const FASST = {
 
 	"copyright": "Copyright 2019 Ladybug Tools authors. MIT License",
-	"date": "2019-05-10",
+	"date": "2019-05-12",
 	"description": "Fix surfaces with two adjacent spaces that are not of a surface type that requires two adjacent spaces",
-	"helpFile": "../fasst-fix-adjacent-space-surface-type/README.md",
-	"release": "0.4.1"
+	"helpFile": "./r0-4-0/fasst-fix-adjacent-space-surface-type/README.md",
+	"release": "0.1.0"
 
 };
 
 
 FASST.typesTwoAdjacentSpaces = [ "InteriorWall", "InteriorFloor", "Ceiling", "Air" ];
-
-
 
 FASST.getMenuFASST = function() {
 
@@ -25,9 +23,9 @@ FASST.getMenuFASST = function() {
 
 	const htm =
 		`
-			<details ontoggle="FASSTdivSurface.innerHTML=FASST.getSurfaces();" >
+			<details id=FASSTdet ontoggle="FASSTdivSurface.innerHTML=FASST.getSurfaces();" >
 
-				<summary id=FASSTsumSurfaces >Fix surfaces with two adjacent spaces and incorrect surface type
+				<summary id=FASSTsumSurfaces >Fix surfaces with two adjacent spaces & incorrect surface type
 					${ FASST.help }
 				</summary>
 
@@ -58,11 +56,11 @@ FASST.getSurfaces = function() {
 		const spaceIdRefs = surface.match( /spaceIdRef="(.*?)"/gi );
 
 		if ( spaceIdRefs && spaceIdRefs.length && spaceIdRefs.length >= 2 ) {
-			//console.log( 'spaceIdRef', spaceIdRef );
+			//console.log( 'spaceIdRefs', spaceIdRefs );
 
 			const surfaceType = surface.match( /surfaceType="(.*?)"/i )[ 1 ];
 
-			if ( FASST.typesTwoAdjacentSpaces.includes( surfaceType ) === false ) {
+			if ( FASST.typesTwoAdjacentSpaces.includes( surfaceType ) === false && spaceIdRefs[ 0 ] !== spaceIdRefs[ 1 ]) {
 
 				//console.log( 'surfaceType', surfaceType );
 				FASST.surfacesTwoSpaces.push( index );
@@ -87,14 +85,22 @@ FASST.getSurfaces = function() {
 	} );
 
 
-	FASSTsumSurfaces.innerHTML = `Surfaces ~ ${ FASST.surfacesTwoSpaces.length.toLocaleString() } found ${ FASST.help }`;
+	FASSTsumSurfaces.innerHTML = `Fix surfaces with two adjacent spaces & incorrect surface type ~ ${ FASST.surfacesTwoSpaces.length.toLocaleString() } found ${ FASST.help }`;
 
 	const htm =
 	`
-		<p><i>Surfaces</i></p>
+		<p><i>Identify surfaces with two adjacent spaces that are not of type: ${ FASST.typesTwoAdjacentSpaces.join( ", " ) } </i></p>
 
-		<p>${ FASST.surfacesTwoSpaces.length.toLocaleString() } surface types found.</p>
+		<p><i>Fixes:
+			<ul>
+				<li>If tilt equals 90: update surface type to "InteriorWall", set exposedToSun to false, update CADObjectID to "Spider Fixer update: Interior Wall"</li>
+				<li>If tilt not equal to 90: TBD</li>
+			</ul>
+		</i></p>
 
+		<p><i>See also "Fix surfaces with an extra adjacent space" for an alternative fix </i></p>
+
+		<p>${ FASST.surfacesTwoSpaces.length.toLocaleString() } surface(s) found.</p>
 
 		<p>
 			<select id=FASSTselSurfaces onclick=FASST.setSurfaceData(this); size=5 style=min-width:8rem; >
@@ -104,9 +110,9 @@ FASST.getSurfaces = function() {
 
 		<p><button onclick=FASST.changeAllSurfaces(); >Fix all</button></p>
 
-		<div id="FASSTdivSurfaceData" >Click a surface name above to view its details and change its surface type. Tool tip shows the ID of the surface.</div>
+		<div id="FASSTdivSurfaceData" >Click a surface name above to view its details. Tool tip shows the ID of the surface.</div>
 
-		<!-- <p>Click 'Save file' button in File menu to save changes to a file.</p> -->
+		<p>Click 'Save file' button in File menu to save changes to a file.</p>
 
 		<p>Time to check: ${ ( performance.now() - timeStart ).toLocaleString() } ms</p>
 
@@ -127,5 +133,42 @@ FASST.setSurfaceData = function( select ) {
 
 	const det = FASSTdivSurfaceData.querySelectorAll( 'details');
 	det[ 0 ].open = true;
+
+};
+
+
+FASST.changeAllSurfaces = function() {
+	for ( let index of FASST.surfacesTwoSpaces ) {
+
+		const surfaceTextCurrent = GBX.surfaces[ index ];
+		//console.log( 'surfaceTextCurrent', surfaceTextCurrent );
+
+		const tilts = surfaceTextCurrent.match( /<Tilt>(.*?)<\/Tilt>/i );
+		const tilt = tilts ? tilts[ 1 ] : "";
+		console.log( 'tilt', tilt );
+
+		let surfaceTextNew;
+
+		if ( tilt === "90" ) {
+
+			surfaceTextNew = surfaceTextCurrent.replace( /surfaceType="(.*?)"/i, `surfaceType="InteriorWall"` );
+
+			surfaceTextNew = surfaceTextNew.replace( /<CADObjectId>(.*?)<\/CADObjectId>/i, `<CADObjectId>Spider Fixer update: Interior Wall</CADObjectId>` );
+
+			surfaceTextNew = surfaceTextNew.replace( /exposedToSun="(.*?)"/i, `exposedToSun="false"` );
+
+		} else {
+
+			console.log( 'Coming soon' );
+
+		}
+
+		GBX.text = GBX.text.replace( surfaceTextCurrent, surfaceTextNew );
+
+	}
+
+	GBX.surfaces = GBX.text.match( /<Surface(.*?)<\/Surface>/gi );
+
+	FASSTdet.open = false;
 
 };

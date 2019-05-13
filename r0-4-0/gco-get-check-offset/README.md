@@ -1,6 +1,6 @@
 # [Get Check Offset GCO  Read Me]( #/gco-get-check-offset/README.md )
 
-<details>
+<details open>
 
 <summary>Concept</summary>
 

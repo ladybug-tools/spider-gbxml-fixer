@@ -34,6 +34,7 @@
 <script src="fstn-fix-surface-type-name/fstn-fix-surface-type-name.js" ></script>
 <script src="fets-fix-exposed-to-sun/fets-fix-exposed-to-sun.js" ></script>
 <script src="fdpc-fix-duplicate-planar-coordinates/fdpc-fix-duplicate-planar-coordinates.js" ></script>
+<script src="fasst-fix-adjacent-space-surface-type/fasst-fix-adjacent-space-surface-type.js" ></script>
 <script src="fase-fix-adjacent-space-extra/fase-fix-adjacent-space-extra.js" ></script>
 <script src="fasd-fix-adjacent-space-duplicate/fasd-fix-adjacent-space-duplicate.js" ></script>
 <script src="fasa-fix-air-single-adjacent/fasa-fix-air-single-adjacent.js" ></script>
@@ -138,9 +139,9 @@
 
 
 // useful when testing / un-comment
-FIL.urlDefaultFile = "https://www.ladybug.tools/spider/gbxml-sample-files/bristol-clifton-downs-broken.xml";
+//FIL.urlDefaultFile = "https://www.ladybug.tools/spider/gbxml-sample-files/bristol-clifton-downs-broken.xml";
 //FIL.urlDefaultFile = "https://cdn.jsdelivr.net/gh/ladybug-tools/spider@master/gbxml-sample-files/zip/coventry-university-of-warwick-small.zip";
-//FIL.urlDefaultFile = "https://cdn.jsdelivr.net/gh/ladybug-tools/spider@master/gbxml-sample-files/zip/pittsburg-airport.zip";
+FIL.urlDefaultFile = "https://cdn.jsdelivr.net/gh/ladybug-tools/spider@master/gbxml-sample-files/zip/pittsburg-airport.zip";
 
 //THM.themeUrlStorage = 'spider-gbxml-fixer-theme-url';
 //THM.cssBasic = "https://pushme-pullyou.github.io/tootoo13/js-tootoo13-2/style.css";
@@ -173,6 +174,7 @@ MNU.footerTarget = "target=_blank";
 MNU.footerIssues = "https://github.com/ladybug-tools/spider-gbxml-fixer/issues";
 
 GBX.viewer = "../../spider-gbxml-tools/spider-gbxml-viewer/r15/spider-gbxml-viewer15.html";
+MNU.footerPopupUrl = "../spider/";
 
 init();
 

@@ -8,7 +8,7 @@ const OCV = {
 
 	"date": "2019-04-03",
 	"description": "Openings: check openings with more than four vertices",
-	"helpFile": "./ocv-openings-check-vertices/README.md",
+	"helpFile": "./r0-4-0/ocv-openings-check-vertices/README.md",
 	"release": "0.4.0"
 
 };

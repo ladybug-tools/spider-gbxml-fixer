@@ -9,7 +9,7 @@ const FASA = {
 	"description":
 		"Identify all the surfaces of a model of type \"Air\" that have a single adjacent space attribute. " +
 		"Allow you to change the surface type to \"Roof\". ",
-	"helpFile": "../fasa-fix-air-single-adjacent/README.md",
+	"helpFile": "./r0-4-0/fasa-fix-air-single-adjacent/README.md",
 	"release": "0.4.1",
 
 };

@@ -1,10 +1,13 @@
 # [Fix Adjacent Space Surface Type (FASST) Read Me]( #xxxxx/README.md )
 
-<details>
+<details open>
 
 <summary>Concept</summary>
 
-* Identify surfaces with two (or more) adjacent spaces
+* Identify surfaces with two (or more) adjacent spaces and adjacent spaces have different space IDs
+* Fixes
+	* If tilt equals 90: update surface type to "InteriorWall", set exposedToSun to false, update CADObjectID to "Spider Fixer update: Interior Wall"
+	* If tilt not equal to 90: TBD
 
 </details>
 
@@ -12,6 +15,7 @@
 
 <summary>To Do / Wish List</summary>
 
+* 2019-05-12 ~ Add fixes if tilt not equal 90
 
 </details>
 

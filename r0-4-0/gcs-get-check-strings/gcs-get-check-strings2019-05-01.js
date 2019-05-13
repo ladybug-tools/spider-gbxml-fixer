@@ -50,7 +50,7 @@ GCS.getCheckStrings = function() {
 			<details ontoggle="GCSdivCheckStrings.innerHTML=GCS.getData();" >
 
 			<summary id=GCSsumGetCheckStrings >Check for valid text and numbers
-				<button id=butGCS class=butHelp onclick="MNU.setPopupShowHide(butGCS,'./gcs-get-check-strings/README.md');" >?</button>
+				<button id=butGCS class=butHelp onclick="MNU.setPopupShowHide(butGCS,'./r0-4-0/gcs-get-check-strings/README.md');" >?</button>
 
 			</summary>
 

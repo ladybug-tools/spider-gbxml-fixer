@@ -71,6 +71,8 @@ GBX.divFixThings =
 
 		<div id=FDPCdivGetDuplicatePlanar ></div>
 
+		<div id=FASSTdivSpacesWrongType ></div>
+
 		<div id=FASEdivSpaceExtra ></div>
 
 		<div id=FASDdivSpaceDuplicate ></div>
@@ -142,6 +144,8 @@ GBX.init = function() {
 	FETSdivGetFixExposedToSun.innerHTML = FETS.getSurfaceExposedToSun()
 
 	FDPCdivGetDuplicatePlanar.innerHTML = FDPC.getFixDuplicatePlanarCoordinates();
+
+	FASSTdivSpacesWrongType.innerHTML = FASST.getMenuFASST();
 
 	FASEdivSpaceExtra.innerHTML = FASE.getFixAdjacentSpaceExtra();
 
