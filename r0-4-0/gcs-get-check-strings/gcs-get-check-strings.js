@@ -122,14 +122,11 @@ GCS.getData = function() {
 		</p>
 	`;
 
-	//divContents.innerHTML += htm;
-
 	const errors = area + vol + string;
 	//console.log( 'errors ', errors );
 
 	GCSsumGetCheckStrings.innerHTML =
-		`Check for valid text and numbers ~ ${ errors } errors found ${ GCS.help }
-		`;
+		`Check for valid text and numbers ~ ${ errors } errors found ${ GCS.help }`;
 
 	const generalHtm =
 		`

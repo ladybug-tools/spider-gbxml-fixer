@@ -120,6 +120,8 @@ FASE.getAdjacentSpaceExtra = function() {
 		`
 			<p><i>Exterior surfaces that normally take a single adjacent space that are found to have two adjacent spaces.</i></p>
 
+			<p><i>See also for alternate fix: "Fix surfaces with two adjacent spaces & incorrect surface type"</i></p>
+
 			<p>
 				${ FASE.extras.length.toLocaleString() } surface(s) with extra spaces found. See tool tips for surface ID.
 			</p>
