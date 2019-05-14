@@ -9,7 +9,7 @@ const FASST = {
 	"date": "2019-05-12",
 	"description": "Fix surfaces with two adjacent spaces that are not of a surface type that requires two adjacent spaces",
 	"helpFile": "./r0-4-0/fasst-fix-adjacent-space-surface-type/README.md",
-	"release": "0.1.0"
+	"release": "0.1.2"
 
 };
 
@@ -108,7 +108,7 @@ FASST.getSurfaces = function() {
 			</select>
 		</p>
 
-		<p><button onclick=FASST.changeAllSurfaces(); >Fix all</button></p>
+		<p><button onclick=FASST.fixAllSurfaces(); >Fix all</button></p>
 
 		<div id="FASSTdivSurfaceData" >Click a surface name above to view its details. Tool tip shows the ID of the surface.</div>
 
@@ -125,9 +125,17 @@ FASST.getSurfaces = function() {
 
 
 FASST.setSurfaceData = function( select ) {
-	//console.log( 'value', select.value );
+	console.log( 'value', select.value );
 
-	const htm = GSA.getSurfacesAttributesByIndex( select.value, select.selectedOptions[ 0 ].innerHTML );
+	const htm =
+	`
+		${ GSA.getSurfacesAttributesByIndex( select.value, select.selectedOptions[ 0 ].innerHTML ) }
+
+		<p>
+			<button onclick=FASST.fixSurface(${ select.value }); title="If tilt equals 90" >change surface type</button>
+			View edits in Develope Console (F12/Ctrl-J/Cmd-J)
+		</p>
+	`;
 
 	FASSTdivSurfaceData.innerHTML = htm;
 
@@ -137,45 +145,54 @@ FASST.setSurfaceData = function( select ) {
 };
 
 
-FASST.changeAllSurfaces = function() {
 
-	for ( let index of FASST.surfacesTwoSpaces ) {
+FASST.fixSurface = function( index ) {
 
-		const surfaceTextCurrent = GBX.surfaces[ index ];
-		//console.log( 'surfaceTextCurrent', surfaceTextCurrent );
+	const surfaceTextCurrent = GBX.surfaces[ index ];
+	//console.log( 'surfaceTextCurrent', surfaceTextCurrent );
 
-		const tilts = surfaceTextCurrent.match( /<Tilt>(.*?)<\/Tilt>/i );
-		const tilt = tilts ? tilts[ 1 ] : "";
-		console.log( 'tilt', tilt );
+	const tilts = surfaceTextCurrent.match( /<Tilt>(.*?)<\/Tilt>/i );
+	const tilt = tilts ? tilts[ 1 ] : "";
+	console.log( 'tilt', tilt );
 
-		let surfaceTextNew;
+	let surfaceTextNew;
 
-		if ( tilt === "90" ) {
+	if ( tilt === "90" ) {
 
-			surfaceTextNew = surfaceTextCurrent.replace( /surfaceType="(.*?)"/i, `surfaceType="InteriorWall"` );
+		surfaceTextNew = surfaceTextCurrent.replace( /surfaceType="(.*?)"/i, `surfaceType="InteriorWall"` );
 
-			surfaceTextNew = surfaceTextNew.replace( /<CADObjectId>(.*?)\[(.*)\]<\/CADObjectId>/i, `<CADObjectId>Basic Wall: SIM_INT_SLD SpiderFix [$2]</CADObjectId>` );
+		surfaceTextNew = surfaceTextNew.replace( /<CADObjectId>(.*?)\[(.*)\]<\/CADObjectId>/i, `<CADObjectId>Basic Wall: SIM_INT_SLD SpiderFix [$2]</CADObjectId>` );
 
-			surfaceTextNew = surfaceTextNew.replace( /exposedToSun="(.*?)"/i, `exposedToSun="false"` );
+		surfaceTextNew = surfaceTextNew.replace( /exposedToSun="(.*?)"/i, `exposedToSun="false"` );
 
-			console.log( 'surfaceTextNew', surfaceTextNew );
-			
-		} else {
+		console.log( 'surfaceTextNew', surfaceTextNew );
 
-			surfaceTextNew = surfaceTextCurrent.replace( /surfaceType="(.*?)"/i, `surfaceType="InteriorFloor"` );
+	} else {
 
-			surfaceTextNew = surfaceTextNew.replace( /<CADObjectId>(.*?)\[(.*)\]<\/CADObjectId>/i, `<CADObjectId>Floor: SIM_INT_SLD_FLR SpiderFix [$2]</CADObjectId>` );
+		surfaceTextNew = surfaceTextCurrent.replace( /surfaceType="(.*?)"/i, `surfaceType="InteriorFloor"` );
 
-			surfaceTextNew = surfaceTextNew.replace( /exposedToSun="(.*?)"/i, `exposedToSun="false"` );
+		surfaceTextNew = surfaceTextNew.replace( /<CADObjectId>(.*?)\[(.*)\]<\/CADObjectId>/i, `<CADObjectId>Floor: SIM_INT_SLD_FLR SpiderFix [$2]</CADObjectId>` );
 
-		}
-
-		GBX.text = GBX.text.replace( surfaceTextCurrent, surfaceTextNew );
+		surfaceTextNew = surfaceTextNew.replace( /exposedToSun="(.*?)"/i, `exposedToSun="false"` );
 
 	}
+
+	GBX.text = GBX.text.replace( surfaceTextCurrent, surfaceTextNew );
 
 	GBX.surfaces = GBX.text.match( /<Surface(.*?)<\/Surface>/gi );
 
 	FASSTdet.open = false;
+
+};
+
+
+
+FASST.fixAllSurfaces = function() {
+
+	for ( let index of FASST.surfacesTwoSpaces ) {
+
+		FASST.fixSurface( index );
+
+	}
 
 };

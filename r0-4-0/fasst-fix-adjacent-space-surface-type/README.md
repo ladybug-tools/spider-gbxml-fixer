@@ -30,6 +30,11 @@
 
 <summary>Change Log</summary>
 
+### 2019-05-14 ~ Theo
+
+* F - FASST.js: Add button to fix single surface
+* B - FASST.js: fix popup help links
+
 ### 2019-05-12 ~ Theo
 
 * F - First commit
