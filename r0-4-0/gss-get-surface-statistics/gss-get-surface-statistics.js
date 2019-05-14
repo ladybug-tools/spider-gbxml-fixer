@@ -8,7 +8,7 @@ const GSS = {
 	"copyright": "Copyright 2019 Ladybug Tools authors. MIT License",
 	"date": "2019-05-10",
 	"description": "template for checking surfaces",
-	"helpFile": "../gss-get-surface-statistics/README.md",
+	"helpFile": "./r0-4-0/gss-get-surface-statistics/README.md",
 	"release": "0.4.1"
 
 };
