@@ -1,4 +1,4 @@
-/* globals GBX, FIL */
+/* globals GBX */
 /* jshint esversion: 6 */
 /* jshint loopfunc: true */
 
@@ -18,38 +18,6 @@ FXA.description =
 	`
 		Check for existence of seven required gbXML file attributes. If attributes missing, then supply fixes.'
 	`;
-
-
-FXA.currentStatus =
-	`
-		<h3>Fix Attributes (FXA) ${ FXA.release} status ${ FXA.date }</h3>
-
-		<p>${ FXA.description }</p>
-
-		<p>Fix Attributes (FXA) module is ready for light testing, but is still at an early stage of development.</p>
-
-		<p>
-			As and when the project gets access to more modules with other metadata errors,
-			this module will be enhanced to identify and fix any more errors found.
-		</p>
-
-		<p>
-			<a href="https://github.com/ladybug-tools/spider-gbxml-tools/blob/master/sandbox/spider-gbxml-fixer/: target="_blank" >
-				Fix Attributes source code
-			</a>
-		</p>
-
-		<details>
-			<summary>Change log</summary>
-			<ul>
-				<li>2019-04-18 ~ F - streamlined the operation / automated 'add missing attributes' </li>
-				<li>2019-04-12 ~ D - Change title from 'Check" to 'Fix'</li>
-				<li>2019-04-12 ~ R3 -First commit to Tester</li>
-			</ul>
-		</details>
-
-	`;
-
 
 
 FXA.getMenuFixXmlAttributes = function() {
@@ -73,6 +41,7 @@ FXA.getMenuFixXmlAttributes = function() {
 	return htm;
 
 };
+
 
 
 FXA.getAttributes = function() {

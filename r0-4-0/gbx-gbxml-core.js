@@ -123,7 +123,7 @@ GBX.init = function() {
 
 	OCVdivGetOpeningsCheckVertices.innerHTML = OCV.getOpeningsCheckVertices();
 
-	FXAdivGetFixAttributes.innerHTML = FXA.getFixAttributes();
+	FXAdivFixXmlAttributes.innerHTML = FXA.getMenuFixXmlAttributes();
 
 	FSTNdivGetSurfaceTypeName.innerHTML = FSTN.getMenuSurfaceTypeName();
 
@@ -141,7 +141,7 @@ GBX.init = function() {
 
 	FCIMdivGetCadIdMissing.innerHTML = FCIM.getCadIdMissing();
 
-	TMPdivTemplate.innerHTML = TMP.getMenuTemplate();
+	//TMPdivTemplate.innerHTML = TMP.getMenuTemplate();
 
 
 	if ( !FIL.files ) {
