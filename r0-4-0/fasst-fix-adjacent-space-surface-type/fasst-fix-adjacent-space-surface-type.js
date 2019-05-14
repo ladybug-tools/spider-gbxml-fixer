@@ -138,6 +138,7 @@ FASST.setSurfaceData = function( select ) {
 
 
 FASST.changeAllSurfaces = function() {
+
 	for ( let index of FASST.surfacesTwoSpaces ) {
 
 		const surfaceTextCurrent = GBX.surfaces[ index ];
@@ -158,6 +159,7 @@ FASST.changeAllSurfaces = function() {
 			surfaceTextNew = surfaceTextNew.replace( /exposedToSun="(.*?)"/i, `exposedToSun="false"` );
 
 			console.log( 'surfaceTextNew', surfaceTextNew );
+			
 		} else {
 
 			surfaceTextNew = surfaceTextCurrent.replace( /surfaceType="(.*?)"/i, `surfaceType="InteriorFloor"` );

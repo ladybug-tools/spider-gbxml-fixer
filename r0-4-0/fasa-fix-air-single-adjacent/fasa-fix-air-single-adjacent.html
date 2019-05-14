@@ -3,11 +3,11 @@
 <head>
 <meta charset = "utf-8" >
 <meta name = "viewport" content= "width=device-width, initial-scale=1" >
-<meta name = "description" content = "Open files with FileReader() or XMLHttpRequest()" >
+<meta name = "description" content = "Identify all the surfaces of a model of type Air that have a single adjacent space attribute" >
 <meta name = "keywords" content = "JavaScript,GitHub,FOSS" >
-<meta name = "date" content = "2019-02-07" >
-<meta name = "release" content = "14.0.0" >
-<title>FASA Fix Air Space Adjacent </title>
+<meta name = "date" content = "2019-05-14" >
+<meta name = "release" content = "0.1.0" >
+<title>Fix Air Space Adjacent (FASA)</title>
 <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" >
 <link rel="stylesheet" href="https://pushme-pullyou.github.io/tootoo14/js-14-0/style.css">
 </head>
@@ -20,6 +20,7 @@
 <script src="../fil-file-open-xml-zip/fil-file-open-xml-zip.js" ></script>
 <script src="../gbx-gbxml-core.js" ></script>
 <script src="../ggd-get-gbxml-data/ggd-get-gbxml-data.js" ></script>
+<script src="../gss-get-surface-statistics/gss-get-surface-statistics.js" ></script>
 <script src="../gsa-get-surface-attributes/gsa-get-surface-attributes.js" ></script>
 
 <script src="../fasa-fix-air-single-adjacent/fasa-fix-air-single-adjacent.js" ></script>
@@ -99,7 +100,10 @@ MNU.description = FASA.description;
 FIL.urlDefaultFile = "https://cdn.jsdelivr.net/gh/ladybug-tools/spider@master/gbxml-sample-files/zip/pittsburg-airport.zip";
 
 FIL.helpFile = "../fil-file-open-xml-zip/README.md";
+GBX.helpFile = "../README.md";
+GGD.helpFile = "../ggd-get-gbxml-data/README.md";
 
+FASA.helpFile = "../fasa-fix-air-single-adjacent/README.md";
 
 divFixThings =
 	`
@@ -119,6 +123,8 @@ divFixThings =
 		</p>
 
 		<div id=GGDdivGetGbxmlData ></div>
+
+		<div id=GSSdiv ></div>
 
 		<div id=FASAdivFixAirSingleAdjacent ></div>
 
@@ -141,7 +147,6 @@ function init() {
 
 	FILdivFileSave.innerHTML = FIL.getMenuFileSave();
 
-
 	FIL.onHashChange(); // checks location hash, if none set default file ( the read me ) to open
 
 	document.body.addEventListener( 'onXmlFileLoad', onLoadFile, false ); // hash changed, file loaded so let's go
@@ -159,6 +164,8 @@ function onLoadFile() {
 	GGD.getData(  FIL.text  );
 
 	GGDdivGetGbxmlData.innerHTML = GGD.getGbxmlData(  FIL.text  );
+
+	GSSdiv.innerHTML = GSS.getMenuSurfaceStatistics();
 
 	FASAdivFixAirSingleAdjacent.innerHTML = FASA.getMenuAirSingleAdjacent();
 

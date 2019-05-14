@@ -1,16 +1,17 @@
-/* globals FIL */
+/* globals GBX, GSA */
 /* jshint esversion: 6 */
 /* jshint loopfunc: true */
 
 
 const FASA = {
+
 	"copyright": "Copyright 2019 Ladybug Tools authors. MIT License",
-	"date": "2019-05-10",
+	"date": "2019-05-14",
 	"description":
 		"Identify all the surfaces of a model of type \"Air\" that have a single adjacent space attribute. " +
 		"Allow you to change the surface type to \"Roof\". ",
 	"helpFile": "./r0-4-0/fasa-fix-air-single-adjacent/README.md",
-	"release": "0.4.1",
+	"release": "0.1.2",
 
 };
 
@@ -66,7 +67,7 @@ FASA.getAirSingleAdjacent = function() {
 
 		return adjacentSpaceArr.length === 1;
 
-	} )
+	} );
 	//console.log( 'FASA.', FASA.airSingleAdjacents );
 
 	FASA.surfaces = FASA.airSingleAdjacents.map( ( surface ) => {
@@ -75,10 +76,10 @@ FASA.getAirSingleAdjacent = function() {
 
 		const id = surface.match( / id="(.*?)"/i )[ 1 ];
 
-		let name = surface.match( /<Name>(.*?)<\/Name>/i )
+		let name = surface.match( /<Name>(.*?)<\/Name>/i );
 		name = name ? name[ 1 ] : id;
 
-		let typeSource = surface.match( /surfaceType="(.*?)"/i )
+		let typeSource = surface.match( /surfaceType="(.*?)"/i );
 		typeSource = typeSource ? typeSource[ 1 ] : "";
 		//console.log( '', typeSource );
 
@@ -93,25 +94,12 @@ FASA.getAirSingleAdjacent = function() {
 		//let exposedToSunBoolean = exposedToSun ? exposedToSun[ 1 ].toLowerCase() === "true" : "false";
 		//console.log( 'exposedToSun', exposedToSun );
 
-		return( { index, id, name, typeSource, adjacentSpaceArr } )
+		return( { index, id, name, typeSource, adjacentSpaceArr } );
 
 
-	} )
+	} );
 	//console.log( 'FASA.surfaces', FASA.surfaces );
 	//console.log( 'FASA.surfaceTypes', FASA.surfaceTypes );
-
-
-	/*
-	surfacesString = FASA.surfaces.map( item =>
-		`<input type=checkbox value=${ item.id } checked >
-		<button onclick=FASAdivSurfaceAttributeData.innerHTML=FASA.getSurfaceData(${item.index },"${ item.id}");
-		title="${ item.id }" >
-		${ item.name }</button> / from:
-		 <mark>${ item.typeSource }</mark> to: Roof
-		`
-	).join("<br>");
-
-	*/
 
 	const options = FASA.surfaces.map( extra => {
 
@@ -148,7 +136,6 @@ FASA.getAirSingleAdjacent = function() {
 
 	`;
 
-
 	return htm;
 
 };
@@ -158,18 +145,21 @@ FASA.getAirSingleAdjacent = function() {
 FASA.setAirSingleAdjacentData = function( select ) {
 	//console.log( 'select.value', select.value );
 
-	surface = FASA.surfaces[ select.selectedIndex ];
-	console.log( 'surface', surface );
+	const surface = FASA.surfaces[ select.selectedIndex ];
+	//console.log( 'surface', surface );
 
 	const htm =
 	`
 		<p>
-		gbXML adjacent space text: <br>
-		<textarea style=width:100%; >${ surface.adjacentSpaceArr.join( "\n" ) }</textarea>
+			gbXML adjacent space text: <br>
+			<textarea style=width:100%; >${ surface.adjacentSpaceArr.join( "\n" ) }</textarea>
 		</p>
+
 		${ GSA.getSurfacesAttributesByIndex( surface.index, surface.name ) }
+
 		<p>
-			<button onclick=FASA.changeAirSingleAdjacent(${ select.selectedIndex }); >change adjacent space type to "Roof"</button>
+			<button onclick=FASA.changeAirSingleAdjacent(${ select.selectedIndex }); title="If tilt equals zero" >change adjacent space type to "Roof"</button>
+			View edits in Develope Console (F12/Ctrl-J/Cmd-J)
 		</p>
 	`;
 
@@ -182,7 +172,6 @@ FASA.setAirSingleAdjacentData = function( select ) {
 
 
 
-
 FASA.changeAirSingleAdjacent = function( index ) {
 
 	const air = FASA.surfaces[ index ];
@@ -191,21 +180,40 @@ FASA.changeAirSingleAdjacent = function( index ) {
 	let surfaceTextCurrent = GBX.surfaces[ air.index ];
 	//console.log( 'surfaceTextCurrent', surfaceTextCurrent );
 
-	const surfaceTextNew = surfaceTextCurrent.replace( /surfaceType="Air"/i , 'surfaceType="Roof"' );
-	//console.log( 'surfaceTextNew', surfaceTextNew );
+	const tilts = surfaceTextCurrent.match( /<Tilt>(.*?)<\/Tilt>/i );
+	const tilt = tilts ? tilts[ 1 ] : "";
+	console.log( 'tilt', tilt );
 
-	GBX.text = GBX.text.replace( surfaceTextCurrent, surfaceTextNew );
+	if ( tilt === "0" ) {
 
-	surfaceTextCurrent = surfaceTextNew;
+		let surfaceTextNew = surfaceTextCurrent.replace( /surfaceType="Air"/i , 'surfaceType="Roof"' );
+		//console.log( 'surfaceTextNew', surfaceTextNew );
 
-	GBX.surfaces = GBX.text.match( /<Surface(.*?)<\/Surface>/gi );
+		surfaceTextNew = surfaceTextCurrent.replace( /surfaceType="Air"/i , 'surfaceType="Roof"' );
+		//console.log( 'surfaceTextNew', surfaceTextNew );
+		surfaceTextNew = surfaceTextNew.replace( /<CADObjectId>(.*?)\[(.*)\]<\/CADObjectId>/i, `<CADObjectId>Basic Roof: SIM_EXT_SLD_Roof SpiderFix [$2]</CADObjectId>` );
+
+		surfaceTextNew = surfaceTextNew.replace( /exposedToSun="(.*?)"/i, `exposedToSun="false"` );
+
+		console.log( 'surfaceTextNew', surfaceTextNew );
+		GBX.text = GBX.text.replace( surfaceTextCurrent, surfaceTextNew );
+
+		surfaceTextCurrent = surfaceTextNew;
+
+		GBX.surfaces = GBX.text.match( /<Surface(.*?)<\/Surface>/gi );
+
+	} else {
+
+		console.log( 'tilt !== 0: TBD', tilt );
+
+	}
 
 	FASAdet.open = false;
 
 	FASAdivFixAirSingleAdjacent.innerHTML = FASA.getMenuAirSingleAdjacent();
 
+};
 
-}
 
 
 FASA.changeAllAirSingleAdjacent = function() {
@@ -218,13 +226,4 @@ FASA.changeAllAirSingleAdjacent = function() {
 
 	} );
 
-}
-/*
-FASA.getSurfaceData = function( index, text = "item" ) {
-
-	htm = GSA.getSurfacesAttributesByIndex( index, text );
-
-	return htm;
-
 };
-*/
