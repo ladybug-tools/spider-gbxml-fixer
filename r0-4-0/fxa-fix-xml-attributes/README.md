@@ -1,10 +1,4 @@
-
-# gbXML Core (GBX) Read Me
-
-
-See [parent folder readme]( #../README.md ) for more details
-
-It all starts here
+# [Fix XML Attributes Read Me]( #fxa-fix-xml-attributes/README.md )
 
 <details>
 
@@ -35,4 +29,3 @@ It all starts here
 * F - First commit
 
 </details>
-

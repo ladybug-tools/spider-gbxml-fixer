@@ -1,52 +1,38 @@
-//Copyright 2019 Ladybug Tools authors. MIT License
 /* globals FIL, divContents, GGD, GCS, OCV, GBXh1FileName, */
 /* jshint esversion: 6 */
 /* jshint loopfunc: true */
 
-const GBX = { release: "0.4.0", date: "2019-04-22" };
 
-GBX.description = `Run basic checks on gbXML files to identify, report and fix issues`;
+const GBX = {
 
+	"copyright": "Copyright 2019 Ladybug Tools authors. MIT License",
+	"date": "2019-05-14",
+	"description": "Run basic checks on gbXML files to identify, report and fix issues",
+	"helpFile": "README.md",
+	"release": "0.1.1",
 
-GBX.xxxxcurrentStatus =
-	`
-		<h3>Get Spider gbXM Fixer (GBX) ${ GBX.release } status ${ GBX.date }</h3>
+};
 
-		<p>${ GBX.description }</p>
-		<p>
-			<a href="https://github.com/ladybug-tools/spider-gbxml-tools/blob/master/sandbox/spider-gbxml-fixer/r2/spider-gbxml-fixer-core.js" target="_blank">
-			spider-gbxml-fixer-core.js source code</a>
-		</p>
-		<details>
-			<summary>Wish List / To Do</summary>
-			<ul>
-				<li></li>
-			</ul>
-		</details>
-		<details>
-			<summary>Change log</summary>
-			<ul>
-  				<li>2019-04-22 ~ F - First commit</li>
-			</ul>
-		</details>
-	`;
-
+GBX.viewer = "../spider-gbxml-tools/spider-gbxml-viewer/r15/spider-gbxml-viewer15.html";
 
 GBX.divFixThings =
 	`
-		<br><br>
+		<p>
+			<button id=butGBX class=butHelp onclick="MNU.setPopupShowHide(butGBX,GBX.helpFile);" >?</button>
+		</p>
 
 		<h2 id=GBXh1FileName >Check file: <script>decodeURI( FIL.name ) </script></h2>
 
-		<iframe id=GBXifr style=height:300px;width:600px; ></iframe><br>
-
-		<i>Preview model is for visual verification only and is not connected to fixer</i>
+		<p>
+			<iframe id=GBXifr style=height:300px;width:600px; ></iframe>
+			<br>
+			<i>Preview model is for visual verification only and is not connected to fixer</i>
+		</p>
 
 		<p>
 			<button onclick=GBX.runAll(); >Run all checks</button>
 
 			<button onclick=GBX.closeAll(); >Close all checks</button>
-
 		</p>
 
 		<p>
@@ -63,7 +49,7 @@ GBX.divFixThings =
 
 		<div id=OCVdivGetOpeningsCheckVertices ></div>
 
-		<div id=FXAdivGetFixAttributes ></div>
+		<div id=FXAdivFixXmlAttributes ></div>
 
 		<div id=FXSTIdivGetSurfaceTypeInvalid ></div>
 
@@ -83,11 +69,11 @@ GBX.divFixThings =
 
 		<div id=FCIMdivGetCadIdMissing ></div>
 
-		<div id=GBXdivGetTemplate ></div>
+		<div id=TMPdivTemplate ></div>
 
 		<hr>
 
-		<center title="hello!" ><a href=javascript:window.scrollTo(0,0); style=text-decoration:none; > <img src="https://ladybug.tools/artwork/icons_bugs/ico/spider.ico" height=24 > </a></center>
+		<center title="Hi there!" ><a href=javascript:window.scrollTo(0,0); style=text-decoration:none; > <img src="https://ladybug.tools/artwork/icons_bugs/ico/spider.ico" height=24 > </a></center>
 
 	`;
 
@@ -118,9 +104,6 @@ GBX.colors = Object.assign( {}, GBX.colorsDefault ); // create working copy of d
 
 GBX.surfaceTypes = Object.keys( GBX.colors );
 
-GBX.viewer = "../spider-gbxml-tools/spider-gbxml-viewer/r15/spider-gbxml-viewer15.html";
-
-
 
 GBX.init = function() {
 
@@ -144,7 +127,7 @@ GBX.init = function() {
 
 	FSTNdivGetSurfaceTypeName.innerHTML = FSTN.getMenuSurfaceTypeName();
 
-	FETSdivGetFixExposedToSun.innerHTML = FETS.getSurfaceExposedToSun()
+	FETSdivGetFixExposedToSun.innerHTML = FETS.getSurfaceExposedToSun();
 
 	FDPCdivGetDuplicatePlanar.innerHTML = FDPC.getFixDuplicatePlanarCoordinates();
 
@@ -158,34 +141,31 @@ GBX.init = function() {
 
 	FCIMdivGetCadIdMissing.innerHTML = FCIM.getCadIdMissing();
 
+	TMPdivTemplate.innerHTML = TMP.getMenuTemplate();
 
-
-	const url = location.hash ? location.hash : "#" + FIL.urlDefaultFile;
 
 	if ( !FIL.files ) {
 
-		console.log( 'url', url );
+		const url = location.hash ? location.hash : "#" + FIL.urlDefaultFile;
+		//console.log( 'url', url );
 
 		GBXifr.src = `${ GBX.viewer }${ url }`;
 
 	} else {
 
-		//GBXifr.src = "";
+		// need something loaded. Will be updated by the load event later
+		const url = "#https://cdn.jsdelivr.net/gh/ladybug-tools/spider-gbxml-fixer@master/test-samples/one-room-original.xml";
 
-		url2 = "#https://cdn.jsdelivr.net/gh/ladybug-tools/spider-gbxml-fixer@master/test-samples/one-room-original.xml";
-
-		GBXifr.src = `${ GBX.viewer }${ url2 }`;
-
+		GBXifr.src = `${ GBX.viewer }${ url }`;
 
 		GBXifr.onload = function() {
 
 			//console.log( 'IL.reader.result', FIL.reader.result );
 			GBXifr.contentWindow.GBX.parseFile( FIL.reader.result );
 
-		}
+		};
 
 	}
-
 
 };
 

@@ -5,8 +5,8 @@
 <meta name = "viewport" content= "width=device-width, initial-scale=1" >
 <meta name = "description" content = "JavaScript utilities to help you identify and fix common errors in gbXML files" >
 <meta name = "keywords" content = "JavaScript,GitHub,FOSS" >
-<meta name = "date" content = "2019-05-10" >
-<meta name = "release" content = "0.4.7" >
+<meta name = "date" content = "2019-05-13" >
+<meta name = "release" content = "0.4.10" >
 <title>Spider gbXML Fixer 'Atrax'</title>
 <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" >
 <link rel="stylesheet" href="https://pushme-pullyou.github.io/tootoo14/js-14-0/style.css">
@@ -19,9 +19,10 @@
 <!-- menus generally -->
 <script src="https://pushme-pullyou.github.io/tootoo14/js-14-0/mnu-menu/mnu-menu.js" ></script>
 <script src="https://ladybug-tools.github.io/spider-gbxml-tools/spider-gbxml-viewer/r15/js-gbxml/gal-sample-files-gallery-gbxml.js" ></script>
+<script src="gbx-gbxml-core.js" ></script>
+<script src="gsa-get-surface-attributes/gsa-get-surface-attributes.js" ></script>
 
 <!-- File menu panel -->
-
 <script src="fil-file-open-xml-zip/fil-file-open-xml-zip.js" ></script>
 
 <!-- Edit Menu -->
@@ -30,7 +31,7 @@
 <script src="gcs-get-check-strings/gcs-get-check-strings.js" ></script>
 <script src="gco-get-check-offset/gco-get-check-offset.js" ></script>
 <script src="ocv-openings-check-vertices/ocv-openings-check-vertices.js" ></script>
-<script src="fxa-fix-attributes/fxa-fix-attributes.js" ></script>
+<script src="fxa-fix-xml-attributes/fxa-fix-xml-attributes.js" ></script>
 
 <script src="fstn-fix-surface-type-name/fstn-fix-surface-type-name.js" ></script>
 <script src="fets-fix-exposed-to-sun/fets-fix-exposed-to-sun.js" ></script>
@@ -41,13 +42,12 @@
 <script src="fasa-fix-air-single-adjacent/fasa-fix-air-single-adjacent.js" ></script>
 <script src="fcim-fix-cad-id-missing/fcim-fix-cad-id-missing.js" ></script>
 
-<script src="spider-gbxml-fixer-core.js" ></script>
-<script src="gsa-get-surface-attributes/gsa-get-surface-attributes.js" ></script>
 
 <!-- Settings menu -->
 <!--
 	<script src="https://pushme-pullyou.github.io/tootoo13/js-tootoo13-1/thm-theme-select.js" ></script>
 -->
+<script src="tmp-template/tmp-template.js" ></script>
 
 
 	<nav id="navPanel" >
@@ -91,9 +91,7 @@
 
 				<summary class=sumMenuTitle >Settings menu</summary>
 
-				<div id=THMsecMenuThemeSelect ></div>
-
-				<div id=TMPsecMenuTemplate ></div>
+				<div id=THMdivMenuThemeSelect ></div>
 
 			</details>
 
@@ -172,10 +170,11 @@ MNU.appUrl   = ""; // "https://www.ladybug.tools/spider-gbxml-tools/";
 
 MNU.footerUrl    = "https://ladybug-tools.github.io/spider/#";
 MNU.footerTarget = "target=_blank";
+MNU.footerPopupUrl = "../spider/";
+
 MNU.footerIssues = "https://github.com/ladybug-tools/spider-gbxml-fixer/issues";
 
 GBX.viewer = "../../spider-gbxml-tools/spider-gbxml-viewer/r15/spider-gbxml-viewer15.html";
-MNU.footerPopupUrl = "../spider/";
 
 init();
 

@@ -27,12 +27,11 @@ TMP.getMenuTemplate = function() {
 
 	TMP.help = `<button id=butTMP class=butHelp onclick="MNU.setPopupShowHide(butTMP,TMP.helpFile);" >?</button>`;
 
-
 	const htm =
 		`
 			<details ontoggle="TMPdivSurface.innerHTML=TMP.getSurfaces();" >
 
-				<summary id=TMPsumSurfaces >Get surfaces
+				<summary id=TMPsumSurfaces >Template: Get surfaces
 					${ TMP.help }
 				</summary>
 
@@ -81,18 +80,6 @@ TMP.getSurfaces = function() {
 	console.log( 'TMP.surfaces', TMP.surfaces );
 	//console.log( 'TMP.surfaceTypes', TMP.surfaceTypes );
 
-	/*
-	const surfacesString = TMP.surfaces.map( item =>
-		`<input type=checkbox value=${ item.id } checked >
-		<button onclick=TMPdivSurfaceAttributeData.innerHTML=TMP.getSurfaceData(${item.index },"${ item.id}");
-		title="${ item.id }" >
-		${ item.name }</button> / ${ item.typeSource } from:
-		 <mark>${ item.exposedToSun }</mark> to: exposedToSun="false"
-		`
-	).join("<br>");
-	*/
-
-
 	const options = TMP.surfaces.map( surface => {
 
 		return `<option value=${ surface.index } title="${ surface.id }" >${ surface.name }</option>`;
@@ -100,14 +87,14 @@ TMP.getSurfaces = function() {
 	} );
 
 
-	TMPsumSurfaces.innerHTML = `Surfaces ~ ${ TMP.surfaces.length.toLocaleString() } found ${ TMP.help }`;
+	TMPsumSurfaces.innerHTML =
+		`Template: Get surfaces ~ ${ TMP.surfaces.length.toLocaleString() } found ${ TMP.help }`;
 
 	const htm =
 	`
 		<p><i>Surfaces</i></p>
 
 		<p>${ TMP.surfaces.length.toLocaleString() } surface types found.</p>
-
 
 		<p>
 			<select id=TMPselSurfaces onclick=TMP.setSurfaceData(this); size=5 style=min-width:8rem; >
@@ -146,5 +133,5 @@ TMP.setSurfaceData = function( select ) {
 TMP.changeAllSurfaces = function() {
 
 	console.log( 'GBX.surfaces', GBX.surfaces );
-	
+
 }

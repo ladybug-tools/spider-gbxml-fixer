@@ -1,16 +1,24 @@
-//Copyright 2019 Ladybug Tools authors. MIT License
 /* globals GBX, FIL */
 /* jshint esversion: 6 */
 /* jshint loopfunc: true */
 
 
 
-const FXA = { "release": "3.0.10", "date": "2019-04-12" };
+const FXA = {
+
+	"copyright": "Copyright 2019 Ladybug Tools authors. MIT License",
+	"date": "2019-05-14",
+	//"description": "Run basic checks on gbXML files to identify, report and fix issues",
+	"helpFile": "README.md",
+	"release": "0.1.0"
+
+};
 
 FXA.description =
 	`
 		Check for existence of seven required gbXML file attributes. If attributes missing, then supply fixes.'
 	`;
+
 
 FXA.currentStatus =
 	`
@@ -44,15 +52,18 @@ FXA.currentStatus =
 
 
 
-FXA.getFixAttributes = function() {
+FXA.getMenuFixXmlAttributes = function() {
+
+	FXA.help = `<button id=butFXA class=butHelp onclick="MNU.setPopupShowHide(butFXA,FXA.helpFile);" >?</button>`;
 
 	const htm =
 		`
 			<details id=FXAdet ontoggle="FXAdivAttributes.innerHTML=FXA.getAttributes();" >
 
 			<summary id=FXAsumAttributes >Fix missing required gbXML attributes
-				<a id=FXASum class=helpItem href="JavaScript:MNU.setPopupShowHide(FXASum,FXA.currentStatus);" >&nbsp; ? &nbsp;</a>
+				${ FXA.help }
 			</summary>
+
 				<div id=FXAdivAttributes ></div>
 
 			</details>
@@ -120,7 +131,6 @@ FXA.getAttributes = function() {
 			<p>Time to check: ${ ( performance.now() - timeStart ).toLocaleString() } ms</p>
 
 		`;
-
 
 	return htm;
 
