@@ -217,11 +217,19 @@ From [The case for single character git commit message prefixes]( https://smalld
 	* Many interesting comments to a short gist
 
 
+### 2019-05-13 ~ Theo
+
+Spider gbXML Fixer 'Atrax' R0.4.9
+
+* Add Michal's pull request
+* Add Get Surface Statistics module
+* See also commit messages
+
 ### 2019-05-10 ~ Theo
 
 Spider gbXML Fixer 'Atrax' R0.4.7
 
-*
+* See also commit messages
 
 ### 2019-05-06 ~ Theo
 
