@@ -93,8 +93,8 @@ FASST.getSurfaces = function() {
 
 		<p><i>Fixes:
 			<ul>
-				<li>If tilt equals 90: update surface type to "InteriorWall", set exposedToSun to false, update CADObjectID to "Basic Wall: SIM_INT_SLD SpiderFix [as in original element]"</li>
-				<li>If tilt not equal to 90: update surface type to "InteriorWall", set exposedToSun to false, update CADObjectID to "Floor: SIM_INT_SLD_FLR SpiderFix [as in original element]"</li>
+				<li>If tilt equals 90: update surface type to "InteriorWall", set exposedToSun to false, update CADObjectID to "Basic Wall: SIM_INT_SLD SpiderFix [id as in original element]"</li>
+				<li>If tilt not equal to 90: update surface type to "InteriorWall", set exposedToSun to false, update CADObjectID to "Floor: SIM_INT_SLD_FLR SpiderFix [id as in original element]"</li>
 			</ul>
 		</i></p>
 
@@ -153,15 +153,16 @@ FASST.changeAllSurfaces = function() {
 
 			surfaceTextNew = surfaceTextCurrent.replace( /surfaceType="(.*?)"/i, `surfaceType="InteriorWall"` );
 
-			surfaceTextNew = surfaceTextNew.replace( /<CADObjectId>(.*?)<\/CADObjectId>/i, `<CADObjectId>Basic Wall: SIM_INT_SLD SpiderFix [1234567]</CADObjectId>` );
+			surfaceTextNew = surfaceTextNew.replace( /<CADObjectId>(.*?)\[(.*)\]<\/CADObjectId>/i, `<CADObjectId>Basic Wall: SIM_INT_SLD SpiderFix [$2]</CADObjectId>` );
 
 			surfaceTextNew = surfaceTextNew.replace( /exposedToSun="(.*?)"/i, `exposedToSun="false"` );
 
+			console.log( 'surfaceTextNew', surfaceTextNew );
 		} else {
 
 			surfaceTextNew = surfaceTextCurrent.replace( /surfaceType="(.*?)"/i, `surfaceType="InteriorFloor"` );
 
-			surfaceTextNew = surfaceTextNew.replace( /<CADObjectId>(.*?)<\/CADObjectId>/i, `<CADObjectId>Floor: SIM_INT_SLD_FLR SpiderFix [1234567]</CADObjectId>` );
+			surfaceTextNew = surfaceTextNew.replace( /<CADObjectId>(.*?)\[(.*)\]<\/CADObjectId>/i, `<CADObjectId>Floor: SIM_INT_SLD_FLR SpiderFix [$2]</CADObjectId>` );
 
 			surfaceTextNew = surfaceTextNew.replace( /exposedToSun="(.*?)"/i, `exposedToSun="false"` );
 

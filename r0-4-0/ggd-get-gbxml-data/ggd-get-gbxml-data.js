@@ -1,37 +1,17 @@
-//Copyright 2019 Ladybug Tools authors. MIT License
 /* globals GBX, FIL */
 /* jshint esversion: 6 */
 /* jshint loopfunc: true */
 
 
-const GGD = { release: "2.1.0", date: "2019-04-05" };
+const GGD = {
 
-GGD.description = `Gather data to be used by other modules and report statistics`;
+	"copyright": "Copyright 2019 Ladybug Tools authors. MIT License",
+	"date": "2019-05-13",
+	"description": "Gather data to be used by other modules and report statistics",
+	"helpFile": "./r0-4-0/ggd-get-gbxml-data/README.md",
+	"release": "0.1.0"
 
-
-GGD.vvvvcurrentStatus =
-	`
-		<h3>Get gbXML Data (GGD) ${ GGD.release } status ${ GGD.date }</h3>
-
-		<p>${ GGD.description }</p>
-		<p>
-			<a href="https://github.com/ladybug-tools/spider-gbxml-tools/blob/master/sandbox/spider-gbxml-fixer/r2/ggd-get-gbxml-data.js" target="_blank">
-			ggd-get-gbxml-data.js source code</a>
-		</p>
-		<details>
-			<summary>Wish List / To Do</summary>
-			<ul>
-				<li>2019-03-23 ~ Handle more file types</li>
-			</ul>
-		</details>
-		<details>
-			<summary>Change log</summary>
-			<ul>
-				<li>2019-04-05 ~ r ~ make cookbook compatible </li>
-  				<li>2019-04-03 ~ F - First commit</li>
-			</ul>
-		</details>
-	`;
+};
 
 
 
@@ -42,18 +22,18 @@ GGD.getGbxmlData = function() {
 			<details ontoggle="GGDdivGbxmlData.innerHTML=GGD.getData(GBX.text);" >
 
 				<summary id=GGDsumGetGbxmlData >Show gbXML file statistics
-					<button id=butGGD class=butHelp onclick="MNU.setPopupShowHide(butGGD,'./r0-4-0/ggd-get-gbxml-data/README.md');" >?</button>
+					<button id=butGGD class=butHelp onclick="MNU.setPopupShowHide(butGGD,GGD.helpFile);" >?</button>
 				</summary>
 
 				<div id=GGDdivGbxmlData ></div>
 
 			</details>
-
 		`;
 
 	return htm;
 
 };
+
 
 
 GGD.getData = function( dataFile ) {

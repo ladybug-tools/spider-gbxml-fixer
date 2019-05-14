@@ -141,3 +141,10 @@ TMP.setSurfaceData = function( select ) {
 	TMPdivSurfaceData.innerHTML = htm;
 
 };
+
+
+TMP.changeAllSurfaces = function() {
+
+	console.log( 'GBX.surfaces', GBX.surfaces );
+	
+}

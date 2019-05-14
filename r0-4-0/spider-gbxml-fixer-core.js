@@ -55,6 +55,8 @@ GBX.divFixThings =
 
 		<div id=GGDdivGetGbxmlData ></div>
 
+		<div id=GSSdivGetSurfaceStatistics ></div>
+
 		<div id=GCSdivGetCheckStrings ></div>
 
 		<div id=GCOdivGetCheckOffset ></div>
@@ -130,6 +132,7 @@ GBX.init = function() {
 
 	GGDdivGetGbxmlData.innerHTML = GGD.getGbxmlData( FIL.text );
 
+	GSSdivGetSurfaceStatistics.innerHTML = GSS.getMenuSurfaceStatistics();
 
 	GCSdivGetCheckStrings.innerHTML = GCS.getCheckStrings();
 
