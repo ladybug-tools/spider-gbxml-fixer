@@ -26,7 +26,7 @@
 
 	#navPopUp { background-color: #eee; border-radius: 8px; display: block; max-height: 95%; max-width: 25%;
 		opacity: 0.95; overflow: auto; padding: 0 5px 10px 5px; position: fixed;
-		resize: both; right: 1rem; top: 1rem; z-index: 10; }
+		resize: both; right: 1rem; top: 1rem; z-index: 10; };
 
 
 </style>
@@ -39,7 +39,7 @@
 <script src="../ggd-get-gbxml-data/ggd-get-gbxml-data.js" ></script>
 <script src="../gsa-get-surface-attributes/gsa-get-surface-attributes.js" ></script>
 
-<script src="fcim-fix-cad-id-missing.js" ></script>
+<script src="fstn-fix-surface-type-name.js" ></script>
 
 	<nav id="navMenu" >
 
@@ -75,10 +75,10 @@
 <script>
 
 const urlSourceCodeIcon = "https://pushme-pullyou.github.io/github-mark-64.png";
-const urlSourceCode = "https://github.com/ladybug-tools/spider-gbxml-fixer/tree/master/r3";
+const urlSourceCode = "https://github.com/zzzzz/xxxxx.html";
 
 
-FIL.urlDefaultFile = "../../test-samples/one-room-with-cad-id-missing.xml"
+FIL.urlDefaultFile = "../../test-samples/one-room-with-surface-type-errors.xml"
 
 init();
 
@@ -105,12 +105,15 @@ function init() {
 
 function onLoad() {
 
-	console.log( '', FIL.name  );
+	//console.log( '', FIL.name  );
+
 	GGD.getData(  FIL.text  );
 
 	htm1 = GGD.getGbxmlData(  FIL.text  );
 
-	htm2 = FCIM.getCadIdMissing();
+	//htm2 = FT.getSurfaceTypeInvalid();
+
+	htm3 = FSTN.getMenuSurfaceTypeName();
 
 	divContents.innerHTML =
 	`
@@ -119,19 +122,20 @@ function onLoad() {
 		<h2 id=SGFh1FileName >Check file: ${ decodeURI( FIL.name ) } </h2>
 
 		<p>
-			<button onclick=GBX.runAll(); >Run all checks</button>
+			<button onclick=SGF.runAll(); >Run all checks</button>
 
-			<button onclick=GBX.closeAll(); >Close all checks</button>
+			<button onclick=SGF.closeAll(); >Close all checks</button>
 		</p>
 
 		<p>
-			<input type=checkbox id=GBXinpIgnoreAirSurfaceType > Ignore Air surface type
+			<input type=checkbox id=SGFinpIgnoreAirSurfaceType > Ignore Air surface type
 		</p>
+		
 		${ htm1 }
-		${ htm2 }
+
+		${ htm3 }
 	`;
 }
-
 
 
 const MNU = {};

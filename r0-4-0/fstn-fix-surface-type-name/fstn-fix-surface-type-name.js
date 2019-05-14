@@ -4,7 +4,15 @@
 /* jshint loopfunc: true */
 
 
-const FSTN = { "release": "2.1.0", "date": "2019-04-02" };
+const FSTN = {
+
+	"copyright": "Copyright 2019 Ladybug Tools authors. MIT License",
+	"date": "2019-05-14",
+	"description": "Checks for a surface type name that is not one of the 15 valid gbXML surface type names",
+	"helpFile": "./r0-4-0/fstn-fix-surface-type-name/README.md",
+	"release": "0.1.0"
+
+};
 
 
 FSTN.types = [
@@ -14,47 +22,19 @@ FSTN.types = [
 	"FreestandingColumn", "EmbeddedColumn"
 ];
 
-FSTN.description =
-	`
-		Checks for a surface type name that is not one of the 15 valid gbXML surface type names
-	`;
-
-FSTN.currentStatus =
-	`
-		<h3>Fix Surface Type Name (FSTN) R${ FSTN.release } ~ ${ FSTN.date }</h3>
-
-		<p>
-			${ FSTN.description }.
-		</p>
-
-		<p>
-			Most likely this type of error is quite rare. It occurs when a user types in a non-valid surface type in the originating CAD application.
-		</p>
-
-		<p>
-			Wish List / To do:<br>
-			<ul>
-
-			</ul>
-		</p>
-
-		<details>
-			<summary>Change log</summary>
-			<ul>
-				<li>2019-04-15 ~ First commit</li>
-			</ul>
-		</details>
-	`;
 
 
 FSTN.getMenuSurfaceTypeName = function() {
+
+	FSTN.help = `<button id=butFSTN class=butHelp onclick="MNU.setPopupShowHide(butFSTN,FSTN.helpFile);" >?</button>`;
+
 
 	const htm =
 		`
 			<details id=FSTNdet ontoggle="FSTNdivSurfaceType.innerHTML=FSTN.getSurfaceType();" >
 
 			<summary id=FSTNsumSurfaceType >Fix surfaces with invalid surface type name
-				<a id=FSTNSum class=helpItem href="JavaScript:MNU.setPopupShowHide(FSTNSum,FSTN.currentStatus);" >&nbsp; ? &nbsp;</a>
+				${ FSTN.help }
 			</summary>
 
 			<div id=FSTNdivSurfaceType ></div>

@@ -8,7 +8,7 @@ const GBX = {
 	"copyright": "Copyright 2019 Ladybug Tools authors. MIT License",
 	"date": "2019-05-14",
 	"description": "Run basic checks on gbXML files to identify, report and fix issues",
-	"helpFile": "README.md",
+	"helpFile": "./r0-4-0/README.md",
 	"release": "0.1.1",
 
 };

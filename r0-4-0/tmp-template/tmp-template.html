@@ -20,7 +20,7 @@
 <script src="https://www.ladybug.tools/spider-gbxml-tools/spider-gbxml-viewer/r15/js-gbxml/gal-sample-files-gallery-gbxml.js" ></script>
 
 <script src="../fil-file-open-xml-zip/fil-file-open-xml-zip.js" ></script>
-<script src="../spider-gbxml-fixer-core.js" ></script>
+<script src="../gbx-gbxml-core.js" ></script>
 <script src="../ggd-get-gbxml-data/ggd-get-gbxml-data.js" ></script>
 <script src="../gsa-get-surface-attributes/gsa-get-surface-attributes.js" ></script>
 
@@ -111,10 +111,16 @@ MNU.footerPopupUrl = "../../../spider/";
 FIL.urlDefaultFile = "https://cdn.jsdelivr.net/gh/ladybug-tools/spider@master/gbxml-sample-files/zip/pittsburg-airport.zip";
 
 FIL.helpFile = "../fil-file-open-xml-zip/README.md";
+GBX.helpFile = "../README.md";
+GGD.helpFile = "../ggd-get-gbxml-data/README.md";
+
+TMP.helpFile = "README.md";
 
 divFixThings =
 	`
-		<br><br>
+		<p>
+			<button id=butGBX class=butHelp onclick="MNU.setPopupShowHide(butGBX,GBX.helpFile);" >?</button>
+		</p>
 
 		<h2 id=GBXh1FileName >Check file: <span id=fname ></span></h2>
 
