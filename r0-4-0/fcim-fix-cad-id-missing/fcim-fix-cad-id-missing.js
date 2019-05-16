@@ -1,46 +1,30 @@
-//Copyright 2019 Ladybug Tools authors. MIT License
 /* globals GBX, GSA, GBXinpIgnoreAirSurfaceType, FCIMsumCadIdMissing, FCIMinpCadId, FCIMdet, FCIMdivCadIdMissing, FCIMselSurface */
 /* jshint esversion: 6 */
 /* jshint loopfunc: true */
 
 
-const FCIM = { release: "0.3.0", date: "2019-04-17" };
+const FCIM = {
 
+	"copyright": "Copyright 2019 Ladybug Tools authors. MIT License",
+	"date": "2019-05-16",
+	"description": "Assign an ID to surfaces with a missing CAD object ID",
+	"helpFile": "./r0-4-0/tmp-template/README.md",
+	"release": "0.1.0"
 
-FCIM.description = `Assign an ID to surfaces with a missing CAD object ID`;
+};
 
-FCIM.currentStatus =
-	`
-		<h3>Fix Surface CAD Object ID Missing (FCIM) R${ FCIM.release } ~ ${ FCIM.date }</h3>
-
-		<p>
-			${ FCIM.description }.
-		</p>
-
-		<details open>
-			<summary>Wish list / to do</summary>
-			<ul>
-			</ul>
-		</details>
-
-		<details>
-			<summary>Change log</summary>
-			<ul>
-				<li>2019-04-17 ~ F - Add 'fix all' button & refactor</li>
-				<li>2019-04-03 ~ F - First commit</li>
-			</ul>
-		</details>
-	`;
 
 
 FCIM.getCadIdMissing = function() {
+
+	FCIM.help = `<button id=butFCIM class=butHelp onclick="MNU.setPopupShowHide(butFCIM,FCIM.helpFile);" >?</button>`;
 
 	const htm =
 		`
 			<details id=FCIMdet ontoggle="FCIMdivCadIdMissing.innerHTML=FCIM.getFixCadIdMissing();" >
 
 			<summary id=FCIMsumCadIdMissing >Fix Surfaces with CAD object ID missing
-				<a id=FCIMSum class=helpItem href="JavaScript:MNU.setPopupShowHide(FCIMSum,FCIM.currentStatus);" >&nbsp; ? &nbsp;</a>
+				${ FCIM.help }
 			</summary>
 
 				<div id=FCIMdivCadIdMissing ></div>
@@ -121,7 +105,7 @@ FCIM.getFixCadIdMissing = function() {
 
 	FCIMsumCadIdMissing.innerHTML =
 		`Fix surfaces with missing CAD object ID ~ ${ FCIM.errors.length.toLocaleString() } found
-			${ help }
+			${ FCIM.help }
 		`;
 
 

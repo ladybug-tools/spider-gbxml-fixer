@@ -1,36 +1,16 @@
-//Copyright 2019 Ladybug Tools authors. MIT License
 /* globals FIL, divContents, GGD, GCS, OCV, GSAh1FileName, */
 /* jshint esversion: 6 */
 /* jshint loopfunc: true */
 
-const GSA = { release: "0.4.0", date: "2019-04-23" };
+const GSA = {
 
-GSA.description = `Display all possible data for a surface`;
+	"copyright": "Copyright 2019 Ladybug Tools authors. MIT License",
+	"date": "2019-05-16",
+	"description": "Display all possible data for a surface",
+	"helpFile": "./r0-4-0/gsa-get-surface-attributes/README.md",
+	"release": "0.1.0"
 
-
-GSA.currentStatus =
-	`
-		<h3>Get Surface Attributes(GSA) ${ GSA.release } - ${ GSA.date }</h3>
-
-		<p>${ GSA.description }</p>
-		<p>
-			<a href="https://github.com/ladybug-tools/spider-gbxml-tools/blob/master/sandbox/spider-gbxml-fixer/r3/gsa-get-surface-attributes.js" target="_blank">
-			gsa-get-surface-attributes.js source code</a>
-		</p>
-		<details>
-			<summary>Wish List / To Do</summary>
-			<ul>
-				<li></li>
-			</ul>
-		</details>
-		<details>
-			<summary>Change log</summary>
-			<ul>
-				<li>2019-04-12 ~ B - Fix GSA/GBX issue</li>
-  				<li>2019-04-11 ~ F - R3 First commit</li>
-			</ul>
-		</details>
-	`;
+};
 
 
 

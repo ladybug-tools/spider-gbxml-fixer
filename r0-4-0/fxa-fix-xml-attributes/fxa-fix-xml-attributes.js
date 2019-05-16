@@ -8,16 +8,12 @@ const FXA = {
 
 	"copyright": "Copyright 2019 Ladybug Tools authors. MIT License",
 	"date": "2019-05-14",
-	//"description": "Run basic checks on gbXML files to identify, report and fix issues",
+	"description": "Check for existence of seven required gbXML file attributes. If attributes missing, then supply fixes.",
 	"helpFile": "README.md",
-	"release": "0.1.0"
+	"release": "0.1.1"
 
 };
 
-FXA.description =
-	`
-		Check for existence of seven required gbXML file attributes. If attributes missing, then supply fixes.'
-	`;
 
 
 FXA.getMenuFixXmlAttributes = function() {
@@ -82,10 +78,10 @@ FXA.getAttributes = function() {
 
 	const data = FXA.setMenuAttributes();
 
-	const help = `<a id=fxmHelp class=helpItem href="JavaScript:MNU.setPopupShowHide(fxmHelp,FXA.currentStatus);" >&nbsp; ? &nbsp;</a>`;
-
 	FXAsumAttributes.innerHTML =
-	`Fix missing required gbXML attributes ~ ${FXA.attributesMissing.length} missing ${ help }`;
+	`Fix missing required gbXML attributes ~ ${FXA.attributesMissing.length} missing
+		${ FXA.help }
+	`;
 
 	const htm =
 		`

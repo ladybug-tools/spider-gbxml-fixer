@@ -8,49 +8,24 @@
 const FASE = {
 
 	"description": "Checks for a surface with more adjacent spaces and required",
-	"date": "2019-04-19",
+	"date": "2019-05-16",
 	"copyright": "Copyright 2019 Ladybug Tools authors. MIT License",
-	"release": "0.4.0"
+	"release": "0.1.0"
 
 };
 
 
-FASE.currentStatus =
-	`
-		<h3>Fix Surface Adjacent Space Extra (FASE) R${ FASE.release } ~ ${ FASE.date }</h3>
 
-		<p>
-			${ FASE.description }.
-		</p>
+FASE.getMenuAdjacentSpaceExtra = function() {
 
-		<details>
-			<summary>Wish List / To do</summary>
-			<ul>
-				<li>2019-04-02 ~ B - Validate and fix with jsHint</li>
-				<li>2019-03-25 ~ Add select and update multiple surfaces at once</li>
-				<li>2019-03-19 ~ Pre-select the correct surface type in the select type list box</li>
-			</ul>
-		</details>
-
-		<details>
-			<summary>Change log</summary>
-			<ul>
-				<li>2019-04-03 ~ First commit</li>
-			</ul>
-		</details>
-	`;
-
-
-
-
-FASE.getFixAdjacentSpaceExtra = function() {
+	FASE.help = `<button id=butFASE class=butHelp onclick="MNU.setPopupShowHide(butFASE,FASE.helpFile);" >?</button>`;
 
 	const htm =
 		`
 			<details id=FASEdet ontoggle="FASEdivAdjacentSpaceExtra.innerHTML=FASE.getAdjacentSpaceExtra();" >
 
 				<summary id=FASEsumAdjacentSpaceExtra >Fix surfaces with an extra adjacent space
-					<a id=FASESum class=helpItem href="JavaScript:MNU.setPopupShowHide(FASESum,FASE.currentStatus);" >&nbsp; ? &nbsp;</a>
+					${ FASE.help }
 				</summary>
 
 				<div id=FASEdivAdjacentSpaceExtra ></div>
@@ -109,11 +84,9 @@ FASE.getAdjacentSpaceExtra = function() {
 	} );
 	//console.log( 'options', options );
 
-	const help = `<a id=faseHelp class=helpItem href="JavaScript:MNU.setPopupShowHide(faseHelp,FASE.currentStatus);" >&nbsp; ? &nbsp;</a>`;
-
 	FASEsumAdjacentSpaceExtra.innerHTML =
 		`Fix surfaces with an extra adjacent space ~ ${ FASE.extras.length.toLocaleString() } found
-			${ help }
+			${ FASE.help }
 		`;
 
 	const faseHtm =

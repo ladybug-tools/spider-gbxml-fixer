@@ -1,48 +1,35 @@
-// Copyright 2019 Ladybug Tools authors. MIT License
 /* globals GBX, GBXinpIgnoreAirSurfaceType, GSA, FASDsumAdjacentSpaceDuplicate,
 	FASDdivAdjacentSpaceDuplicateData, FASDdivSpaceDuplicate */
 /* jshint esversion: 6 */
 /* jshint loopfunc: true */
 
 
-const FASD = { "release": "0.4.0", "date": "2019-04-24" };
+const FASD = {
+
+	"copyright": "Copyright 2019 Ladybug Tools authors. MIT License",
+	"date": "2019-05-10",
+	"description": "Fix air, InteriorWall, InteriorFloor, or Ceiling surfaces where both adjacent space IDs point to the same space",
+	"helpFile": "./r0-4-0/fasd-fix-adjacent-space-duplicate/README.md",
+	"release": "0.1.0"
+
+};
 
 
-FASD.description = `Fix air, InteriorWall, InteriorFloor, or Ceiling surfaces where both adjacent space IDs point to the same space`;
+FASD.description = ``;
 
-FASD.currentStatus =
-	`
-		<h3>Fix surface with adjacent space duplicates (FASD) R${ FASD.release } ~ ${ FASD.date }</h3>
-
-		<p>
-			${ FASD.description }.
-		</p>
-
-		<details>
-			<summary>Wish List / To do</summary>
-			<ul>
-				<li>2019-03-19 ~ Pre-select the correct adjacent spaces in the select type list box</li>
-			</ul>
-		</details>
-
-		<details>
-			<summary>Change log</summary>
-			<ul>
-				<li>2019-04-24 ~ First commit</li>
-			</ul>
-		</details>
-	`;
 
 
 
 FASD.getFixAdjacentSpaceDuplicate = function() {
+
+	FASD.help = `<button id=butFASD class=butHelp onclick="MNU.setPopupShowHide(butFASD,FASD.helpFile);" >?</button>`;
 
 	const htm =
 		`
 			<details id=FASDdet ontoggle="FASDdivAdjacentSpaceDuplicate.innerHTML=FASD.getAdjacentSpaceDuplicate();" >
 
 				<summary id=FASDsumAdjacentSpaceDuplicate >Fix surfaces with duplicate adjacent spaces
-					<a id=FASDSum class=helpItem href="JavaScript:MNU.setPopupShowHide(FASDSum,FASD.currentStatus);" >&nbsp; ? &nbsp;</a>
+					${ FASD.help }
 				</summary>
 
 				<div id=FASDdivAdjacentSpaceDuplicate ></div>
@@ -103,7 +90,9 @@ FASD.getAdjacentSpaceDuplicate = function() {
 	const help = `<a id=FASDHelp class=helpItem href="JavaScript:MNU.setPopupShowHide(FASDHelp,FASD.currentStatus);" >&nbsp; ? &nbsp;</a>`;
 
 	FASDsumAdjacentSpaceDuplicate.innerHTML =
-	`Fix surfaces with duplicate adjacent spaces ~ ${ FASD.duplicates.length.toLocaleString() } found ${ help }`;
+	`Fix surfaces with duplicate adjacent spaces ~ ${ FASD.duplicates.length.toLocaleString() } found
+		${ FASD.help }
+	`;
 
 	const options = FASD.duplicates.map( index => {
 

@@ -1,4 +1,4 @@
-# [Get Check Offset GCO  Read Me]( #/gco-get-check-offset/README.md )
+# [Get Check Offset (GCO) Read Me]( #/gco-get-check-offset/README.md )
 
 <details open>
 

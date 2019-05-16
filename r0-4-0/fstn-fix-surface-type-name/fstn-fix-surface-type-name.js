@@ -28,7 +28,6 @@ FSTN.getMenuSurfaceTypeName = function() {
 
 	FSTN.help = `<button id=butFSTN class=butHelp onclick="MNU.setPopupShowHide(butFSTN,FSTN.helpFile);" >?</button>`;
 
-
 	const htm =
 		`
 			<details id=FSTNdet ontoggle="FSTNdivSurfaceType.innerHTML=FSTN.getSurfaceType();" >
@@ -88,11 +87,9 @@ FSTN.getSurfaceType = function() {
 		`
 	).join("<br>");
 
-	const help = `<a id=fxstiHelp class=helpItem href="JavaScript:MNU.setPopupShowHide(fxstiHelp,FSTN.currentStatus);" >&nbsp; ? &nbsp;</a>`;
-
 	FSTNsumSurfaceType.innerHTML =
 		`Fix surfaces with invalid surface type name ~ ${ FSTN.errors.length.toLocaleString() } errors
-			${ help }
+			${ FSTN.help }
 		`;
 
 	const htm =

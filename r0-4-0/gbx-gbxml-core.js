@@ -133,7 +133,7 @@ GBX.init = function() {
 
 	FASSTdivSpacesWrongType.innerHTML = FASST.getMenuFASST();
 
-	FASEdivSpaceExtra.innerHTML = FASE.getFixAdjacentSpaceExtra();
+	FASEdivSpaceExtra.innerHTML = FASE.getMenuAdjacentSpaceExtra();
 
 	FASDdivSpaceDuplicate.innerHTML = FASD.getFixAdjacentSpaceDuplicate();
 

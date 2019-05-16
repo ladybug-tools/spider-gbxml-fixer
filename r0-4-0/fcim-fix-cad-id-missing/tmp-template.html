@@ -7,7 +7,7 @@
 <meta name = "keywords" content = "JavaScript,GitHub,FOSS" >
 <meta name = "date" content = "2019-05-16" >
 <meta name = "release" content = "0.1" >
-<title>Fix Adjacent Space Duplicate (FASD)</title>
+<title>Fix Surface CAD Object ID Missing (FCIM) </title>
 <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" >
 <link rel="stylesheet" href="https://pushme-pullyou.github.io/tootoo14/js-14-0/style.css">
 </head>
@@ -24,7 +24,7 @@
 <script src="../ggd-get-gbxml-data/ggd-get-gbxml-data.js" ></script>
 <script src="../gsa-get-surface-attributes/gsa-get-surface-attributes.js" ></script>
 
-<script src="../fasd-fix-adjacent-space-duplicate/fasd-fix-adjacent-space-duplicate.js" ></script>
+<script src="../fcim-fix-cad-id-missing/fcim-fix-cad-id-missing.js" ></script>
 
 	<nav id="navPanel" >
 
@@ -102,7 +102,7 @@
 
 
 MNU.urlSourceCode = "https://github.com/ladybug-tools/spider-gbxml-fixer";
-MNU.description = FASD.description;
+MNU.description = FCIM.description;
 
 MNU.footerPopupUrl = "../../../spider/";
 
@@ -114,7 +114,7 @@ FIL.helpFile = "../fil-file-open-xml-zip/README.md";
 GBX.helpFile = "../README.md";
 GGD.helpFile = "../ggd-get-gbxml-data/README.md";
 
-FASD.helpFile = "README.md";
+FCIM.helpFile = "README.md";
 
 divFixThings =
 	`
@@ -137,7 +137,7 @@ divFixThings =
 
 		<div id=GGDdivGetGbxmlData ></div>
 
-		<div id=FASDdivSpaceDuplicate ></div>
+		<div id=FCIMdivGetCadIdMissing ></div>
 
 	`;
 
@@ -180,7 +180,7 @@ function onLoad() {
 
 	GGDdivGetGbxmlData.innerHTML = GGD.getGbxmlData(  FIL.text  );
 
-	FASDdivSpaceDuplicate.innerHTML = FASD.getFixAdjacentSpaceDuplicate();
+	FCIMdivGetCadIdMissing.innerHTML = FCIM.getCadIdMissing();
 
 }
 

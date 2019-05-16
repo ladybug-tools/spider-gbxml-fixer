@@ -1,47 +1,30 @@
-//Copyright 2019 Ladybug Tools authors. MIT License
 /* globals GBX, FIL */
 /* jshint esversion: 6 */
 /* jshint loopfunc: true */
 
 
-GCO = { release: "0.4.1", date: "2019-05-10" };
+GCO = {
 
-GCO.description = `Check offset `;
+	"copyright": "Copyright 2019 Ladybug Tools authors. MIT License",
+	"date": "2019-05-16",
+	"description": "Check model offset from origin",
+	"helpFile": "./r0-4-0/tmp-template/README.md",
+	"release": "0.1.0"
 
-
-GCO.currentStatus =
-	`
-		<h3>Get Check Offset(GCO) ${ GCO.release } status ${ GCO.date }</h3>
-
-		<p>${ GCO.description }</p>
-		<p>
-			<a href="https://github.com/ladybug-tools/spider-gbxml-tools/blob/master/sandbox/spider-gbxml-fixer/r2/gco-get-check-offset.js" target="_blank">
-			gco-get-check-offset.js source code</a>
-		</p>
-		<details>
-			<summary>Wish List / To Do</summary>
-			<ul>
-				<li></li>
-			</ul>
-		</details>
-		<details>
-			<summary>Change log</summary>
-			<ul>
-  				<li>2019-04-03 ~ F - First commit</li>
-			</ul>
-		</details>
-	`;
+};
 
 
 
 GCO.getCheckOffset = function() {
+
+	GCO.help = `<button id=butGCO class=butHelp onclick="MNU.setPopupShowHide(butGCO,GCO.helpFile);" >?</button>`;
 
 	const htm =
 		`
 			<details ontoggle="GCOdivCheckOffset.innerHTML=GCO.getOffset();" >
 
 				<summary id=GCOsumCheckOffset >Check project offset distance from origin
-					<button id=butGCO class=butHelp onclick="MNU.setPopupShowHide(butGCO,'./r0-4-0/gco-get-check-offset/README.md');" >?</button>
+					${ GCO.help }
 				</summary>
 
 				<div id=GCOdivCheckOffset ></div>
@@ -71,7 +54,7 @@ GCO.getOffset = function() {
 
 	GCOsumCheckOffset.innerHTML =
 		`Check maximum offset distance from origin ~ ${ max.toLocaleString() } units
-			<button id=butGCO class=butHelp onclick="MNU.setPopupShowHide(butGCO,'./gco-get-check-offset/README.md');" >?</button>
+			${ GCO.help }
 		`;
 
 	const offsetHtm =
