@@ -1,40 +1,19 @@
-//Copyright 2019 Ladybug Tools authors. MIT License
 /* globals GBX, GSA, FETSdet, FETSdivSurfaces, FETSdivSurfaceData, FETSsumSurfaces */
 /* jshint esversion: 6 */
 /* jshint loopfunc: true */
 
 
-const FETS = { "release": "3.0.1", "date": "2019-04-12" };
+const FETS = {
 
-FETS.description =
-	`
-		Checks for surface with invalid exposedToSun values
-	`;
+	"copyright": "Copyright 2019 Ladybug Tools authors. MIT License",
+	"date": "2019-05-15",
+	"description": "Checks for surface with invalid exposedToSun values",
+	"helpFile": "./r0-4-0/tmp-template/README.md",
+	"release": "0.1.0"
+
+};
 
 
-FETS.currentStatus =
-`
-	<h3>Fix Surfaces Exposed To Sun I(FETS) R${ FETS.release } ~ ${ FETS.date }</h3>
-
-	<p>
-		${ FETS.description }.
-	</p>
-
-	<p>
-		Wish List / To do:<br>
-		<ul>
-
-		</ul>
-	</p>
-
-	<details>
-		<summary>Change log</summary>
-		<ul>
-			<li>2019-04-12 ~ B ~ Fix save to file issues</li>
-			<li>2019-04-09 ~ First commit</li>
-		</ul>
-	</details>
-`;
 
 
 FETS.types = [
@@ -49,14 +28,16 @@ FETS.exposedTypes = [ "ExteriorWall", "Roof", "ExposedFloor", "Shade", "RaisedFl
 
 //////////
 
-FETS.getSurfaceExposedToSun = function() {
+FETS.getMenuSurfaceExposedToSun = function() {
+
+	FETS.help = `<button id=butFETS class=butHelp onclick="MNU.setPopupShowHide(butFETS,FETS.helpFile);" >?</button>`;
 
 	const htm =
 	`
 		<details id=FETSdet ontoggle="FETSdivSurfaces.innerHTML=FETS.getSurfaceExposedToSunErrors();" >
 
 			<summary id=FETSsumSurfaces >Fix surfaces with invalid ExposedToSun
-				<a id=FETSSum class=helpItem href="JavaScript:MNU.setPopupShowHide(FETSSum,FETS.currentStatus);" >&nbsp; ? &nbsp;</a>
+				${ FETS.help }
 			</summary>
 
 			<div id=FETSdivSurfaces ></div>
@@ -121,12 +102,11 @@ FETS.getSurfaceExposedToSunErrors = function() {
 	} );
 
 
-	const help = `<a id=FETSHelp class=helpItem href="JavaScript:MNU.setPopupShowHide(FETSHelp,FETS.currentStatus);" >&nbsp; ? &nbsp;</a>`;
 
 	FETSsumSurfaces.innerHTML =
 	`Fix surfaces with invalid ExposedToSun
 		~ ${ ( FETS.errorsByValue.length + FETS.errorsByType.length + FETS.errorsByAttribute.length ).toLocaleString() } errors
-		${ help }
+		${ FETS.help }
 	`;
 
 	const errorsByValueString = FETS.errorsByValue.map( item =>

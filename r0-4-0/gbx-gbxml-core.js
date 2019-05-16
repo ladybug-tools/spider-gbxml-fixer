@@ -127,9 +127,9 @@ GBX.init = function() {
 
 	FSTNdivGetSurfaceTypeName.innerHTML = FSTN.getMenuSurfaceTypeName();
 
-	FETSdivGetFixExposedToSun.innerHTML = FETS.getSurfaceExposedToSun();
+	FETSdivGetFixExposedToSun.innerHTML = FETS.getMenuSurfaceExposedToSun();
 
-	FDPCdivGetDuplicatePlanar.innerHTML = FDPC.getFixDuplicatePlanarCoordinates();
+	FDPCdivGetDuplicatePlanar.innerHTML = FDPC.getMenuDuplicatePlanarCoordinates();
 
 	FASSTdivSpacesWrongType.innerHTML = FASST.getMenuFASST();
 

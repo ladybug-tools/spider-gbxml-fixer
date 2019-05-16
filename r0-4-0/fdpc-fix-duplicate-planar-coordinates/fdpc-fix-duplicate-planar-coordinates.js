@@ -1,56 +1,30 @@
-
-// Copyright 2019 Ladybug Tools authors. MIT License
 /* globals GBX, GSA, FDPCsumDuplicatePlanar, FDPCdivDuplData, FDPCdivGetDuplicatePlanar, FDPCdet */
 /* jshint esversion: 6 */
 /* jshint loopfunc:true */
 
 
-const FDPC = { "release": "0.4.0", "date": "2019-04-23" };
+const FDPC = {
 
-FDPC.description = `Identify two or more surfaces with the same planar geometry coordinates`;
+	"copyright": "Copyright 2019 Ladybug Tools authors. MIT License",
+	"date": "2019-05-15",
+	"description": "Identify two or more surfaces with the same planar geometry coordinates",
+	"helpFile": "./r0-4-0/fdpc-fix-duplicate-planar-coordinates/README.md",
+	"release": "0.1.0"
 
-FDPC.currentStatus =
-	`
-		<h3>Fix Surfaces with duplicate planar coordinates (FDPC) R${ FDPC.release } ~ ${ FDPC.date }</h3>
-
-		<p>
-			${ FDPC.description }.
-		</p>
-
-		<details>
-			<summary>Issues</summary>
-			<ul>
-			</ul>
-		</details>
-
-		<details>
-			<summary>Wish List / To do</summary>
-			<ul>
-				<li>2019-03-29 ~ Check for openings</li>
-				<li>2019-03-25 ~ Add select and update multiple surfaces at once</li>
-				<li>2019-03-19 ~ Pre-select the correct surface to delete n the select type list box</li>
-			</ul>
-		</details>
-
-		<details>
-			<summary>Change log</summary>
-
-			<ul>
-				<li>2019-04-23 ~ First commit</li>
-			</ul>
-		</details>
-	`;
+};
 
 
 
-FDPC.getFixDuplicatePlanarCoordinates = function() {
+FDPC.getMenuDuplicatePlanarCoordinates = function() {
+
+	FDPC.help = `<button id=butFDPC class=butHelp onclick="MNU.setPopupShowHide(butFDPC,FDPC.helpFile);" >?</button>`;
 
 	const htm =
 		`
 			<details id=FDPCdet  ontoggle="FDPCdivDuplicatePlanar.innerHTML=FDPC.getDuplicatePlanarCoordinates();" >
 
 				<summary id=FDPCsumDuplicatePlanar >Fix surfaces with duplicate planar coordinates
-					<a id=FDPCSum class=helpItem href="JavaScript:MNU.setPopupShowHide(FDPCSum,FDPC.currentStatus);" >&nbsp; ? &nbsp;</a>
+					${ FDPC.help }
 				</summary>
 
 				<div id=FDPCdivDuplicatePlanar ></div>
@@ -110,11 +84,9 @@ FDPC.getDuplicatePlanarCoordinates = function() {
 	);
 	//console.log( 'options', options );
 
-	const help = `<a id=fdpcHelp class=helpItem href="JavaScript:MNU.setPopupShowHide(fdpcHelp,FDPC.currentStatus);" >&nbsp; ? &nbsp;</a>`;
-
 	FDPCsumDuplicatePlanar.innerHTML =
 		`Fix surfaces with duplicate planar coordinates ~ ${ FDPC.duplicates.length.toLocaleString() } found
-			${ help }
+			${ FDPC.help }
 		`;
 
 	const htm =
