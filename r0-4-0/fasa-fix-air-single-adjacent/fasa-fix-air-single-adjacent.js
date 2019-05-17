@@ -227,12 +227,46 @@ FASA.changeAirSingleAdjacent = function( index ) {
 
 FASA.changeAllAirSingleAdjacent = function() {
 
-	FASA.surfaces.forEach( ( surface, index ) => {
+	FASA.surfaces.forEach( ( air, index ) => {
+		//console.log( 'air', air );
 
-		//console.log( 'ind', surface.index );
+		let surfaceTextCurrent = GBX.surfaces[ air.index ];
+		//console.log( 'surfaceTextCurrent', surfaceTextCurrent );
 
-		FASA.changeAirSingleAdjacent( index );
+		const tilts = surfaceTextCurrent.match( /<Tilt>(.*?)<\/Tilt>/i );
+		const tilt = tilts ? tilts[ 1 ] : "";
+		console.log( 'tilt', tilt );
+
+		let surfaceTextNew;
+
+		if ( tilt === "0" ) {
+
+			surfaceTextNew = surfaceTextCurrent.replace( /surfaceType="Air"/i , 'surfaceType="Roof"' );
+			//console.log( 'surfaceTextNew', surfaceTextNew );
+
+			surfaceTextNew = surfaceTextCurrent.replace( /surfaceType="Air"/i , 'surfaceType="Roof"' );
+			//console.log( 'surfaceTextNew', surfaceTextNew );
+			surfaceTextNew = surfaceTextNew.replace( /<CADObjectId>(.*?)\[(.*)\]<\/CADObjectId>/i, `<CADObjectId>Basic Roof: SIM_EXT_SLD_Roof SpiderFix [$2]</CADObjectId>` );
+
+			surfaceTextNew = surfaceTextNew.replace( /exposedToSun="(.*?)"/i, `exposedToSun="true"` );
+
+			//console.log( 'surfaceTextNew', surfaceTextNew );
+			GBX.text = GBX.text.replace( surfaceTextCurrent, surfaceTextNew );
+
+			//surfaceTextCurrent = surfaceTextNew;
+
+		} else {
+
+			console.log( 'tilt !== 0: TBD', tilt );
+
+		}
 
 	} );
+
+	GBX.surfaces = GBX.text.match( /<Surface(.*?)<\/Surface>/gi );
+
+	FASAdet.open = false;
+
+	FASAdivFixAirSingleAdjacent.innerHTML = FASA.getMenuAirSingleAdjacent();
 
 };
