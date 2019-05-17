@@ -1,8 +1,10 @@
 # [Fix Surface Adjacent Space Extra (FASE) Read Me]( #xxxxx/README.md )
 
-<details>
+<details open>
 
 <summary>Concept</summary>
+
+Checks for a surface with more adjacent spaces than required
 
 </details>
 
@@ -24,8 +26,9 @@
 
 <summary>Change Log</summary>
 
-### ZZZ
+### 2019-05-16 ~ Theo
 
+* F - FASE.js: Add readme and button
 * F - First commit
 
 </details>

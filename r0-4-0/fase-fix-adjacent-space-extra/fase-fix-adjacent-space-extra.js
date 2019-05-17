@@ -7,7 +7,7 @@
 
 const FASE = {
 
-	"description": "Checks for a surface with more adjacent spaces and required",
+	"description": "Checks for a surface with more adjacent spaces than required",
 	"date": "2019-05-16",
 	"copyright": "Copyright 2019 Ladybug Tools authors. MIT License",
 	"release": "0.1.0"
@@ -107,14 +107,14 @@ FASE.getAdjacentSpaceExtra = function() {
 
 			<p><button onclick=FASE.deleteAllSpacesExtra(); >Fix all</button></p>
 
-			<div id="FASEdivSpaceExtraData" >Click a surface name above to view its details and delete extra space. Tool tip shows the ID of the surface.</div>
-
-
-			<div id=xxxFASEdivSelectedSurfaceGbXML ></div>
-
 			<p>Click 'Save file' button in File menu to save changes to a file.</p>
 
 			<p>Time to check: ${ ( performance.now() - timeStart ).toLocaleString() } ms</p>
+
+			<hr>
+
+			<div id="FASEdivSpaceExtraData" >Click a surface name above to view its details and delete extra space. Tool tip shows the ID of the surface.</div>
+
 		`;
 
 	return faseHtm;
@@ -126,7 +126,7 @@ FASE.getAdjacentSpaceExtra = function() {
 FASE.setSpaceExtraData = function( select ) {
 	//console.log( 'select.value', select.value );
 
-	extra = FASE.extras[ select.selectedIndex ];
+	const extra = FASE.extras[ select.selectedIndex ];
 	//console.log( 'extra', extra );
 
 	const htm =
@@ -139,6 +139,7 @@ FASE.setSpaceExtraData = function( select ) {
 		<p>
 			<button onclick=FASE.adjacentSpaceDelete(${ select.selectedIndex }); >delete invalid adjacent space</button>
 		</p>
+
 	`;
 
 	FASEdivSpaceExtraData.innerHTML = htm;
@@ -286,7 +287,7 @@ FASE.adjacentSpaceDelete = function( index ) {
 
 	FASEdet.open = false;
 
-	FASEdivSpaceExtra.innerHTML = FASE.getFixAdjacentSpaceExtra();
+	FASEdivSpaceExtra.innerHTML = FASE.getMenuAdjacentSpaceExtra();
 
 };
 
@@ -296,7 +297,7 @@ FASE.deleteAllSpacesExtra = function() {
 
 	FASE.extras.forEach( ( extra, index ) => {
 
-		console.log( 'ind', extra.index );
+		//console.log( 'ind', extra.index );
 
 		FASE.adjacentSpaceDelete( index );
 
