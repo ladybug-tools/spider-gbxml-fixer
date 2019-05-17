@@ -24,6 +24,11 @@
 
 <summary>Change Log</summary>
 
+### 2019-05-16 ~ Theo
+
+* F - TMP: Add fixSurface and fixAllSurfaces functions
+* B - TMP: Pass through jsHint
+
 ### 2019-05-10 ~ Theo
 
 * F - Add popup help and readme

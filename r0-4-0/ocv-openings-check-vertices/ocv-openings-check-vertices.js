@@ -14,30 +14,6 @@ const OCV = {
 };
 
 
-OCV.xxxcurrentStatus =
-	`
-		<h3>Get Openings Check Vertices(OCV) ${ OCV.release } status ${ OCV.date }</h3>
-
-		<p>${ OCV.description }</p>
-		<p>
-			<a href="https://github.com/ladybug-tools/spider-gbxml-tools/blob/master/sandbox/spider-gbxml-fixer/r2/tnp-template.js" target="_blank">
-			tmp-template.js source code</a>
-		</p>
-		<details>
-			<summary>Wish List / To Do</summary>
-			<ul>
-				<li>2019-04-03 ~ Delete any extra vertices in edges</li>
-			</ul>
-		</details>
-		<details>
-			<summary>Change log</summary>
-			<ul>
-  				<li>2019-04-03 ~ F - First commit</li>
-			</ul>
-		</details>
-	`;
-
-
 
 OCV.getOpeningsCheckVertices = function() {
 
@@ -47,9 +23,10 @@ OCV.getOpeningsCheckVertices = function() {
 		`
 			<details ontoggle="OCVdivOpeningsVertices.innerHTML=OCV.getOpeningsVertices();" >
 
-			<summary id=OCVsumOpeningsVertices >Check for openings with more than four vertices
-				${ OCV.help }
-			</summary>
+				<summary id=OCVsumOpeningsVertices >Check for openings with more than four vertices
+					${ OCV.help }
+				</summary>
+
 				<div id=OCVdivOpeningsVertices ></div>
 
 			</details>

@@ -1,4 +1,4 @@
-/* globals GBX, GSA, TMPsumSurfaces */
+/* globals GBX, GSA, TMPsumSurfaces, TMPdivSurfaceAttributeData, TMPdivSurfaceData, TMPdet, TMPtxt */
 /* jshint esversion: 6 */
 /* jshint loopfunc: true */
 
@@ -6,10 +6,10 @@
 const TMP = {
 
 	"copyright": "Copyright 2019 Ladybug Tools authors. MIT License",
-	"date": "2019-05-10",
+	"date": "2019-05-16",
 	"description": "template for checking surfaces",
 	"helpFile": "./r0-4-0/tmp-template/README.md",
-	"release": "0.1.0"
+	"release": "0.1.2"
 
 };
 
@@ -29,7 +29,7 @@ TMP.getMenuTemplate = function() {
 
 	const htm =
 		`
-			<details ontoggle="TMPdivSurface.innerHTML=TMP.getSurfaces();" >
+			<details id=TMPdet ontoggle="TMPdivSurface.innerHTML=TMP.getSurfaces();" >
 
 				<summary id=TMPsumSurfaces >Template: Get surfaces
 					${ TMP.help }
@@ -76,9 +76,7 @@ TMP.getSurfaces = function() {
 		return( { index, id, name, typeSource, exposedToSun } );
 
 	} );
-
-	console.log( 'TMP.surfaces', TMP.surfaces );
-	//console.log( 'TMP.surfaceTypes', TMP.surfaceTypes );
+	//console.log( 'TMP.surfaces', TMP.surfaces );
 
 	const options = TMP.surfaces.map( surface => {
 
@@ -102,7 +100,7 @@ TMP.getSurfaces = function() {
 			</select>
 		</p>
 
-		<p><button onclick=TMP.changeAllSurfaces(); >Fix all</button></p>
+		<p><button onclick=TMP.fixAllSurfaces(); >Fix all</button></p>
 
 		<div id="TMPdivSurfaceData" >Click a surface name above to view its details and change its surface type. Tool tip shows the ID of the surface.</div>
 
@@ -120,18 +118,55 @@ TMP.getSurfaces = function() {
 
 TMP.setSurfaceData = function( select ) {
 
-	const surface = TMP.surfaces[ select.selectedIndex ];
+	//const surface = TMP.surfaces[ select.selectedIndex ];
 	//console.log( 'surface', surface );
+	// 			View edits in Developer Console (F12/Ctrl-J/Cmd-J)
 
-	const htm = GSA.getSurfacesAttributesByIndex( select.selectedIndex, surface.name );
+	const htm =
+	`
+		${ GSA.getSurfacesAttributesByIndex( select.value, select.selectedOptions[ 0 ].innerHTML ) }
+
+		<p>
+			<button onclick=TMP.fixSurface(${ select.value }); title="If tilt equals 90" >change surface type</button>
+		</p>
+
+		<textarea id=TMPtxt style="height:20rem; width:100%;" ></textarea>
+	`;
 
 	TMPdivSurfaceData.innerHTML = htm;
 
 };
 
 
-TMP.changeAllSurfaces = function() {
 
-	console.log( 'GBX.surfaces', GBX.surfaces );
+TMP.fixSurface = function( index ) {
 
-}
+	const surfaceText = GBX.surfaces[ index ];
+
+	const surfaceTextNew = surfaceText.replace( /<Surface(.*?)>/i,
+		"<Surface $1 > <Description>Edited by Spider gbXML Fixer</Description> ");
+
+	TMPtxt.value = surfaceTextNew;
+
+};
+
+
+
+TMP.fixAllSurfaces = function() {
+
+	for ( let surfaceText of GBX.surfaces ) {
+
+		const surfaceTextNew = surfaceText.replace( /<Surface(.*?)> /i,
+			"<Surface $1> <Description>Edited by Spider gbXML Fixer</Description> ");
+
+		GBX.text = GBX.text.replace( surfaceText, surfaceTextNew );
+
+	}
+
+	GBX.surfaces = GBX.text.match( /<Surface(.*?)<\/Surface>/gi );
+
+	TMPdet.open = false;
+
+	console.log( 'GBX.surfaces[ 0 ]', GBX.surfaces[ 0 ] );
+
+};

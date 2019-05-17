@@ -1,4 +1,3 @@
-//Copyright 2019 Ladybug Tools authors. MIT License
 /* globals GBX, GSA, FSTNsumSurfaceType, FSTNdivSurfaceType, FSTNdet */
 /* jshint esversion: 6 */
 /* jshint loopfunc: true */
@@ -56,7 +55,7 @@ FSTN.getSurfaceType = function() {
 
 	FSTN.errors = [];
 
-	FSTN.surfaceTypes = GBX.surfaces.map( ( surface, index ) => {
+	FSTN.surfaces = GBX.surfaces.map( ( surface, index ) => {
 
 		const typeSource0 = surface.match( /surfaceType="(.*?)"/i );
 		const typeSource1 = typeSource0 === null ?  ["", "no attribute" ] : typeSource0 ;
@@ -70,22 +69,22 @@ FSTN.getSurfaceType = function() {
 			const typeNew = results.typeNew;
 			const reasons = results.reasons;
 			const error = results.error;
+			const name = surface.match( /<Name>(.*?)<\/Name>/i )[ 1 ]
 
-			FSTN.errors.push( { id, index, typeSource, typeNew, reasons, error  } );
+			FSTN.errors.push( { id, index, name, typeSource, typeNew, reasons, error  } );
 
 		}
 
 	} );
 	//console.log( 'FSTN.errors', FSTN.errors );
-	//console.log( 'FSTN.surfaceTypes', FSTN.surfaceTypes );
+	//console.log( 'FSTN.surfaces', FSTN.surfaces );
 
-	const errorsString = FSTN.errors.map( ( item, index ) =>
-		`<input type=checkbox value=${ item.id } checked >
-		<button onclick=FSTNdivSurfaceAttributeData.innerHTML=FSTN.getSurfaceAttributes(${ index },"${ item.id}"); >
-		${ item.id }</button> / from:
-		 <mark>${ item.typeSource }</mark> to: ${ item.typeNew }
-		`
-	).join("<br>");
+	const options = FSTN.errors.map( surface => {
+
+		return `<option value=${ surface.index } title="${ surface.id }" >${ surface.name }</option>`;
+
+	} );
+
 
 	FSTNsumSurfaceType.innerHTML =
 		`Fix surfaces with invalid surface type name ~ ${ FSTN.errors.length.toLocaleString() } errors
@@ -96,11 +95,15 @@ FSTN.getSurfaceType = function() {
 	`
 		<p><i>A surface type was supplied that is not one of the following: ${ GBX.surfaceTypes.join( ', ' ) }</i></p>
 
-		<p>${ FSTN.surfaceTypes.length.toLocaleString() } surface types found.</p>
+		<p>${ FSTN.errors.length.toLocaleString() } surface with type issues found.</p>
 
-		${ errorsString }
+		<p>
+			<select id=FSTNselSurfaces onclick=FSTN.setSurfaceData(this); size=5 style=min-width:8rem; >
+				${ options }
+			</select>
+		</p>
 
-		<p><button onclick=FSTN.fixAllChecked(); >Fix all checked</button></p>
+		<p><button onclick=FSTN.fixAllChecked(); >Fix all</button></p>
 
 		<p>Time to check: ${ ( performance.now() - timeStart ).toLocaleString() } ms</p>
 
@@ -111,9 +114,9 @@ FSTN.getSurfaceType = function() {
 };
 
 
-FSTN.getSurfaceAttributes = function( index ) {
+FSTN.setSurfaceData = function( select ) {
 
-	const error = FSTN.errors[ index ];
+	const error = FSTN.errors[ select.selectedIndex ];
 
 	const options = FSTN.types.map( type =>
 		`<option ${ type === error.typeNew ? "selected" : "" } >${ type }<option>`
@@ -126,12 +129,13 @@ FSTN.getSurfaceAttributes = function( index ) {
 			Reasons: <i>${ error.reasons }</i><br>
 			Error: ${ error.error }
 		</p>
-		<p><select>${ options }</select></p>
 
-		${ GSA.getSurfacesAttributesByIndex( error.index, error.id ) }
+		<p>
+			${ GSA.getSurfacesAttributesByIndex( error.index, error.id ) }
+		</p>
 	`;
 
-	return htm;
+	FSTNdivSurfaceAttributeData.innerHTML = htm;
 
 };
 

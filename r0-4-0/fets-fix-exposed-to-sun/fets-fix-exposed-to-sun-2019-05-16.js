@@ -68,9 +68,6 @@ FETS.getSurfaceExposedToSunErrors = function() {
 
 		const id = surface.match( / id="(.*?)"/i )[ 1 ];
 
-		let name = surface.match( /<Name>(.*?)<\/Name>/i );
-		name = name ? name[ 1 ] : id;
-
 		let typeSource = surface.match( /surfaceType="(.*?)"/i );
 		typeSource = typeSource ? typeSource[ 1 ] : "";
 
@@ -84,7 +81,7 @@ FETS.getSurfaceExposedToSunErrors = function() {
 
 			if ( exposedToSun[ 1 ] === "true" ) {
 
-				FETS.errorsByType.push( { id, index, name, typeSource, exposedToSunBoolean, exposedToSun } );
+				FETS.errorsByType.push( { id, index, typeSource, exposedToSunBoolean, exposedToSun } );
 
 			}
 
@@ -92,11 +89,11 @@ FETS.getSurfaceExposedToSunErrors = function() {
 
 			if ( exposedToSun && exposedToSun.length ) {
 
-				FETS.errorsByValue.push( {id, index, name, typeSource, exposedToSunBoolean, exposedToSun } );
+				FETS.errorsByValue.push( {id, index, typeSource, exposedToSunBoolean, exposedToSun } );
 
 			} else {
 
-				FETS.errorsByAttribute.push( {id, index, name, typeSource, exposedToSunBoolean, exposedToSun } );
+				FETS.errorsByAttribute.push( {id, index, typeSource, exposedToSunBoolean, exposedToSun } );
 
 			}
 
@@ -112,49 +109,45 @@ FETS.getSurfaceExposedToSunErrors = function() {
 		${ FETS.help }
 	`;
 
-	const optionsByValue = FETS.errorsByValue.map( surface => {
+	const errorsByValueString = FETS.errorsByValue.map( item =>
+		`<input type=checkbox value=${ item.id } checked >
+		<button onclick=FETSdivSurfaceData.innerHTML=FETS.getSurfaceData(${item.index },"${ item.id}"); >
+		${ item.id }</button> / ${ item.typeSource } from:
+		<mark> ${ item.exposedToSun[ 0 ] }</mark> to: exposedToSun="true"
+		`
+	).join("<br>");
 
-		return `<option value=${ surface.index } title="${ surface.id }" >${ surface.name }</option>`;
+	const errorsByAttributeString = FETS.errorsByAttribute.map( item =>
+		`<input type=checkbox value=${ item.id } checked >
+		<button onclick=FETSdivSurfaceData.innerHTML=FETS.getSurfaceData(${item.index },"${ item.id}"); >
+		${ item.id }</button> / ${ item.typeSource } from: attribute
+		<mark>${ item.exposedToSun }</mark> to: exposedToSun="true"
+		`
+	).join("<br>");
 
-	} );
+	const errorsByTypeString = FETS.errorsByType.map( item =>
+		`<input type=checkbox value=${ item.id } checked >
+		<button onclick=FETSdivSurfaceData.innerHTML=FETS.getSurfaceData(${item.index },"${ item.id}"); >
+		${ item.id }</button> / ${ item.typeSource } from:
+		 <mark>${ item.exposedToSun[ 0 ] }</mark> to: exposedToSun="false"
+		`
+	).join("<br>");
 
-	const optionsByAttribute  = FETS.errorsByAttribute.map( surface => {
-
-		return `<option value=${ surface.index } title="${ surface.id }" >${ surface.name }</option>`;
-
-	} );
-
-	const optionsByType = FETS.errorsByType.map( surface => {
-
-		return `<option value=${ surface.index } title="${ surface.id }" >${ surface.name }</option>`;
-
-	} );
+	
 
 	const htm =
 	`
 		<p><i>${ FETS.errorsByValue.length.toLocaleString() } surface(s) with exposedToSun value not equal to "true"</i></p>
 
-		<p>
-			<select id=FETSselSurfacesByValue onclick=FETS.setSurfaceData(this); size=5 style=min-width:8rem; >
-				${ optionsByValue }
-			</select>
-		</p>
+		${ errorsByValueString }
 
 		<p><i>${ FETS.errorsByAttribute.length.toLocaleString() } surface(s) with missing exposedToSun attribute was supplied </i></p>
 
-		<p>
-			<select id=FETSselSurfacesByAttribute onclick=FETS.setSurfaceData(this); size=5 style=min-width:8rem; >
-				${ optionsByAttribute }
-			</select>
-		</p>
+		${ errorsByAttributeString }
 
 		<p><i>${ FETS.errorsByType.length.toLocaleString() } surface(s) with exposedToSun="true" is not one of the following surface types: ${ FETS.exposedTypes.join( ', ' ) }</i></p>
 
-		<p>
-			<select id=FETSselSurfacesByType onclick=FETS.setSurfaceData(FETS.errorsByType[this.selectedIndex]); size=5 style=min-width:8rem; >
-				${ optionsByType }
-			</select>
-		</p>
+		${ errorsByTypeString }
 
 		<p><button onclick=FETS.fixAllChecked(); >Fix all checked</button></p>
 
@@ -168,12 +161,12 @@ FETS.getSurfaceExposedToSunErrors = function() {
 
 
 
-FETS.setSurfaceData = function( item ) {
+FETS.getSurfaceData = function( index, text = "item" ) {
 
-	const htm = GSA.getSurfacesAttributesByIndex( item.index, item.name );
+	const htm = GSA.getSurfacesAttributesByIndex( index, text );
 
-	FETSdivSurfaceData.innerHTML =
-	`<p>${ htm }</p>`;
+
+	return htm;
 
 };
 

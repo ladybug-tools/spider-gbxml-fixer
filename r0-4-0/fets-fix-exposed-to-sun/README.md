@@ -1,10 +1,11 @@
 # [Fix Exposed To Sun (FETS) Read Me]( #r0-4-0/fets-fix-exposed-to-sun/README.md )
 
-Checks for surface with invalid exposedToSun values
 
-<details>
+<details open >
 
 <summary>Concept</summary>
+
+Checks for surface with invalid exposedToSun values
 
 </details>
 

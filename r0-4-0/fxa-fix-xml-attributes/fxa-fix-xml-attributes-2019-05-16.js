@@ -30,8 +30,6 @@ FXA.getMenuFixXmlAttributes = function() {
 
 				<div id=FXAdivAttributes ></div>
 
-				<div id=TMPdivSurfaceAttributeData ></div>
-
 			</details>
 
 		`;

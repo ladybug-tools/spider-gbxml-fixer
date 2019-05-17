@@ -12,6 +12,7 @@ Openings: check openings with more than four vertices
 
 <summary>To Do / Wish List</summary>
 
+* 2019-05-16 ~ List all openings with issues and provide display of details for each item
 * 2019-04-03 ~ Delete any extra vertices in edges
 
 </details>
