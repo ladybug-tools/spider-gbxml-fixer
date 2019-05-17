@@ -24,6 +24,11 @@
 
 <summary>Change Log</summary>
 
+### 2019-05-17 ~ Theo
+
+* B - TMP.html: Fix issues link
+* F - TMP.html: Add menu links / rejig UI
+
 ### 2019-05-16 ~ Theo
 
 * F - TMP: Add fixSurface and fixAllSurfaces functions

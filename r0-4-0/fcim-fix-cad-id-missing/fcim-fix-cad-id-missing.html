@@ -3,36 +3,21 @@
 <head>
 <meta charset = "utf-8" >
 <meta name = "viewport" content= "width=device-width, initial-scale=1" >
-<meta name = "description" content = "Open files with FileReader() or XMLHttpRequest()" >
+<meta name = "description" content = "Template" >
 <meta name = "keywords" content = "JavaScript,GitHub,FOSS" >
-<meta name = "date" content = "2019-02-07" >
-<title></title>
-<style>
-
-	body { font: 12pt monospace; margin: 0 auto 0 400px; max-width: 800px; }
-	a { color: crimson; text-decoration: none; }
-	a:hover, a:focus { background-color: yellow; color: #aaa; text-decoration: underline }
-
-	button, input[type=button] { background-color: #ddd; border: none; color: #322; cursor: pointer; padding: 3px 5px; }
-	button:hover { background: #ccc; color: #fff }
-
-	.sumMenuTitle { background-color: #ccc; color: #888; margin: 10px 0; text-align: center; }
-	.sumHeader { font-size:1.3rem; }
-
-	.dragDropArea { border: 1px dashed gray; box-sizing: border-box; margin: 10px; padding: 0 10px; }
-
-	#navMenu { background-color: #eee; left: 0; margin: 20px; max-width: 300px; padding: 0 10px;
-		position: fixed; top: 0; }
-
-	#navPopUp { background-color: #eee; border-radius: 8px; display: block; max-height: 95%; max-width: 25%;
-		opacity: 0.95; overflow: auto; padding: 0 5px 10px 5px; position: fixed;
-		resize: both; right: 1rem; top: 1rem; z-index: 10; }
-
-
-</style>
+<meta name = "date" content = "2019-05-17" >
+<meta name = "release" content = "0.4" >
+<title>FCIM Template</title>
+<link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" >
+<link rel="stylesheet" href="https://pushme-pullyou.github.io/tootoo14/js-14-0/style.css">
 </head>
+
 <body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.5/jszip.min.js" ></script>
 <script src="https://rawgit.com/showdownjs/showdown/1.9.0/dist/showdown.min.js" ></script>
+
+<script src="https://pushme-pullyou.github.io/tootoo14/js-14-0/mnu-menu/mnu-menu.js" ></script>
+<script src="https://www.ladybug.tools/spider-gbxml-tools/spider-gbxml-viewer/r15/js-gbxml/gal-sample-files-gallery-gbxml.js" ></script>
 
 <script src="../fil-file-open-xml-zip/fil-file-open-xml-zip.js" ></script>
 <script src="../gbx-gbxml-core.js" ></script>
@@ -41,60 +26,163 @@
 
 <script src="fcim-fix-cad-id-missing.js" ></script>
 
-	<nav id="navMenu" >
+	<nav id="navPanel" >
 
-		<div id="divTitle" ></div>
+		<button id="expandButton" onclick="navPanel.classList.toggle('collapsed');" >☰</button>
 
-		<details class=navSubMenu open >
+		<section id="secContent" >
 
-			<summary class=sumMenuTitle >File Menu</summary>
+			<header>
 
-			<section id="FILdivFileOpen"></section>
+				<div id="MNUdivHeader" ></div>
 
-			<section id="FILdivFileSave"></section>
+			</header>
 
-		</details>
 
-		<p>
-			<button id=but onclick=location.hash=this.innerHTML; >../../test-samples/one-room-with-surface-type-errors.xml</button>
-		</p>
+			<details open >
+
+				<summary class=sumMenuTitle >File Menu</summary>
+
+				<div id="GALdivSampleFilesGallery"></div>
+
+				<div id="FILdivFileOpen"></div>
+
+				<div id="FILdivFileSave"></div>
+
+			</details>
+
+			<details open >
+
+				<summary class=sumMenuTitle>Test files</summary>
+
+				<p>
+					<button id=but onclick=location.hash=this.innerHTML; >../../test-samples/one-room-with-surface-type-errors.xml</button>
+				</p>
+
+				<p>
+					<button id=but onclick=location.hash=this.innerHTML; >../../dev-notes.md</button>
+				</p>
+
+			</details>
+
+
+			<footer>
+
+				<div id="MNUdivFooterPopup" ></div>
+
+				<h1 onclick=navPanel.scrollTop=0; style=cursor:pointer;text-align:center; title="go to top of menu" > ❦ </h1>
+
+			</footer>
+
+		</section>
 
 	</nav>
 
-	<nav id="navPopUp" >
 
-			<div id="divPopUpData" ></div>
+	<main id=main >
 
-			<div id="divMessage" ></div>
+		<div id=divContents ></div>
+
+	</main>
+
+
+	<nav>
+
+		<a href="" id="butViewSource" target=_blank; hidden >view source</a>
 
 	</nav>
 
-	<div id="divContents" ></div>
 
+	<nav id="navPopup" hidden >
+
+		<div style=text-align:right; ><button onclick="MNU.setPopupShowHide(MNU.popupId,'');"" >×</button></div>
+
+		<div id="MNUdivPopupData" ></div>
+
+		<div id="MNUdivPopupMessage" ></div>
+
+	</nav>
 
 <script>
 
-const urlSourceCodeIcon = "https://pushme-pullyou.github.io/github-mark-64.png";
-const urlSourceCode = "https://github.com/ladybug-tools/spider-gbxml-fixer/tree/master/r3";
+
+//FIL.urlDefaultFile = "../../test-samples/one-room-with-surface-type-errors.xml";
+//FIL.urlDefaultFile = "https://cdn.jsdelivr.net/gh/ladybug-tools/spider@master/gbxml-sample-files/zip/coventry-university-of-warwick-small.zip";
+FIL.urlDefaultFile = "https://cdn.jsdelivr.net/gh/ladybug-tools/spider@master/gbxml-sample-files/bristol-clifton-downs-broken.xml";
+//FIL.urlDefaultFile = "https://cdn.jsdelivr.net/gh/ladybug-tools/spider@master/gbxml-sample-files/zip/pittsburg-airport.zip";
+
+FCIM.helpFile = "README.md";
+FIL.helpFile = "../fil-file-open-xml-zip/README.md";
+GBX.helpFile = "../README.md";
+GGD.helpFile = "../ggd-get-gbxml-data/README.md";
+
+MNU.urlSourceCode = "https://github.com/ladybug-tools/spider-gbxml-fixer";
+MNU.description = FCIM.description;
+
+MNU.homeText ="<img src='https://ladybug.tools/artwork/icons_bugs/ico/ladybug.ico' height=24 >";
+MNU.homeTitle="Ladybug Tools: free computer applications that support environmental design and education";
+MNU.homeUrl  ="https://www.ladybug.tools";
+
+MNU.repoText ="<img src='https://ladybug.tools/artwork/icons_bugs/ico/spider.ico' height=24 >";
+MNU.repoTitle="Spider: 3D interactive analysis in your browser mostly written around the Three.js JavaScript library";
+MNU.repoUrl  ="https://www.ladybug.tools/spider/";
+
+MNU.appText  = ""; // "gbXML Tools";
+MNU.appTitle = ""; // "Tools to help you find, load, examine and edit gbXML files - in large numbers and sizes";
+MNU.appUrl   = ""; // "https://www.ladybug.tools/spider-gbxml-tools/";
+
+MNU.footerPopupUrl = "../../../spider/";
+MNU.footerIssues	= "https://github.com/ladybug-tools/spider-gbxml-fixer/issues";
 
 
-FIL.urlDefaultFile = "../../test-samples/one-room-with-cad-id-missing.xml"
+
+divFixThings =
+	`
+		<p>
+			<button id=butGBX class=butHelp onclick="MNU.setPopupShowHide(butGBX,GBX.helpFile);" >?</button>
+		</p>
+
+		<h2 id=GBXh1FileName >Check file: <span id=fname ></span></h2>
+
+		<p>
+			<button onclick=GBX.runAll(); >Run all checks</button>
+
+			<button onclick=GBX.closeAll(); >Close all checks</button>
+
+		</p>
+
+		<p>
+			<input type=checkbox id=GBXinpIgnoreAirSurfaceType > Ignore Air surface type
+		</p>
+
+		<div id=GGDdivGetGbxmlData ></div>
+
+		<div id=FCIMdivGetCadIdMissing ></div>
+
+	`;
+
+
 
 init();
 
 
-
 function init() {
 
-	divTitle.innerHTML = getTitle();
+	MNUdivHeader.innerHTML = MNU.getNavHeader();
+
+	divContents.innerHTML = divFixThings;
+
+	// File open menu
+	GALdivSampleFilesGallery.innerHTML=GAL.getMenuSampleFilesGallery();
 
 	FILdivFileOpen.innerHTML = FIL.getMenuFileOpen();
 
 	FILdivFileSave.innerHTML = FIL.getMenuFileSave();
 
-	FIL.xhrRequestFileXml( FIL.urlDefaultFile );
+	MNUdivFooterPopup.innerHTML = MNU.getNavFooterPopup();
 
-	//FIL.onHashChange();
+	//FIL.xhrRequestFileXml( FIL.urlDefaultFile );
+	FIL.onHashChange();
 
 	window.addEventListener ( 'hashchange', FIL.onHashChange, false );
 	document.body.addEventListener( 'onXmlFileLoad', onLoad, false );
@@ -104,71 +192,19 @@ function init() {
 
 
 function onLoad() {
+	console.log( 'file name', FIL.name );
 
-	console.log( '', FIL.name  );
-	GGD.getData(  FIL.text  );
+	fname.innerHTML = FIL.name;
 
-	htm1 = GGD.getGbxmlData(  FIL.text  );
+	GGD.getData( FIL.text  );
 
-	htm2 = FCIM.getCadIdMissing();
+	GGDdivGetGbxmlData.innerHTML = GGD.getGbxmlData(  FIL.text  );
 
-	divContents.innerHTML =
-	`
-		<br><br>
-
-		<h2 id=SGFh1FileName >Check file: ${ decodeURI( FIL.name ) } </h2>
-
-		<p>
-			<button onclick=GBX.runAll(); >Run all checks</button>
-
-			<button onclick=GBX.closeAll(); >Close all checks</button>
-		</p>
-
-		<p>
-			<input type=checkbox id=GBXinpIgnoreAirSurfaceType > Ignore Air surface type
-		</p>
-		${ htm1 }
-		${ htm2 }
-	`;
-}
-
-
-
-const MNU = {};
-
-
-MNU.setPopupShowHide = function( id, text ) {
-	//console.log( 'id', id );
-
-	id.classList.toggle( "active" );
-
-	divPopUpData.innerHTML = id.classList.contains( 'active' ) ? text : '';
-
-};
-
-
-
-function getTitle() {
-
-	document.title = document.title ? document.title : location.href.split( '/' ).pop().slice( 0, - 5 ).replace( /-/g, ' ' );
-
-	const htm =
-	`
-		<h2>
-			<a href=${ urlSourceCode } target=_top title="Source code on GitHub" >
-				<img src=${ urlSourceCodeIcon } height=18 >
-			</a>
-			<a href="" title="Click to reload this page" >${ document.title }</a>
-		</h2>
-
-		<p>
-			${ FIL.description }
-		</p>
-	`;
-
-	return htm;
+	FCIMdivGetCadIdMissing.innerHTML = FCIM.getCadIdMissing();
 
 }
+
+
 
 </script>
 </body>

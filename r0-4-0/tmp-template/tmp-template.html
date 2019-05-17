@@ -5,7 +5,7 @@
 <meta name = "viewport" content= "width=device-width, initial-scale=1" >
 <meta name = "description" content = "Template" >
 <meta name = "keywords" content = "JavaScript,GitHub,FOSS" >
-<meta name = "date" content = "2019-05-10" >
+<meta name = "date" content = "2019-05-17" >
 <meta name = "release" content = "0.4" >
 <title>TMP Template</title>
 <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" >
@@ -51,11 +51,9 @@
 
 			</details>
 
-			<footer>
+			<details open >
 
-				<div id="MNUdivFooterPopup" ></div>
-
-				<p>test files </p>
+				<summary class=sumMenuTitle>Test files</summary>
 
 				<p>
 					<button id=but onclick=location.hash=this.innerHTML; >../../test-samples/one-room-with-surface-type-errors.xml</button>
@@ -64,6 +62,13 @@
 				<p>
 					<button id=but onclick=location.hash=this.innerHTML; >../../dev-notes.md</button>
 				</p>
+
+			</details>
+
+
+			<footer>
+
+				<div id="MNUdivFooterPopup" ></div>
 
 				<h1 onclick=navPanel.scrollTop=0; style=cursor:pointer;text-align:center; title="go to top of menu" > ❦ </h1>
 
@@ -101,21 +106,35 @@
 <script>
 
 
-MNU.urlSourceCode = "https://github.com/ladybug-tools/spider-gbxml-fixer";
-MNU.description = TMP.description;
-
-MNU.footerPopupUrl = "../../../spider/";
-
 //FIL.urlDefaultFile = "../../test-samples/one-room-with-surface-type-errors.xml";
 //FIL.urlDefaultFile = "https://cdn.jsdelivr.net/gh/ladybug-tools/spider@master/gbxml-sample-files/zip/coventry-university-of-warwick-small.zip";
-FIL.urlDefaultFile = "#https://cdn.jsdelivr.net/gh/ladybug-tools/spider@master/gbxml-sample-files/bristol-clifton-downs-broken.xml";
+FIL.urlDefaultFile = "https://cdn.jsdelivr.net/gh/ladybug-tools/spider@master/gbxml-sample-files/bristol-clifton-downs-broken.xml";
 //FIL.urlDefaultFile = "https://cdn.jsdelivr.net/gh/ladybug-tools/spider@master/gbxml-sample-files/zip/pittsburg-airport.zip";
 
+TMP.helpFile = "README.md";
 FIL.helpFile = "../fil-file-open-xml-zip/README.md";
 GBX.helpFile = "../README.md";
 GGD.helpFile = "../ggd-get-gbxml-data/README.md";
 
-TMP.helpFile = "README.md";
+MNU.urlSourceCode = "https://github.com/ladybug-tools/spider-gbxml-fixer";
+MNU.description = TMP.description;
+
+MNU.homeText ="<img src='https://ladybug.tools/artwork/icons_bugs/ico/ladybug.ico' height=24 >";
+MNU.homeTitle="Ladybug Tools: free computer applications that support environmental design and education";
+MNU.homeUrl  ="https://www.ladybug.tools";
+
+MNU.repoText ="<img src='https://ladybug.tools/artwork/icons_bugs/ico/spider.ico' height=24 >";
+MNU.repoTitle="Spider: 3D interactive analysis in your browser mostly written around the Three.js JavaScript library";
+MNU.repoUrl  ="https://www.ladybug.tools/spider/";
+
+MNU.appText  = ""; // "gbXML Tools";
+MNU.appTitle = ""; // "Tools to help you find, load, examine and edit gbXML files - in large numbers and sizes";
+MNU.appUrl   = ""; // "https://www.ladybug.tools/spider-gbxml-tools/";
+
+MNU.footerPopupUrl = "../../../spider/";
+MNU.footerIssues	= "https://github.com/ladybug-tools/spider-gbxml-fixer/issues";
+
+
 
 divFixThings =
 	`
