@@ -6,10 +6,10 @@
 const FDPC = {
 
 	"copyright": "Copyright 2019 Ladybug Tools authors. MIT License",
-	"date": "2019-05-15",
+	"date": "2019-05-16",
 	"description": "Identify two or more surfaces with the same planar geometry coordinates",
 	"helpFile": "./r0-4-0/fdpc-fix-duplicate-planar-coordinates/README.md",
-	"release": "0.1.0"
+	"release": "0.1.1"
 
 };
 
@@ -90,7 +90,7 @@ FDPC.getDuplicatePlanarCoordinates = function() {
 		`;
 
 	const htm =
-	`
+		`
 			<p><i>${ FDPC.description }</i></p>
 
 			<p>
@@ -101,8 +101,6 @@ FDPC.getDuplicatePlanarCoordinates = function() {
 				<select onclick=FDPC.setDuplicateData(this); style=min-width:8rem; size=${ FDPC.duplicates.length >= 5 &&  FDPC.duplicates.length <= 20 ? 2 * FDPC.duplicates.length : 10 } >${ options }</select>
 			</p>
 
-			<div id="FDPCdivDuplData" >Click a surface ID above to view its details and delete if necessary</div>
-
 			<p><button onclick=FDPC.deleteDuplicateSurfaces(); >Fix all</button></p>
 
 			<p>
@@ -110,6 +108,11 @@ FDPC.getDuplicatePlanarCoordinates = function() {
 			</p>
 
 			<p>Time to check: ${ ( performance.now() - timeStart ).toLocaleString() } ms</p>
+
+			<hr>
+
+			<div id="FDPCdivDuplData" >Click a surface ID above to view its details and delete if necessary</div>
+
 		`;
 
 	return htm;
@@ -185,7 +188,7 @@ FDPC.deleteSelectedSurface = function( index ) {
 
 	FDPCdet.open = false;
 
-	FDPCdivGetDuplicatePlanar.innerHTML = FDPC.getFixDuplicatePlanarCoordinates();
+	FDPCdivGetDuplicatePlanar.innerHTML = FDPC.getMenuDuplicatePlanarCoordinates();
 
 };
 
@@ -239,7 +242,8 @@ FDPC.deleteDuplicateSurfaces = function() {
 
 	FDPCdet.open = false;
 
-	FDPCdivGetDuplicatePlanar.innerHTML = FDPC.getFixDuplicatePlanarCoordinates();
+	FDPCdivGetDuplicatePlanar.innerHTML = FDPC.getMenuDuplicatePlanarCoordinates();
+
 
 };
 
