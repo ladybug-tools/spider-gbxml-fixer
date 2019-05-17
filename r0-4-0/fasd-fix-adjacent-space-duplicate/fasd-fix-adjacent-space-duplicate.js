@@ -7,10 +7,10 @@
 const FASD = {
 
 	"copyright": "Copyright 2019 Ladybug Tools authors. MIT License",
-	"date": "2019-05-10",
+	"date": "2019-05-16",
 	"description": "Fix air, InteriorWall, InteriorFloor, or Ceiling surfaces where both adjacent space IDs point to the same space",
 	"helpFile": "./r0-4-0/fasd-fix-adjacent-space-duplicate/README.md",
-	"release": "0.1.0"
+	"release": "0.1.1"
 
 };
 
@@ -124,16 +124,6 @@ FASD.getAdjacentSpaceDuplicate = function() {
 			<p>
 				<button onclick=FASD.fixAdjacentSpacesAll(); >fix all</button>
 
-				<button onclick=FASD.fixAdjacentSpacesSelected(); >fix selected</button>
-			</p>
-
-			<div id="FASDdivAdjacentSpaceDuplicateData" >Click a surface name above to view its details and update its adjacent spaces</div>
-
-			<div id=FASDdivCheckGbxml ></div>
-
-			<p>
-				<button onclick=FASDdivSpaceDuplicate.innerHTML=FASD.getFixAdjacentSpaceDuplicate(); >
-					Run check again</button>
 			</p>
 
 			<p>
@@ -141,6 +131,12 @@ FASD.getAdjacentSpaceDuplicate = function() {
 			</p>
 
 			<p>Time to check: ${ ( performance.now() - timeStart ).toLocaleString() } ms</p>
+
+			<hr>
+
+			<div id="FASDdivAdjacentSpaceDuplicateData" >Click a surface name above to view its details and update its adjacent spaces</div>
+
+			<div id=FASDdivCheckGbxml ></div>
 
 		`;
 
@@ -241,6 +237,7 @@ FASD.adjacentSpaceUpdate = function( index, surfaceId ) {
 	FASDdivSpaceDuplicate.innerHTML = FASD.getFixAdjacentSpaceDuplicate();
 
 };
+
 
 
 FASD.fixAdjacentSpacesAll = function() {

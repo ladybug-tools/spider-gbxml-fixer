@@ -30,6 +30,10 @@ _Identify all the surfaces of a model of type "Air" that have a single adjacent 
 
 <summary>Change Log</summary>
 
+### 2019-05-17 ~ Theo
+
+* F - FASA.js: Add single fix display new surface
+
 ### 2019-05-14  Theo
 
 * B - FASA.html: Fix popup help links

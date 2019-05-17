@@ -128,11 +128,13 @@ FASA.getAirSingleAdjacent = function() {
 
 		<p><button onclick=FASA.changeAllAirSingleAdjacent(); >Fix all</button></p>
 
-		<div id="FASAdivAirSingleAdjacentData" >Click a surface name above to view its details and change its surface type. Tool tip shows the ID of the surface.</div>
-
 		<p>Click 'Save file' button in File menu to save changes to a file.</p>
 
 		<p>Time to check: ${ ( performance.now() - timeStart ).toLocaleString() } ms</p>
+
+		<hr>
+
+		<div id="FASAdivAirSingleAdjacentData" >Click a surface name above to view its details and change its surface type. Tool tip shows the ID of the surface.</div>
 
 	`;
 
@@ -159,7 +161,10 @@ FASA.setAirSingleAdjacentData = function( select ) {
 
 		<p>
 			<button onclick=FASA.changeAirSingleAdjacent(${ select.selectedIndex }); title="If tilt equals zero" >change adjacent space type to "Roof"</button>
-			View edits in Develope Console (F12/Ctrl-J/Cmd-J)
+		</p>
+
+		<p>
+			<textarea id=FASAtxt style="height:20rem; width:100%;" ></textarea>
 		</p>
 	`;
 
@@ -184,18 +189,20 @@ FASA.changeAirSingleAdjacent = function( index ) {
 	const tilt = tilts ? tilts[ 1 ] : "";
 	console.log( 'tilt', tilt );
 
+	let surfaceTextNew;
+
 	if ( tilt === "0" ) {
 
-		let surfaceTextNew = surfaceTextCurrent.replace( /surfaceType="Air"/i , 'surfaceType="Roof"' );
+		surfaceTextNew = surfaceTextCurrent.replace( /surfaceType="Air"/i , 'surfaceType="Roof"' );
 		//console.log( 'surfaceTextNew', surfaceTextNew );
 
 		surfaceTextNew = surfaceTextCurrent.replace( /surfaceType="Air"/i , 'surfaceType="Roof"' );
 		//console.log( 'surfaceTextNew', surfaceTextNew );
 		surfaceTextNew = surfaceTextNew.replace( /<CADObjectId>(.*?)\[(.*)\]<\/CADObjectId>/i, `<CADObjectId>Basic Roof: SIM_EXT_SLD_Roof SpiderFix [$2]</CADObjectId>` );
 
-		surfaceTextNew = surfaceTextNew.replace( /exposedToSun="(.*?)"/i, `exposedToSun="false"` );
+		surfaceTextNew = surfaceTextNew.replace( /exposedToSun="(.*?)"/i, `exposedToSun="true"` );
 
-		console.log( 'surfaceTextNew', surfaceTextNew );
+		//console.log( 'surfaceTextNew', surfaceTextNew );
 		GBX.text = GBX.text.replace( surfaceTextCurrent, surfaceTextNew );
 
 		surfaceTextCurrent = surfaceTextNew;
@@ -208,9 +215,11 @@ FASA.changeAirSingleAdjacent = function( index ) {
 
 	}
 
-	FASAdet.open = false;
+	FASAtxt.value = surfaceTextNew;
 
-	FASAdivFixAirSingleAdjacent.innerHTML = FASA.getMenuAirSingleAdjacent();
+	//FASAdet.open = false;
+
+	//FASAdivFixAirSingleAdjacent.innerHTML = FASA.getMenuAirSingleAdjacent();
 
 };
 

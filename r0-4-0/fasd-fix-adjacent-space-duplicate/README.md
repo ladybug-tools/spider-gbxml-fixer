@@ -1,11 +1,11 @@
-# [Fix Adjacent Space Duplicate (FASD) Read Me]( #xxxxx/README.md )
+# [Fix Adjacent Space Duplicate (FASD) Read Me]( #r0-4-0/fasd-fix-adjacent-space-duplicate/README.md )
 
-Fix air, InteriorWall, InteriorFloor, or Ceiling surfaces where both adjacent space IDs point to the same space
 
-<details>
+<details open >
 
 <summary>Concept</summary>
 
+Fix air, InteriorWall, InteriorFloor, or Ceiling surfaces where both adjacent space IDs point to the same space
 </details>
 
 <details>
@@ -26,8 +26,10 @@ Fix air, InteriorWall, InteriorFloor, or Ceiling surfaces where both adjacent sp
 
 <summary>Change Log</summary>
 
-### ZZZ
+### 2019-05-16 ~ Theo
 
+
+* F - FASD: Add readme and popup button
 * F - First commit
 
 </details>
