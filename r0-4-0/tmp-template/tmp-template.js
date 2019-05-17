@@ -127,10 +127,12 @@ TMP.setSurfaceData = function( select ) {
 		${ GSA.getSurfacesAttributesByIndex( select.value, select.selectedOptions[ 0 ].innerHTML ) }
 
 		<p>
-			<button onclick=TMP.fixSurface(${ select.value }); title="If tilt equals 90" >change surface type</button>
+			<button onclick=TMP.fixSurface(${ select.value }); title="" >change surface type</button>
 		</p>
 
-		<textarea id=TMPtxt style="height:20rem; width:100%;" ></textarea>
+		<p>
+			<textarea id=TMPtxt style="height:20rem; width:100%;" ></textarea>
+		</p>
 	`;
 
 	TMPdivSurfaceData.innerHTML = htm;

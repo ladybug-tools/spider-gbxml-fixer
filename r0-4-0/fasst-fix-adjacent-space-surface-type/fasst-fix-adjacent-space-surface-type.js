@@ -6,10 +6,10 @@
 const FASST = {
 
 	"copyright": "Copyright 2019 Ladybug Tools authors. MIT License",
-	"date": "2019-05-12",
+	"date": "2019-05-16",
 	"description": "Fix surfaces with two adjacent spaces that are not of a surface type that requires two adjacent spaces",
 	"helpFile": "./r0-4-0/fasst-fix-adjacent-space-surface-type/README.md",
-	"release": "0.1.2"
+	"release": "0.1.3"
 
 };
 
@@ -132,9 +132,13 @@ FASST.setSurfaceData = function( select ) {
 		${ GSA.getSurfacesAttributesByIndex( select.value, select.selectedOptions[ 0 ].innerHTML ) }
 
 		<p>
-			<button onclick=FASST.fixSurface(${ select.value }); title="If tilt equals 90" >change surface type</button>
-			View edits in Develope Console (F12/Ctrl-J/Cmd-J)
+			<button onclick=FASST.fixSurface(${ select.value }); title="" >change surface type</button>
 		</p>
+
+		<p>
+			<textarea id=FASSTtxt style="height:20rem; width:100%;" ></textarea>
+		</p>
+
 	`;
 
 	FASSTdivSurfaceData.innerHTML = htm;
@@ -153,7 +157,7 @@ FASST.fixSurface = function( index ) {
 
 	const tilts = surfaceTextCurrent.match( /<Tilt>(.*?)<\/Tilt>/i );
 	const tilt = tilts ? tilts[ 1 ] : "";
-	console.log( 'tilt', tilt );
+	//console.log( 'tilt', tilt );
 
 	let surfaceTextNew;
 
@@ -165,7 +169,7 @@ FASST.fixSurface = function( index ) {
 
 		surfaceTextNew = surfaceTextNew.replace( /exposedToSun="(.*?)"/i, `exposedToSun="false"` );
 
-		console.log( 'surfaceTextNew', surfaceTextNew );
+		//console.log( 'surfaceTextNew', surfaceTextNew );
 
 	} else {
 
@@ -181,7 +185,9 @@ FASST.fixSurface = function( index ) {
 
 	GBX.surfaces = GBX.text.match( /<Surface(.*?)<\/Surface>/gi );
 
-	FASSTdet.open = false;
+	FASSTtxt.value = surfaceTextNew;
+
+
 
 };
 
@@ -191,8 +197,41 @@ FASST.fixAllSurfaces = function() {
 
 	for ( let index of FASST.surfacesTwoSpaces ) {
 
-		FASST.fixSurface( index );
+		const surfaceTextCurrent = GBX.surfaces[ index ];
+		//console.log( 'surfaceTextCurrent', surfaceTextCurrent );
+
+		const tilts = surfaceTextCurrent.match( /<Tilt>(.*?)<\/Tilt>/i );
+		const tilt = tilts ? tilts[ 1 ] : "";
+		//console.log( 'tilt', tilt );
+
+		let surfaceTextNew;
+
+		if ( tilt === "90" ) {
+
+			surfaceTextNew = surfaceTextCurrent.replace( /surfaceType="(.*?)"/i, `surfaceType="InteriorWall"` );
+
+			surfaceTextNew = surfaceTextNew.replace( /<CADObjectId>(.*?)\[(.*)\]<\/CADObjectId>/i, `<CADObjectId>Basic Wall: SIM_INT_SLD SpiderFix [$2]</CADObjectId>` );
+
+			surfaceTextNew = surfaceTextNew.replace( /exposedToSun="(.*?)"/i, `exposedToSun="false"` );
+
+			//console.log( 'surfaceTextNew', surfaceTextNew );
+
+		} else {
+
+			surfaceTextNew = surfaceTextCurrent.replace( /surfaceType="(.*?)"/i, `surfaceType="InteriorFloor"` );
+
+			surfaceTextNew = surfaceTextNew.replace( /<CADObjectId>(.*?)\[(.*)\]<\/CADObjectId>/i, `<CADObjectId>Floor: SIM_INT_SLD_FLR SpiderFix [$2]</CADObjectId>` );
+
+			surfaceTextNew = surfaceTextNew.replace( /exposedToSun="(.*?)"/i, `exposedToSun="false"` );
+
+		}
+
+		GBX.text = GBX.text.replace( surfaceTextCurrent, surfaceTextNew );
 
 	}
+
+	GBX.surfaces = GBX.text.match( /<Surface(.*?)<\/Surface>/gi );
+
+	FASSTdet.open = false;
 
 };

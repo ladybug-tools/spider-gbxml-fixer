@@ -30,6 +30,11 @@
 
 <summary>Change Log</summary>
 
+### 2019-05-16 ~ Theo
+
+* F - FASST.js: Add textarea display new data
+* R - FASST.js: Separate fixSurface and fixAll
+
 ### 2019-05-14 ~ Theo
 
 * F - FASST.js: Add button to fix single surface
