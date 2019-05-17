@@ -27,6 +27,12 @@ Checks for surface with invalid exposedToSun values
 
 <summary>Change Log</summary>
 
+### 2019-05-16 ~ Theo
+
+* C - FETS: Add readme and button
+* F - FETS: Add fix single surface and view edits
+* F - FETS: Simplify fix all
+
 ### 2019-05-15 ~ Theo
 
 * F - First commit
