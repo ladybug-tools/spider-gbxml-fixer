@@ -10,14 +10,16 @@ From [Schema GreenBuildingXML_Ver6.01.xsd]( http://gbxml.org/schema_doc/6.01/Gre
 
 > The CADObjectId Element is used to map unique CAD object identifiers to gbXML elements
 
+Lookup table for CAD IDs: https://github.com/ladybug-tools/spider-gbxml-fixer/blob/master/r0-4-0/gbx-gbxml-core.js#L103-L122
 
-
+[Source code]( https://github.com/ladybug-tools/spider-gbxml-fixer/tree/master/r0-4-0/fcim-fix-cad-id-missing )
 </details>
 
 <details>
 
 <summary>To Do / Wish List</summary>
 
+* 2019-05-17 ~ Add complete set of CAD IDs to GBX.cadIdsDefault
 
 </details>
 
@@ -34,9 +36,10 @@ From [Schema GreenBuildingXML_Ver6.01.xsd]( http://gbxml.org/schema_doc/6.01/Gre
 
 ### 2019-05-17 ~ Theo
 
-* F - FCIM.html: Update to newer template
+* F - FCIM.html: Update to newer template / pass through Validator
 * C - FCIM: Update readme
-* F - FCIM: Add better IDs / work-in-progress
+* F - FCIM.js: Add better IDs / work-in-progress
+* r - FCIM.js: code cleanup / pass through jsHint
 
 
 ### 2019-05-16 ~ Theo

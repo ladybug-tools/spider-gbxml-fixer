@@ -1,4 +1,4 @@
-/* globals GBX, GSA, GBXinpIgnoreAirSurfaceType, FCIMsumCadIdMissing, FCIMinpCadId, FCIMdet, FCIMdivCadIdMissing, FCIMselSurface */
+/* globals GBX, GSA, GBXinpIgnoreAirSurfaceType, FCIMsumCadIdMissing, FCIMdivIdMissingData, FCIMtxt, FCIMdet, FCIMdivCadIdMissing, FCIMselSurface */
 /* jshint esversion: 6 */
 /* jshint loopfunc: true */
 
@@ -178,7 +178,7 @@ FCIM.fixCim = function( indexError ) {
 	const type = surfaceTextCurrent.match( /surfaceType="(.*?)"/i )[ 1 ];
 
 
-	const text = GBX.cadIdsDefault[ type ] + " - Spider Fix "
+	const text = GBX.cadIdsDefault[ type ] + " - Spider Fix ";
 
 	let surfaceTextNew;
 
