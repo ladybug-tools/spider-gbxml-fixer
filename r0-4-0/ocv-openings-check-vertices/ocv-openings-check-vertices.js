@@ -59,7 +59,7 @@ OCV.getOpeningsVertices = function() {
 
 	} );
 
-	OCVsumOpeningsVertices.innerHTML = `Check for openings with more than four vertices ~ ${ OCV.ids.length } found ${ OCV.help }`;
+	OCVsumOpeningsVertices.innerHTML = `Check for openings with more than four vertices ~ <mark>${ OCV.ids.length }</mark> found ${ OCV.help }`;
 
 	const htm =
 		`

@@ -32,7 +32,10 @@ GBX.divFixThings =
 		<p>
 			<button onclick=GBX.runAll(); >Run all checks</button>
 
-			<button onclick=GBX.closeAll(); >Close all checks</button>
+			<button onclick=GBX.openAllNonZero(); >Open all non-zero</button>
+
+			<button onclick=GBX.closeAll(); >Close all</button>
+
 		</p>
 
 		<p>
@@ -203,6 +206,8 @@ GBX.runAll = function(){
 
 	for ( let item of details ) { item.open = true; }
 
+	for ( let item of details ) { item.open = false; }
+
 };
 
 
@@ -212,6 +217,24 @@ GBX.closeAll = function(){
 	const details = divContents.querySelectorAll( 'details' );
 
 	for ( let item of details ) { item.open = false; }
+
+};
+
+GBX.openAllNonZero = function(){
+
+	const details = divContents.querySelectorAll( 'details' );
+
+	for ( let item of details ) {
+
+		//console.log( 'item', item );
+
+		if ( item.innerText.includes( "~" ) && item.innerText.includes( "~ 0 " ) === false ) {
+
+			item.open = true;
+
+		}
+
+	}
 
 };
 

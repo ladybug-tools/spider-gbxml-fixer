@@ -87,10 +87,8 @@ FASD.getAdjacentSpaceDuplicate = function() {
 
 	}
 
-	const help = `<a id=FASDHelp class=helpItem href="JavaScript:MNU.setPopupShowHide(FASDHelp,FASD.currentStatus);" >&nbsp; ? &nbsp;</a>`;
-
 	FASDsumAdjacentSpaceDuplicate.innerHTML =
-	`Fix surfaces with duplicate adjacent spaces ~ ${ FASD.duplicates.length.toLocaleString() } found
+	`Fix surfaces with duplicate adjacent spaces ~ <mark>${ FASD.duplicates.length.toLocaleString() }</mark> found
 		${ FASD.help }
 	`;
 

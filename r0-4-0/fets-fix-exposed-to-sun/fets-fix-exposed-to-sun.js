@@ -141,7 +141,7 @@ FETS.getSurfaceExposedToSunErrors = function() {
 
 	FETSsumSurfaces.innerHTML =
 	`Fix surfaces with invalid ExposedToSun
-		~ ${ ( FETS.errors.length ).toLocaleString() } errors
+		~ <mark>${ ( FETS.errors.length ).toLocaleString() }</mark> errors
 		${ FETS.help }
 	`;
 

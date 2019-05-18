@@ -102,7 +102,7 @@ FCIM.getFixCadIdMissing = function() {
 	//console.log( 'options', options );
 
 	FCIMsumCadIdMissing.innerHTML =
-		`Fix surfaces with missing CAD object ID ~ ${ FCIM.errors.length.toLocaleString() } found
+		`Fix surfaces with missing CAD object ID ~ <mark>${ FCIM.errors.length.toLocaleString() }</mark> found
 			${ FCIM.help }
 		`;
 

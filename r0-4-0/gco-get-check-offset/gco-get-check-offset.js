@@ -53,7 +53,7 @@ GCO.getOffset = function() {
 
 
 	GCOsumCheckOffset.innerHTML =
-		`Check maximum offset distance from origin ~ ${ max.toLocaleString() } units
+		`Check maximum offset distance from origin ~ <mark>${ max.toLocaleString() }</mark> units
 			${ GCO.help }
 		`;
 

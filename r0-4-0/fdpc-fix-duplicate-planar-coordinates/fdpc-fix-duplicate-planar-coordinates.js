@@ -85,7 +85,7 @@ FDPC.getDuplicatePlanarCoordinates = function() {
 	//console.log( 'options', options );
 
 	FDPCsumDuplicatePlanar.innerHTML =
-		`Fix surfaces with duplicate planar coordinates ~ ${ FDPC.duplicates.length.toLocaleString() } found
+		`Fix surfaces with duplicate planar coordinates ~ <mark>${ FDPC.duplicates.length.toLocaleString() }</mark> found
 			${ FDPC.help }
 		`;
 

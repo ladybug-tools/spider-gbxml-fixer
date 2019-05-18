@@ -81,7 +81,7 @@ FXA.getAttributes = function() {
 	const data = FXA.setMenuAttributes();
 
 	FXAsumAttributes.innerHTML =
-		`Fix missing required gbXML attributes ~ ${FXA.attributesMissing.length} missing
+		`Fix missing required gbXML attributes ~ <mark>${FXA.attributesMissing.length}</mark> missing
 			${ FXA.help }
 		`;
 

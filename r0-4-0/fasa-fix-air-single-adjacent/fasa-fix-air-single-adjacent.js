@@ -108,7 +108,7 @@ FASA.getAirSingleAdjacent = function() {
 	} );
 
 	FASAsumSurfaces.innerHTML =
-		`Get air surfaces with single adjacent space ~ ${ FASA.surfaces.length.toLocaleString() } found
+		`Get air surfaces with single adjacent space ~ <mark>${ FASA.surfaces.length.toLocaleString() }</mark> found
 			${ FASA.help }
 		`;
 

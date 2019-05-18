@@ -85,7 +85,7 @@ FASST.getSurfaces = function() {
 	} );
 
 
-	FASSTsumSurfaces.innerHTML = `Fix surfaces with two adjacent spaces & incorrect surface type ~ ${ FASST.surfacesTwoSpaces.length.toLocaleString() } found ${ FASST.help }`;
+	FASSTsumSurfaces.innerHTML = `Fix surfaces with two adjacent spaces & incorrect surface type ~ <mark>${ FASST.surfacesTwoSpaces.length.toLocaleString() }</mark> found ${ FASST.help }`;
 
 	const htm =
 	`

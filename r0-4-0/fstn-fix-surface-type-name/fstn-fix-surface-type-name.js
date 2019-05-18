@@ -87,7 +87,7 @@ FSTN.getSurfaceType = function() {
 
 
 	FSTNsumSurfaceType.innerHTML =
-		`Fix surfaces with invalid surface type name ~ ${ FSTN.errors.length.toLocaleString() } errors
+		`Fix surfaces with invalid surface type name ~ <mark>${ FSTN.errors.length.toLocaleString() }</mark> errors
 			${ FSTN.help }
 		`;
 

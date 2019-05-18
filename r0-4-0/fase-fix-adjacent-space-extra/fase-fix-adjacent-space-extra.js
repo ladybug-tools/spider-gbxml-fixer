@@ -85,7 +85,7 @@ FASE.getAdjacentSpaceExtra = function() {
 	//console.log( 'options', options );
 
 	FASEsumAdjacentSpaceExtra.innerHTML =
-		`Fix surfaces with an extra adjacent space ~ ${ FASE.extras.length.toLocaleString() } found
+		`Fix surfaces with an extra adjacent space ~ <mark>${ FASE.extras.length.toLocaleString() }</mark> found
 			${ FASE.help }
 		`;
 
