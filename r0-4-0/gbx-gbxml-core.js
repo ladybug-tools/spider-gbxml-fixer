@@ -36,6 +36,8 @@ GBX.divFixThings =
 
 			<button onclick=GBX.closeAll(); >Close all</button>
 
+			To do: a 'fix all' button
+
 		</p>
 
 		<p>

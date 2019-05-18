@@ -17,10 +17,11 @@ Checks for a surface type name that is not one of the 15 valid gbXML surface typ
 
 </details>
 
-<details>
+<details open>
 
 <summary>Issues</summary>
 
+* 2019-05-17 ~ Seems to be having issues with fixing errors
 
 </details>
 

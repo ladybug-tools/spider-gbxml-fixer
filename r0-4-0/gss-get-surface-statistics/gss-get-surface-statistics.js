@@ -32,7 +32,7 @@ GSS.getMenuSurfaceStatistics = function() {
 		`
 			<details ontoggle="GSSdivSurface.innerHTML=GSS.getSurfaces();" >
 
-				<summary id=GSSsumSurfaces >Show surfaces Statistics
+				<summary id=GSSsumSurfaces >Show surfaces statistics
 					${ GSS.help }
 				</summary>
 

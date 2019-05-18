@@ -16,9 +16,11 @@ Checks for surface with invalid exposedToSun values
 
 </details>
 
-<details>
+<details open>
 
 <summary>Issues</summary>
+
+* 2019-05-17 ~ May have issues if over a hundred or so surfaces to fix.
 
 
 </details>
