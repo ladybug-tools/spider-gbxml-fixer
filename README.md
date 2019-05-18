@@ -161,6 +161,7 @@ The desired solution is a utility that enables seamless gbXML data transfer betw
 
 <summary class=sumHeader title="What you you really want?" >To Do / Wish List</summary>
 
+* 2019-05-18 ~ Add module to compare surfaces coordinates with coordinates in spaces
 * 2019-05-10 ~ Add fix for interior surfaces with single adjacent space
 * 2019-04-03 ~ Identify surface edges with multiple vertices where two are sufficient
 * 2019-03-12 ~ Add check for openings larger or outside their parent surface
@@ -206,6 +207,10 @@ From [The case for single character git commit message prefixes]( https://smalld
 * r, proven code refactoring - this is the original meaning of the mathematical term refactoring, where it can be mathematically proven that the code change does not change any functionality.
 * T, test cases and/or test improvements
 * !, unknown - i.e. for when you really need to make that commit because there's a horde of zombies waiting outside.
+
+Additions ??
+
+* S, changes to CSS
 
 ### Semantic Versioning
 

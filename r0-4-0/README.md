@@ -38,6 +38,11 @@ This module:
 
 <summary>Change Log</summary>
 
+### 2019-05-18 ~ Theo
+
+* B - GBX.js: Pass through jsHint
+* S - GBX.js: iframe to 100%
+
 ### 2019-05-17 ~ Theo
 
 * C - GBX: update readme

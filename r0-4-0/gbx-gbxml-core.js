@@ -1,4 +1,5 @@
-/* globals FIL, divContents, GGD, GCS, OCV, GBXh1FileName, */
+/* globals divContents, FASA, FASD, FASE, FASST, FCIM, FDPC, FETS, FIL, FSTN, FXA,
+	GBXifr, GCO, GCS, GGD, GSS, OCV, GBXh1FileName, */
 /* jshint esversion: 6 */
 /* jshint loopfunc: true */
 
@@ -6,10 +7,10 @@
 const GBX = {
 
 	"copyright": "Copyright 2019 Ladybug Tools authors. MIT License",
-	"date": "2019-05-17",
-	"description": "Creates the GBX object. Creates the template for the main contents and more",
+	"date": "2019-05-18",
+	"description": "Creates the GBX object and basic variables. Creates the template for the main contents and more",
 	"helpFile": "./r0-4-0/README.md",
-	"release": "0.1.2",
+	"release": "0.1.3",
 
 };
 
@@ -24,7 +25,7 @@ GBX.divFixThings =
 		<h2 id=GBXh1FileName >Check file: <script>decodeURI( FIL.name ) </script></h2>
 
 		<p>
-			<iframe id=GBXifr style=height:300px;width:600px; ></iframe>
+			<iframe id=GBXifr style=height:300px;width:100%; ></iframe>
 			<br>
 			<i>Preview model is for visual verification only and is not connected to fixer</i>
 		</p>
@@ -81,8 +82,6 @@ GBX.divFixThings =
 		<center title="Hi there!" ><a href=javascript:window.scrollTo(0,0); style=text-decoration:none; > <img src="https://ladybug.tools/artwork/icons_bugs/ico/spider.ico" height=24 > </a></center>
 
 	`;
-
-
 
 GBX.colorsDefault = {
 
@@ -170,7 +169,7 @@ GBX.init = function() {
 	//TMPdivTemplate.innerHTML = TMP.getMenuTemplate();
 
 
-	if ( !FIL.files ) {
+	if ( !FIL.files ) { // switch positions
 
 		const url = location.hash ? location.hash : "#" + FIL.urlDefaultFile;
 		//console.log( 'url', url );
@@ -222,6 +221,8 @@ GBX.closeAll = function(){
 
 };
 
+
+
 GBX.openAllNonZero = function(){
 
 	const details = divContents.querySelectorAll( 'details' );
@@ -239,4 +240,3 @@ GBX.openAllNonZero = function(){
 	}
 
 };
-
