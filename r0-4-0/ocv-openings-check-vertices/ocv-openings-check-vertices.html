@@ -3,15 +3,14 @@
 <head>
 <meta charset = "utf-8" >
 <meta name = "viewport" content= "width=device-width, initial-scale=1" >
-<meta name = "description" content = "Fix surfaces with two adjacent spaces that are not of a surface type that requires two adjacent spaces" >
+<meta name = "description" content = "Openings Check Vertices" >
 <meta name = "keywords" content = "JavaScript,GitHub,FOSS" >
 <meta name = "date" content = "2019-05-17" >
 <meta name = "revision" content = "0.4-0" >
-<title>Fix Adjacent Space Surface Type (FASST)</title>
+<title>Openings Check Vertices (OCV)</title>
 <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" >
 <link rel="stylesheet" href="https://pushme-pullyou.github.io/tootoo14/js-14-1/style.css">
 </head>
-
 <body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.5/jszip.min.js" ></script>
 <script src="https://rawgit.com/showdownjs/showdown/1.9.0/dist/showdown.min.js" ></script>
@@ -25,7 +24,7 @@
 <script src="../gss-get-surface-statistics/gss-get-surface-statistics.js" ></script>
 <script src="../gsa-get-surface-attributes/gsa-get-surface-attributes.js" ></script>
 
-<script src="../fasst-fix-adjacent-space-surface-type/fasst-fix-adjacent-space-surface-type.js" ></script>
+<script src="../ocv-openings-check-vertices/ocv-openings-check-vertices.js" ></script>
 
 	<nav id="navPanel" >
 
@@ -111,10 +110,10 @@ FIL.helpFile = "../fil-file-open-xml-zip/README.md";
 GBX.helpFile = "../README.md";
 GGD.helpFile = "../ggd-get-gbxml-data/README.md";
 GSS.helpFile = "../gss-get-surface-statistics/README.md";
-FASST.helpFile = "README.md";
+OCV.helpFile = "README.md";
 
 MNU.urlSourceCode = "https://github.com/ladybug-tools/spider-gbxml-fixer";
-MNU.description = FASST.description;
+MNU.description = OCV.description;
 
 MNU.homeText ="<img src='https://ladybug.tools/artwork/icons_bugs/ico/ladybug.ico' height=24 >";
 MNU.homeTitle="Ladybug Tools: free computer applications that support environmental design and education";
@@ -130,8 +129,6 @@ MNU.appUrl   = ""; // "https://www.ladybug.tools/spider-gbxml-tools/";
 
 MNU.footerPopupUrl = "../../../spider/";
 MNU.footerIssues	= "https://github.com/ladybug-tools/spider-gbxml-fixer/issues";
-
-
 
 divFixThings =
 	`
@@ -155,14 +152,15 @@ divFixThings =
 		<div id=GGDdivGetGbxmlData ></div>
 
 		<div id=GSSdiv ></div>
-		
-		<div id=FASSTdiv ></div>
+
+		<div id=OCVdivGetOpeningsCheckVertices ></div>
 
 	`;
 
 
 
 init();
+
 
 
 function init() {
@@ -200,8 +198,8 @@ function onLoad() {
 	GGDdivGetGbxmlData.innerHTML = GGD.getGbxmlData(  FIL.text  );
 
 	GSSdiv.innerHTML = GSS.getMenuSurfaceStatistics();
-	
-	FASSTdiv.innerHTML = FASST.getMenuFASST();
+
+	OCVdivGetOpeningsCheckVertices.innerHTML = OCV.getOpeningsCheckVertices();
 
 }
 

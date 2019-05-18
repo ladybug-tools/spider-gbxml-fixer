@@ -5,11 +5,11 @@
 <meta name = "viewport" content= "width=device-width, initial-scale=1" >
 <meta name = "description" content = "JavaScript utilities to help you identify and fix common errors in gbXML files" >
 <meta name = "keywords" content = "JavaScript,GitHub,FOSS" >
-<meta name = "date" content = "2019-05-16" >
-<meta name = "release" content = "0.4.11" >
+<meta name = "date" content = "2019-05-17" >
+<meta name = "revision" content = "0.4.12" >
 <title>Spider gbXML Fixer 'Atrax'</title>
 <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" >
-<link rel="stylesheet" href="https://pushme-pullyou.github.io/tootoo14/js-14-0/style.css">
+<link rel="stylesheet" href="https://pushme-pullyou.github.io/tootoo14/js-14-1/style.css">
 </head>
 <!-- //Copyright 2019 Ladybug Tools authors. MIT License -->
 <body>
@@ -17,7 +17,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js" ></script>
 
 <!-- menus generally -->
-<script src="https://pushme-pullyou.github.io/tootoo14/js-14-0/mnu-menu/mnu-menu.js" ></script>
+<script src="https://pushme-pullyou.github.io/tootoo14/js-14-1/mnu-menu/mnu-menu.js" ></script>
 <script src="https://ladybug-tools.github.io/spider-gbxml-tools/spider-gbxml-viewer/r15/js-gbxml/gal-sample-files-gallery-gbxml.js" ></script>
 <script src="r0-4-0/gbx-gbxml-core.js" ></script>
 <script src="r0-4-0/gsa-get-surface-attributes/gsa-get-surface-attributes.js" ></script>
@@ -127,11 +127,7 @@
 
 	<nav id="navPopup" hidden >
 
-		<div style=text-align:right; ><button onclick="MNU.setPopupShowHide(MNU.popupId,'');"" >×</button></div>
-
-		<div id="MNUdivPopupData" ></div>
-
-		<div id="MNUdivPopupMessage" ></div>
+		<div id="MNUdivPopup" ></div>
 
 	</nav>
 
@@ -202,11 +198,6 @@ function init() {
 	FIL.onHashChange(); // checks location hash, if none set default file ( the read me ) to open
 
 	document.body.addEventListener( 'onXmlFileLoad', GBX.init, false ); // hash changed, file loaded so let's go
-
-	const rel = document.head.querySelector( '[ name=release ]' ).content;
-	const date = document.head.querySelector( '[ name=date ]' ).content;
-
-	MNUdivPopupMessage.innerHTML = `R${ rel } - ${ date }`;
 
 }
 

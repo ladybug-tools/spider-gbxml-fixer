@@ -9,7 +9,7 @@ const TMP = {
 	"date": "2019-05-16",
 	"description": "template for checking surfaces",
 	"helpFile": "./r0-4-0/tmp-template/README.md",
-	"release": "0.1.2"
+	"release": "0.4-2"
 
 };
 
