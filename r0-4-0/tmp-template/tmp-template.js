@@ -1,4 +1,4 @@
-/* globals GBX, GSA, TMPsumSurfaces, TMPdivSurfaceAttributeData, TMPdivSurfaceData, TMPdet, TMPtxt */
+/* globals GBX, GSA, TMPsumSurfaces, TMPdivSurfaceData, TMPdet, TMPtxt */
 /* jshint esversion: 6 */
 /* jshint loopfunc: true */
 
@@ -6,7 +6,7 @@
 const TMP = {
 
 	"copyright": "Copyright 2019 Ladybug Tools authors. MIT License",
-	"date": "2019-05-16",
+	"date": "2019-05-17",
 	"description": "template for checking surfaces",
 	"helpFile": "./r0-4-0/tmp-template/README.md",
 	"release": "0.4-2"
@@ -37,8 +37,6 @@ TMP.getMenuTemplate = function() {
 
 				<div id=TMPdivSurface ></div>
 
-				<div id=TMPdivSurfaceAttributeData ></div>
-
 			</details>
 
 		`;
@@ -52,8 +50,6 @@ TMP.getMenuTemplate = function() {
 TMP.getSurfaces = function() {
 
 	const timeStart = performance.now();
-
-	TMPdivSurfaceAttributeData.innerHTML = "";
 
 	TMP.surfaces = [];
 
@@ -102,11 +98,13 @@ TMP.getSurfaces = function() {
 
 		<p><button onclick=TMP.fixAllSurfaces(); >Fix all</button></p>
 
-		<div id="TMPdivSurfaceData" >Click a surface name above to view its details and change its surface type. Tool tip shows the ID of the surface.</div>
-
-		<!-- <p>Click 'Save file' button in File menu to save changes to a file.</p> -->
+		<p>Click 'Save file' button in File menu to save changes to a file.</p>
 
 		<p>Time to check: ${ ( performance.now() - timeStart ).toLocaleString() } ms</p>
+
+		<hr>
+
+		<div id="TMPdivSurfaceData" >Click a surface name above to view its details and change its surface type. Tool tip shows the ID of the surface.</div>
 
 	`;
 
@@ -120,7 +118,6 @@ TMP.setSurfaceData = function( select ) {
 
 	//const surface = TMP.surfaces[ select.selectedIndex ];
 	//console.log( 'surface', surface );
-	// 			View edits in Developer Console (F12/Ctrl-J/Cmd-J)
 
 	const htm =
 	`

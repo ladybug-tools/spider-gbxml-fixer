@@ -10,6 +10,8 @@ From [Schema GreenBuildingXML_Ver6.01.xsd]( http://gbxml.org/schema_doc/6.01/Gre
 
 > The CADObjectId Element is used to map unique CAD object identifiers to gbXML elements
 
+
+
 </details>
 
 <details>
@@ -33,7 +35,8 @@ From [Schema GreenBuildingXML_Ver6.01.xsd]( http://gbxml.org/schema_doc/6.01/Gre
 ### 2019-05-17 ~ Theo
 
 * F - FCIM.html: Update to newer template
-* C - FCIM: update readme
+* C - FCIM: Update readme
+* F - FCIM: Add better IDs / work-in-progress
 
 
 ### 2019-05-16 ~ Theo

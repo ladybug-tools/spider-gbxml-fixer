@@ -100,6 +100,27 @@ GBX.colorsDefault = {
 
 };
 
+GBX.cadIdsDefault = {
+
+	InteriorWall: "Basic Wall: SIM_INT_SLD",
+	ExteriorWall: "Basic Wall: SIM_EXT_SLD",
+	Roof: "Basic Roof: SIM_EXT_SLD",
+	InteriorFloor: "Floor: SIM_INT_SLD_FLR",
+	ExposedFloor: "Floor: SIM_EXT_SLD_FLR",
+	Shade: "???: SIM_???",
+	UndergroundWall: "Basic Wall: SIM_???",
+	UndergroundSlab: "Floor: SIM_???",
+	Ceiling: "???: SIM_???",
+	Air: "???: SIM_???",
+	UndergroundCeiling: "???: SIM_???",
+	RaisedFloor: "Floor: SIM_???",
+	SlabOnGrade: "Floor: SIM_???",
+	FreestandingColumn: 0x808080,
+	EmbeddedColumn: 0x80806E,
+	Undefined: 0x88888888
+
+};
+
 GBX.colors = Object.assign( {}, GBX.colorsDefault ); // create working copy of default colors
 
 GBX.surfaceTypes = Object.keys( GBX.colors );

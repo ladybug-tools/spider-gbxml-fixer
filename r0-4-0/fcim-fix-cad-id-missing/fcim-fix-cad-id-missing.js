@@ -6,10 +6,10 @@
 const FCIM = {
 
 	"copyright": "Copyright 2019 Ladybug Tools authors. MIT License",
-	"date": "2019-05-16",
+	"date": "2019-05-17",
 	"description": "Assign an ID to surfaces with a missing CAD object ID",
 	"helpFile": "./r0-4-0/fcim-fix-cad-id-missing/README.md",
-	"release": "0.1.0"
+	"release": "0.4-1"
 
 };
 
@@ -23,9 +23,9 @@ FCIM.getCadIdMissing = function() {
 		`
 			<details id=FCIMdet ontoggle="FCIMdivCadIdMissing.innerHTML=FCIM.getFixCadIdMissing();" >
 
-			<summary id=FCIMsumCadIdMissing >Fix Surfaces with CAD object ID missing
-				${ FCIM.help }
-			</summary>
+				<summary id=FCIMsumCadIdMissing >Fix Surfaces with CAD object ID missing
+					${ FCIM.help }
+				</summary>
 
 				<div id=FCIMdivCadIdMissing ></div>
 
@@ -42,6 +42,7 @@ FCIM.getCadIdMissing = function() {
 FCIM.getFixCadIdMissing = function() {
 
 	const timeStart = performance.now();
+
 	FCIM.errors = [];
 
 	GBX.surfaces.forEach( ( surface, index ) => {
@@ -90,18 +91,15 @@ FCIM.getFixCadIdMissing = function() {
 
 		const id = surface.match( / id="(.*?)"/i )[ 1 ];
 
-		let name = surface.match( /<Name>(.*?)<\/Name>/gi );
+		const names = surface.match( /<Name>(.*?)<\/Name>/gi );
 		//console.log( 'name', name );
 
-		name = name ? name.pop() : id;
-		//.pop();
+		const name = names ? names.pop() : id;
 
 		return `<option value=${ indexError } title="${ id }" >${ name }</option>`;
 
 	} );
 	//console.log( 'options', options );
-
-	const help = `<a id=fcimHelp class=helpItem href="JavaScript:MNU.setPopupShowHide(fcimHelp,FCIM.currentStatus);" >&nbsp; ? &nbsp;</a>`;
 
 	FCIMsumCadIdMissing.innerHTML =
 		`Fix surfaces with missing CAD object ID ~ ${ FCIM.errors.length.toLocaleString() } found
@@ -109,51 +107,57 @@ FCIM.getFixCadIdMissing = function() {
 		`;
 
 
-	const cimHtm =
+	const htm =
 		`
 			<p><i>The CADObjectId Element is used to map unique CAD object identifiers to gbXML elements</i></p>
 
 			Surfaces with no CAD Object ID: ${ FCIM.errors.length.toLocaleString() }<br>
 
 			<p>
-				<select id=FCIMselSurface onclick=FCIMdivIdMissingData.innerHTML=FCIM.getSurfaceData(this); size=5 style=min-width:8rem; >${ options }</select>
+				<select id=FCIMselSurface onclick=FCIM.setSurfaceData(this); size=5 style=min-width:8rem; >${ options }</select>
 			</p>
 
-			<p><button onclick=FCIM.fixAllSelected(); >Fix all</button></p>
+			<p><button onclick=FCIM.fixAll(); >Fix all</button></p>
 
-			<div id="FCIMdivIdMissingData" >Click a surface name above to view its details and update its CAD object ID</div>
-
-			<div id=FCIMdivSelectedSurfaceGbXML></div>
+			<p>Click 'Save file' button in File menu to save changes to a file.</p>
 
 			<p>Time to check: ${ ( performance.now() - timeStart ).toLocaleString() } ms</p>
 
+			<hr>
+
+			<div id="FCIMdivIdMissingData" >Click a surface name above to view its details and update its CAD object ID</div>
+
 		`;
 
-	return cimHtm;
+	return htm;
 
 };
 
 
-FCIM.getSurfaceData = function( select ) {
-	//console.log( 'select.selectedIndex', select.selectedIndex  );
 
-	const error = FCIM.errors[ select.selectedIndex ];
+FCIM.setSurfaceData = function() {
+
+	const error = FCIM.errors[ FCIMselSurface.selectedIndex ];
 	// console.log( 'error', error );
 
 	const invalidData = GSA.getSurfacesAttributesByIndex( error.index, error.id );
 
 	const htm =
-
 	`
 		${ invalidData }
 		<p>
-			CAD Object ID <input id=FCIMinpCadId value="Place holder: ${ error.id }" style=width:30rem; >
+			<button onclick=FCIM.fixCim(FCIMselSurface.selectedIndex); >Update CAD Object ID</button>
 
-			<button onclick=FCIM.getFixCim(FCIMselSurface.selectedIndex); >UpdateCAD Object ID</button>
+			<button onclick=FCIMdet.open=false;FCIMdivCadIdMissing.innerHTML=FCIM.getFixCadIdMissing(); >run check</button>
 		</p>
+
+		<p>
+			<textarea id=FCIMtxt style="height:20rem; width:100%;" ></textarea>
+		</p>
+
 	`;
 
-	return htm;
+	FCIMdivIdMissingData.innerHTML = htm;
 
 };
 
@@ -162,16 +166,19 @@ FCIM.getSurfaceData = function( select ) {
 
 //////////
 
-FCIM.getFixCim = function( indexError ) {
-	console.log( 'index', indexError );
+FCIM.fixCim = function( indexError ) {
+	//console.log( 'index', indexError );
 
 	const error = FCIM.errors[ indexError ];
-	console.log( 'error', error );
+	//console.log( 'error', error );
 
 	const surfaceTextCurrent = GBX.surfaces[ error.index ];
 	//console.log( 'surfaceTextCurrent', surfaceTextCurrent );
 
-	const text = FCIMinpCadId.value;
+	const type = surfaceTextCurrent.match( /surfaceType="(.*?)"/i )[ 1 ];
+
+
+	const text = GBX.cadIdsDefault[ type ] + " - Spider Fix "
 
 	let surfaceTextNew;
 
@@ -188,20 +195,16 @@ FCIM.getFixCim = function( indexError ) {
 
 	GBX.text = GBX.text.replace( surfaceTextCurrent, surfaceTextNew );
 
+	FCIMtxt.value = surfaceTextNew;
+
 	GBX.surfaces = GBX.text.match( /<Surface(.*?)<\/Surface>/gi );
-
-	FCIMdet.open = false;
-
-	FCIMdivCadIdMissing.innerHTML = FCIM.getFixCadIdMissing();
-
-	//console.log( 'suf', GBX.surfaces[ error.index ] );
 
 
 };
 
 
 
-FCIM.fixAllSelected = function() {
+FCIM.fixAll = function() {
 
 	for ( let i = 0; i < FCIMselSurface.length; i++ ) {
 
