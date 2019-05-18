@@ -12,7 +12,8 @@ From [Schema GreenBuildingXML_Ver6.01.xsd]( http://gbxml.org/schema_doc/6.01/Gre
 
 Lookup table for CAD IDs: https://github.com/ladybug-tools/spider-gbxml-fixer/blob/master/r0-4-0/gbx-gbxml-core.js#L103-L122
 
-[Source code]( https://github.com/ladybug-tools/spider-gbxml-fixer/tree/master/r0-4-0/fcim-fix-cad-id-missing )
+[Source code]( https://github.com/ladybug-tools/spider-gbxml-fixer/tree/master/r0-4-0/fcim-fix-cad-id-missing ) / [Standalone testing script]( https://ladybug-tools.github.io/spider-gbxml-fixer/r0-4-0/fcim-fix-cad-id-missing/fcim-fix-cad-id-missing.html )
+
 </details>
 
 <details>
