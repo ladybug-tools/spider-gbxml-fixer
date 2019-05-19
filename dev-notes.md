@@ -6,10 +6,10 @@
 
 To do
 
-* tootoo links and read me's working and helpful
-* Test fixed results against latest open studio
-* keep fixing other readme files
-
+* TooToo links and readme's working and helpful << 2019-05-18 - looking good
+* Test fixed results against latest Open Studio
+* Keep fixing other readme files << 2019-05-18 ~ WIP
+* Add Construction Elements
 
 
 ### 2019-04-03 ~ Theo
