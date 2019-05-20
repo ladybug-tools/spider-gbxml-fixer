@@ -1,18 +1,21 @@
-
-/* globals GBX, FASEselAdjacentSpaceExtra, FASEsumSpaceExtra, FASEdivSpaceExtraData, FASEdivSpaceExtra  */
+/* globals GBX, GSA, FASEdet, FASEsumAdjacentSpaceExtra, FASEdivSpaceExtraData, FASEdivSpaceExtra  */
 /* jshint esversion: 6 */
 /* jshint loopfunc: true */
 
 
-
 const FASE = {
 
-	"description": "Checks for a surface with more adjacent spaces than required",
-	"date": "2019-05-16",
 	"copyright": "Copyright 2019 Ladybug Tools authors. MIT License",
-	"release": "0.1.0"
+	"description": "Checks for a surface with more adjacent spaces than required",
+	"date": "2019-05-20",
+	"helpFile": "./r0-4-0/fase-fix-adjacent-space-extra/README.md",
+	"version": "0.4.0-2"
 
 };
+
+
+FASE.oneSpace = [ 'ExteriorWall', 'Roof', 'ExposedFloor', 'UndergroundCeiling', 'UndergroundWall',
+	'UndergroundSlab', 'RaisedFloor', 'SlabOnGrade', 'FreestandingColumn', 'EmbeddedColumn' ];
 
 
 
@@ -38,8 +41,6 @@ FASE.getMenuAdjacentSpaceExtra = function() {
 };
 
 
-FASE.oneSpace = [ 'ExteriorWall', 'Roof', 'ExposedFloor', 'UndergroundCeiling', 'UndergroundWall',
-	'UndergroundSlab', 'RaisedFloor', 'SlabOnGrade', 'FreestandingColumn', 'EmbeddedColumn' ];
 
 FASE.getAdjacentSpaceExtra = function() {
 
@@ -61,7 +62,7 @@ FASE.getAdjacentSpaceExtra = function() {
 		adjacentSpaceArr = adjacentSpaceArr ? adjacentSpaceArr : [];
 		//console.log( 'adjacentSpaceArr', adjacentSpaceArr );
 
-		let name = surface.match( /<Name>(.*?)<\/Name>/i )
+		let name = surface.match( /<Name>(.*?)<\/Name>/i );
 		name = name ? name[ 1 ] : id;
 
 		if ( FASE.oneSpace.includes( surfaceType ) && adjacentSpaceArr && adjacentSpaceArr.length > 1 ) {
@@ -163,13 +164,13 @@ FASE.adjacentSpaceDelete = function( index ) {
 
 		//const result = confirm( `Surface type is "Shade".\nOK to delete all adjacent space references?` );
 
-		//if ( result !== true ) { return; }
+		//if ( let result !== true ) { return; }
 
 		const regex = new RegExp( `<AdjacentSpaceId(.*?)\/>`, "gi" );
 		const matches = surfaceTextCurrent.match ( regex );
 		//console.log( 'matches', matches );
 
-		for ( match of matches ) {
+		for ( let match of matches ) {
 
 			const surfaceTextNew = surfaceTextCurrent.replace( match, '' );
 			//console.log( 'surfaceTextNew', surfaceTextNew );
@@ -185,13 +186,13 @@ FASE.adjacentSpaceDelete = function( index ) {
 		const matches = surfaceTextCurrent.match ( /spaceIdRef="(.*?)"/gi );
 		//console.log( 'matches', matches );
 
-		spaceIds = matches.map( match => match.match( /"(.*?)"/ )[ 1 ] );
+		const spaceIds = matches.map( match => match.match( /"(.*?)"/ )[ 1 ] );
 		//console.log( 'spaceIds', spaceIds );
 
-		keepers = [];
+		const keepers = [];
 		let keeperNot;
 
-		for ( spaceId of spaceIds ) { // check for actual space Ids
+		for ( let spaceId of spaceIds ) { // check for actual space Ids
 
 			for ( let space of GBX.spaces ) {
 
@@ -209,7 +210,7 @@ FASE.adjacentSpaceDelete = function( index ) {
 
 		if ( keepers.length === 1 ) { // found one id was wrong
 
-			for ( spaceId of spaceIds ) {
+			for ( let spaceId of spaceIds ) {
 
 				if ( keepers[ 0 ].spaceId !== spaceId ) { // this must be the bad one
 
@@ -222,7 +223,7 @@ FASE.adjacentSpaceDelete = function( index ) {
 
 			const keepers2 = [];
 
-			for ( keeper of keepers ) {
+			for ( let keeper of keepers ) {
 
 				const planarSurface = surfaceTextCurrent.match( /<PlanarGeometry(.*?)<\/PlanarGeometry>/i );
 				//console.log( 'planarSurface', planarSurface );
@@ -303,4 +304,4 @@ FASE.deleteAllSpacesExtra = function() {
 
 	} );
 
-}
+};

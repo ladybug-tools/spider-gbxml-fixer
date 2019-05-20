@@ -1,18 +1,6 @@
-<!--
-<span style=display:none; >[You are now in a GitHub source code view - click this link to view Read Me file as a web page]( https://www.ladybug.tools/spider-gbxml-fixer/#../README.md "View file as a web page." ) </span>
-
-<div><input type=button class = "btn btn-secondary btn-sm" onclick=window.location.href="https://github.com/ladybug-tools/spider-gbxml-fixer/"
-value="You are now in a GitHub web page view - Click this button to view this read me file as source code" ></div>
--->
-
-# [Spider gbXML Fixer 'Atrax' Read Me]( #../README.md )
+# Spider gbXML Fixer 'Atrax' Read Me
 
 _JavaScript utilities to help you identify and fix common errors in [gbXML]( http://gbxml.org ) files_
-
-<!--
-<iframe src=https://www.ladybug.tools/spider-gbxml-fixer/spider-gbxml-fixer.html width=100% height=500px >Iframes are not viewable in GitHub source code views</iframe>
-_<small>Spider gbXML Fixer</small>_
--->
 
 
 <a title="By Tirin at the English language Wikipedia, CC BY-SA 3.0, https://commons.wikimedia.org/w/index.php?curid=128531"
@@ -35,15 +23,16 @@ href="https://en.wikipedia.org/wiki/Sydney_funnel-web_spider">
 
 <summary class=sumHeader title="How can we help you?" >Features and Benefits</summary>
 
-Spider gbXML Fixer enables you to:
+Ladybug Tools / Spider gbXML Fixer enables you to:
 
-* Access online and local gbXML files via URL, file ope dialog box and drag&drop
+* Access online and local gbXML files via URL, file open dialog box and drag & drop
 * Run an extensive set of checks - with most checks also providing automated fixes
 * Save fixed models as .XML or .ZIP files
 
 The following are the checks and fixes currently implemented:
 
-* Inspect files in real-time 3D
+* Inspect and view files in real-time 3D - with Spider gbXML Viewer
+* View file and gbXML statistics
 * Check for valid text and numbers
 * Check project offset distance from origin
 * Check for openings with more than four vertices
@@ -51,6 +40,7 @@ The following are the checks and fixes currently implemented:
 * Fix surfaces with invalid surface type name
 * Fix surfaces with invalid ExposedToSun
 * Fix surfaces with duplicate planar coordinates
+* Fix surfaces with two adjacent spaces & incorrect surface type
 * Fix surfaces with an extra adjacent space
 * Fix surfaces with duplicate adjacent spaces
 * Fix air surfaces with single adjacent space
@@ -104,9 +94,9 @@ The desired solution is a utility that enables seamless gbXML data transfer betw
 	* Wish list / to do items
 	* Issues list- bugs we know about
 	* Change log - see what's new
-* Click the three bars( 'hamburger menu icon' ) to slide the menu in and out
+* On mobile devices: Touch the three bars( 'hamburger menu icon' ) to slide the menu in and out
 	* Useful feature on a tablet or phone
-* Click the Octocat icon to view or edit the source code on GitHub
+* Click the Octocat icon in lefy menu to view or edit the source code on GitHub
 * Click on title in the left menu to reload the web page
 	* Reloads the data file if the source is a URL
 
@@ -151,8 +141,11 @@ The desired solution is a utility that enables seamless gbXML data transfer betw
 
 #### Enhancing the script
 
+Even if you know only a little bit of JavaScript there are many things you may do to help the scripts work more effectively in your office.
+
 * Try adding a new menu module
 * Translate into another language
+
 
 </details>
 
@@ -172,8 +165,6 @@ The desired solution is a utility that enables seamless gbXML data transfer betw
 <details>
 
 <summary class=sumHeader title="Bugs we know about already" >Issues</summary>
-
-* 2019-05-10 ~ Opening a ZIP file with the dialog does not work
 
 </details>
 
@@ -214,6 +205,8 @@ Additions ??
 
 ### Semantic Versioning
 
+We are using semantic versioning
+
 * https://semver.org/
 * https://en.wikipedia.org/wiki/Software_versioning
 * https://medium.com/@jameshamann/a-brief-guide-to-semantic-versioning-c6055d87c90e
@@ -229,6 +222,10 @@ Spider gbXML Fixer 'Atrax' R0.4.9
 * Add Michal's pull request
 * Add Get Surface Statistics module
 * See also commit messages
+
+Dealt with
+
+* 2019-05-10 ~ Opening a ZIP file with the dialog does not work
 
 ### 2019-05-10 ~ Theo
 

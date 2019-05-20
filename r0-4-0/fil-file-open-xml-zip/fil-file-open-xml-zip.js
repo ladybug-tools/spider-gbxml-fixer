@@ -1,13 +1,16 @@
 /* globals MNU, inpOpenFile, GBX, JSZip, showdown, FILdivFileOpen, FILdivProgress, FILdetFileOpen, FILinpFilePath */
-// jshint esversion: 6
+/* jshint esversion: 6 */
+/* jshint loopfunc: true */
 
 
 const FIL = {
+
 	"copyright": "Copyright 2019 Ladybug Tools authors. MIT License",
 	"date": "2019-05-09",
 	"description": "Open and save gbXML and ZIP files using location.hash, the operating system file dialog box or drag&drop",
-	"helpFile": "../r0-4-0/fil-file-open-xml-zip/README.md",
+	"helpFile": "./r0-4-0/fil-file-open-xml-zip/README.md",
 	"release": "0.4.1",
+
 };
 
 

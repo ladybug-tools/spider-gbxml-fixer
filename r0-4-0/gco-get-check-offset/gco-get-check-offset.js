@@ -1,15 +1,15 @@
-/* globals GBX, FIL */
+/* globals GBX */
 /* jshint esversion: 6 */
 /* jshint loopfunc: true */
 
 
-GCO = {
+const GCO = {
 
 	"copyright": "Copyright 2019 Ladybug Tools authors. MIT License",
-	"date": "2019-05-16",
+	"date": "2019-05-20",
 	"description": "Check model offset from origin",
-	"helpFile": "./r0-4-0/tmp-template/README.md",
-	"release": "0.1.0"
+	"helpFile": "./r0-4-0/gco-get-check-offset/README.md",
+	"version": "0.4.0-3"
 
 };
 

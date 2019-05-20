@@ -1,6 +1,6 @@
-# [File Open XML ZIP FIL Read Me]( #./README.md )
+# File Open XML ZIP (FIL) Read Me
 
-**Open and save XML, ZIP and other types of files**
+_Open and save XML, ZIP and other types of files_
 
 <details>
 
@@ -8,13 +8,23 @@
 
 Provide a simple and standard way to open files of a number of types using links, the OS file dialog and drag and drop
 
+* Open files using location.hash events, the operating system file dialog box or drag & drop
+* Save edited data using the operating system save file dialog as gbXML or ZIP files
+* View Markdown files as HTML and display in popup window
+* Reload files previously opened with file dialog with a single click of a button
+* Report file size and time to load
+
 </details>
 
 <details>
 
 <summary>To Do / Wish List</summary>
 
+* 2019-05-20 ~ Save edits or difference to a file
+* 2019-05-20 ~ Load multiple files via the file dialog or location.hash
+* 2019-05-20 ~ Use Fetch for remote files??
 * Handle more file types
+
 
 </details>
 

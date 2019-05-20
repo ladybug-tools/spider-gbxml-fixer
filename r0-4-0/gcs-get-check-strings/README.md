@@ -1,6 +1,8 @@
 # Get Check Strings (GCS) Read Me
 
-<details style>
+[Source code]( https://github.com/ladybug-tools/spider-gbxml-tools/blob/master/sandbox/spider-gbxml-fixer/r2/gcs-get-check-strings.js )
+
+<details open>
 
 <summary>Concept</summary>
 
@@ -8,27 +10,29 @@ Another important check is to verify that your gbXML file loads properly and is 
 
 </details>
 
-<p>
-<a href="https://github.com/ladybug-tools/spider-gbxml-tools/blob/master/sandbox/spider-gbxml-fixer/r2/gcs-get-check-strings.js" target="_blank">
-gcs-get-check-strings.js source code</a>
-</p>
-
 <details>
+
 <summary>Wish List / To Do</summary>
-<ul>
-<li>2019-04-04 ~ Invalid text does not seem to be an issue that occurs frequently.
-Therefore, it is being given low-priority.
-If you have a number of gbXML files with these sorts of issues, please let us know.
-We should be able to fix errors like these quite easily.</li>
-</ul>
+
+* 2019-04-04 ~ Invalid text does not seem to be an issue that occurs frequently. Therefore, it is being given low-priority. If you have a number of gbXML files with these sorts of issues, please let us know. We should be able to fix errors like these quite easily.
 
 </details>
 
 <details>
+
 <summary>Change log</summary>
-<ul>
-<li>2019-04-04 ~ D - Update text in script and pop-up</li>
-<li>2019-04-04 ~ B - Fix help not appearing</li>
-<li>2019-04-03 ~ F - First commit</li>
-</ul>
+
+### 2019-05-20 ~ Theo
+
+c
+
+### 2019-04-04 ~ Theo
+
+* D - Update text in script and pop-up
+* B - Fix help not appearing
+
+### 2019-04-03 ~ Theo
+
+* F - First commit
+
 </details>

@@ -1,4 +1,4 @@
-/* globals GBX, FIL */
+/* globals GBX */
 /* jshint esversion: 6 */
 /* jshint loopfunc: true */
 

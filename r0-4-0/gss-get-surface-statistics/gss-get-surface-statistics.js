@@ -1,4 +1,4 @@
-/* globals GBX, GSA, GSSsumSurfaces */
+/* globals GBX, GSA, GSSdivSurfaceData */
 /* jshint esversion: 6 */
 /* jshint loopfunc: true */
 
@@ -6,10 +6,10 @@
 const GSS = {
 
 	"copyright": "Copyright 2019 Ladybug Tools authors. MIT License",
-	"date": "2019-05-10",
-	"description": "template for checking surfaces",
+	"date": "2019-05-20",
+	"description": "Display all referenced gbXML surface types and CAD object IDs",
 	"helpFile": "./r0-4-0/gss-get-surface-statistics/README.md",
-	"release": "0.4.1"
+	"release": "0.4.3"
 
 };
 
@@ -19,6 +19,7 @@ GSS.types = [
 	"InteriorWall", "ExteriorWall", "Roof", "InteriorFloor", "ExposedFloor", "Shade", "UndergroundWall",
 	"UndergroundSlab", "Ceiling", "Air", "UndergroundCeiling", "RaisedFloor", "SlabOnGrade",
 	"FreestandingColumn", "EmbeddedColumn"
+
 ];
 
 
@@ -63,11 +64,10 @@ GSS.getSurfaces = function() {
 	const types = [...new Set( items )];
 	//console.log( 'types', types );
 
-
-	matchesId = GBX.text.match( /<CADObjectId>(.*?)\[/gi );
+	const matchesId = GBX.text.match( /<CADObjectId>(.*?)\[/gi );
 	//console.log( 'matchesId', matchesId );
 
-	itemsId = matchesId.slice( 1 ).map( item => item.slice( 13, -2 ) );
+	const itemsId = matchesId.slice( 1 ).map( item => item.slice( 13, -2 ) );
 	//console.log( 'itemsId', itemsId );
 
 	const cadIds = [...new Set( itemsId ) ].sort();
@@ -104,8 +104,9 @@ GSS.setSurfaceData = function( select ) {
 };
 
 
+
 GSS.changeAllSurfaces = function() {
 
 	console.log( 'GBX.surfaces', GBX.surfaces );
 
-}
+};
