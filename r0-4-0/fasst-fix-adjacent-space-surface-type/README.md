@@ -1,4 +1,4 @@
-# [Fix Adjacent Space Surface Type (FASST) Read Me]( #xxxxx/README.md )
+# Fix Adjacent Space Surface Type (FASST) Read Me
 
 <details open>
 
@@ -8,6 +8,13 @@
 * Fixes
 	* If tilt equals 90: update surface type to "InteriorWall", set exposedToSun to false, update CADObjectID to "Spider Fixer update: Interior Wall"
 	* If tilt not equal to 90: TBD
+
+Surface types to be checked:
+
+" InteriorWall
+* InteriorFloor
+* Ceiling
+* Air
 
 </details>
 
@@ -29,6 +36,14 @@
 <details>
 
 <summary>Change Log</summary>
+
+### 2019-05-21 ~ Theo
+
+* C - FASST: Update readme
+* F - FASST.js: Add summary highlight
+* C - FASST.js: Update vars
+* B - FASST.js: pass through jsHint
+
 
 ### 2019-05-16 ~ Theo
 

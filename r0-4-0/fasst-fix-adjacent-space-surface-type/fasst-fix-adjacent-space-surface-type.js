@@ -1,4 +1,4 @@
-/* globals GBX, GSA, FASSTsumSurfaces, FASSTdivSurfaceAttributeData, FASSTdivSurfaceData, FASSTdet */
+/* globals GBX, GSA, FASSTsumSurfaces, FASSTdivSurfaceAttributeData, FASSTdivSurfaceData, FASSTdet, FASSTtxt */
 /* jshint esversion: 6 */
 /* jshint loopfunc: true */
 
@@ -6,20 +6,20 @@
 const FASST = {
 
 	"copyright": "Copyright 2019 Ladybug Tools authors. MIT License",
-	"date": "2019-05-16",
+	"date": "2019-05-21",
 	"description": "Fix surfaces with two adjacent spaces that are not of a surface type that requires two adjacent spaces",
 	"helpFile": "./r0-4-0/fasst-fix-adjacent-space-surface-type/README.md",
-	"release": "0.1.3"
+	"version": "0.4.0-4"
 
 };
 
 
 FASST.typesTwoAdjacentSpaces = [ "InteriorWall", "InteriorFloor", "Ceiling", "Air" ];
 
+
 FASST.getMenuFASST = function() {
 
 	FASST.help = `<button id=butFASST class=butHelp onclick="MNU.setPopupShowHide(butFASST,FASST.helpFile);" >?</button>`;
-
 
 	const htm =
 		`
@@ -85,7 +85,10 @@ FASST.getSurfaces = function() {
 	} );
 
 
-	FASSTsumSurfaces.innerHTML = `Fix surfaces with two adjacent spaces & incorrect surface type ~ <mark>${ FASST.surfacesTwoSpaces.length.toLocaleString() }</mark> found ${ FASST.help }`;
+	const tag = FASST.surfacesTwoSpaces.length === 0 ? "span" : "mark";
+
+	FASSTsumSurfaces.innerHTML = `Fix surfaces with two adjacent spaces & incorrect surface type
+		~ <${ tag }>${ FASST.surfacesTwoSpaces.length.toLocaleString() }</${ tag }> found ${ FASST.help }`;
 
 	const htm =
 	`
@@ -186,8 +189,6 @@ FASST.fixSurface = function( index ) {
 	GBX.surfaces = GBX.text.match( /<Surface(.*?)<\/Surface>/gi );
 
 	FASSTtxt.value = surfaceTextNew;
-
-
 
 };
 
