@@ -1,4 +1,4 @@
-# [Fix Surface Type Name (FSTN)  Read Me]( #r0-4-0/fstn-fix-surface-type-name/README.md )
+# Fix Surface Type Name (FSTN) Read Me
 
 [Source code: ]( https://github.com/ladybug-tools/spider-gbxml-fixer/blob/master/r0-4-0/fstn-fix-surface-type-name/fstn-fix-surface-type-name.js )
 
