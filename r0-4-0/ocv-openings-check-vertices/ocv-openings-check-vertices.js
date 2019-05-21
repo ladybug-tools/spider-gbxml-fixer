@@ -1,4 +1,3 @@
-//Copyright 2019 Ladybug Tools authors. MIT License
 /* globals GBX, OCVsumOpeningsVertices */
 /* jshint esversion: 6 */
 /* jshint loopfunc: true */
@@ -6,10 +5,11 @@
 
 const OCV = {
 
-	"date": "2019-04-03",
+	"copyright": "Copyright 2019 Ladybug Tools authors. MIT License",
+	"date": "2019-05-21",
 	"description": "Openings: check openings with more than four vertices",
 	"helpFile": "./r0-4-0/ocv-openings-check-vertices/README.md",
-	"release": "0.4.0"
+	"release": "0.4.0-2"
 
 };
 
@@ -59,7 +59,9 @@ OCV.getOpeningsVertices = function() {
 
 	} );
 
-	OCVsumOpeningsVertices.innerHTML = `Check for openings with more than four vertices ~ <mark>${ OCV.ids.length }</mark> found ${ OCV.help }`;
+	const tag = OCV.ids.length === 0 ? "span" : "mark";
+
+	OCVsumOpeningsVertices.innerHTML = `Check for openings with more than four vertices ~ <${ tag }>${ OCV.ids.length }</${ tag }> found ${ OCV.help }`;
 
 	const htm =
 		`

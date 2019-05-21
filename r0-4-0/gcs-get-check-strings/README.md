@@ -1,6 +1,6 @@
 # Get Check Strings (GCS) Read Me
 
-[Source code]( https://github.com/ladybug-tools/spider-gbxml-tools/blob/master/sandbox/spider-gbxml-fixer/r2/gcs-get-check-strings.js )
+[Source code]( https://github.com/ladybug-tools/spider-gbxml-fixer/blob/master/r0-4-0/gcs-get-check-strings/gcs-get-check-strings.js )
 
 <details open>
 
@@ -22,9 +22,10 @@ Another important check is to verify that your gbXML file loads properly and is 
 
 <summary>Change log</summary>
 
-### 2019-05-20 ~ Theo
+### 2019-05-21 ~ Theo
 
-c
+* D - GCS: Update readme / Fix source code link
+* R - GCS.js: Cleanup / Pass through jsHint
 
 ### 2019-04-04 ~ Theo
 

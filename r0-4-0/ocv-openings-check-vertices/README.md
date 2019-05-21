@@ -28,6 +28,11 @@ Openings: check openings with more than four vertices
 
 <summary>Change Log</summary>
 
+### 2019-05-21 ~ Theo
+
+* C - OCV.js: Update vars
+* F - OCV.js: Add summary highlight
+
 ### 2019-05-10 ~ Theo
 
 * F - Add popup help and readme

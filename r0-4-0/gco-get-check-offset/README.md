@@ -6,9 +6,9 @@
 
 <summary>Concept</summary>
 
-Calculate the longest distance from the origin of all the coordinates in the model.
+Calculate the maximum distance from the origin of any and all the coordinates in the model.
 
-Numbers of six digits or more may cause rounding errors.
+Numbers of six digits or more may cause rounding errors which will cause surfaces to be displayed at unintended angles.
 
 </details>
 
@@ -16,7 +16,7 @@ Numbers of six digits or more may cause rounding errors.
 
 <summary>To Do / Wish List</summary>
 
-Looks like fixing this issue would be very difficult as the errors are embedded in the gbXML file
+* 2019-05-21 ~ Looks like fixing this issue would be very difficult as the errors are embedded in the gbXML file
 
 </details>
 
@@ -30,6 +30,11 @@ Looks like fixing this issue would be very difficult as the errors are embedded 
 <details>
 
 <summary>Change Log</summary>
+
+### 2019-05-21 ~ Theo
+
+* C- GCO: Update readme
+* C - GCS.js: Update text content / Pass through jsHint
 
 ### 2019-05-20 ~ Theo
 
