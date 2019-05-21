@@ -1,4 +1,4 @@
-# [Fix Surfaces with duplicate planar coordinates (FDPC) Read Me]( #xxxxx/README.md )
+# Fix Surfaces with duplicate planar coordinates (FDPC) Read Me
 
 <details open>
 
@@ -28,6 +28,12 @@ Identify two or more surfaces with the same planar geometry coordinates
 <details>
 
 <summary>Change Log</summary>
+
+### 2019-05-21 ~ Theo
+
+* C - FSPC: Update readme
+* F - FSPC: Add summary highlight
+
 
 ### 2019-05-16 ~ Theo
 

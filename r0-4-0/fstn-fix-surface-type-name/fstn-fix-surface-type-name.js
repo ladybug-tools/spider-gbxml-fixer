@@ -19,7 +19,7 @@ FSTN.types = [
 	"InteriorWall", "ExteriorWall", "Roof", "InteriorFloor", "ExposedFloor", "Shade", "UndergroundWall",
 	"UndergroundSlab", "Ceiling", "Air", "UndergroundCeiling", "RaisedFloor", "SlabOnGrade",
 	"FreestandingColumn", "EmbeddedColumn"
-	
+
 ];
 
 
@@ -86,7 +86,7 @@ FSTN.getSurfaceType = function() {
 
 	} );
 
-	const tag = FSTN.errors === 0 ? "span" : "mark";
+	const tag = FSTN.errors.length === 0 ? "span" : "mark";
 
 	FSTNsumSurfaceType.innerHTML =
 		`Fix surfaces with invalid surface type name ~ <${ tag }>${ FSTN.errors.length.toLocaleString() }</${ tag }> errors

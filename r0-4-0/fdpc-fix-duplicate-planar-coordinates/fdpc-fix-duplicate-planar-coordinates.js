@@ -84,8 +84,11 @@ FDPC.getDuplicatePlanarCoordinates = function() {
 	);
 	//console.log( 'options', options );
 
+	const tag = FDPC.duplicates.length === 0 ? "span" : "mark";
+
 	FDPCsumDuplicatePlanar.innerHTML =
-		`Fix surfaces with duplicate planar coordinates ~ <mark>${ FDPC.duplicates.length.toLocaleString() }</mark> found
+		`Fix surfaces with duplicate planar coordinates
+			~ <${ tag }>${ FDPC.duplicates.length.toLocaleString() }</${ tag }> found
 			${ FDPC.help }
 		`;
 
@@ -244,8 +247,8 @@ FDPC.deleteDuplicateSurfaces = function() {
 
 	FDPCdivGetDuplicatePlanar.innerHTML = FDPC.getMenuDuplicatePlanarCoordinates();
 
-
 };
+
 
 
 FDPC.compareCoordinates = function( surfaceIndex, spaceText ) {
@@ -279,6 +282,7 @@ FDPC.compareCoordinates = function( surfaceIndex, spaceText ) {
 	if ( !match ) { console.log( 'coordinatesSurface', coordinatesSurface); }
 
 	if ( !match ) { console.log( 'coordinatesSpace', coordinatesSpace); }
+
 	return match;
 
 };
