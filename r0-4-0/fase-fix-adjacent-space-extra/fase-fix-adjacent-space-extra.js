@@ -85,8 +85,10 @@ FASE.getAdjacentSpaceExtra = function() {
 	} );
 	//console.log( 'options', options );
 
+	const tag = FASE.extras.length === 0 ? "span" : "mark";
+
 	FASEsumAdjacentSpaceExtra.innerHTML =
-		`Fix surfaces with an extra adjacent space ~ <mark>${ FASE.extras.length.toLocaleString() }</mark> found
+		`Fix surfaces with an extra adjacent space ~ <${ tag }>${ FASE.extras.length.toLocaleString() }</${ tag }> found
 			${ FASE.help }
 		`;
 

@@ -8,6 +8,10 @@
 
 Checks for a surface with more adjacent spaces than required
 
+See also: Fix Adjacent Space Surface Type (FASST) Read Me
+
+* Probably a more suitable fixer than this one, but this fixer might be useful in some workflows
+
 </details>
 
 <details>
@@ -28,6 +32,11 @@ Checks for a surface with more adjacent spaces than required
 
 <summary>Change Log</summary>
 
+
+### 2019-05-21 ~ Theo
+
+* C - FASE: Update readme
+* F - FASE.js: Add summary highlight
 
 ### 2019-05-20 ~ Theo
 
