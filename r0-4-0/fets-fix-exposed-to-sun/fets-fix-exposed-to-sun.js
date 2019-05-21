@@ -1,4 +1,4 @@
-/* globals GBX, GSA, FETSdet, FETSdivSurfaces, FETSdivSurfaceData, FETSsumSurfaces */
+/* globals GBX, GSA, FETSdet, FETStxt, FETSdivSurfaceData, FETSsumSurfaces */
 /* jshint esversion: 6 */
 /* jshint loopfunc: true */
 
@@ -6,14 +6,12 @@
 const FETS = {
 
 	"copyright": "Copyright 2019 Ladybug Tools authors. MIT License",
-	"date": "2019-05-16",
+	"date": "2019-05-21",
 	"description": "Checks for surface with invalid exposedToSun values",
 	"helpFile": "./r0-4-0/fets-fix-exposed-to-sun/README.md",
-	"release": "0.1.0"
+	"version": "0.4.0-2"
 
 };
-
-
 
 
 FETS.types = [
@@ -21,6 +19,7 @@ FETS.types = [
 	"UndergroundSlab", "Ceiling", "Air", "UndergroundCeiling", "RaisedFloor", "SlabOnGrade",
 	"FreestandingColumn", "EmbeddedColumn"
 ];
+
 
 FETS.exposedTypes = [ "ExteriorWall", "Roof", "ExposedFloor", "Shade", "RaisedFloor" ];
 
@@ -113,7 +112,6 @@ FETS.getSurfaceExposedToSunErrors = function() {
 			if ( exposedToSun[ 1 ] === "true" ) {
 
 				const fix = `exposedToSun="True"`;
-
 				FETS.errors.push( { id, index, name, typeSource, exposedToSunBoolean, exposedToSun, fix } );
 
 			}
@@ -123,13 +121,12 @@ FETS.getSurfaceExposedToSunErrors = function() {
 			if ( exposedToSun && exposedToSun.length ) {
 
 				const fix = `exposedToSun="True"`;
-
 				FETS.errors.push( {id, index, name, typeSource, exposedToSunBoolean, exposedToSun, fix } );
 
 			} else {
 
 				const fix = `exposedToSun="False"`;
-				FETS.errors.push( {id, index, name, typeSource, exposedToSunBoolean, exposedToSun } );
+				FETS.errors.push( {id, index, name, typeSource, exposedToSunBoolean, exposedToSun, fix } );
 
 			}
 
@@ -138,10 +135,11 @@ FETS.getSurfaceExposedToSunErrors = function() {
 	} );
 
 
+	const tag = FETS.errors.length === 0 ? "span" : "mark";
 
 	FETSsumSurfaces.innerHTML =
 	`Fix surfaces with invalid ExposedToSun
-		~ <mark>${ ( FETS.errors.length ).toLocaleString() }</mark> errors
+		~ <${ tag }>${ ( FETS.errors.length ).toLocaleString() }</${ tag }> errors
 		${ FETS.help }
 	`;
 
@@ -151,30 +149,8 @@ FETS.getSurfaceExposedToSunErrors = function() {
 
 	} );
 
-	/*
-	const optionsByValue = FETS.errorsByValue.map( surface => {
-
-		return `<option value=${ surface.index } title="${ surface.id }" >${ surface.name }</option>`;
-
-	} );
-
-	const optionsByAttribute  = FETS.errorsByAttribute.map( surface => {
-
-		return `<option value=${ surface.index } title="${ surface.id }" >${ surface.name }</option>`;
-
-	} );
-
-	const optionsByType = FETS.errorsByType.map( surface => {
-
-		return `<option value=${ surface.index } title="${ surface.id }" >${ surface.name }</option>`;
-
-	} );
-	*/
-
-
 	const htm =
 	`
-
 		<p><i>${ FETS.errors.length.toLocaleString() } surface(s) with exposedToSun issues</i></p>
 
 		<p>
@@ -221,7 +197,6 @@ FETS.setSurfaceData = function( index ) {
 
 
 
-
 FETS.fixSurface = function( index ) {
 	//console.log( 'index', index );
 
@@ -250,78 +225,25 @@ FETS.fixSurface = function( index ) {
 
 
 
-
-
 FETS.fixAllSurfaces = function() {
 	//console.log( 'index', index );
 
-	let surfaceNew;
+	//let surfaceNew;
+
+
 	for ( let err of FETS.errors ) {
 
-		const surfaceCurrent = GBX.surfaces[ err.index ];
+		let surfaceCurrent = GBX.surfaces[ err.index ];
 
 		if ( surfaceCurrent.includes( "exposedToSun" ) ) {
 
-			surfaceNew = surfaceCurrent.replace( /exposedToSun="(.*?)"/i, `${ err.fix }` );
+			const surfaceNew = surfaceCurrent.replace( /exposedToSun="(.*?)"/i, `${ err.fix }` );
 			GBX.text = GBX.text.replace( surfaceCurrent, surfaceNew );
+			GBX.surfaces = GBX.text.match( /<Surface(.*?)<\/Surface>/gi );
 
 		} else {
 
-			surfaceNew = surfaceCurrent.replace( / id="(.*?)"/i, `${ err.fix } id="` );
-			GBX.text = GBX.text.replace( surfaceCurrent, surfaceNew );
-
-		}
-
-
-	}
-
-	GBX.surfaces = GBX.text.match( /<Surface(.*?)<\/Surface>/gi );
-
-	FETSdet.open = false;
-
-};
-
-//////////
-
-FETS.fixAllChecked = function() {
-
-	const boxesChecked = Array.from( FETSdivSurfaces.querySelectorAll( 'input:checked') ).map( item => item.value );
-
-	for ( let error of FETS.errorsByValue ) {
-
-		if ( boxesChecked.includes( error.id ) ) {
-
-			const surfaceCurrent = GBX.surfaces[ error.index ];
-			const surfaceNew = surfaceCurrent.replace( /exposedToSun="(.*?)"/i, `exposedToSun="true"` );
-
-			GBX.text = GBX.text.replace( surfaceCurrent, surfaceNew );
-			GBX.surfaces = GBX.text.match( /<Surface(.*?)<\/Surface>/gi );
-
-		}
-
-	}
-
-	for ( let error of FETS.errorsByAttribute ) {
-
-		if ( boxesChecked.includes( error.id ) ) {
-
-			const surfaceCurrent = GBX.surfaces[ error.index ];
-			const surfaceNew = surfaceCurrent.replace( / id="(.*?)"/i, `exposedToSun="true" id="` );
-
-			GBX.text = GBX.text.replace( surfaceCurrent, surfaceNew );
-			GBX.surfaces = GBX.text.match( /<Surface(.*?)<\/Surface>/gi );
-
-		}
-
-	}
-
-	for ( let error of FETS.errorsByType ) {
-
-		if ( boxesChecked.includes( error.id ) ) {
-
-			const surfaceCurrent = GBX.surfaces[ error.index ];
-			const surfaceNew = surfaceCurrent.replace( /exposedToSun="(.*?)"/i, `exposedToSun="false"` );
-
+			const surfaceNew = surfaceCurrent.replace( / id="(.*?)"/i, `${ err.fix } id="` );
 			GBX.text = GBX.text.replace( surfaceCurrent, surfaceNew );
 			GBX.surfaces = GBX.text.match( /<Surface(.*?)<\/Surface>/gi );
 
