@@ -1,4 +1,4 @@
-/* globals GBX, GSA, FSTNsumSurfaceType, FSTNdivSurfaceType, FSTNdet */
+/* globals GBX, GSA, FSTNsumSurfaceType, FSTNdivSurfaceType, FSTNdet, FSTNdivSurfaceAttributeData */
 /* jshint esversion: 6 */
 /* jshint loopfunc: true */
 
@@ -6,10 +6,10 @@
 const FSTN = {
 
 	"copyright": "Copyright 2019 Ladybug Tools authors. MIT License",
-	"date": "2019-05-14",
+	"date": "2019-05-21",
 	"description": "Checks for a surface type name that is not one of the 15 valid gbXML surface type names",
 	"helpFile": "./r0-4-0/fstn-fix-surface-type-name/README.md",
-	"release": "0.1.0"
+	"vaersion": "0.4.0-2"
 
 };
 
@@ -19,6 +19,7 @@ FSTN.types = [
 	"InteriorWall", "ExteriorWall", "Roof", "InteriorFloor", "ExposedFloor", "Shade", "UndergroundWall",
 	"UndergroundSlab", "Ceiling", "Air", "UndergroundCeiling", "RaisedFloor", "SlabOnGrade",
 	"FreestandingColumn", "EmbeddedColumn"
+	
 ];
 
 
@@ -69,7 +70,7 @@ FSTN.getSurfaceType = function() {
 			const typeNew = results.typeNew;
 			const reasons = results.reasons;
 			const error = results.error;
-			const name = surface.match( /<Name>(.*?)<\/Name>/i )[ 1 ]
+			const name = surface.match( /<Name>(.*?)<\/Name>/i )[ 1 ];
 
 			FSTN.errors.push( { id, index, name, typeSource, typeNew, reasons, error  } );
 
@@ -85,9 +86,10 @@ FSTN.getSurfaceType = function() {
 
 	} );
 
+	const tag = FSTN.errors === 0 ? "span" : "mark";
 
 	FSTNsumSurfaceType.innerHTML =
-		`Fix surfaces with invalid surface type name ~ <mark>${ FSTN.errors.length.toLocaleString() }</mark> errors
+		`Fix surfaces with invalid surface type name ~ <${ tag }>${ FSTN.errors.length.toLocaleString() }</${ tag }> errors
 			${ FSTN.help }
 		`;
 
@@ -117,10 +119,6 @@ FSTN.getSurfaceType = function() {
 FSTN.setSurfaceData = function( select ) {
 
 	const error = FSTN.errors[ select.selectedIndex ];
-
-	const options = FSTN.types.map( type =>
-		`<option ${ type === error.typeNew ? "selected" : "" } >${ type }<option>`
-	);
 
 	const htm =
 	`
