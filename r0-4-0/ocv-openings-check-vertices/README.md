@@ -4,7 +4,7 @@
 
 <summary>Concept</summary>
 
-Openings: check openings with more than four vertices
+Openings: check for surfaces with openings that contain more than four vertices
 
 </details>
 

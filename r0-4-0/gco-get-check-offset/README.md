@@ -33,8 +33,8 @@ Numbers of six digits or more may cause rounding errors which will cause surface
 
 ### 2019-05-21 ~ Theo
 
-* C- GCO: Update readme
-* C - GCS.js: Update text content / Pass through jsHint
+* C - GCO: Update readme
+* C - GCO.js: Update text content / Pass through jsHint
 
 ### 2019-05-20 ~ Theo
 

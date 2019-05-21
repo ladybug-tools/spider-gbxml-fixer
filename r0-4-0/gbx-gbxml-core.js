@@ -209,8 +209,6 @@ GBX.runAll = function(){
 
 	for ( let item of details ) { item.open = false; }
 
-	GBX.markAllNonZero();
-
 };
 
 
@@ -223,25 +221,6 @@ GBX.closeAll = function(){
 
 };
 
-
-GBX.markAllNonZero = function(){
-
-	const details = divContents.querySelectorAll( 'details' );
-
-	for ( let item of details ) {
-
-		//console.log( 'item', item );
-
-		if ( item.innerText.includes( "~" ) && item.innerText.includes( "~ 0 " ) === true ) {
-
-			console.log( '23', 23 );
-			item.innerText.replace( /mark/i, "span" );
-
-		}
-
-	}
-
-};
 
 
 GBX.openAllNonZero = function(){
