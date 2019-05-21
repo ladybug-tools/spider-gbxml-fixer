@@ -1,4 +1,4 @@
-/* globals GBX, GBXinpIgnoreAirSurfaceType, GSA, FASDsumAdjacentSpaceDuplicate,
+/* globals GBX, GBXinpIgnoreAirSurfaceType, GSA, FASDdet, FASDsumAdjacentSpaceDuplicate, FASDselSurface,
 	FASDdivAdjacentSpaceDuplicateData, FASDdivSpaceDuplicate */
 /* jshint esversion: 6 */
 /* jshint loopfunc: true */
@@ -7,16 +7,12 @@
 const FASD = {
 
 	"copyright": "Copyright 2019 Ladybug Tools authors. MIT License",
-	"date": "2019-05-16",
+	"date": "2019-05-21",
 	"description": "Fix air, InteriorWall, InteriorFloor, or Ceiling surfaces where both adjacent space IDs point to the same space",
 	"helpFile": "./r0-4-0/fasd-fix-adjacent-space-duplicate/README.md",
-	"release": "0.1.1"
+	"version": "0.4.0-2"
 
 };
-
-
-FASD.description = ``;
-
 
 
 
@@ -87,10 +83,13 @@ FASD.getAdjacentSpaceDuplicate = function() {
 
 	}
 
+	const tag = FASD.duplicates.length === 0 ? "span" : "mark";
+
 	FASDsumAdjacentSpaceDuplicate.innerHTML =
-	`Fix surfaces with duplicate adjacent spaces ~ <mark>${ FASD.duplicates.length.toLocaleString() }</mark> found
-		${ FASD.help }
-	`;
+		`Fix surfaces with duplicate adjacent spaces
+			~ <${ tag }>${ FASD.duplicates.length.toLocaleString() }</${ tag }> found
+			${ FASD.help }
+		`;
 
 	const options = FASD.duplicates.map( index => {
 
@@ -277,7 +276,7 @@ FASD.fixAdjacentSpaces = function( index) {
 
 	const matches = [];
 
-	for ( spaceText of GBX.spaces ) {
+	for ( let spaceText of GBX.spaces ) {
 
 		const coordinatesSpace = spaceText.match( /<Coordinate>(.*?)<\/Coordinate>/gi );
 		//console.log( 'coordinatesSpace', coordinatesSpace );
@@ -298,11 +297,11 @@ FASD.fixAdjacentSpaces = function( index) {
 
 	}
 
-	matchExact = getMatches( 0 );
-	match2 = getMatches( 2 );
-	match4 = getMatches( 4 );
-	match6 = getMatches( 6 );
-	match8 = getMatches( 8 );
+	const matchExact = getMatches( 0 );
+	const match2 = getMatches( 2 );
+	const match4 = getMatches( 4 );
+	const match6 = getMatches( 6 );
+	const match8 = getMatches( 8 );
 
 	if ( matchExact.length >= 2 ) {
 
@@ -327,15 +326,14 @@ FASD.fixAdjacentSpaces = function( index) {
 	}
 
 
-
-
 	function getMatches( limit = 0 ) {
 
-		arr = [];
+		const arr = [];
 
 		matches.forEach( ( count, spaceIndex ) => {
 
-			surfacesCount = surfaceCoordinates.length;
+			const surfacesCount = surfaceCoordinates.length;
+
 			if ( surfacesCount - count <= limit ) {
 
 				arr.push( { count, spaceIndex, surfaceIndex, surfacesCount } );
@@ -355,7 +353,7 @@ FASD.fixAdjacentSpaces = function( index) {
 
 			const surfaceTextCurrent = GBX.surfaces[ match.surfaceIndex ];
 			const surfaceSpaceIds = surfaceTextCurrent.match( / spaceIdRef="(.*?)"/gi );
-			surfaceSpaceId = surfaceSpaceIds[ 1 ].match( / spaceIdRef="(.*?)"/i )[ 1 ];
+			const surfaceSpaceId = surfaceSpaceIds[ 1 ].match( / spaceIdRef="(.*?)"/i )[ 1 ];
 			//console.log( 'surfaceSpaceId', surfaceSpaceId );
 			const space = GBX.spaces[ match.spaceIndex ];
 
@@ -365,10 +363,10 @@ FASD.fixAdjacentSpaces = function( index) {
 			if ( surfaceSpaceId !== spaceId ) {
 				//console.log( 'spaceId', spaceId );
 
-				name = space.match( /<Name>(.*?)<\/Name>/i )[ 1 ];
+				//let name = space.match( /<Name>(.*?)<\/Name>/i )[ 1 ];
 				//console.log( 'name', name );
 
-				surfaceTextNew = surfaceTextCurrent.replace( / spaceIdRef="(.*?)"/i, ` spaceIdRef="${ spaceId }"` );
+				const surfaceTextNew = surfaceTextCurrent.replace( / spaceIdRef="(.*?)"/i, ` spaceIdRef="${ spaceId }"` );
 				//console.log( 'surfaceTextNew', surfaceTextNew );
 
 				GBX.text = GBX.text.replace( surfaceTextCurrent, surfaceTextNew );
@@ -399,7 +397,7 @@ FASD.fixAdjacentSpaces = function( index) {
 		const surfaceType = surfaceTextCurrent.match( / surfaceType="(.*?)"/i )[ 1 ];
 		//console.log( 'surfaceType', surfaceType );
 
-		spaceId0 = surfaceTextCurrent.match( / spaceIdRef="(.*?)"/i )[ 1 ];
+		const spaceId0 = surfaceTextCurrent.match( / spaceIdRef="(.*?)"/i )[ 1 ];
 		//console.log( 'spaceId0', spaceId0 );
 
 		const space0 = GBX.spaces.find( space => space.includes( spaceId0 ) );
@@ -415,19 +413,19 @@ FASD.fixAdjacentSpaces = function( index) {
 
 			} else {
 
-				spaceTry = GBX.spaces[ match.spaceIndex ];
-				storeyIdTry = spaceTry.match( /buildingStoreyIdRef="(.*?)"/i )[ 1 ];
+				const spaceTry = GBX.spaces[ match.spaceIndex ];
+				const storeyIdTry = spaceTry.match( /buildingStoreyIdRef="(.*?)"/i )[ 1 ];
 				//console.log( 'storeyIdTry', storeyIdTry );
-				storeyTextTry= GBX.storeys.find( storey => storey.includes( storeyIdTry ) );
-				storeyLevelTry = storeyTextTry.match( /<Level>(.*?)<\/Level>/i )[ 1 ];
+				const storeyTextTry= GBX.storeys.find( storey => storey.includes( storeyIdTry ) );
+				const storeyLevelTry = storeyTextTry.match( /<Level>(.*?)<\/Level>/i )[ 1 ];
 				//console.log( 'storeyLevelTry', storeyLevelTry );
 
 				if ( [ "Ceiling" ].includes( surfaceType )  ) {
 
 					if ( storeyLevelTry > storeyLevel0 ) {
 
-						spaceTryId = spaceTry.match( / id="(.*?)"/i )[ 1 ];
-						surfaceTextNew = surfaceTextCurrent.replace( / spaceIdRef="(.*?)"/i, ` spaceIdRef="${ spaceTryId }"` );
+						const spaceTryId = spaceTry.match( / id="(.*?)"/i )[ 1 ];
+						const surfaceTextNew = surfaceTextCurrent.replace( / spaceIdRef="(.*?)"/i, ` spaceIdRef="${ spaceTryId }"` );
 						//console.log( 'surfaceTextNew', surfaceTextNew );
 
 						GBX.text = GBX.text.replace( surfaceTextCurrent, surfaceTextNew );
@@ -447,10 +445,10 @@ FASD.fixAdjacentSpaces = function( index) {
 
 					if ( storeyLevelTry < storeyLevel0 ) {
 
-						spaceTryId = spaceTry.match( / id="(.*?)"/i )[ 1 ];
+						const spaceTryId = spaceTry.match( / id="(.*?)"/i )[ 1 ];
 						//console.log( 'spaceTryId', spaceTryId );
 
-						surfaceTextNew = surfaceTextCurrent.replace( / spaceIdRef="(.*?)"/i, ` spaceIdRef="${ spaceTryId }"` );
+						const surfaceTextNew = surfaceTextCurrent.replace( / spaceIdRef="(.*?)"/i, ` spaceIdRef="${ spaceTryId }"` );
 						//console.log( 'surfaceTextNew', surfaceTextNew );
 
 						GBX.text = GBX.text.replace( surfaceTextCurrent, surfaceTextNew );
@@ -468,7 +466,7 @@ FASD.fixAdjacentSpaces = function( index) {
 					if ( storeyLevelTry === storeyLevel0 ) {
 
 						console.log( 'IW match', match );
-						spaceTry = GBX.spaces[ match.spaceIndex ];
+						//const spaceTry = GBX.spaces[ match.spaceIndex ];
 						//console.log( 'spaceTry', spaceTry );
 
 					} else {
@@ -504,4 +502,4 @@ FASD.fixAdjacentSpaces = function( index) {
 
 	}
 
-}
+};
