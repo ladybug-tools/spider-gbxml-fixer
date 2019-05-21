@@ -4,14 +4,17 @@
 
 <summary>Concept</summary>
 
-* Identify surfaces with two (or more) adjacent spaces and adjacent spaces have different space IDs
+* Identify surfaces with two (or more) adjacent spaces and adjacent spaces have different space IDs and the given surface type is invalid for two adjacent spaces
 * Fixes
-	* If tilt equals 90: update surface type to "InteriorWall", set exposedToSun to false, update CADObjectID to "Spider Fixer update: Interior Wall"
+	* If tilt equals 90:
+		* update surface type to "InteriorWall"
+		* set exposedToSun to false
+		* Update CADObjectID to Spider defaults
 	* If tilt not equal to 90: TBD
 
 Surface types to be checked:
 
-" InteriorWall
+* InteriorWall
 * InteriorFloor
 * Ceiling
 * Air
