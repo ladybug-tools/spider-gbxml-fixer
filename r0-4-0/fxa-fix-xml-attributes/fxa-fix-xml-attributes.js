@@ -1,4 +1,4 @@
-/* globals GBX */
+/* globals GBX, FXAsumAttributes, FXAdivMissingMeta, FXAtxtAttributesMissing, FXAdivInputs, FXAdet, FXAdivFixXmlAttributes */
 /* jshint esversion: 6 */
 /* jshint loopfunc: true */
 
@@ -7,10 +7,10 @@
 const FXA = {
 
 	"copyright": "Copyright 2019 Ladybug Tools authors. MIT License",
-	"date": "2019-05-16",
+	"date": "2019-05-21",
 	"description": "Check for existence of seven required gbXML file attributes. If attributes missing, then supply fixes.",
 	"helpFile": "./r0-4-0/fxa-fix-xml-attributes/README.md",
-	"release": "0.1.2"
+	"version": "0.4.0-3"
 
 };
 
@@ -80,8 +80,10 @@ FXA.getAttributes = function() {
 
 	const data = FXA.setMenuAttributes();
 
+	const tag = FXA.attributesMissing.length === 0 ? "span" : "mark";
+
 	FXAsumAttributes.innerHTML =
-		`Fix missing required gbXML attributes ~ <mark>${FXA.attributesMissing.length}</mark> missing
+		`Fix missing required gbXML attributes ~ <${ tag }>${FXA.attributesMissing.length}</${ tag }> missing
 			${ FXA.help }
 		`;
 
