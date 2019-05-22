@@ -6,10 +6,10 @@
 const FCIM = {
 
 	"copyright": "Copyright 2019 Ladybug Tools authors. MIT License",
-	"date": "2019-05-17",
+	"date": "2019-05-21",
 	"description": "Assign an ID to surfaces with a missing CAD object ID",
 	"helpFile": "./r0-4-0/fcim-fix-cad-id-missing/README.md",
-	"release": "0.4-1"
+	"version": "0.4.0-1"
 
 };
 
@@ -101,8 +101,10 @@ FCIM.getFixCadIdMissing = function() {
 	} );
 	//console.log( 'options', options );
 
+	const tag = FCIM.errors.length === 0 ? "span" : "mark";
+
 	FCIMsumCadIdMissing.innerHTML =
-		`Fix surfaces with missing CAD object ID ~ <mark>${ FCIM.errors.length.toLocaleString() }</mark> found
+		`Fix surfaces with missing CAD object ID ~ <${ tag }>${ FCIM.errors.length.toLocaleString() }</${ tag }> found
 			${ FCIM.help }
 		`;
 

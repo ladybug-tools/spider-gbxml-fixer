@@ -1,5 +1,7 @@
 # Fix Surface CAD Object ID Missing (FCIM) Read Me
 
+[Source code]( https://github.com/ladybug-tools/spider-gbxml-fixer/blob/master/r0-4-0/fcim-fix-cad-id-missing/fcim-fix-cad-id-missing.js )
+
 <details open >
 
 <summary>Concept</summary>
@@ -12,7 +14,6 @@ From [Schema GreenBuildingXML_Ver6.01.xsd]( http://gbxml.org/schema_doc/6.01/Gre
 
 Lookup table for CAD IDs: https://github.com/ladybug-tools/spider-gbxml-fixer/blob/master/r0-4-0/gbx-gbxml-core.js#L103-L122
 
-[Source code]( https://github.com/ladybug-tools/spider-gbxml-fixer/tree/master/r0-4-0/fcim-fix-cad-id-missing ) / [Standalone testing script]( https://ladybug-tools.github.io/spider-gbxml-fixer/r0-4-0/fcim-fix-cad-id-missing/fcim-fix-cad-id-missing.html )
 
 </details>
 
@@ -34,6 +35,13 @@ Lookup table for CAD IDs: https://github.com/ladybug-tools/spider-gbxml-fixer/bl
 <details>
 
 <summary>Change Log</summary>
+
+### 2019-05-21 ~ Theo
+
+* C - FCIM: Update readme
+* C - FCIM.js: Add summary highlight
+* C - FCIM.js: Pass through jsHint
+* C - FCIM.js: Update vars
 
 ### 2019-05-17 ~ Theo
 
