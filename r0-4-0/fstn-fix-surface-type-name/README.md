@@ -1,6 +1,10 @@
 # Fix Surface Type Name (FSTN) Read Me
 
+<mark>Fixer currently broken</mark>
+
+
 [Source code: ]( https://github.com/ladybug-tools/spider-gbxml-fixer/blob/master/r0-4-0/fstn-fix-surface-type-name/fstn-fix-surface-type-name.js )
+
 
 <details open>
 

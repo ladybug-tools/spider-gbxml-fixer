@@ -66,7 +66,7 @@ FSTN.getSurfaceType = function() {
 			//console.log( '', typeSource1 );
 
 			const id = surface.match( / id="(.*?)"/i )[ 1 ];
-			const results = FSTN.getSurfaceTypeNew( surface, typeSource );
+			const results = ""; //FSTN.getSurfaceTypeNew( surface, typeSource );
 			const typeNew = results.typeNew;
 			const reasons = results.reasons;
 			const error = results.error;
@@ -131,6 +131,14 @@ FSTN.setSurfaceData = function( select ) {
 		<p>
 			${ GSA.getSurfacesAttributesByIndex( error.index, error.id ) }
 		</p>
+
+		<p>
+			<button onclick="FSTN.fixSurface(${ select.selectedIndex });" title="" >update exposedToSun</button>
+		</p>
+
+		<p>
+			<textarea id=FSTNtxt style="height:20rem; width:100%;" >currently broken</textarea>
+		</p>
 	`;
 
 	FSTNdivSurfaceAttributeData.innerHTML = htm;
@@ -139,8 +147,13 @@ FSTN.setSurfaceData = function( select ) {
 
 
 
-FSTN.getSurfaceTypeNew = function( surface, typeSource ) {
-	//console.log( '', surface );
+FSTN.fixSurface = function( index ) {
+
+	const error = FSTN.errors[ index ];
+	console.log( 'error', error );
+
+	surface = GBX.surfaces[ error.index ]
+
 
 	const tilt = surface.match( /<Tilt>(.*?)<\/Tilt>/i )[ 1 ];
 
@@ -156,7 +169,7 @@ FSTN.getSurfaceTypeNew = function( surface, typeSource ) {
 
 	let typeNew = "Shade";
 	let reasons = "Invalid surface type name. ";
-	let error = "";
+	let errorText = "";
 
 	if ( spaces.length === 0 ) {
 
@@ -188,7 +201,7 @@ FSTN.getSurfaceTypeNew = function( surface, typeSource ) {
 				} else {
 
 					typeNew = "ExteriorWall";
-					error = "Need exterior or underground wall. ";
+					errorText = "Need exterior or underground wall. ";
 
 				}
 
@@ -209,7 +222,7 @@ FSTN.getSurfaceTypeNew = function( surface, typeSource ) {
 				} else {
 
 					typeNew = "Roof";
-					error = "Need floor or roof";
+					errorText = "Need floor or roof";
 
 				}
 
@@ -226,7 +239,7 @@ FSTN.getSurfaceTypeNew = function( surface, typeSource ) {
 				} else {
 
 					typeNew = "SlabOnGrade";
-					error = "Need horizontal surface ";
+					errorText = "Need horizontal surface ";
 
 				}
 
@@ -247,7 +260,7 @@ FSTN.getSurfaceTypeNew = function( surface, typeSource ) {
 				} else {
 
 					typeNew = "Roof";
-					error = "ExposedToSun true";
+					errorText = "ExposedToSun true";
 
 				}
 
@@ -262,7 +275,7 @@ FSTN.getSurfaceTypeNew = function( surface, typeSource ) {
 				} else {
 
 					typeNew = "SlabOnGrade";
-					error = "incorrect surface type ";
+					errorText = "incorrect surface type ";
 
 				}
 
@@ -321,7 +334,7 @@ FSTN.getSurfaceTypeNew = function( surface, typeSource ) {
 				} else { // pick a likely candidate
 
 					typeNew = "InteriorFloor";
-					error = "Need horizontal surface";
+					errorText = "Need horizontal surface";
 
 				}
 
@@ -349,9 +362,9 @@ FSTN.getSurfaceTypeNew = function( surface, typeSource ) {
 		console.log( 'no spaces', surface );
 
 	}
-	//console.log( '',  { typeNew, reasons } );
+	console.log( '',  { typeNew, reasons } );
 
-	return { typeNew, reasons, error };
+	return { typeNew, reasons, errorText };
 
 };
 
