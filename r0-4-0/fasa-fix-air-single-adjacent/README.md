@@ -1,8 +1,9 @@
 # Fix Air Space Adjacent (FASA) Read Me
 
-<details open>
-
 [Source code]( https://github.com/ladybug-tools/spider-gbxml-fixer/blob/master/r0-4-0/fasa-fix-air-single-adjacent/fasa-fix-air-single-adjacent.js )
+
+
+<details open>
 
 
 <summary>Concept</summary>

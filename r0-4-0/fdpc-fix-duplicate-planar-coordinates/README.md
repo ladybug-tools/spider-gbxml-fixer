@@ -2,6 +2,8 @@
 
 <details open>
 
+[Source code]( https://github.com/ladybug-tools/spider-gbxml-fixer/blob/master/r0-4-0/fdpc-fix-duplicate-planar-coordinates/fdpc-fix-duplicate-planar-coordinates.js )
+
 <summary>Concept</summary>
 
 Identify two or more surfaces with the same planar geometry coordinates
