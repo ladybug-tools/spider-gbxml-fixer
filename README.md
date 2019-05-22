@@ -215,6 +215,12 @@ We are using semantic versioning
 	* Many interesting comments to a short gist
 
 
+### 2019-05-21 ~ Theo
+
+Spider gbXML Fixer 'Atrax' R0.4.14
+
+* All modules updated
+
 ### 2019-05-13 ~ Theo
 
 Spider gbXML Fixer 'Atrax' R0.4.9
