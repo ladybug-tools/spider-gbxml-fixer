@@ -180,8 +180,7 @@ FSTN.update = function( index ) {
 FSTN.fixAll = function() {
 
 	FSTN.errors.forEach( ( error, index ) => {
-
-		console.log( 'error', error );
+		//console.log( 'error', error );
 
 		const fix = FSTN.getSurfaceFix( index );
 		//console.log( 'fix', fix );
@@ -215,7 +214,7 @@ FSTN.fixAll = function() {
 FSTN.getSurfaceFix = function( index ) {
 
 	const error = FSTN.errors[ index ];
-	console.log( 'error', error );
+	//console.log( 'error', error );
 
 	const surface = GBX.surfaces[ error.index ];
 
@@ -426,7 +425,7 @@ FSTN.getSurfaceFix = function( index ) {
 		console.log( 'no spaces', surface );
 
 	}
-	console.log( '',  { typeNew, reasons } );
+	//console.log( '',  { typeNew, reasons } );
 
 	return { typeNew, reasons, errorText };
 
