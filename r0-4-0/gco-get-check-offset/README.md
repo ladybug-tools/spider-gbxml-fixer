@@ -8,7 +8,7 @@
 
 Calculate the maximum distance from the origin of any and all the coordinates in the model.
 
-Numbers of six digits or more may cause rounding errors which will cause surfaces to be displayed at unintended angles.
+Numbers of six digits or more to left of decimal point may cause rounding errors which will cause surfaces to be displayed at unintended angles.
 
 </details>
 
@@ -30,6 +30,11 @@ Numbers of six digits or more may cause rounding errors which will cause surface
 <details>
 
 <summary>Change Log</summary>
+
+### 2019-05-23 ~ Theo
+
+* F - GCO: Add highlight only if max > 10,000
+* C - GCO: Update readme
 
 ### 2019-05-21 ~ Theo
 

@@ -6,10 +6,10 @@
 const GCO = {
 
 	"copyright": "Copyright 2019 Ladybug Tools authors. MIT License",
-	"date": "2019-05-21",
+	"date": "2019-05-23",
 	"description": "Check for the maximum vertex offset from the origin point of the model",
 	"helpFile": "./r0-4-0/gco-get-check-offset/README.md",
-	"version": "0.4.0-4"
+	"version": "0.4.0-5"
 
 };
 
@@ -49,8 +49,10 @@ GCO.getOffset = function() {
 
 		} );
 
+	const tag = max < 10000 ? "span" : "mark";
+
 	GCOsumCheckOffset.innerHTML =
-		`Check project offset distance from origin ~ <mark>${ max.toLocaleString() }</mark> units
+		`Check project offset distance from origin ~ <${ tag }>${ max.toLocaleString() }</${ tag }> units
 			${ GCO.help }
 		`;
 

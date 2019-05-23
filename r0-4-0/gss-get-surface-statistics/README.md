@@ -6,7 +6,7 @@
 
 <summary>Concept</summary>
 
-* Display all referenced gbXML surface types and
+* Display all referenced gbXML surface types
 * Displays all referenced CAD object IDs
 
 </details>
@@ -31,6 +31,10 @@
 <details>
 
 <summary>Change Log</summary>
+
+### 2019-05-23 ~ Theo
+
+* B - GSS.js: Add fix for file with no cad object ids
 
 ### 2019-05-20 ~ Theo
 

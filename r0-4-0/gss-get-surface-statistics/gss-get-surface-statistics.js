@@ -67,19 +67,25 @@ GSS.getSurfaces = function() {
 	const matchesId = GBX.text.match( /<CADObjectId>(.*?)\[/gi );
 	//console.log( 'matchesId', matchesId );
 
-	const itemsId = matchesId.slice( 1 ).map( item => item.slice( 13, -2 ) );
-	//console.log( 'itemsId', itemsId );
+	let cadIds = [];
 
-	const cadIds = [...new Set( itemsId ) ].sort();
-	//console.log( 'cadIds', cadIds );
+	if ( matchesId && matchesId.length ) {
+
+		const itemsId = matchesId.slice( 1 ).map( item => item.slice( 13, -2 ) );
+		//console.log( 'itemsId', itemsId );
+
+		cadIds = [...new Set( itemsId ) ].sort();
+		//console.log( 'cadIds', cadIds );
+
+	}
 
 	const htm =
 	`
 		<p><i>Surfaces</i></p>
 
-		<p>${ types.length } surface types found: <br> ${ types.join( "<br>" ) } </p>
+		<p>${ types.length } surface types found: <br><br> ${ types.join( "<br>" ) } </p>
 
-		<p>${ cadIds.length } CAD Object IDs found: <br> ${ cadIds.join( "<br>" ) } </p>
+		<p>${ cadIds.length } CAD Object IDs found: <br><br> ${ cadIds.join( "<br>" ) } </p>
 
 		<p>Time to check: ${ ( performance.now() - timeStart ).toLocaleString() } ms</p>
 

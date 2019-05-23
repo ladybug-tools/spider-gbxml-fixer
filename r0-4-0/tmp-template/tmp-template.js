@@ -81,8 +81,10 @@ TMP.getSurfaces = function() {
 	} );
 
 
+	const tag = TMP.surfaces.length === 0 ? "span" : "mark";
+
 	TMPsumSurfaces.innerHTML =
-		`Template: Get surfaces ~ ${ TMP.surfaces.length.toLocaleString() } found ${ TMP.help }`;
+		`Template: Get surfaces ~ <${ tag }>${ TMP.surfaces.length.toLocaleString() }</${ tag }> found ${ TMP.help }`;
 
 	const htm =
 	`
