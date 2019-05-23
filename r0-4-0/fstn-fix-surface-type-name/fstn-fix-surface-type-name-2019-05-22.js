@@ -1,4 +1,4 @@
-/* globals GBX, GSA, FSTNsumSurfaceType, FSTNdivSurfaceType, FSTNdet, FSTNtxt, FSTNdivSurfaceAttributeData */
+/* globals GBX, GSA, FSTNsumSurfaceType, FSTNdivSurfaceType, FSTNdet, FSTNdivSurfaceAttributeData */
 /* jshint esversion: 6 */
 /* jshint loopfunc: true */
 
@@ -6,10 +6,10 @@
 const FSTN = {
 
 	"copyright": "Copyright 2019 Ladybug Tools authors. MIT License",
-	"date": "2019-05-22",
+	"date": "2019-05-21",
 	"description": "Checks for a surface type name that is not one of the 15 valid gbXML surface type names",
 	"helpFile": "./r0-4-0/fstn-fix-surface-type-name/README.md",
-	"vaersion": "0.4.0-3"
+	"vaersion": "0.4.0-2"
 
 };
 
@@ -30,7 +30,7 @@ FSTN.getMenuSurfaceTypeName = function() {
 
 	const htm =
 		`
-			<details id=FSTNdet ontoggle="FSTNdivSurfaceType.innerHTML=FSTN.getSurfaceTypeErrors();" >
+			<details id=FSTNdet ontoggle="FSTNdivSurfaceType.innerHTML=FSTN.getSurfaceType();" >
 
 			<summary id=FSTNsumSurfaceType >Fix surfaces with invalid surface type name
 				${ FSTN.help }
@@ -50,11 +50,13 @@ FSTN.getMenuSurfaceTypeName = function() {
 
 
 
-FSTN.getSurfaceTypeErrors = function() {
+FSTN.getSurfaceType = function() {
 
 	const timeStart = performance.now();
 
-	FSTN.errors = GBX.surfaces.reduce( function( errors, surface, index ) {
+	FSTN.errors = [];
+
+	FSTN.surfaces = GBX.surfaces.map( ( surface, index ) => {
 
 		const typeSource0 = surface.match( /surfaceType="(.*?)"/i );
 		const typeSource1 = typeSource0 === null ?  ["", "no attribute" ] : typeSource0 ;
@@ -64,28 +66,30 @@ FSTN.getSurfaceTypeErrors = function() {
 			//console.log( '', typeSource1 );
 
 			const id = surface.match( / id="(.*?)"/i )[ 1 ];
+			const results = ""; //FSTN.getSurfaceTypeNew( surface, typeSource );
+			const typeNew = results.typeNew;
+			const reasons = results.reasons;
+			const error = results.error;
 			const name = surface.match( /<Name>(.*?)<\/Name>/i )[ 1 ];
 
-			errors.push( { id, name, index, typeSource  } );
+			FSTN.errors.push( { id, index, name, typeSource, typeNew, reasons, error  } );
 
 		}
 
-		return errors;
-
-	}, [] );
+	} );
 	//console.log( 'FSTN.errors', FSTN.errors );
+	//console.log( 'FSTN.surfaces', FSTN.surfaces );
 
-	const options = FSTN.errors.map( error => {
+	const options = FSTN.errors.map( surface => {
 
-		return `<option value=${ error.index } title="${ error.id }" >${ error.name }</option>`;
+		return `<option value=${ surface.index } title="${ surface.id }" >${ surface.name }</option>`;
 
 	} );
 
 	const tag = FSTN.errors.length === 0 ? "span" : "mark";
 
 	FSTNsumSurfaceType.innerHTML =
-		`Fix surfaces with invalid surface type name
-			~ <${ tag }>${ FSTN.errors.length.toLocaleString() }</${ tag }> errors
+		`Fix surfaces with invalid surface type name ~ <${ tag }>${ FSTN.errors.length.toLocaleString() }</${ tag }> errors
 			${ FSTN.help }
 		`;
 
@@ -101,7 +105,7 @@ FSTN.getSurfaceTypeErrors = function() {
 			</select>
 		</p>
 
-		<p><button onclick=FSTN.fixAll(); >Fix all</button></p>
+		<p><button onclick=FSTN.fixAllChecked(); >Fix all</button></p>
 
 		<p>Time to check: ${ ( performance.now() - timeStart ).toLocaleString() } ms</p>
 
@@ -110,7 +114,6 @@ FSTN.getSurfaceTypeErrors = function() {
 	return htm;
 
 };
-
 
 
 FSTN.setSurfaceData = function( select ) {
@@ -130,7 +133,7 @@ FSTN.setSurfaceData = function( select ) {
 		</p>
 
 		<p>
-			<button onclick="FSTN.update(${ select.selectedIndex });" title="" >update exposedToSun</button>
+			<button onclick="FSTN.fixSurface(${ select.selectedIndex });" title="" >update exposedToSun</button>
 		</p>
 
 		<p>
@@ -144,80 +147,13 @@ FSTN.setSurfaceData = function( select ) {
 
 
 
-FSTN.update = function( index ) {
-
-	const error = FSTN.errors[ index ];
-	//console.log( 'error', error );
-
-	const fix = FSTN.getSurfaceFix( index );
-	//console.log( 'fix', fix );
-
-	const surfaceCurrent = GBX.surfaces[ error.index ];
-	let surfaceNew;
-
-	if ( error.typeSource === "no attribute" ) {
-
-		surfaceNew = surfaceCurrent.replace( / id="/i, `surfaceType="${ fix.typeNew }" id="` );
-
-	} else {
-
-		surfaceNew = surfaceCurrent.replace( /surfaceType="(.*?)"/i, `surfaceType="${ fix.typeNew }"` );
-
-	}
-
-	GBX.text = GBX.text.replace( surfaceCurrent, surfaceNew );
-	GBX.surfaces = GBX.text.match( /<Surface(.*?)<\/Surface>/gi );
-
-	FSTNtxt.value = surfaceNew;
-
-	FSTNdet.open = false;
-	FSTNdet.open = true;
-
-};
-
-
-
-FSTN.fixAll = function() {
-
-	FSTN.errors.forEach( ( error, index ) => {
-
-		console.log( 'error', error );
-
-		const fix = FSTN.getSurfaceFix( index );
-		//console.log( 'fix', fix );
-
-		const surfaceCurrent = GBX.surfaces[ error.index ];
-
-
-		let surfaceNew;
-
-		if ( error.typeSource === "no attribute" ) {
-
-			surfaceNew = surfaceCurrent.replace( / id="/i, `surfaceType="${ fix.typeNew }" id="` );
-
-		} else {
-
-			surfaceNew = surfaceCurrent.replace( /surfaceType="(.*?)"/i, `surfaceType="${ fix.typeNew }"` );
-
-		}
-
-		GBX.text = GBX.text.replace( surfaceCurrent, surfaceNew );
-		GBX.surfaces = GBX.text.match( /<Surface(.*?)<\/Surface>/gi );
-
-	} );
-
-	FSTNdet.open = false;
-
-};
-
-
-
-FSTN.getSurfaceFix = function( index ) {
+FSTN.fixSurface = function( index ) {
 
 	const error = FSTN.errors[ index ];
 	console.log( 'error', error );
 
-	const surface = GBX.surfaces[ error.index ];
+	surface = GBX.surfaces[ error.index ]
+
 
 	const tilt = surface.match( /<Tilt>(.*?)<\/Tilt>/i )[ 1 ];
 
@@ -229,7 +165,7 @@ FSTN.getSurfaceFix = function( index ) {
 	const exposedToSun1 = exposedToSun0 === null ?  ["", "no attribute" ] : exposedToSun0 ;
 	const exposedToSun = exposedToSun1[ 1 ] ? exposedToSun1[ 1 ] : "undefined";
 	//console.log( 'exposedToSun', exposedToSun );
-	const typeSource = error.typeSource; //typeSource1[ 1 ] ? typeSource1[ 1 ] : "undefined";
+	//const typeSource = typeSource1[ 1 ] ? typeSource1[ 1 ] : "undefined";
 
 	let typeNew = "Shade";
 	let reasons = "Invalid surface type name. ";

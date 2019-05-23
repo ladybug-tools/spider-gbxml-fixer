@@ -215,6 +215,14 @@ We are using semantic versioning
 	* Many interesting comments to a short gist
 
 
+### 2019-05-22 ~ Theo
+
+
+Spider gbXML Fixer 'Atrax' R0.4.15
+
+* B - FSTN.js: Fixed
+
+
 ### 2019-05-21 ~ Theo
 
 Spider gbXML Fixer 'Atrax' R0.4.14
