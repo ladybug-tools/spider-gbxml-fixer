@@ -1,10 +1,12 @@
 # File Open XML ZIP (FIL) Read Me
 
-_Open and save XML, ZIP and other types of files_
 
-<details>
+[Source code]( https://github.com/ladybug-tools/spider-gbxml-fixer/blob/master/r0-4-0/fil-file-open-xml-zip/fil-file-open-xml-zip.js )
+<details open >
 
 <summary>Concept</summary>
+
+Open and save XML, ZIP and other types of files.
 
 Provide a simple and standard way to open files of a number of types using links, the OS file dialog and drag and drop
 
@@ -40,6 +42,11 @@ Provide a simple and standard way to open files of a number of types using links
 <summary>Change Log</summary>
 
 fil-file-open-xml-zip.html/zip 0.4.0
+
+### 2019-05-23 ~ Theo
+
+* F - FIL.js: Add "spifix" to end of file name on save file for xml and zip
+* C - FIL: Update readme
 
 ### 2019-05-09 ~ Theo
 

@@ -45,6 +45,10 @@ This module:
 
 <summary>Change Log</summary>
 
+### 2019-05-23 ~ Theo
+
+* B - GBX.js: Edit cad object id defaults
+
 ### 2019-05-18 ~ Theo
 
 * B - GBX.js: Pass through jsHint

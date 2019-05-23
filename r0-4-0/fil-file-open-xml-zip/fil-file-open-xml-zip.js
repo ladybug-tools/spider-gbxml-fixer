@@ -303,6 +303,7 @@ FIL.reloadFile = function() {
 };
 
 
+
 ////////// handle OS drag and drop events
 
 FIL.drop = function( event ) {
@@ -461,10 +462,11 @@ FIL.displayMarkdown = function( markdown ) {
 
 FIL.butSaveFile = function() {
 
+	const name = FIL.name.replace( /\.xml/i, "-spifix.xml" );
 	const blob = new Blob( [ GBX.text ] );
 	let a = document.body.appendChild( document.createElement( 'a' ) );
 	a.href = window.URL.createObjectURL( blob );
-	a.download = FIL.name;
+	a.download = name;
 	a.click();
 	a = null;
 
@@ -474,6 +476,7 @@ FIL.butSaveFile = function() {
 
 FIL.butSaveFileZip = function() {
 
+	const name = FIL.name.replace( /\.xml/i, "-spifix.zip" );
 	const zip = new JSZip();
 
 	zip.file( FIL.name, GBX.text );
@@ -484,7 +487,7 @@ FIL.butSaveFileZip = function() {
 
 		let a = document.body.appendChild( document.createElement( 'a' ) );
 		a.href = window.URL.createObjectURL( blob );
-		a.download = FIL.name.replace( /\.xml/i, '.zip' );
+		a.download = name;
 		a.click();
 		a = null;
 

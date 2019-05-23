@@ -7,10 +7,10 @@
 const GBX = {
 
 	"copyright": "Copyright 2019 Ladybug Tools authors. MIT License",
-	"date": "2019-05-18",
+	"date": "2019-05-23",
 	"description": "Creates the GBX object and basic variables. Creates the template for the main contents and more",
 	"helpFile": "./r0-4-0/README.md",
-	"release": "0.1.3",
+	"release": "0.4.0-4",
 
 };
 
@@ -119,9 +119,9 @@ GBX.cadIdsDefault = {
 	UndergroundCeiling: "???: SIM_???",
 	RaisedFloor: "Floor: SIM_???",
 	SlabOnGrade: "Floor: SIM_???",
-	FreestandingColumn: 0x808080,
-	EmbeddedColumn: 0x80806E,
-	Undefined: 0x88888888
+	FreestandingColumn: "???",
+	EmbeddedColumn: "???",
+	Undefined: "undefined"
 
 };
 
