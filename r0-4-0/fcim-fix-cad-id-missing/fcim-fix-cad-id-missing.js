@@ -111,9 +111,11 @@ FCIM.getFixCadIdMissing = function() {
 
 	const htm =
 		`
-			<p><i>The CADObjectId Element is used to map unique CAD object identifiers to gbXML elements</i></p>
+			<p>The CADObjectId Element is used to map unique CAD object identifiers to gbXML elements</p>
 
-			Surfaces with no CAD Object ID: ${ FCIM.errors.length.toLocaleString() }<br>
+			<p>When there are hundreds of surfaces to fix, this fix can take a long time to complete. Be patient.</p>
+
+			<p>Surfaces with no CAD Object ID: ${ FCIM.errors.length.toLocaleString() }</p>
 
 			<p>
 				<select id=FCIMselSurface onclick=FCIM.setSurfaceData(this); size=5 style=min-width:8rem; >${ options }</select>
@@ -232,9 +234,9 @@ FCIM.fixAll = function() {
 
 		GBX.text = GBX.text.replace( surfaceTextCurrent, surfaceTextNew );
 
-	}
+		GBX.surfaces = GBX.text.match( /<Surface(.*?)<\/Surface>/gi );
 
-	GBX.surfaces = GBX.text.match( /<Surface(.*?)<\/Surface>/gi );
+	}
 
 	FCIMdet.open = false;
 

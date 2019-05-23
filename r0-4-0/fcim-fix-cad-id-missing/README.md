@@ -36,6 +36,11 @@ Lookup table for CAD IDs: https://github.com/ladybug-tools/spider-gbxml-fixer/bl
 
 <summary>Change Log</summary>
 
+### 2019-05-23 ~ Theo
+
+* B - FCIM.js: Fix crash is many surface need a fix
+* C - FCIM.js: Updates text
+
 ### 2019-05-21 ~ Theo
 
 * C - FCIM: Update readme
