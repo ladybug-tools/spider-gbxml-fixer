@@ -240,13 +240,14 @@ FDPC.deleteDuplicateSurfaces = function() {
 
 	}
 
-	GBX.surfaces = GBX.text.match( /<Surface(.*?)<\/Surface>/gi );
-	//console.log( 'GBX.surfaces', GBX.surfaces.length );
+
 
 	FDPCdet.open = false;
 
 	FDPCdivGetDuplicatePlanar.innerHTML = FDPC.getMenuDuplicatePlanarCoordinates();
-
+	
+	GBX.surfaces = GBX.text.match( /<Surface(.*?)<\/Surface>/gi );
+	//console.log( 'GBX.surfaces', GBX.surfaces.length );
 };
 
 

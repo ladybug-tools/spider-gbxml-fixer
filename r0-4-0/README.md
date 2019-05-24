@@ -48,6 +48,7 @@ This module:
 ### 2019-05-23 ~ Theo
 
 * B - GBX.js: Edit cad object id defaults
+* F - GBX.js: Add ability to load zip fil in preview iframe
 
 ### 2019-05-18 ~ Theo
 

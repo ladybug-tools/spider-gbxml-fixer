@@ -179,14 +179,22 @@ GBX.init = function() {
 	} else {
 
 		// need something loaded. Will be updated by the load event later
-		const url = "#https://cdn.jsdelivr.net/gh/ladybug-tools/spider-gbxml-fixer@master/test-samples/one-room-original.xml";
+		const url = "#https://cdn.jsdelivr.net/gh/ladybug-tools/spider-gbxml-fixer@master/test-samples/one-space-default.xml";
 
 		GBXifr.src = `${ GBX.viewer }${ url }`;
 
 		GBXifr.onload = function() {
+			console.log( 'FIL', FIL.files.files[ 0 ].name );
 
-			//console.log( 'IL.reader.result', FIL.reader.result );
-			GBXifr.contentWindow.GBX.parseFile( FIL.reader.result );
+			if ( FIL.files.files[ 0 ].name.toLowerCase().endsWith( ".xml" ) ) {
+
+				GBXifr.contentWindow.GBX.parseFile( FIL.reader.result );
+
+			} else {
+
+				GBXifr.contentWindow.GBX.parseFile( FIL.text );
+
+			}
 
 		};
 
