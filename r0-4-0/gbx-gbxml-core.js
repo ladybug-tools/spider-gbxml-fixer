@@ -105,23 +105,23 @@ GBX.colorsDefault = {
 };
 
 GBX.cadIdsDefault = {
-
-	InteriorWall: "Basic Wall: SIM_INT_SLD",
-	ExteriorWall: "Basic Wall: SIM_EXT_SLD",
-	Roof: "Basic Roof: SIM_EXT_SLD",
-	InteriorFloor: "Floor: SIM_INT_SLD_FLR",
-	ExposedFloor: "Floor: SIM_EXT_SLD_FLR",
-	Shade: "???: SIM_???",
-	UndergroundWall: "Basic Wall: SIM_???",
-	UndergroundSlab: "Floor: SIM_???",
-	Ceiling: "???: SIM_???",
-	Air: "???: SIM_???",
-	UndergroundCeiling: "???: SIM_???",
-	RaisedFloor: "Floor: SIM_???",
-	SlabOnGrade: "Floor: SIM_???",
-	FreestandingColumn: "???",
-	EmbeddedColumn: "???",
-	Undefined: "undefined"
+    
+	InteriorWall: "Basic Wall: SIM_INT_SLD SpiderFix [000000]",
+	ExteriorWall: "Basic Wall: SIM_EXT_SLD SpiderFix [000000]",
+	Roof: "Basic Roof: SIM_EXT_SLD SpiderFix [000000]",
+	InteriorFloor: "Floor: SIM_INT_SLD SpiderFix [000000]",
+	ExposedFloor: "Floor: SIM_EXT_SLD SpiderFix [000000]",
+	Shade: "Basic Roof: SIM_EXT_SHD_Roof SpiderFix [000000] ",
+	UndergroundWall: "Basic Wall: SIM_EXT_GRD SpiderFix [000000]",
+	UndergroundSlab: "Floor: SIM_EXT_GRD SpiderFix [000000]",
+	Ceiling: "Compound Ceiling: SIM_INT_SLD SpiderFix [000000]",
+	Air: "Basic Wall: SIM_INT_AIR SpiderFix [000000]", // could be Wall or Floor: SIM_INT_AIR SpiderFix [000000]
+	UndergroundCeiling: "Floor: SIM_INT_SLD_Parking SpiderFix [000000]",
+	RaisedFloor: "Floor: SIM_EXT_SLD SpiderFix [000000]",
+	SlabOnGrade: "Floor: SIM_EXT_GRD SpiderFix [000000]",
+	FreestandingColumn: "Column: SIM_STR_F SpiderFix [000000]",
+	EmbeddedColumn: "Column: SIM_STR_E SpiderFix [000000]",
+	Undefined: "Undefined SpiderFix [000000]"
 
 };
 
