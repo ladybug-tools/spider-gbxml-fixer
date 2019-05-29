@@ -1,15 +1,15 @@
 <!doctype html>
 <html lang = "en" >
 <head>
-<meta charset = "utf-8" >
+<meta charset="utf-8">
 <meta name = "viewport" content= "width=device-width, initial-scale=1" >
 <meta name = "description" content = "JavaScript utilities to help you identify and fix common errors in gbXML files" >
 <meta name = "keywords" content = "JavaScript,GitHub,FOSS" >
-<meta name = "date" content = "2019-05-17" >
-<meta name = "revision" content = "0.4-dev" >
+<meta name = "date" content = "2019-05-29" >
+<meta name = "version" content = "0.4.0-dev" >
 <title>Spider gbXML Fixer 'Atrax'</title>
 <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" >
-<link rel="stylesheet" href="https://pushme-pullyou.github.io/tootoo14/js-14-1/style.css">
+<link rel="stylesheet" href="https://pushme-pullyou.github.io/tootoo14/js-14-1/style.css" >
 </head>
 <!-- //Copyright 2019 Ladybug Tools authors. MIT License -->
 <body>
@@ -17,6 +17,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js" ></script>
 
 <!-- menus generally -->
+
 <script src="https://pushme-pullyou.github.io/tootoo14/js-14-1/mnu-menu/mnu-menu.js" ></script>
 <script src="https://ladybug-tools.github.io/spider-gbxml-tools/spider-gbxml-viewer/r15/js-gbxml/gal-sample-files-gallery-gbxml.js" ></script>
 <script src="gbx-gbxml-core.js" ></script>
@@ -44,17 +45,14 @@
 
 
 <!-- Settings menu -->
-<!--
-	<script src="https://pushme-pullyou.github.io/tootoo13/js-tootoo13-1/thm-theme-select.js" ></script>
--->
+<script src="https://pushme-pullyou.github.io/tootoo13/js-tootoo13-1/thm-theme-select.js" ></script>
 <script src="tmp-template/tmp-template.js" ></script>
 
+	<button id="expandButton" onclick="toggleNavPanel();" >☰</button>
 
 	<nav id="navPanel" >
 
-		<button id="expandButton" onclick="navPanel.classList.toggle('collapsed');" >☰</button>
-
-		<section id="secContent" >
+		<section class="secContent" >
 
 			<header>
 
@@ -87,16 +85,21 @@
 
 			</details>
 
-			<details open >
+
+			<details>
 
 				<summary class=sumMenuTitle >Settings menu</summary>
 
 				<div id=THMdivMenuThemeSelect ></div>
 
+				<div id=TMPdivTemplate ></div>
+
 			</details>
 
 
 			<footer>
+
+				<div id="MNUdivFooter" ></div>
 
 				<div id="MNUdivFooterPopup" ></div>
 
@@ -110,36 +113,42 @@
 
 	</nav>
 
+
 	<main id=main >
 
 		<div id=divContents ></div>
 
 	</main>
 
-	
+
 	<nav id="navPopup" hidden >
 
-		<div id="MNUdivPopup" ></div>
+		<section class="secContent" >
+
+			<div id="MNUdivPopup" ></div>
+
+		</section>
 
 	</nav>
 
 
 	<nav>
 
-		<a href="" id="butViewSource" target=_blank; hidden >view source</a>
+		<a href="" id="aViewSource" target=_blank; hidden >view source</a>
 
 	</nav>
 
+
 <script>
 
+THM.themeUrlStorage = 'spider-gbxml-fixer-theme-url';
+THM.cssBasic = "https://pushme-pullyou.github.io/tootoo14/js-14-1/style.css";
 
 // useful when testing / un-comment
 //FIL.urlDefaultFile = "https://www.ladybug.tools/spider/gbxml-sample-files/bristol-clifton-downs-broken.xml";
 //FIL.urlDefaultFile = "https://cdn.jsdelivr.net/gh/ladybug-tools/spider@master/gbxml-sample-files/zip/coventry-university-of-warwick-small.zip";
 FIL.urlDefaultFile = "https://cdn.jsdelivr.net/gh/ladybug-tools/spider@master/gbxml-sample-files/zip/pittsburg-airport.zip";
 
-//THM.themeUrlStorage = 'spider-gbxml-fixer-theme-url';
-//THM.cssBasic = "https://pushme-pullyou.github.io/tootoo13/js-tootoo13-2/style.css";
 
 MNU.helpFile = "../README.md";
 
@@ -150,7 +159,7 @@ MNU.description =
 	`;
 
 // For main menu header
-MNU.urlSourceCode = "https://github.com/ladybug-tools/spider-gbxml-fixer/tree/master/r0-4-0/";
+//MNU.urlSourceCode = "https://github.com/ladybug-tools/spider-gbxml-fixer/tree/master/r0-4-0/";
 
 MNU.homeText ="<img src='https://ladybug.tools/artwork/icons_bugs/ico/ladybug.ico' height=24 >";
 MNU.homeTitle="Ladybug Tools: free computer applications that support environmental design and education";
@@ -201,6 +210,17 @@ init();
 
 function init() {
 
+	if ( /(iPad|iPhone|iPod)/g.test( navigator.userAgent ) ) { /* I hate having to add this */
+
+		divContents.style.width = getComputedStyle( divContents ).width;
+		divContents.style.height = getComputedStyle( divContents ).height;
+		divContents.setAttribute( 'scrolling', 'no' );
+
+	}
+
+	THMdivMenuThemeSelect.innerHTML = THM.getMenuThemeSelect();
+	THM.init();
+
 	MNUdivHeader.innerHTML = MNU.getNavHeader();
 
 	// File open menu
@@ -216,11 +236,21 @@ function init() {
 	// Help menu
 	MNUdivFooterPopup.innerHTML = MNU.getNavFooterPopup();
 
-	//THM.init();
-
 	FIL.onHashChange(); // checks location hash, if none set default file ( the read me ) to open
 
-	document.body.addEventListener( 'onXmlFileLoad', GBX.init, false ); // hash changed, file loaded so let's go
+	//document.body.addEventListener( 'onXmlFileLoad', GBX.init, false ); // hash changed, file loaded so let's go
+
+	aViewSource.style.display = "block";
+	aViewSource.href = MNU.urlSourceCode;
+}
+
+
+
+function toggleNavPanel() {
+
+	expandButton.classList.toggle( 'collapsed' );
+	navPanel.classList.toggle( 'collapsed' );
+	main.classList.toggle( 'collapsed' );
 
 }
 
