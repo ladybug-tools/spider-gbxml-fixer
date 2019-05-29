@@ -45,8 +45,8 @@
 
 
 <!-- Settings menu -->
-<script src="https://pushme-pullyou.github.io/tootoo13/js-tootoo13-1/thm-theme-select.js" ></script>
-<script src="tmp-template/tmp-template.js" ></script>
+<script src="https://pushme-pullyou.github.io/tootoo14/js-14-1/thm-theme/thm-theme.js" ></script>
+<script src="https://pushme-pullyou.github.io/tootoo14/js-14-1/tmp-template/tmp-template.js" ></script>
 
 	<button id="expandButton" onclick="toggleNavPanel();" >☰</button>
 
@@ -175,7 +175,7 @@ MNU.appUrl   = ""; // "https://www.ladybug.tools/spider-gbxml-tools/";
 
 MNU.footerUrl    = "https://ladybug-tools.github.io/spider/#";
 MNU.footerTarget = "target=_blank";
-MNU.footerPopupUrl = "../spider/";
+MNU.footerPopupUrl = "../../spider/";
 
 MNU.footerIssues = "https://github.com/ladybug-tools/spider-gbxml-fixer/issues";
 
@@ -223,22 +223,17 @@ function init() {
 
 	MNUdivHeader.innerHTML = MNU.getNavHeader();
 
-	// File open menu
 	GALdivSampleFilesGallery.innerHTML=GAL.getMenuSampleFilesGallery();
 
 	FILdivFileOpen.innerHTML=FIL.getMenuFileOpen();
 
 	FILdivFileSave.innerHTML=FIL.getMenuFileSave();
 
-	// Settings menu
-	//THMsecMenuThemeSelect.innerHTML = THM.getMenuThemeSelect();
-
-	// Help menu
 	MNUdivFooterPopup.innerHTML = MNU.getNavFooterPopup();
 
 	FIL.onHashChange(); // checks location hash, if none set default file ( the read me ) to open
 
-	//document.body.addEventListener( 'onXmlFileLoad', GBX.init, false ); // hash changed, file loaded so let's go
+	document.body.addEventListener( 'onXmlFileLoad', GBX.init, false ); // hash changed, file loaded so let's go
 
 	aViewSource.style.display = "block";
 	aViewSource.href = MNU.urlSourceCode;
