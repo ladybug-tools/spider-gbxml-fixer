@@ -9,7 +9,7 @@
 <meta name = "version" content = "0.4.0" >
 <title>Spider gbXML Fixer 'Atrax'</title>
 <link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" >
-<link rel="stylesheet" href="r0-4-0/style.css" >
+<link rel="stylesheet" href="https://www.ladybug.tools/spider-gbxml-fixer/r0-4-0/style.css" >
 </head>
 <!-- //Copyright 2019 Ladybug Tools authors. MIT License -->
 <body>
@@ -17,7 +17,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js" ></script>
 
 <!-- menus generally -->
-<script src="r0-4-0/mnu-menu/mnu-menu.js" ></script>
+<script src="https://www.ladybug.tools/spider-gbxml-fixer/r0-4-0/mnu-menu/mnu-menu.js" ></script>
 <script src="https://ladybug-tools.github.io/spider-gbxml-tools/spider-gbxml-viewer/r15/js-gbxml/gal-sample-files-gallery-gbxml.js" ></script>
 <script src="https://www.ladybug.tools/spider-gbxml-fixer/r0-4-0/gbx-gbxml-core.js" ></script>
 <script src="https://www.ladybug.tools/spider-gbxml-fixer/r0-4-0/gsa-get-surface-attributes/gsa-get-surface-attributes.js" ></script>
@@ -147,18 +147,13 @@ THM.cssBasic = "r0-4-0/style.css";
 //FIL.urlDefaultFile = "https://cdn.jsdelivr.net/gh/ladybug-tools/spider@master/gbxml-sample-files/zip/coventry-university-of-warwick-small.zip";
 FIL.urlDefaultFile = "https://cdn.jsdelivr.net/gh/ladybug-tools/spider@master/gbxml-sample-files/zip/pittsburg-airport.zip";
 
-
-MNU.helpFile = "https://www.ladybug.tools/spider-gbxml-fixe/README.md";
-
-MNU.description = document.head.querySelector( '[ name=description ]' ).content;
+//MNU.description = document.head.querySelector( '[ name=description ]' ).content;
 MNU.description =
 	`
 		Mission: run a series of basics checks on <a href="https://gbXML.org" target="_blank">gbXML</a> files to identify, report and help you fix any errors
 	`;
 
-// For main menu header
-//MNU.urlSourceCode = "https://github.com/ladybug-tools/spider-gbxml-fixer/tree/master/r0-4-0/";
-
+	// put into menu.js
 MNU.homeText ="<img src='https://ladybug.tools/artwork/icons_bugs/ico/ladybug.ico' height=24 >";
 MNU.homeTitle="Ladybug Tools: free computer applications that support environmental design and education";
 MNU.homeUrl  ="https://www.ladybug.tools";
@@ -171,41 +166,15 @@ MNU.appText  = ""; // "gbXML Tools";
 MNU.appTitle = ""; // "Tools to help you find, load, examine and edit gbXML files - in large numbers and sizes";
 MNU.appUrl   = ""; // "https://www.ladybug.tools/spider-gbxml-tools/";
 
-MNU.footerUrl    = "https://ladybug-tools.github.io/spider/#";
-MNU.footerTarget = "target=_blank";
+
 MNU.footerPopupUrl = "https://github.com/ladybug-tools/spider/";
+MNU.footerTarget = "target=_blank";
 
 MNU.footerIssues = "https://github.com/ladybug-tools/spider-gbxml-fixer/issues";
 
 //GBX.viewer = "https://github.com/ladybug-tools/spider-gbxml-tools/spider-gbxml-viewer/r15/spider-gbxml-viewer15.html";
-
 // for testing locally and getting around CORs issues
 GBX.viewer = "../spider-gbxml-tools/spider-gbxml-viewer/r15/spider-gbxml-viewer15.html"
-
-const src = "https://www.ladybug.tools/spider-gbxml-fixer/r0-4-0/"; // "./";
-
-//FIL.helpFile = src + "fil-file-open-xml-zip/README.md";
-
-GBX.helpFile = "https://www.ladybug.tools/spider-gbxml-fixer/r0-4-0/README.md";
-
-FASA.helpFile = src + "fasa-fix-air-single-adjacent/README.md";
-FASD.helpFile = src + "fasd-fix-adjacent-space-duplicate/README.md";
-FASE.helpFile = src + "fase-fix-adjacent-space-extra/README.md";
-FASST.helpFile = src + "fasst-fix-adjacent-space-surface-type/README.md";
-FCIM.helpFile = src + "fcim-fix-cad-id-missing/README.md";
-FDPC.helpFile = src + "fdpc-fix-duplicate-planar-coordinates/README.md";
-FETS.helpFile = src + "fets-fix-exposed-to-sun/README.md";
-FSTN.helpFile = src + "fstn-fix-surface-type-name/README.md";
-FXA.helpFile =  src + "fxa-fix-xml-attributes/README.md";
-
-GCO.helpFile = src + "gco-get-check-offset/README.md";
-GCS.helpFile = src + "gcs-get-check-strings/README.md";
-GGD.helpFile = src + "ggd-get-gbxml-data/README.md";
-GSA.helpFile = src + "gsa-get-surface-attributes/README.md";
-GSS.helpFile = src + "gss-get-surface-statistics/README.md";
-
-OCV.helpFile = src + "ocv-openings-check-vertices/README.md";
-
 
 
 init();

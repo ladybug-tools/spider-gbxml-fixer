@@ -7,10 +7,10 @@
 const FXA = {
 
 	"copyright": "Copyright 2019 Ladybug Tools authors. MIT License",
-	"date": "2019-05-21",
+	"date": "2019-05-30",
 	"description": "Check for existence of seven required gbXML file attributes. If attributes missing, then supply fixes.",
-	"helpFile": "./r0-4-0/fxa-fix-xml-attributes/README.md",
-	"version": "0.4.0-3"
+	"helpFile": "https://www.ladybug.tools/spider-gbxml-fixer/r0-4-0/fxa-fix-xml-attributes/README.md",
+	"version": "0.4.0-4"
 
 };
 

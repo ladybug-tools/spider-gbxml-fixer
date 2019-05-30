@@ -7,10 +7,10 @@ const MNU = {
 	"copyright": "Copyright 2019 pushMe-pullYou authors. MIT License",
 	"date": "2019-05-28",
 	"description": "TooToo Menu (MNU) generates standard HTML TooToo menu code and content and code that works on computers, tablets and phones",
-	"helpFile": "README.md",
+	"helpFile": "https://www.ladybug.tools/spider-gbxml-fixer/r0-4-0/mnu-menu/README.md",
 	"version": "0.14.1-2",
 	//"urlSourceCode": "https://github.com/pushme-pullyou/tootoo14/tree/master/js-14-1/mnu-menu"
-	"urlSourceCode": "https://github.com/ladybug-tools/spider-gbxml-fixer/tree/master/r0-4-0"
+	"urlSourceCode": "https://github.com/ladybug-tools/spider-gbxml-fixer/tree/master/r0-4-0/mnu-menu/"
 };
 
 

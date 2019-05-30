@@ -7,12 +7,12 @@
 const FASA = {
 
 	"copyright": "Copyright 2019 Ladybug Tools authors. MIT License",
-	"date": "2019-05-21",
+	"date": "2019-05-30",
 	"description":
 		"Identify all the surfaces of a model of type \"Air\" that have a single adjacent space attribute. " +
 		"Allow you to change the surface type to \"Roof\". ",
-	"helpFile": "./r0-4-0/fasa-fix-air-single-adjacent/README.md",
-	"version": "0.4.0-3",
+	"helpFile": "https://www.ladybug.tools/spider-gbxml-fixer/r0-4-0/fasa-fix-air-single-adjacent/README.md",
+	"version": "0.4.0-4",
 
 };
 

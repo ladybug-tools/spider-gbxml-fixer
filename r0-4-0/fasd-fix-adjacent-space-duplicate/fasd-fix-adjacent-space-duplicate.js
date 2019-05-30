@@ -7,10 +7,10 @@
 const FASD = {
 
 	"copyright": "Copyright 2019 Ladybug Tools authors. MIT License",
-	"date": "2019-05-21",
+	"date": "2019-05-30",
 	"description": "Fix air, InteriorWall, InteriorFloor, or Ceiling surfaces where both adjacent space IDs point to the same space",
-	"helpFile": "./r0-4-0/fasd-fix-adjacent-space-duplicate/README.md",
-	"version": "0.4.0-2"
+	"helpFile": "https://www.ladybug.tools/spider-gbxml-fixer/r0-4-0/fasd-fix-adjacent-space-duplicate/README.md",
+	"version": "0.4.0-3"
 
 };
 

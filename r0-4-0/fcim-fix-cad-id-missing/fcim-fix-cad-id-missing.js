@@ -6,10 +6,10 @@
 const FCIM = {
 
 	"copyright": "Copyright 2019 Ladybug Tools authors. MIT License",
-	"date": "2019-05-21",
+	"date": "2019-05-30",
 	"description": "Assign an ID to surfaces with a missing CAD object ID",
-	"helpFile": "./r0-4-0/fcim-fix-cad-id-missing/README.md",
-	"version": "0.4.0-1"
+	"helpFile": "https://www.ladybug.tools/spider-gbxml-fixer/r0-4-0/fcim-fix-cad-id-missing/README.md",
+	"version": "0.4.0-2"
 
 };
 

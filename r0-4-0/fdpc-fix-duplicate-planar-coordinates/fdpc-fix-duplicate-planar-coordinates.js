@@ -6,10 +6,10 @@
 const FDPC = {
 
 	"copyright": "Copyright 2019 Ladybug Tools authors. MIT License",
-	"date": "2019-05-16",
+	"date": "2019-05-30",
 	"description": "Identify two or more surfaces with the same planar geometry coordinates",
-	"helpFile": "./r0-4-0/fdpc-fix-duplicate-planar-coordinates/README.md",
-	"release": "0.1.1"
+	"helpFile": "https://www.ladybug.tools/spider-gbxml-fixer/r0-4-0/fdpc-fix-duplicate-planar-coordinates/README.md",
+	"release": "0.4.0-2"
 
 };
 
@@ -245,7 +245,7 @@ FDPC.deleteDuplicateSurfaces = function() {
 	FDPCdet.open = false;
 
 	FDPCdivGetDuplicatePlanar.innerHTML = FDPC.getMenuDuplicatePlanarCoordinates();
-	
+
 	GBX.surfaces = GBX.text.match( /<Surface(.*?)<\/Surface>/gi );
 	//console.log( 'GBX.surfaces', GBX.surfaces.length );
 };

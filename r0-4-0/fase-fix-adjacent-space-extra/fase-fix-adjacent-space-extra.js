@@ -7,9 +7,9 @@ const FASE = {
 
 	"copyright": "Copyright 2019 Ladybug Tools authors. MIT License",
 	"description": "Checks for a surface with more adjacent spaces than required",
-	"date": "2019-05-20",
-	"helpFile": "./r0-4-0/fase-fix-adjacent-space-extra/README.md",
-	"version": "0.4.0-2"
+	"date": "2019-05-30",
+	"helpFile": "https://www.ladybug.tools/spider-gbxml-fixer/r0-4-0/fase-fix-adjacent-space-extra/README.md",
+	"version": "0.4.0-3"
 
 };
 

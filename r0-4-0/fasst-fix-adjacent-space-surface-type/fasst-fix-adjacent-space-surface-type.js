@@ -6,10 +6,10 @@
 const FASST = {
 
 	"copyright": "Copyright 2019 Ladybug Tools authors. MIT License",
-	"date": "2019-05-21",
+	"date": "2019-05-30",
 	"description": "Fix surfaces with two adjacent spaces that are not of a surface type that requires two adjacent spaces",
-	"helpFile": "./r0-4-0/fasst-fix-adjacent-space-surface-type/README.md",
-	"version": "0.4.0-4"
+	"helpFile": "https://www.ladybug.tools/spider-gbxml-fixer/r0-4-0/fasst-fix-adjacent-space-surface-type/README.md",
+	"version": "0.4.0-5"
 
 };
 
