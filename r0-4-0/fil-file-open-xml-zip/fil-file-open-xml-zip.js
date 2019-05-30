@@ -6,10 +6,10 @@
 const FIL = {
 
 	"copyright": "Copyright 2019 Ladybug Tools authors. MIT License",
-	"date": "2019-05-09",
+	"date": "2019-05-30",
 	"description": "Open and save gbXML and ZIP files using location.hash, the operating system file dialog box or drag&drop",
-	"helpFile": "./r0-4-0/fil-file-open-xml-zip/README.md",
-	"release": "0.4.1",
+	"helpFile": "https://www.ladybug.tools/spider-gbxml-fixer/r0-4-0/fil-file-open-xml-zip/README.md",
+	"version": "0.4.0-2",
 
 };
 
