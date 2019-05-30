@@ -10,7 +10,7 @@ const MNU = {
 	"helpFile": "https://www.ladybug.tools/spider-gbxml-fixer/r0-4-0/mnu-menu/README.md",
 	"version": "0.4.0-3",
 	//"urlSourceCode": "https://github.com/pushme-pullyou/tootoo14/tree/master/js-14-1/mnu-menu"
-	"urlSourceCode": "https://github.com/ladybug-tools/spider-gbxml-fixer/tree/master/r0-4-0/mnu-menu/"
+	"urlSourceCode": "https://github.com/ladybug-tools/spider-gbxml-fixer/tree/master/r0-4-0/"
 };
 
 
