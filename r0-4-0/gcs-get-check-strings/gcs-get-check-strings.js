@@ -5,10 +5,10 @@
 
 GCS = {
 	"copyright": "Copyright 2019 Ladybug Tools authors. MIT License",
+	"date": "2019-05-30",
 	"description": "Check and report on elements with inappropriate null, zero or blank values values",
-	"helpFile": "./r0-4-0/gcs-get-check-strings/README.md",
-	"version": "0.4.0-4",
-	"date": "2019-05-21"
+	"helpFile": "https://www.ladybug.tools/spider-gbxml-fixer/r0-4-0/gcs-get-check-strings/README.md",
+	"version": "0.4.0-4"
 };
 
 
@@ -90,7 +90,7 @@ GCS.getData = function() {
 	//console.log( 'errors ', errors );
 
 	const tag = errors === 0 ? "span" : "mark";
-	
+
 	GCSsumGetCheckStrings.innerHTML =
 		`Check for valid text and numbers ~ <${ tag }>${ errors }</${ tag }> errors found ${ GCS.help }`;
 

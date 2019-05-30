@@ -5,10 +5,9 @@
 const THM = {
 
 	"copyright": "Copyright 2019 Ladybug Tools authors. MIT License",
-	"date": "2019-05-28",
-
-	"helpFile": "thm-theme/README.md",
-	"release": "0.14.0-1",
+	"date": "2019-05-30",
+	"helpFile": "https://www.ladybug.tools/spider-gbxml-fixer/r-0-4-0/thm-theme/README.md",
+	"version": "0.4.0-1",
 };
 
 THM.description =

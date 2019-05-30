@@ -6,10 +6,10 @@
 const GCO = {
 
 	"copyright": "Copyright 2019 Ladybug Tools authors. MIT License",
-	"date": "2019-05-23",
+	"date": "2019-05-30",
 	"description": "Check for the maximum vertex offset from the origin point of the model",
-	"helpFile": "./r0-4-0/gco-get-check-offset/README.md",
-	"version": "0.4.0-5"
+	"helpFile": "https://www.ladybug.tools/spider-gbxml-fixer/r0-4-0/gco-get-check-offset/README.md",
+	"version": "0.4.0-6"
 
 };
 

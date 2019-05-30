@@ -6,10 +6,10 @@
 const GSS = {
 
 	"copyright": "Copyright 2019 Ladybug Tools authors. MIT License",
-	"date": "2019-05-20",
+	"date": "2019-05-30",
 	"description": "Display all referenced gbXML surface types and CAD object IDs",
-	"helpFile": "./r0-4-0/gss-get-surface-statistics/README.md",
-	"release": "0.4.3"
+	"helpFile": "https://www.ladybug.tools/spider-gbxml-fixer/r0-4-0/gss-get-surface-statistics/README.md",
+	"version": "0.4.0-4"
 
 };
 

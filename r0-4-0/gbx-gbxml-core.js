@@ -7,10 +7,10 @@
 const GBX = {
 
 	"copyright": "Copyright 2019 Ladybug Tools authors. MIT License",
-	"date": "2019-05-23",
+	"date": "2019-05-30",
 	"description": "Creates the GBX object and basic variables. Creates the template for the main contents and more",
-	"helpFile": "./r0-4-0/README.md",
-	"release": "0.4.0-4",
+	"helpFile": "https://www.ladybug.tools/spider-gbxml-fixer/r0-4-0/README.md",
+	"version": "0.4.0-5",
 
 };
 
@@ -105,7 +105,7 @@ GBX.colorsDefault = {
 };
 
 GBX.cadIdsDefault = {
-    
+
 	InteriorWall: "Basic Wall: SIM_INT_SLD SpiderFix [000000]",
 	ExteriorWall: "Basic Wall: SIM_EXT_SLD SpiderFix [000000]",
 	Roof: "Basic Roof: SIM_EXT_SLD SpiderFix [000000]",

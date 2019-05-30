@@ -6,10 +6,10 @@
 const OCV = {
 
 	"copyright": "Copyright 2019 Ladybug Tools authors. MIT License",
-	"date": "2019-05-21",
+	"date": "2019-05-30",
 	"description": "Openings: check openings with more than four vertices",
-	"helpFile": "./r0-4-0/ocv-openings-check-vertices/README.md",
-	"release": "0.4.0-2"
+	"helpFile": "https://www.ladybug.tools/spider-gbxml-fixer/r0-4-0/ocv-openings-check-vertices/README.md",
+	"version": "0.4.0-3"
 
 };
 

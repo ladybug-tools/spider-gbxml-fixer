@@ -6,10 +6,10 @@
 const TMP = {
 
 	"copyright": "Copyright 2019 Ladybug Tools authors. MIT License",
-	"date": "2019-05-17",
+	"date": "2019-05-30",
 	"description": "template for checking surfaces",
-	"helpFile": "./r0-4-0/tmp-template/README.md",
-	"release": "0.4-2"
+	"helpFile": "https://www.ladybug.tools/spider-gbxml-fixer/r0-4-0/tmp-template/README.md",
+	"version": "0.4.0-3"
 
 };
 
