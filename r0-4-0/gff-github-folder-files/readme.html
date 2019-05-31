@@ -1,56 +1,69 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang=en >
 <head>
-<meta charset=utf-8 >
+<meta charset="utf-8" >
+<title>Open Index or Markdown</title>
+<meta name=viewport content="width=device-width, initial-scale=1.0, viewport-fit=contain" >
+<meta name=description content="File wrangler. Default index.html file. Opens HTML or Markdown files. Passes location.hash." >
+<meta name=keywords content="ShowDown,Markdown,AJAX,JavaScript,HTML,CSS,GitHub,FOSS" >
+<meta name=date content="2019-05-31" >
+<style>
+
+	body { font: 12pt monospace; margin: 0 auto; max-width: 50rem; }
+	a { color: crimson; text-decoration: none; }
+	a:hover { text-decoration: underline; }
+	button, input[type=button] { background-color: #eee; border: 2px #eee solid; color: #888; }
+
+</style>
 </head>
 <body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js" ></script>
 <script>
-	// Copyright 2019 PushMe-PullYou authors. MIT License.
-	// goal: drop this anywhere in any folder
-	// it will call the top level index.html and add the local read me file path as a location hash
-	// works locally and in GitHub Pages
 
-	// Run this script when you want to see what your read me file looks like as you are editing it on your local device
+// https://github.com/showdownjs/showdown
+// https://github.com/pushme-pullyou/pushme-pullyou.github.io/tree/master/tootoo-templates
 
-	const protocol = location.protocol;
-	console.log( 'protocol', protocol );
+	let defaultFile = "index.html";
+	location.hash = "README.md";
 
-	const pathname = location.pathname;
-	console.log( 'pathname', pathname);
+	let contents;
 
-	let path, pathFull;
+	init();
 
-	const repo = 'spider-gbxml-fixer'; // rename to repo name
+	function init() {
 
-	if ( protocol === 'file:' ) {
+		if ( location.hash.endsWith( ".md" ) ) {
 
-		const sliceStart = pathname.indexOf( repo ) + repo.length + 1;
-		console.log( 'sliceStart', sliceStart );
+			onHashChange();
 
-		path = pathname.slice( sliceStart, pathname.lastIndexOf( '/' )  );
-		console.log( 'path', path );
+		} else {
 
-		pathFull = path.replace( /-/g, '' ).replace( /\w+/g, '..' ).slice( 0 ) + '/index.html#' + path + '/README.md';
+			window.location.href = defaultFile + location.hash;
 
-		//pathFull = "../../index.html#" + path + '/README.md';
-
-	} else if ( protocol.includes( 'http' ) ) {
-
-		hash = pathname.slice(1, pathname.lastIndexOf( '/' ) );
-		console.log( 'hash', hash );
-		path = hash.replace( /-/g, '' ).replace( /\w+/g, '..' );
-
-		pathFull = path + '/index.html#' + hash + '/README.md';
+		}
 
 	}
 
+	function onHashChange() {
 
-	pathFull
-	console.log( 'pathFull', pathFull );
+		contents = contents ? contents : document.body.appendChild( document.createElement( "div" ) ) ;
 
-	window.location.href = pathFull;
-	// comment above line to see how it works
+		showdown.setFlavor("github");
 
+		const converter = new showdown.Converter();
+
+		const url = location.hash.slice( 1 );
+
+		const xhr = new XMLHttpRequest();
+		xhr.open( "get", url, true );
+		xhr.onload = function() { contents.innerHTML = converter.makeHtml( xhr.responseText ); };
+		xhr.send( null );
+
+		document.title = url.split( "/" ).pop();
+
+		window.addEventListener( "hashchange", onHashChange, false );
+
+	}
 
 </script>
 </body>

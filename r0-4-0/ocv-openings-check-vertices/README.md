@@ -1,6 +1,6 @@
-# [Openings Check Vertices (OCV) Read Me]( #ocv-openings-check-vertices/README.md )
+#Openings Check Vertices (OCV) Read Me
 
-<detail open>
+<details open>
 
 <summary>Concept</summary>
 

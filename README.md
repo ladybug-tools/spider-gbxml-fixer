@@ -166,6 +166,10 @@ Even if you know only a little bit of JavaScript there are many things you may d
 
 <summary class=sumHeader title="Bugs we know about already" >Issues</summary>
 
+* 2019-05-30 ~ readme.html files not working
+* 2019-05-30 ~ individual html files for each module is too much work / edit core instead
+
+
 </details>
 
 <details>
@@ -215,8 +219,13 @@ We are using semantic versioning
 	* Many interesting comments to a short gist
 
 
-### 2019-05-22 ~ Theo
+### 2019-05-30 ~ Theo
 
+Spider gbXML Fixer 'Atrax' R0.4.16
+
+F/B ~ many fixes & features throughout
+
+### 2019-05-22 ~ Theo
 
 Spider gbXML Fixer 'Atrax' R0.4.15
 

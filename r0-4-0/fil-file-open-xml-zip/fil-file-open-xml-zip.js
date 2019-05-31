@@ -267,12 +267,11 @@ FIL.onInputFileOpen = function( files ) {
 	//console.log( 'files', files );
 
 	FIL.timeStart = performance.now();
-
 	FIL.files = files;
 
 	const file = files.files[ 0 ];
 	const type = file.type;
-	//console.log( 'type', type );
+	console.log( 'type', type );
 
 	if ( type === "text/xml" ) {
 
@@ -284,7 +283,7 @@ FIL.onInputFileOpen = function( files ) {
 
 	} else {
 
-		FIL.onFileOpenText( files );
+		FIL.onFileOpenText( files ); // can be markdown
 
 		//console.log( 'not supported', type );
 
@@ -525,9 +524,9 @@ FIL.onProgress = function( size = 0, note = '' ) {
 		//console.log( 'loaded', size );
 
 		const event = new Event( 'onXmlFileLoad' );
+		// document.body.addEventListener( 'onXmlFileLoad', setStats, false );
 		document.body.dispatchEvent( event );
 
-		// document.body.addEventListener( 'onXmlFileLoad', setStats, false );
 
 	}
 };

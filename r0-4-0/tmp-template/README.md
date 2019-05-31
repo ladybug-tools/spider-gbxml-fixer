@@ -1,4 +1,4 @@
-# [Template TMP Read Me]( #tm-template/README.md )
+# Template TMP Read Me
 
 <details>
 

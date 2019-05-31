@@ -5,11 +5,11 @@
 
 const GFF = {
 	"copyright": "Copyright 2019 Ladybug Tools authors. MIT License",
-	"date": "2019-05-29",
-	"description": "Get and display GitHub folders and files",
+	"date": "2019-05-31",
+	"description": "Get data from selected GitHub folders and files and display as links in details/summary that update location.hash",
 	"helpFile": "gff-github-folder-files/README.md",
 	"urlSourceCode": "",
-	"version": "0.14.0-0",
+	"version": "0.14.0-1",
 };
 
 
@@ -66,13 +66,14 @@ GFF.getMenuGithubFoldersFiles = function() {
 	let  htm = "";
 	let index = 0;
 
-	for( let item of GFF.items ) {
+	for ( let item of GFF.items ) {
 
 		htm += GFF.getDetails( item, index++ );
 
 	}
 
 	return htm;
+
 };
 
 
@@ -93,7 +94,6 @@ GFF.getDetails = function( item, index ){
 
 	return htm;
 
-
 };
 
 
@@ -101,7 +101,6 @@ GFF.getDetails = function( item, index ){
 GFF.getGithubFoldersFiles = function( index ) {
 
 	const item = GFF.items[ index ];
-
 
 	item.urlGitHubApiContents = 'https://api.github.com/repos/' + item.user + item.repo + '/contents/' + item.pathRepo;
 	item.urlGitHubPage = 'https://rawgit.com/' + item.user + item.repo + '/master/' + item.pathRepo;
@@ -175,7 +174,7 @@ GFF.callbackGitHubMenu = function( xhr ) {
 	let htm = '';
 
 	const item = GFF.items[ GFF.index ];
-	console.log( 'item', item );
+	//console.log( 'item', item );
 
 	for ( let file of files ) {
 
@@ -205,7 +204,7 @@ GFF.callbackGitHubMenu = function( xhr ) {
 	}
 
 	const divGallery = GFFdivGithubFoldersFiles.querySelectorAll ( "#GALdivGallery" + GFF.index )[ 0 ];
-	console.log( 'divGallery', divGallery );
+	//console.log( 'divGallery', divGallery );
 
 	divGallery.innerHTML = htm;
 
