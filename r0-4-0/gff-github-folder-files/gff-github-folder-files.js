@@ -151,7 +151,9 @@ GFF.requestFile = function( url, callback, index ) {
 
 		let name = xhr.target.responseURL.split( '/').pop();
 
-		name = name ? GFF.user + '/' + name : GFF.user + GFF.repo;
+		const item = GFF.items[ GFF.index ];
+
+		name = name ? item.user + '/' + name : `${item.user }  ${ item.repo } `;
 
 		GFFdivFileInfo.innerHTML =
 		`

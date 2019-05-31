@@ -23,6 +23,7 @@
 <script src="https://www.ladybug.tools/spider-gbxml-fixer/r0-4-0/gsa-get-surface-attributes/gsa-get-surface-attributes.js" ></script>
 
 <!-- File menu panel -->
+<script src="https://www.ladybug.tools/spider-gbxml-fixer/r0-4-0/gff-github-folder-files/gff-github-folder-files.js" ></script>
 <script src="https://www.ladybug.tools/spider-gbxml-fixer/r0-4-0/fil-file-open-xml-zip/fil-file-open-xml-zip.js" ></script>
 
 <!-- Edit Menu -->
@@ -43,7 +44,7 @@
 <script src="https://www.ladybug.tools/spider-gbxml-fixer/r0-4-0/fcim-fix-cad-id-missing/fcim-fix-cad-id-missing.js" ></script>
 
 <!-- Settings menu -->
-<script src="r0-4-0/thm-theme/thm-theme.js" ></script>
+<script src="https://www.ladybug.tools/spider-gbxml-fixer/r0-4-0/thm-theme/thm-theme.js" ></script>
 
 
 	<button id="expandButton" onclick="toggleNavPanel();" >☰</button>
@@ -69,6 +70,16 @@
 				</p>
 
 			</div>
+
+			<details open>
+
+				<summary class=sumMenuTitle >GitHub Folders & Files</summary>
+
+				<div id=GFFdivGithubFoldersFiles ></div>
+
+				<div id=GFFdivFileInfo></div>
+
+			</details>
 
 
 			<details open >
@@ -192,7 +203,9 @@ function init() {
 
 	MNUdivHeader.innerHTML = MNU.getNavHeader();
 
-	GALdivSampleFilesGallery.innerHTML = GAL.getMenuSampleFilesGallery();
+	GFFdivGithubFoldersFiles.innerHTML=GFF.getMenuGithubFoldersFiles();
+
+	//GALdivSampleFilesGallery.innerHTML = GAL.getMenuSampleFilesGallery();
 
 	FILdivFileOpen.innerHTML=FIL.getMenuFileOpen();
 
