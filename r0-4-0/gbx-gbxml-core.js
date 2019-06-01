@@ -7,10 +7,10 @@
 const GBX = {
 
 	"copyright": "Copyright 2019 Ladybug Tools authors. MIT License",
-	"date": "2019-05-30",
+	"date": "2019-05-31",
 	"description": "Creates the GBX object and basic variables. Creates the template for the main contents and more",
 	"helpFile": "https://www.ladybug.tools/spider-gbxml-fixer/r0-4-0/README.md",
-	"version": "0.4.0-5",
+	"version": "0.4.0-6",
 
 };
 
@@ -22,12 +22,12 @@ GBX.divFixThings =
 			<button id=butGBX class=butHelp onclick="MNU.setPopupShowHide(butGBX,GBX.helpFile);" >?</button>
 		</p>
 
-		<h2 id=GBXh1FileName >Check file: <script>decodeURI( FIL.name ) </script></h2>
+		<h2 id=GBXh1FileName ></h2>
 
 		<p>
 			<iframe id=GBXifr style=height:300px;width:100%; ></iframe>
 			<br>
-			<i>Preview model is for visual verification only and is not connected to fixer</i>
+			<i>Preview model is for visual verification only and is not connected to Fixer</i>
 		</p>
 
 		<p>
@@ -133,12 +133,19 @@ GBX.surfaceTypes = Object.keys( GBX.colors );
 GBX.init = function() {
 
 	divContents.innerHTML = GBX.divFixThings;
-
+/*
 	GBXh1FileName.innerHTML = `File: ${ decodeURI( FIL.name ) }`;
 
 	GGD.getData( FIL.text );
 
 	GGDdivGetGbxmlData.innerHTML = GGD.getGbxmlData( FIL.text );
+*/
+
+	GBXh1FileName.innerHTML = `File: ${ decodeURI( FOB.name ) }`;
+
+	GGD.getData( FOB.text );
+
+	GGDdivGetGbxmlData.innerHTML = GGD.getGbxmlData( FOB.text );
 
 	GSSdivGetSurfaceStatistics.innerHTML = GSS.getMenuSurfaceStatistics();
 
@@ -169,9 +176,9 @@ GBX.init = function() {
 	//TMPdivTemplate.innerHTML = TMP.getMenuTemplate();
 
 
-	if ( !FIL.files ) { // switch positions
+	if ( !FOB.files ) { // switch positions
 
-		const url = location.hash ? location.hash : "#" + FIL.urlDefaultFile;
+		const url = location.hash ? location.hash : "#" + FOB.urlDefaultFile;
 		//console.log( 'url', url );
 
 		GBXifr.src = `${ GBX.viewer }${ url }`;
@@ -184,15 +191,15 @@ GBX.init = function() {
 		GBXifr.src = `${ GBX.viewer }${ url }`;
 
 		GBXifr.onload = function() {
-			console.log( 'FIL', FIL.files.files[ 0 ].name );
+			//console.log( 'FOB', FOB.files.files[ 0 ].name );
 
-			if ( FIL.files.files[ 0 ].name.toLowerCase().endsWith( ".xml" ) ) {
+			if ( FOB.files.files[ 0 ].name.toLowerCase().endsWith( ".xml" ) ) {
 
-				GBXifr.contentWindow.GBX.parseFile( FIL.reader.result );
+				GBXifr.contentWindow.GBX.parseFile( FOB.reader.result );
 
 			} else {
 
-				GBXifr.contentWindow.GBX.parseFile( FIL.text );
+				GBXifr.contentWindow.GBX.parseFile( FOB.text );
 
 			}
 

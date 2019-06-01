@@ -83,35 +83,6 @@ FOB.getMenuFileOpenBasic = function( target = divContents ) {  // called from ma
 };
 
 
-
-FOB.getMenuFileSaveBasic = function() {
-
-	const htm =
-	`
-	<details>
-
-		<summary>Save file
-			<button id=butFILSave class=butHelp onclick="MNU.setPopupShowHide(butFILSave,FOB.helpFile);" >?</button>
-		</summary>
-
-		<p>
-			<button onclick=FOB.butSaveFile(); >Save file as gbXML</button>
-		</p>
-		<p>
-			<button onclick=FOB.butSaveFileZip(); >Save file as gbXML in ZIP</button>
-		</p>
-
-		<hr>
-
-	</details>
-
-	`;
-
-	return htm;
-
-};
-
-
 //////////
 
 FOB.updateDefaultFilePath = function() {
@@ -152,6 +123,12 @@ FOB.requestFileDecider = function( url ) { // from a button
 	} else if ( FOB.regexImages.test( url )  ) {
 
 		FOB.target.innerHTML = `<img src=${ url } >`;
+
+/* 	} else if ( FOB.name.toLowerCase().endsWith( '.xml' ) ) {
+
+		FOB.xhr.addEventListener( 'load', FOB.callbackDecider, false );
+		FOB.requestFileText( url );
+*/
 
 	} else if ( FOB.name.toLowerCase().endsWith( '.zip' )) {
 
@@ -247,6 +224,26 @@ FOB.onInputFileOpen = function( files ) {
 
 };
 
+
+
+FOB.xxxfileOpenXml = function( files ) {
+	//console.log( 'file', files.files[ 0 ] );
+
+	FOB.name = files.files[ 0 ].name;
+	FOB.reader.onprogress = function( event ) { FOB.onProgress( event.loaded, FOB.note ); };
+	FOB.reader.onload = function( event ) {
+
+		FOB.text = FOB.reader.result;
+		FOB.onProgress( event.loaded, "load complete" );
+
+		const eventLoad = new Event( 'FOBonXmlFileLoad' );
+		//document.body.addEventListener( 'FOBonXmlFileLoad', () => { console.log( '', 23 ) }, false );
+		document.body.dispatchEvent( eventLoad );
+
+	};
+	FOB.reader.readAsText( files.files[ 0 ] );
+
+};
 
 
 FOB.fileOpenXml = function( text ) {
@@ -561,45 +558,5 @@ FOB.fileOpenZip = function( files ) {
 FOB.onFileZipLoad = function() {
 
 	console.log( 'bytes', FOB.text.length );
-
-};
-
-
-////////// File Save
-
-// better way than using GBX.text?
-
-FOB.butSaveFile = function() {
-
-	const name = FOB.name.replace( /\.xml/i, "-spifix.xml" );
-	const blob = new Blob( [ GBX.text ] );
-	let a = document.body.appendChild( document.createElement( 'a' ) );
-	a.href = window.URL.createObjectURL( blob );
-	a.download = name;
-	a.click();
-	a = null;
-
-};
-
-
-
-FOB.butSaveFileZip = function() {
-
-	const name = FOB.name.replace( /\.xml/i, "-spifix.zip" );
-	const zip = new JSZip();
-
-	zip.file( FOB.name, GBX.text );
-
-	zip.generateAsync( { type:"blob", compression: "DEFLATE" } )
-
-	.then( function( blob ) {
-
-		let a = document.body.appendChild( document.createElement( 'a' ) );
-		a.href = window.URL.createObjectURL( blob );
-		a.download = name;
-		a.click();
-		a = null;
-
-	});
 
 };
