@@ -1,4 +1,4 @@
-#Openings Check Vertices (OCV) Read Me
+# Openings Check Vertices (OCV) Read Me
 
 <details open>
 
