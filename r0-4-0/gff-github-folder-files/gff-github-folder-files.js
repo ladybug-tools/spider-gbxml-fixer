@@ -29,7 +29,7 @@ GFF.items = [
 	"user": "ladybug-tools",
 	"repo": "/spider",
 	"pathRepo": "gbxml-sample-files/",
-	"title": "Spider gbXML sample files",
+	"title": "Spider gbXML files",
 	"subTitle": "Ladybug Tools/Spider gbXML Viewer sample files on GitHub",
 	"button": "butGallerySampleFiles"
 },
@@ -37,7 +37,7 @@ GFF.items = [
 	"user": "ladybug-tools",
 	"repo": "/spider",
 	"pathRepo": "gbxml-sample-files/samples-2/",
-	"title": "Spider gbXML sample files #2",
+	"title": "Spider gbXML files #2",
 	"subTitle": "Ladybug Tools/Spider gbXML Viewer sample files #2 on GitHub",
 	"button": "butGallerySamples2"
 },
@@ -53,7 +53,7 @@ GFF.items = [
 	"user": "ladybug-tools",
 	"repo": "/spider",
 	"pathRepo": "gbxml-sample-files/zip/",
-	"title": "Spider gbXML sample ZIP files",
+	"title": "Spider gbXML ZIP files",
 	"subTitle": "Ladybug Tools/Spider gbXML Viewer sample ZIP files on GitHub",
 	"button": "butGalleryZip"
 }
