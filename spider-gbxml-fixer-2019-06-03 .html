@@ -1,38 +1,29 @@
 <!doctype html>
 <html lang = "en" >
 <head>
-
 <meta charset="utf-8">
-<meta name = "copyright" content ="Ladybug Tools authors" >
-<meta name = "date" content = "2019-06-03" >
+<meta name = "viewport" content= "width=device-width, initial-scale=1" >
 <meta name = "description" content = "JavaScript utilities to help you identify and fix common errors in gbXML files" >
 <meta name = "keywords" content = "JavaScript,GitHub,FOSS" >
-<meta name = "version" content = "0.4.0-17" >
-<meta name = "viewport" content = "width=device-width, initial-scale=1" >
-
-<title>Spider gbXML Fixer "Atrax" FOB</title>
-
-<link rel = ”canonical” href = ”https://pushme-pullyou.github.io” />
-<link rel = "license" href="https://creativecommons.org/licenses/by/4.0/">
-<link rel = "stylesheet" href="https://fonts.googleapis.com/css?family=Inconsolata"  >
-<link rel = "stylesheet" href="https://www.ladybug.tools/spider-gbxml-fixer/r0-4-0/style.css" >
-
+<meta name = "date" content = "2019-05-30" >
+<meta name = "version" content = "0.4.16" >
+<title>Spider gbXML Fixer 'Atrax'</title>
+<link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" >
+<link rel="stylesheet" href="https://www.ladybug.tools/spider-gbxml-fixer/r0-4-0/style.css" >
 </head>
-
+<!-- //Copyright 2019 Ladybug Tools authors. MIT License -->
 <body>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.5/jszip.min.js" ></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js" ></script>
 
 <!-- menus generally -->
 <script src="https://www.ladybug.tools/spider-gbxml-fixer/r0-4-0/mnu-menu/mnu-menu.js" ></script>
-<script src="https://www.ladybug.tools/spider-gbxml-fixer/r0-4-0/gbx-gbxml-core-dev.js" ></script>
+<script src="https://www.ladybug.tools/spider-gbxml-fixer/r0-4-0/gbx-gbxml-core.js" ></script>
 <script src="https://www.ladybug.tools/spider-gbxml-fixer/r0-4-0/gsa-get-surface-attributes/gsa-get-surface-attributes.js" ></script>
 
 <!-- File menu panel -->
 <script src="https://www.ladybug.tools/spider-gbxml-fixer/r0-4-0/gff-github-folder-files/gff-github-folder-files.js" ></script>
-<script src="https://www.ladybug.tools/spider-gbxml-fixer/r0-4-0/fob-file-open-basic/fob-file-open-basic.js" ></script>
-
+<script src="https://www.ladybug.tools/spider-gbxml-fixer/r0-4-0/fil-file-open-xml-zip/fil-file-open-xml-zip.js" ></script>
 
 <!-- Edit Menu -->
 <script src="https://www.ladybug.tools/spider-gbxml-fixer/r0-4-0/ggd-get-gbxml-data/ggd-get-gbxml-data.js" ></script>
@@ -100,10 +91,6 @@
 
 				<div id="FILdivFileSave"></div>
 
-				<div id=FOBdivFileOpenBasic ></div>
-
-				<div id=FOBdivFileSaveBasic ></div>
-
 			</details>
 
 
@@ -166,9 +153,9 @@ THM.themeUrlStorage = 'spider-gbxml-fixer-theme-url';
 THM.cssBasic = "https://www.ladybug.tools/spider-gbxml-fixer/r0-4-0/style.css";
 
 // useful when testing / un-comment
-//FOB.urlDefaultFile = "https://www.ladybug.tools/spider/gbxml-sample-files/bristol-clifton-downs-broken.xml";
-//FOB.urlDefaultFile = "https://cdn.jsdelivr.net/gh/ladybug-tools/spider@master/gbxml-sample-files/zip/coventry-university-of-warwick-small.zip";
-FOB.urlDefaultFile = "https://cdn.jsdelivr.net/gh/ladybug-tools/spider@master/gbxml-sample-files/zip/pittsburg-airport.zip";
+//FIL.urlDefaultFile = "https://www.ladybug.tools/spider/gbxml-sample-files/bristol-clifton-downs-broken.xml";
+//FIL.urlDefaultFile = "https://cdn.jsdelivr.net/gh/ladybug-tools/spider@master/gbxml-sample-files/zip/coventry-university-of-warwick-small.zip";
+FIL.urlDefaultFile = "https://cdn.jsdelivr.net/gh/ladybug-tools/spider@master/gbxml-sample-files/zip/pittsburg-airport.zip";
 
 //MNU.description = document.head.querySelector( '[ name=description ]' ).content;
 MNU.description =
@@ -219,23 +206,15 @@ function init() {
 
 	//GALdivSampleFilesGallery.innerHTML = GAL.getMenuSampleFilesGallery();
 
-	FOBdivFileOpenBasic.innerHTML = FOB.getMenuFileOpenBasic();
+	FILdivFileOpen.innerHTML=FIL.getMenuFileOpen();
 
-	//FILdivFileOpen.innerHTML = FIL.getMenuFileOpen();
-
-	FOBdivFileSaveBasic.innerHTML = FOB.getMenuFileSaveBasic();
+	FILdivFileSave.innerHTML=FIL.getMenuFileSave();
 
 	MNUdivFooterPopup.innerHTML = MNU.getNavFooterPopup();
 
-	//FIL.onHashChange(); // checks location hash, if none set default file ( the read me ) to open
+	FIL.onHashChange(); // checks location hash, if none set default file ( the read me ) to open
 
-	if ( !location.hash ) { location.hash=FOB.urlDefaultFile; } else { FOB.onHashChange(); }
-
-	document.body.addEventListener( 'FOBonXmlFileLoad', GBX.init, false ); // hash changed, file loaded so let's go
-
-	document.body.addEventListener( 'FOBonZipFileLoad', GBX.init, false );
-
-	document.body.addEventListener( 'onZipFileParse', GBX.init, false );
+	document.body.addEventListener( 'onXmlFileLoad', GBX.init, false ); // hash changed, file loaded so let's go
 
 	aViewSource.style.display = "block";
 	aViewSource.href = MNU.urlSourceCode;
