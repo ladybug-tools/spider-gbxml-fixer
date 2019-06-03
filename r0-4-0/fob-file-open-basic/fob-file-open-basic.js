@@ -157,7 +157,6 @@ FOB.requestFileDecider = function( url ) { // from a button
 
 		FOB.xhrRequestFileZip( url, FOB.callbackUrlUtf16 );
 
-
 	} else { // let
 
 		//FOB.xhr.addEventListener( 'load', FOB.callbackDecider, false );
@@ -233,7 +232,7 @@ FOB.onInputFileOpen = function( files ) {
 
 		}
 
-	}
+	};
 
 	if ( FOB.regexImages.test( file.name ) ) {
 
@@ -359,12 +358,20 @@ FOB.callbackXml = function( text ) {
 
 
 
-FOB.callbackJson = function( html ) {
+FOB.callbackJson = function( text ) {
 
 	//const data = obj.target ? obj.target.response : obj;
 
-	FOB.target.innerHTML = html;
-	window.scrollTo( 0, 0 );
+	//FOB.target.innerHTML = html;
+	//window.scrollTo( 0, 0 );
+
+	FOB.onProgress( text.length, "load complete" );
+
+	FOB.text = text;
+
+	const eventLoad = new Event( 'FOBonJsonFileLoad' );
+	//document.body.addEventListener( 'FOBonJsonFileLoad', () => { console.log( '', 23 ) }, false );
+	document.body.dispatchEvent( eventLoad );
 
 };
 
