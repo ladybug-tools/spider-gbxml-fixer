@@ -9,11 +9,11 @@
 1. Find all surfaces in gbXML file
 2. Discard all Shade surfaces
 3. Find all planar geometry in each surface
-4. Discard planar geometry associated to openings
-5. Find all coordinates in surface planar geometry
+4. Discard planar geometry associated with openings
+5. Find all coordinates in planar geometry
 6. Identify all unique coordinates
-7. Identify the number of instances or uses for each coordinate
-8. If a coordinate is only used once flag as issue
+7. Identify the number of instances or number of times used in model for each unique coordinate
+8. If a coordinate is only used once then flag as issue
 
 A typical external corner has three identical corner coordinates.
 
