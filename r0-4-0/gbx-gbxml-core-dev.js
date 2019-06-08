@@ -1,4 +1,4 @@
-/* globals divContents, FASA, FASD, FASE, FASST, FCIM, FDPC, FETS, FOB, FSTN, FXA,
+/* globals divContents, FASA, FASD, FASE, FASST, FCIM, FDPC, FETS, FIL, FSTN, FXA,
 	GBXifr, GCO, GCS, GGD, GSS, OCV, GBXh1FileName, */
 /* jshint esversion: 6 */
 /* jshint loopfunc: true */
@@ -7,10 +7,10 @@
 const GBX = {
 
 	"copyright": "Copyright 2019 Ladybug Tools authors. MIT License",
-	"date": "2019-05-31",
+	"date": "2019-06-07",
 	"description": "Creates the GBX object and basic variables. Creates the template for the main contents and more",
 	"helpFile": "https://www.ladybug.tools/spider-gbxml-fixer/r0-4-0/README.md",
-	"version": "0.4.0-6",
+	"version": "0.4.0-7",
 
 };
 
@@ -54,6 +54,8 @@ GBX.divFixThings =
 		<div id=GCOdivGetCheckOffset ></div>
 
 		<div id=OCVdivGetOpeningsCheckVertices ></div>
+
+		<div id=GWVdivGetWatertightVertices ></div>
 
 		<div id=FXAdivFixXmlAttributes ></div>
 
@@ -154,6 +156,8 @@ GBX.init = function() {
 	GCOdivGetCheckOffset.innerHTML = GCO.getCheckOffset();
 
 	OCVdivGetOpeningsCheckVertices.innerHTML = OCV.getOpeningsCheckVertices();
+
+	GWVdivGetWatertightVertices.innerHTML = GWV.getMenuWatertightVertices();
 
 	FXAdivFixXmlAttributes.innerHTML = FXA.getMenuFixXmlAttributes();
 

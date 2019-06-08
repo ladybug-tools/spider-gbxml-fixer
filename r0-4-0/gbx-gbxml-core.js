@@ -55,6 +55,8 @@ GBX.divFixThings =
 
 		<div id=OCVdivGetOpeningsCheckVertices ></div>
 
+		<div id=GWVdivGetWatertightVertices >bbbbbbb</div>
+
 		<div id=FXAdivFixXmlAttributes ></div>
 
 		<div id=FXSTIdivGetSurfaceTypeInvalid ></div>
