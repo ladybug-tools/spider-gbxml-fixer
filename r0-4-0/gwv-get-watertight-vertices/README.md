@@ -1,8 +1,8 @@
 # gwv-get-watertight-vertices Read Me
 
-[Source code]()
+[Source code]( https://github.com/ladybug-tools/spider-gbxml-fixer/tree/master/r0-4-0/gwv-get-watertight-vertices )
 
-<details>
+<details open>
 
 <summary>Concept</summary>
 

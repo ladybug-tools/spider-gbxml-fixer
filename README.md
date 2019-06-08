@@ -219,6 +219,12 @@ We are using semantic versioning
 	* Many interesting comments to a short gist
 
 
+### 2019-06-07 ~ Theo
+
+Spider gbXML Fixer "Atrax" V0.4.19
+
+* F - GWV.js: Check for non-watertight vertices
+
 ### 2019-05-30 ~ Theo
 
 Spider gbXML Fixer 'Atrax' R0.4.16
