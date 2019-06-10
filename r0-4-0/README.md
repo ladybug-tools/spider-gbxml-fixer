@@ -45,6 +45,10 @@ This module:
 
 <summary>Change Log</summary>
 
+### 2019-06-10 ~ Theo
+
+* F - GBX.js: Add resizable iframe
+
 ### 2019-05-23 ~ Theo
 
 * B - GBX.js: Edit cad object id defaults
