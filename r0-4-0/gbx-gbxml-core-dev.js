@@ -24,13 +24,14 @@ GBX.divFixThings =
 
 		<h2 id=GBXh1FileName ></h2>
 
-		<div style="border:0px solid red; height:300px; resize: both; width:100%;" >
+		<div style="height:30rem;overflow:auto;/* needed */resize: both;width: 40rem;" >
 
-			<iframe id=GBXifr style=height:95%;width:100%; ></iframe>
+			<iframe id=GBXifr style=height:100%;width:100%; ></iframe>
 
 		</div>
-		<br>
-		<i>Preview model is for visual verification only and is not connected to Fixer</i>
+
+			<i>Resizable preview model is for visual verification only and is not connected to Fixer - yet.</i>
+
 		<p>
 			<button onclick=GBX.runAll(); >Run all checks</button>
 
