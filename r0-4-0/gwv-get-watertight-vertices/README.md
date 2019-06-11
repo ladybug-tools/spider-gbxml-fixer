@@ -6,20 +6,30 @@
 
 <summary>Concept</summary>
 
-1. Find all surfaces in gbXML file
+Check for surfaces with vertices unconnected to other vertices
+
+### Rationale
+
+A typical junction of surfaces - such as an external wall / roof corner - has at least three identical corner points or vertices.
+
+Two interior floors with continuous interior walls creates twelve identical corner coordinates.
+
+It is therefore possible to check for "watertight" conditions by identifying all vertices and noting if each vertex is part of a triad of identical points.
+
+The appearance of just two identical coordinates occurs from time to time. These may or may not be valid. A check for this condition is work to be done.
+
+
+### Operating procedure
+
+1. Find all surfaces in the gbXML file
 2. Discard all Shade surfaces
 3. Find all planar geometry in each surface
-4. Discard planar geometry associated with openings
+4. Discard any planar geometry associated with openings
 5. Find all coordinates in planar geometry
 6. Identify all unique coordinates
 7. Identify the number of instances or number of times used in model for each unique coordinate
-8. If a coordinate is only used once then flag as issue
+8. If a vertex of a vertex is only used once in the model then flag that surface as having an issue
 
-A typical external corner has three identical corner coordinates.
-
-An two interior floors with continuous interior walls creates twelve identical corner coordinates.
-
-The appearance of just two identical coordinates occurs from time to time. These may or may not be valid. A check for this condition is work to be done.
 
 </details>
 

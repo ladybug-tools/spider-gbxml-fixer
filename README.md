@@ -36,6 +36,7 @@ The following are the checks and fixes currently implemented:
 * Check for valid text and numbers
 * Check project offset distance from origin
 * Check for openings with more than four vertices
+* Check for non-watertight vertices
 * Fix missing required gbXML attributes
 * Fix surfaces with invalid surface type name
 * Fix surfaces with invalid ExposedToSun
@@ -166,7 +167,7 @@ Even if you know only a little bit of JavaScript there are many things you may d
 
 <summary class=sumHeader title="Bugs we know about already" >Issues</summary>
 
-* 2019-05-30 ~ readme.html files not working
+
 * 2019-05-30 ~ individual html files for each module is too much work / edit core instead
 
 
@@ -218,6 +219,16 @@ We are using semantic versioning
 * https://gist.github.com/jashkenas/cbd2b088e20279ae2c8e
 	* Many interesting comments to a short gist
 
+
+### 2019-06-10 ~ Theo
+
+Spider gbXML Fixer "Atrax" V0.4.19
+
+* F - GBX.js: Add resizable iframe
+
+Dealt with
+
+* 2019-05-30 ~ readme.html files not working
 
 ### 2019-06-07 ~ Theo
 
