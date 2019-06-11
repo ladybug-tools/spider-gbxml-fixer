@@ -14,7 +14,7 @@ A typical junction of surfaces - such as an external wall / roof corner - has at
 
 Two interior floors with continuous interior walls creates twelve identical corner coordinates.
 
-It is therefore possible to check for "watertight" conditions by identifying all vertices and noting if each vertex is part of a triad of identical points.
+It is therefore possible to check for "watertight" conditions by identifying all vertices and noting if each vertex is part of a triad of identical points. If a vertex does not have identical partners then there is an issue with the surface it belongs to.
 
 The appearance of just two identical coordinates occurs from time to time. These may or may not be valid. A check for this condition is work to be done.
 
