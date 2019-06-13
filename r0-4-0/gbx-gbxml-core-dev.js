@@ -57,6 +57,8 @@ GBX.divFixThings =
 
 		<div id=OCVdivGetOpeningsCheckVertices ></div>
 
+		<div id=OCSdivGetOpeningsCheckSize ></div>
+
 		<div id=GWVdivGetWatertightVertices ></div>
 
 		<div id=FXAdivFixXmlAttributes ></div>
@@ -158,6 +160,8 @@ GBX.init = function() {
 	GCOdivGetCheckOffset.innerHTML = GCO.getCheckOffset();
 
 	OCVdivGetOpeningsCheckVertices.innerHTML = OCV.getOpeningsCheckVertices();
+
+	OCSdivGetOpeningsCheckSize.innerHTML = OCS.getMenuOpeningsCheckSize();
 
 	GWVdivGetWatertightVertices.innerHTML = GWV.getMenuWatertightVertices();
 
