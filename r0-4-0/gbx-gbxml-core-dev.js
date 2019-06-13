@@ -24,9 +24,13 @@ GBX.divFixThings =
 
 		<h2 id=GBXh1FileName ></h2>
 
-		<div style="height:30rem;overflow:auto;/* needed */resize: both;width: 40rem;" >
 
-			<iframe id=GBXifr style=height:100%;width:100%; ></iframe>
+
+		<div id=GBXdivIframe >
+		<div style="height:30rem;overflow:auto;/* needed */ resize: both;width: 100%" >
+
+		<iframe id=GBXifr style=height:100%;width:100%; ></iframe>
+		</div>
 
 		</div>
 
@@ -188,6 +192,19 @@ GBX.init = function() {
 	FCIMdivGetCadIdMissing.innerHTML = FCIM.getCadIdMissing();
 
 	//TMPdivTemplate.innerHTML = TMP.getMenuTemplate();
+
+
+	GBXdivIframe.style.cssText = `
+
+		border: 0px solid red;
+		left: 50%;
+		margin-left: -50vw;
+		margin-right: -50vw;
+		max-width: 100vw;
+		position: relative;
+		right: 50%;
+		width: 100vw;
+	`;
 
 
 	if ( !FOB.files ) { // switch positions
