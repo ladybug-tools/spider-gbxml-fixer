@@ -61,6 +61,8 @@ GBX.divFixThings =
 
 		<div id=GWVdivGetWatertightVertices ></div>
 
+		<div id=GWSdivGetWatertightSpaces ></div>
+
 		<div id=FXAdivFixXmlAttributes ></div>
 
 		<div id=FXSTIdivGetSurfaceTypeInvalid ></div>
@@ -164,6 +166,8 @@ GBX.init = function() {
 	OCSdivGetOpeningsCheckSize.innerHTML = OCS.getMenuOpeningsCheckSize();
 
 	GWVdivGetWatertightVertices.innerHTML = GWV.getMenuWatertightVertices();
+
+	GWSdivGetWatertightSpaces.innerHTML = GWS.getMenuWatertightSpaces()
 
 	FXAdivFixXmlAttributes.innerHTML = FXA.getMenuFixXmlAttributes();
 
