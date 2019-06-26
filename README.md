@@ -8,7 +8,7 @@ href="https://en.wikipedia.org/wiki/Sydney_funnel-web_spider">
 <img width="256" alt="Sydney funnel-web spider" src="https://upload.wikimedia.org/wikipedia/commons/9/9f/Atrax_robustus.jpg" ><br>
 <i>Atrax robustus</i></a> - 'Atrax' is the code name for this release of the Ladybug Tools / Spider gbXML Fixer
 
-
+<mark>deprecated: [Spider gbXML Fixer 'Atrax']( https://www.ladybug.tools/spider-gbxml-tools/spider-gbxml-viewer/fix/ )
 
 ### Bookmark this link for the stable release:<br>[https://www.ladybug.tools/spider-gbxml-fixer/]( https://www.ladybug.tools/spider-gbxml-fixer/ "Always links to the release that has been tested" )
 
