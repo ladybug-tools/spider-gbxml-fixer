@@ -1,4 +1,4 @@
-/* globals GBX, GSA, GVWsumSurfaces, GVWdivSurfaceData, GVWdet, GVWtxt */
+/* globals GBX, GSA, GWVsumSurfaces, GWVdivSurfaceData, GWVdet, GWVtxt */
 /* jshint esversion: 6 */
 /* jshint loopfunc: true */
 
@@ -25,19 +25,19 @@ GWV.types = [
 
 GWV.getMenuWatertightVertices = function() {
 
-	GWV.help = `<button id=butGVW class=butHelp onclick="MNU.setPopupShowHide(butGVW,GWV.helpFile);" >?</button>`;
+	GWV.help = `<button id=butGWV class=butHelp onclick="MNU.setPopupShowHide(butGWV,GWV.helpFile);" >?</button>`;
 
 	const htm =
 		`
-			<details id=GVWdet ontoggle="GVWdivSurface.innerHTML=GWV.getSurfacesTight();" >
+			<details id=GWVdet ontoggle="GWVdivSurface.innerHTML=GWV.getSurfacesTight();" >
 
-				<summary id=GVWsumSurfaces >Check for non-watertight vertices
+				<summary id=GWVsumSurfaces >Check for non-watertight vertices
 					${ GWV.help }
 				</summary>
 
 				<p>${ GWV.description }</p>
 
-				<div id=GVWdivSurface ></div>
+				<div id=GWVdivSurface ></div>
 
 			</details>
 
@@ -136,9 +136,9 @@ GWV.getSurfacesTight = function() {
 
 	} );
 
-	const tag = GWV.surfacesTight.length === 0 ? "span" : "mark";
+	const tag = GWV.surfaceUniques.length === 0 ? "span" : "mark";
 
-	GVWsumSurfaces.innerHTML =
+	GWVsumSurfaces.innerHTML =
 		`Check for non-watertight vertices ~ <${ tag }>${ GWV.surfaceUniques.length.toLocaleString() }</${ tag }> found ${ GWV.help }`;
 
 	const htm =
@@ -147,7 +147,7 @@ GWV.getSurfacesTight = function() {
 		<p>${ GWV.surfaceUniques.length.toLocaleString() } unconnected vertices found.</p>
 
 		<p>
-			<select id=GVWselSurfaces onclick=GWV.setSurfaceData(this); size=5 style=min-width:8rem; >
+			<select id=GWVselSurfaces onclick=GWV.setSurfaceData(this); size=5 style=min-width:8rem; >
 				${ options }
 			</select>
 		</p>
@@ -161,7 +161,7 @@ GWV.getSurfacesTight = function() {
 
 		<hr>
 
-		<div id="GVWdivSurfaceData" >Click a surface name above to view its details and change its surface type. Tool tip shows the ID of the surface.</div>
+		<div id="GWVdivSurfaceData" >Click a surface name above to view its details and change its surface type. Tool tip shows the ID of the surface.</div>
 
 
 	`;
@@ -180,17 +180,17 @@ GWV.setSurfaceData = function( select ) {
 	const htm =
 	`
 		${ GSA.getSurfacesAttributesByIndex( select.value , select.selectedOptions[ 0 ].innerHTML ) }
-
+<!--
 		<p>
 			<button onclick=GWV.fixSurface(${ select.value }); title="" >change surface type</button>
 		</p>
-
+-->
 		<p>
-			<textarea id=GVWtxt style="height:20rem; width:100%;" ></textarea>
+			<textarea id=GWVtxt style="height:20rem; width:100%;" ></textarea>
 		</p>
 	`;
 
-	GVWdivSurfaceData.innerHTML = htm;
+	GWVdivSurfaceData.innerHTML = htm;
 
 };
 
@@ -203,7 +203,7 @@ GWV.fixSurface = function( index ) {
 	const surfaceTextNew = surfaceText.replace( /<Surface(.*?)>/i,
 		"<Surface $1 > <Description>Edited by Spider gbXML Fixer</Description> ");
 
-	GVWtxt.value = surfaceTextNew;
+	GWVtxt.value = surfaceTextNew;
 
 };
 
@@ -222,7 +222,7 @@ GWV.fixAllSurfaces = function() {
 
 	GBX.surfaces = GBX.text.match( /<Surface(.*?)<\/Surface>/gi );
 
-	GVWdet.open = false;
+	GWVdet.open = false;
 
 	console.log( 'GBX.surfaces[ 0 ]', GBX.surfaces[ 0 ] );
 
