@@ -1,4 +1,4 @@
-�<?xml version="1.0" encoding="utf-16"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <gbXML useSIUnitsForResults="true" temperatureUnit="C" lengthUnit="Meters" areaUnit="SquareMeters" volumeUnit="CubicMeters" version="0.37" xmlns="http://www.gbxml.org/schema">
   <Campus id="aim0002">
     <Location>
@@ -59733,7 +59733,7 @@
     </Surface>
     <DaylightSavings>false</DaylightSavings>
     <Name>Created from Revit</Name>
-  </Campus> 
+  </Campus>
 
 <Construction id="Ceiling">
 <U-value unit="WPerSquareMeterK">0</U-value>
@@ -59828,9 +59828,11 @@
 <MaterialId materialIdRef="material-ExternalSideRoof" />
 <MaterialId materialIdRef="material-InternalSide" />
 </Layer>
+
 <Layer id="layer-CoreWall">
 <MaterialId materialIdRef="material-CoreWall" />
 </Layer>
+
 <Layer id="layer-InternalPartition">
 <MaterialId materialIdRef="material-InternalPartition" />
 </Layer>
@@ -59843,6 +59845,7 @@
 <Density unit="KgPerCubicM">290</Density>
 <SpecificHeat unit="JPerKgK">14423.639958391</SpecificHeat>
 </Material>
+
 <Material id="material-InternalSide">
 <Name>Inernal Side</Name>
 <R-value unit="SquareMeterKPerW">0.134</R-value>
@@ -59851,6 +59854,7 @@
 <Density unit="KgPerCubicM">290</Density>
 <SpecificHeat unit="JPerKgK">14423.639958391</SpecificHeat>
 </Material>
+
 <Material id="material-ExternalSideground">
 <Name>External Side(ground)</Name>
 <R-value unit="SquareMeterKPerW">0.134</R-value>
@@ -59859,6 +59863,7 @@
 <Density unit="KgPerCubicM">290</Density>
 <SpecificHeat unit="JPerKgK">14423.639958391</SpecificHeat>
 </Material>
+
 <Material id="material-ExternalSideRoof">
 <Name>External Side Roof</Name>
 <R-value unit="SquareMeterKPerW">0.134</R-value>
@@ -59867,6 +59872,7 @@
 <Density unit="KgPerCubicM">290</Density>
 <SpecificHeat unit="JPerKgK">14423.639958391</SpecificHeat>
 </Material>
+
 <Material id="material-CoreWall">
 <Name>Core Wall</Name>
 <R-value unit="SquareMeterKPerW">0.267</R-value>
@@ -59875,6 +59881,7 @@
 <Density unit="KgPerCubicM">290</Density>
 <SpecificHeat unit="JPerKgK">14423.639958391</SpecificHeat>
 </Material>
+
 <Material id="material-InternalPartition">
 <Name>Internal Partition</Name>
 <R-value unit="SquareMeterKPerW">0.267</R-value>
@@ -59883,16 +59890,6 @@
 <Density unit="KgPerCubicM">290</Density>
 <SpecificHeat unit="JPerKgK">14423.639958391</SpecificHeat>
 </Material>
-<Zone id="ZoneID">
-<AirChangesPerHour>0</AirChangesPerHour>
-<OAFlowPerArea unit="LPerSecPerSquareM">0</OAFlowPerArea>
-<OAFlowPerPerson unit="LPerSec">0</OAFlowPerPerson>
-<DesignHeatT unit="C">0</DesignHeatT>
-<DesignCoolT unit="C">0</DesignCoolT>
-<TypeCode>0</TypeCode>
-<Name>Zone</Name>
-<CADObjectId>Unknown</CADObjectId>
-</Zone>
 
 
 <WindowType id="OperableWindow">
@@ -59935,7 +59932,7 @@
 </WindowType>
 
 
-<WindowType id="window-Skylight_ver00_SIM_EXT_GLZ_SKYDF01">
+<WindowType id="OperableSkylight">
 <Name>Skylight_ver00 : SIM_EXT_GLZ_SKY DF01</Name>
 <Description>Standard Dbl Glazed</Description>
 <U-value unit="WPerSquareMeterK">0</U-value>

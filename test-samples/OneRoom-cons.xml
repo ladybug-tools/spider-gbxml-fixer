@@ -1,0 +1,924 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gbXML useSIUnitsForResults="true" temperatureUnit="C" lengthUnit="Meters" areaUnit="SquareMeters" volumeUnit="CubicMeters" version="0.37" xmlns="http://www.gbxml.org/schema">
+  <Campus id="aim0002">
+    <Location>
+      <StationId IDType="WMO">142882_2006</StationId>
+      <ZipcodeOrPostalCode>00000</ZipcodeOrPostalCode>
+      <Longitude>-0.12721</Longitude>
+      <Latitude>51.50642</Latitude>
+      <Elevation>39.0144</Elevation>
+      <CADModelAzimuth>0</CADModelAzimuth>
+      <Name>London, London, United Kingdom</Name>
+    </Location>
+    <Building buildingType="Office" id="aim0013">
+      <StreetAddress>London, London, United Kingdom</StreetAddress>
+      <Area>594.7886</Area>
+      <Space zoneIdRef="aim0024" conditionType="HeatedAndCooled" buildingStoreyIdRef="aim0015" id="aim0027">
+        <Area>592.2775</Area>
+        <Volume>2339.496</Volume>
+        <PlanarGeometry>
+          <PolyLoop>
+            <CartesianPoint>
+              <Coordinate>-14.29779</Coordinate>
+              <Coordinate>3.259714</Coordinate>
+              <Coordinate>-4</Coordinate>
+            </CartesianPoint>
+            <CartesianPoint>
+              <Coordinate>16.87471</Coordinate>
+              <Coordinate>3.259714</Coordinate>
+              <Coordinate>-4</Coordinate>
+            </CartesianPoint>
+            <CartesianPoint>
+              <Coordinate>16.87471</Coordinate>
+              <Coordinate>22.25971</Coordinate>
+              <Coordinate>-4</Coordinate>
+            </CartesianPoint>
+            <CartesianPoint>
+              <Coordinate>-14.29779</Coordinate>
+              <Coordinate>22.25971</Coordinate>
+              <Coordinate>-4</Coordinate>
+            </CartesianPoint>
+          </PolyLoop>
+        </PlanarGeometry>
+        <ShellGeometry id="aim0037">
+          <ClosedShell>
+            <PolyLoop>
+              <CartesianPoint>
+                <Coordinate>-14.29779</Coordinate>
+                <Coordinate>3.259714</Coordinate>
+                <Coordinate>-4</Coordinate>
+              </CartesianPoint>
+              <CartesianPoint>
+                <Coordinate>-14.29779</Coordinate>
+                <Coordinate>22.25971</Coordinate>
+                <Coordinate>-4</Coordinate>
+              </CartesianPoint>
+              <CartesianPoint>
+                <Coordinate>16.87471</Coordinate>
+                <Coordinate>22.25971</Coordinate>
+                <Coordinate>-4</Coordinate>
+              </CartesianPoint>
+              <CartesianPoint>
+                <Coordinate>16.87471</Coordinate>
+                <Coordinate>3.259714</Coordinate>
+                <Coordinate>-4</Coordinate>
+              </CartesianPoint>
+            </PolyLoop>
+            <PolyLoop>
+              <CartesianPoint>
+                <Coordinate>-14.29779</Coordinate>
+                <Coordinate>22.25971</Coordinate>
+                <Coordinate>-4</Coordinate>
+              </CartesianPoint>
+              <CartesianPoint>
+                <Coordinate>-14.29779</Coordinate>
+                <Coordinate>22.25971</Coordinate>
+                <Coordinate>-0.05</Coordinate>
+              </CartesianPoint>
+              <CartesianPoint>
+                <Coordinate>16.87471</Coordinate>
+                <Coordinate>22.25971</Coordinate>
+                <Coordinate>-0.05</Coordinate>
+              </CartesianPoint>
+              <CartesianPoint>
+                <Coordinate>16.87471</Coordinate>
+                <Coordinate>22.25971</Coordinate>
+                <Coordinate>-4</Coordinate>
+              </CartesianPoint>
+            </PolyLoop>
+            <PolyLoop>
+              <CartesianPoint>
+                <Coordinate>-14.29779</Coordinate>
+                <Coordinate>3.259714</Coordinate>
+                <Coordinate>-4</Coordinate>
+              </CartesianPoint>
+              <CartesianPoint>
+                <Coordinate>-14.29779</Coordinate>
+                <Coordinate>3.259714</Coordinate>
+                <Coordinate>-0.05</Coordinate>
+              </CartesianPoint>
+              <CartesianPoint>
+                <Coordinate>-14.29779</Coordinate>
+                <Coordinate>22.25971</Coordinate>
+                <Coordinate>-0.05</Coordinate>
+              </CartesianPoint>
+              <CartesianPoint>
+                <Coordinate>-14.29779</Coordinate>
+                <Coordinate>22.25971</Coordinate>
+                <Coordinate>-4</Coordinate>
+              </CartesianPoint>
+            </PolyLoop>
+            <PolyLoop>
+              <CartesianPoint>
+                <Coordinate>-14.29779</Coordinate>
+                <Coordinate>3.259714</Coordinate>
+                <Coordinate>-4</Coordinate>
+              </CartesianPoint>
+              <CartesianPoint>
+                <Coordinate>16.87471</Coordinate>
+                <Coordinate>3.259714</Coordinate>
+                <Coordinate>-4</Coordinate>
+              </CartesianPoint>
+              <CartesianPoint>
+                <Coordinate>16.87471</Coordinate>
+                <Coordinate>3.259714</Coordinate>
+                <Coordinate>-0.05</Coordinate>
+              </CartesianPoint>
+              <CartesianPoint>
+                <Coordinate>-14.29779</Coordinate>
+                <Coordinate>3.259714</Coordinate>
+                <Coordinate>-0.05</Coordinate>
+              </CartesianPoint>
+            </PolyLoop>
+            <PolyLoop>
+              <CartesianPoint>
+                <Coordinate>16.87471</Coordinate>
+                <Coordinate>3.259714</Coordinate>
+                <Coordinate>-4</Coordinate>
+              </CartesianPoint>
+              <CartesianPoint>
+                <Coordinate>16.87471</Coordinate>
+                <Coordinate>22.25971</Coordinate>
+                <Coordinate>-4</Coordinate>
+              </CartesianPoint>
+              <CartesianPoint>
+                <Coordinate>16.87471</Coordinate>
+                <Coordinate>22.25971</Coordinate>
+                <Coordinate>-0.05</Coordinate>
+              </CartesianPoint>
+              <CartesianPoint>
+                <Coordinate>16.87471</Coordinate>
+                <Coordinate>3.259714</Coordinate>
+                <Coordinate>-0.05</Coordinate>
+              </CartesianPoint>
+            </PolyLoop>
+            <PolyLoop>
+              <CartesianPoint>
+                <Coordinate>-14.29779</Coordinate>
+                <Coordinate>3.259714</Coordinate>
+                <Coordinate>-0.05</Coordinate>
+              </CartesianPoint>
+              <CartesianPoint>
+                <Coordinate>16.87471</Coordinate>
+                <Coordinate>3.259714</Coordinate>
+                <Coordinate>-0.05</Coordinate>
+              </CartesianPoint>
+              <CartesianPoint>
+                <Coordinate>16.87471</Coordinate>
+                <Coordinate>22.25971</Coordinate>
+                <Coordinate>-0.05</Coordinate>
+              </CartesianPoint>
+              <CartesianPoint>
+                <Coordinate>-14.29779</Coordinate>
+                <Coordinate>22.25971</Coordinate>
+                <Coordinate>-0.05</Coordinate>
+              </CartesianPoint>
+            </PolyLoop>
+          </ClosedShell>
+        </ShellGeometry>
+        <SpaceBoundary isSecondLevelBoundary="false" surfaceIdRef="aim0069">
+          <PlanarGeometry>
+            <PolyLoop>
+              <CartesianPoint>
+                <Coordinate>-14.32279</Coordinate>
+                <Coordinate>22.28471</Coordinate>
+                <Coordinate>-4</Coordinate>
+              </CartesianPoint>
+              <CartesianPoint>
+                <Coordinate>-14.32279</Coordinate>
+                <Coordinate>22.28471</Coordinate>
+                <Coordinate>0</Coordinate>
+              </CartesianPoint>
+              <CartesianPoint>
+                <Coordinate>16.89971</Coordinate>
+                <Coordinate>22.28471</Coordinate>
+                <Coordinate>0</Coordinate>
+              </CartesianPoint>
+              <CartesianPoint>
+                <Coordinate>16.89971</Coordinate>
+                <Coordinate>22.28471</Coordinate>
+                <Coordinate>-4</Coordinate>
+              </CartesianPoint>
+            </PolyLoop>
+          </PlanarGeometry>
+        </SpaceBoundary>
+        <SpaceBoundary isSecondLevelBoundary="false" surfaceIdRef="aim0080">
+          <PlanarGeometry>
+            <PolyLoop>
+              <CartesianPoint>
+                <Coordinate>-14.32279</Coordinate>
+                <Coordinate>3.234714</Coordinate>
+                <Coordinate>-4</Coordinate>
+              </CartesianPoint>
+              <CartesianPoint>
+                <Coordinate>16.89971</Coordinate>
+                <Coordinate>3.234714</Coordinate>
+                <Coordinate>-4</Coordinate>
+              </CartesianPoint>
+              <CartesianPoint>
+                <Coordinate>16.89971</Coordinate>
+                <Coordinate>3.234714</Coordinate>
+                <Coordinate>0</Coordinate>
+              </CartesianPoint>
+              <CartesianPoint>
+                <Coordinate>-14.32279</Coordinate>
+                <Coordinate>3.234714</Coordinate>
+                <Coordinate>0</Coordinate>
+              </CartesianPoint>
+            </PolyLoop>
+          </PlanarGeometry>
+        </SpaceBoundary>
+        <SpaceBoundary isSecondLevelBoundary="false" surfaceIdRef="aim0091">
+          <PlanarGeometry>
+            <PolyLoop>
+              <CartesianPoint>
+                <Coordinate>-14.32279</Coordinate>
+                <Coordinate>3.234714</Coordinate>
+                <Coordinate>-4</Coordinate>
+              </CartesianPoint>
+              <CartesianPoint>
+                <Coordinate>-14.32279</Coordinate>
+                <Coordinate>3.234714</Coordinate>
+                <Coordinate>0</Coordinate>
+              </CartesianPoint>
+              <CartesianPoint>
+                <Coordinate>-14.32279</Coordinate>
+                <Coordinate>22.28471</Coordinate>
+                <Coordinate>0</Coordinate>
+              </CartesianPoint>
+              <CartesianPoint>
+                <Coordinate>-14.32279</Coordinate>
+                <Coordinate>22.28471</Coordinate>
+                <Coordinate>-4</Coordinate>
+              </CartesianPoint>
+            </PolyLoop>
+          </PlanarGeometry>
+        </SpaceBoundary>
+        <SpaceBoundary isSecondLevelBoundary="false" surfaceIdRef="aim0102">
+          <PlanarGeometry>
+            <PolyLoop>
+              <CartesianPoint>
+                <Coordinate>16.89971</Coordinate>
+                <Coordinate>3.234714</Coordinate>
+                <Coordinate>-4</Coordinate>
+              </CartesianPoint>
+              <CartesianPoint>
+                <Coordinate>16.89971</Coordinate>
+                <Coordinate>22.28471</Coordinate>
+                <Coordinate>-4</Coordinate>
+              </CartesianPoint>
+              <CartesianPoint>
+                <Coordinate>16.89971</Coordinate>
+                <Coordinate>22.28471</Coordinate>
+                <Coordinate>0</Coordinate>
+              </CartesianPoint>
+              <CartesianPoint>
+                <Coordinate>16.89971</Coordinate>
+                <Coordinate>3.234714</Coordinate>
+                <Coordinate>0</Coordinate>
+              </CartesianPoint>
+            </PolyLoop>
+          </PlanarGeometry>
+        </SpaceBoundary>
+        <SpaceBoundary isSecondLevelBoundary="false" surfaceIdRef="aim0113">
+          <PlanarGeometry>
+            <PolyLoop>
+              <CartesianPoint>
+                <Coordinate>-14.32279</Coordinate>
+                <Coordinate>3.234714</Coordinate>
+                <Coordinate>-4</Coordinate>
+              </CartesianPoint>
+              <CartesianPoint>
+                <Coordinate>-14.32279</Coordinate>
+                <Coordinate>22.28471</Coordinate>
+                <Coordinate>-4</Coordinate>
+              </CartesianPoint>
+              <CartesianPoint>
+                <Coordinate>16.89971</Coordinate>
+                <Coordinate>22.28471</Coordinate>
+                <Coordinate>-4</Coordinate>
+              </CartesianPoint>
+              <CartesianPoint>
+                <Coordinate>16.89971</Coordinate>
+                <Coordinate>3.234714</Coordinate>
+                <Coordinate>-4</Coordinate>
+              </CartesianPoint>
+            </PolyLoop>
+          </PlanarGeometry>
+        </SpaceBoundary>
+        <SpaceBoundary isSecondLevelBoundary="false" surfaceIdRef="aim0124">
+          <PlanarGeometry>
+            <PolyLoop>
+              <CartesianPoint>
+                <Coordinate>-14.32279</Coordinate>
+                <Coordinate>3.234714</Coordinate>
+                <Coordinate>0</Coordinate>
+              </CartesianPoint>
+              <CartesianPoint>
+                <Coordinate>16.89971</Coordinate>
+                <Coordinate>3.234714</Coordinate>
+                <Coordinate>0</Coordinate>
+              </CartesianPoint>
+              <CartesianPoint>
+                <Coordinate>16.89971</Coordinate>
+                <Coordinate>22.28471</Coordinate>
+                <Coordinate>0</Coordinate>
+              </CartesianPoint>
+              <CartesianPoint>
+                <Coordinate>-14.32279</Coordinate>
+                <Coordinate>22.28471</Coordinate>
+                <Coordinate>0</Coordinate>
+              </CartesianPoint>
+            </PolyLoop>
+          </PlanarGeometry>
+        </SpaceBoundary>
+        <Name>B1_001 Car_Park</Name>
+        <CADObjectId>726976</CADObjectId>
+      </Space>
+      <BuildingStorey id="aim0015">
+        <Level>-4</Level>
+        <PlanarGeometry>
+          <PolyLoop>
+            <CartesianPoint>
+              <Coordinate>-14.32279</Coordinate>
+              <Coordinate>3.234714</Coordinate>
+              <Coordinate>-4</Coordinate>
+            </CartesianPoint>
+            <CartesianPoint>
+              <Coordinate>16.89971</Coordinate>
+              <Coordinate>3.234714</Coordinate>
+              <Coordinate>-4</Coordinate>
+            </CartesianPoint>
+            <CartesianPoint>
+              <Coordinate>16.89971</Coordinate>
+              <Coordinate>22.28471</Coordinate>
+              <Coordinate>-4</Coordinate>
+            </CartesianPoint>
+            <CartesianPoint>
+              <Coordinate>-14.32279</Coordinate>
+              <Coordinate>22.28471</Coordinate>
+              <Coordinate>-4</Coordinate>
+            </CartesianPoint>
+          </PolyLoop>
+        </PlanarGeometry>
+        <Name>Level B1</Name>
+      </BuildingStorey>
+      <Name>bldg-1</Name>
+      <Description>Extracted from Revit model.</Description>
+    </Building>
+    <Surface surfaceType="ExteriorWall" constructionIdRef="ExteriorWall" exposedToSun="true" id="aim0069">
+      <AdjacentSpaceId spaceIdRef="aim0027" />
+      <RectangularGeometry id="aim0070">
+        <Azimuth>0</Azimuth>
+        <CartesianPoint>
+          <Coordinate>16.89971</Coordinate>
+          <Coordinate>22.28471</Coordinate>
+          <Coordinate>-4</Coordinate>
+        </CartesianPoint>
+        <Tilt>90</Tilt>
+        <Width>31.2224998474121</Width>
+        <Height>4</Height>
+      </RectangularGeometry>
+      <PlanarGeometry>
+        <PolyLoop>
+          <CartesianPoint>
+            <Coordinate>-14.32279</Coordinate>
+            <Coordinate>22.28471</Coordinate>
+            <Coordinate>-4</Coordinate>
+          </CartesianPoint>
+          <CartesianPoint>
+            <Coordinate>-14.32279</Coordinate>
+            <Coordinate>22.28471</Coordinate>
+            <Coordinate>0</Coordinate>
+          </CartesianPoint>
+          <CartesianPoint>
+            <Coordinate>16.89971</Coordinate>
+            <Coordinate>22.28471</Coordinate>
+            <Coordinate>0</Coordinate>
+          </CartesianPoint>
+          <CartesianPoint>
+            <Coordinate>16.89971</Coordinate>
+            <Coordinate>22.28471</Coordinate>
+            <Coordinate>-4</Coordinate>
+          </CartesianPoint>
+        </PolyLoop>
+      </PlanarGeometry>
+      <CADObjectId>Basic Wall: SIM_EXT_GRD [726718]</CADObjectId>
+      <Name>N-B1_001-E-W-1</Name>
+    </Surface>
+    <Surface surfaceType="ExteriorWall" constructionIdRef="ExteriorWall" exposedToSun="true" id="aim0080">
+      <AdjacentSpaceId spaceIdRef="aim0027" />
+      <RectangularGeometry id="aim0081">
+        <Azimuth>180</Azimuth>
+        <CartesianPoint>
+          <Coordinate>-14.32279</Coordinate>
+          <Coordinate>3.234714</Coordinate>
+          <Coordinate>-4</Coordinate>
+        </CartesianPoint>
+        <Tilt>90</Tilt>
+        <Width>31.2224998474121</Width>
+        <Height>4</Height>
+      </RectangularGeometry>
+      <PlanarGeometry>
+        <PolyLoop>
+          <CartesianPoint>
+            <Coordinate>-14.32279</Coordinate>
+            <Coordinate>3.234714</Coordinate>
+            <Coordinate>-4</Coordinate>
+          </CartesianPoint>
+          <CartesianPoint>
+            <Coordinate>16.89971</Coordinate>
+            <Coordinate>3.234714</Coordinate>
+            <Coordinate>-4</Coordinate>
+          </CartesianPoint>
+          <CartesianPoint>
+            <Coordinate>16.89971</Coordinate>
+            <Coordinate>3.234714</Coordinate>
+            <Coordinate>0</Coordinate>
+          </CartesianPoint>
+          <CartesianPoint>
+            <Coordinate>-14.32279</Coordinate>
+            <Coordinate>3.234714</Coordinate>
+            <Coordinate>0</Coordinate>
+          </CartesianPoint>
+        </PolyLoop>
+      </PlanarGeometry>
+      <CADObjectId>Basic Wall: SIM_EXT_GRD [726720]</CADObjectId>
+      <Name>S-B1_001-E-W-2</Name>
+    </Surface>
+    <Surface surfaceType="ExteriorWall" constructionIdRef="ExteriorWall" exposedToSun="true" id="aim0091">
+      <AdjacentSpaceId spaceIdRef="aim0027" />
+      <RectangularGeometry id="aim0092">
+        <Azimuth>270</Azimuth>
+        <CartesianPoint>
+          <Coordinate>-14.32279</Coordinate>
+          <Coordinate>22.28471</Coordinate>
+          <Coordinate>-4</Coordinate>
+        </CartesianPoint>
+        <Tilt>90</Tilt>
+        <Width>19.0499992370605</Width>
+        <Height>4</Height>
+      </RectangularGeometry>
+      <PlanarGeometry>
+        <PolyLoop>
+          <CartesianPoint>
+            <Coordinate>-14.32279</Coordinate>
+            <Coordinate>3.234714</Coordinate>
+            <Coordinate>-4</Coordinate>
+          </CartesianPoint>
+          <CartesianPoint>
+            <Coordinate>-14.32279</Coordinate>
+            <Coordinate>3.234714</Coordinate>
+            <Coordinate>0</Coordinate>
+          </CartesianPoint>
+          <CartesianPoint>
+            <Coordinate>-14.32279</Coordinate>
+            <Coordinate>22.28471</Coordinate>
+            <Coordinate>0</Coordinate>
+          </CartesianPoint>
+          <CartesianPoint>
+            <Coordinate>-14.32279</Coordinate>
+            <Coordinate>22.28471</Coordinate>
+            <Coordinate>-4</Coordinate>
+          </CartesianPoint>
+        </PolyLoop>
+      </PlanarGeometry>
+      <CADObjectId>Basic Wall: SIM_EXT_GRD [726721]</CADObjectId>
+      <Name>W-B1_001-E-W-3</Name>
+    </Surface>
+    <Surface surfaceType="ExteriorWall" constructionIdRef="ExteriorWall" exposedToSun="true" id="aim0102">
+      <AdjacentSpaceId spaceIdRef="aim0027" />
+      <RectangularGeometry id="aim0103">
+        <Azimuth>90</Azimuth>
+        <CartesianPoint>
+          <Coordinate>16.89971</Coordinate>
+          <Coordinate>3.234714</Coordinate>
+          <Coordinate>-4</Coordinate>
+        </CartesianPoint>
+        <Tilt>90</Tilt>
+        <Width>19.0499992370605</Width>
+        <Height>4</Height>
+      </RectangularGeometry>
+      <PlanarGeometry>
+        <PolyLoop>
+          <CartesianPoint>
+            <Coordinate>16.89971</Coordinate>
+            <Coordinate>3.234714</Coordinate>
+            <Coordinate>-4</Coordinate>
+          </CartesianPoint>
+          <CartesianPoint>
+            <Coordinate>16.89971</Coordinate>
+            <Coordinate>22.28471</Coordinate>
+            <Coordinate>-4</Coordinate>
+          </CartesianPoint>
+          <CartesianPoint>
+            <Coordinate>16.89971</Coordinate>
+            <Coordinate>22.28471</Coordinate>
+            <Coordinate>0</Coordinate>
+          </CartesianPoint>
+          <CartesianPoint>
+            <Coordinate>16.89971</Coordinate>
+            <Coordinate>3.234714</Coordinate>
+            <Coordinate>0</Coordinate>
+          </CartesianPoint>
+        </PolyLoop>
+      </PlanarGeometry>
+      <CADObjectId>Basic Wall: SIM_EXT_GRD [726798]</CADObjectId>
+      <Name>E-B1_001-E-W-4</Name>
+    </Surface>
+    <Surface surfaceType="SlabOnGrade" constructionIdRef="SlabOnGrade" id="aim0113">
+      <AdjacentSpaceId spaceIdRef="aim0027" />
+      <RectangularGeometry id="aim0114">
+        <Azimuth>0</Azimuth>
+        <CartesianPoint>
+          <Coordinate>16.89971</Coordinate>
+          <Coordinate>3.234714</Coordinate>
+          <Coordinate>-4</Coordinate>
+        </CartesianPoint>
+        <Tilt>180</Tilt>
+        <Width>31.2224998474121</Width>
+        <Height>19.0499992370605</Height>
+      </RectangularGeometry>
+      <PlanarGeometry>
+        <PolyLoop>
+          <CartesianPoint>
+            <Coordinate>-14.32279</Coordinate>
+            <Coordinate>3.234714</Coordinate>
+            <Coordinate>-4</Coordinate>
+          </CartesianPoint>
+          <CartesianPoint>
+            <Coordinate>-14.32279</Coordinate>
+            <Coordinate>22.28471</Coordinate>
+            <Coordinate>-4</Coordinate>
+          </CartesianPoint>
+          <CartesianPoint>
+            <Coordinate>16.89971</Coordinate>
+            <Coordinate>22.28471</Coordinate>
+            <Coordinate>-4</Coordinate>
+          </CartesianPoint>
+          <CartesianPoint>
+            <Coordinate>16.89971</Coordinate>
+            <Coordinate>3.234714</Coordinate>
+            <Coordinate>-4</Coordinate>
+          </CartesianPoint>
+        </PolyLoop>
+      </PlanarGeometry>
+      <CADObjectId>Floor: SIM_EXT_GRD_FLR FLR01 [726989]</CADObjectId>
+      <Name>B-B1_001-E-F-5</Name>
+    </Surface>
+    <Surface surfaceType="Roof" constructionIdRef="Roof" exposedToSun="true" id="aim0124">
+      <AdjacentSpaceId spaceIdRef="aim0027" />
+      <RectangularGeometry id="aim0125">
+        <Azimuth>180</Azimuth>
+        <CartesianPoint>
+          <Coordinate>-14.32279</Coordinate>
+          <Coordinate>3.234714</Coordinate>
+          <Coordinate>0</Coordinate>
+        </CartesianPoint>
+        <Tilt>0</Tilt>
+        <Width>31.2224998474121</Width>
+        <Height>19.0499992370605</Height>
+      </RectangularGeometry>
+      <PlanarGeometry>
+        <PolyLoop>
+          <CartesianPoint>
+            <Coordinate>-14.32279</Coordinate>
+            <Coordinate>3.234714</Coordinate>
+            <Coordinate>0</Coordinate>
+          </CartesianPoint>
+          <CartesianPoint>
+            <Coordinate>16.89971</Coordinate>
+            <Coordinate>3.234714</Coordinate>
+            <Coordinate>0</Coordinate>
+          </CartesianPoint>
+          <CartesianPoint>
+            <Coordinate>16.89971</Coordinate>
+            <Coordinate>22.28471</Coordinate>
+            <Coordinate>0</Coordinate>
+          </CartesianPoint>
+          <CartesianPoint>
+            <Coordinate>-14.32279</Coordinate>
+            <Coordinate>22.28471</Coordinate>
+            <Coordinate>0</Coordinate>
+          </CartesianPoint>
+        </PolyLoop>
+      </PlanarGeometry>
+      <CADObjectId>Basic Roof: SIM_EXT_SLD_Roof DA01 [727687]</CADObjectId>
+      <Name>T-B1_001-E-R-6</Name>
+    </Surface>
+    <DaylightSavings>false</DaylightSavings>
+    <Name>Created from Revit</Name>
+  </Campus> 
+
+<Construction id="Ceiling">
+<U-value unit="WPerSquareMeterK">0</U-value>
+<Absorptance unit="Fraction" type="ExtIR">0</Absorptance>
+<Roughness value="Rough" />
+<LayerId layerIdRef="layer-InternalSide-ExternalSideground" />
+<Name>Floor : SIM_EXT_GRD_FLR FLR01</Name>
+</Construction>
+
+<Construction id="ExteriorWall">
+<U-value unit="WPerSquareMeterK">0</U-value>
+<Absorptance unit="Fraction" type="ExtIR">0</Absorptance>
+<Roughness value="Rough" />
+<LayerId layerIdRef="layer-ExternalSideWall-InternalSide" />
+<Name>Basic Wall : SIM_EXT_SLD</Name>
+</Construction>
+
+<Construction id="InteriorFloor">
+<U-value unit="WPerSquareMeterK">0</U-value>
+<Absorptance unit="Fraction" type="ExtIR">0</Absorptance>
+<Roughness value="Rough" />
+<LayerId layerIdRef="layer-InternalSide-ExternalSideground" />
+<Name>Floor : SIM_EXT_GRD_FLR FLR01</Name>
+</Construction>
+
+<Construction id="InteriorWall">
+<U-value unit="WPerSquareMeterK">0</U-value>
+<Absorptance unit="Fraction" type="ExtIR">0</Absorptance>
+<Roughness value="Rough" />
+<LayerId layerIdRef="layer-CoreWall" />
+<Name>Basic Wall : SIM_INT_SLD_Core</Name>
+</Construction>
+
+<Construction id="RaisedFloor">
+<U-value unit="WPerSquareMeterK">0</U-value>
+<Absorptance unit="Fraction" type="ExtIR">0</Absorptance>
+<Roughness value="Rough" />
+<LayerId layerIdRef="layer-InternalSide-ExternalSideground" />
+<Name>Floor : SIM_EXT_GRD_FLR FLR01</Name>
+</Construction>
+
+
+<Construction id="Roof">
+<U-value unit="WPerSquareMeterK">0</U-value>
+<Absorptance unit="Fraction" type="ExtIR">0</Absorptance>
+<Roughness value="Rough" />
+<LayerId layerIdRef="layer-ExternalSideRoof-InternalSide" />
+<Name>Basic Roof : SIM_EXT_SLD_Roof DA01</Name>
+</Construction>
+
+
+<Construction id="SlabOnGrade">
+<U-value unit="WPerSquareMeterK">0</U-value>
+<Absorptance unit="Fraction" type="ExtIR">0</Absorptance>
+<Roughness value="Rough" />
+<LayerId layerIdRef="layer-InternalSide-ExternalSideground" />
+<Name>Floor : SIM_EXT_GRD_FLR FLR01</Name>
+</Construction>
+
+
+
+<Construction id="UndergroundSlab">
+<U-value unit="WPerSquareMeterK">0</U-value>
+<Absorptance unit="Fraction" type="ExtIR">0</Absorptance>
+<Roughness value="Rough" />
+<LayerId layerIdRef="layer-InternalSide-ExternalSideground" />
+<Name>Floor : SIM_EXT_GRD_FLR FLR01</Name>
+</Construction>
+
+
+<Construction id="UndergroundWall">
+<U-value unit="WPerSquareMeterK">0</U-value>
+<Absorptance unit="Fraction" type="ExtIR">0</Absorptance>
+<Roughness value="Rough" />
+<LayerId layerIdRef="layer-ExternalSideWall-InternalSide" />
+<Name>Basic Wall : SIM_EXT_SLD</Name>
+</Construction>
+
+
+
+<Layer id="layer-ExternalSideWall-InternalSide">
+<MaterialId materialIdRef="material-ExternalSideWall" />
+<MaterialId materialIdRef="material-InternalSide" />
+</Layer>
+
+<Layer id="layer-InternalSide-ExternalSideground">
+<MaterialId materialIdRef="material-InternalSide" />
+<MaterialId materialIdRef="material-ExternalSideground" />
+</Layer>
+
+<Layer id="layer-ExternalSideRoof-InternalSide">
+<MaterialId materialIdRef="material-ExternalSideRoof" />
+<MaterialId materialIdRef="material-InternalSide" />
+</Layer>
+
+<Layer id="layer-CoreWall">
+<MaterialId materialIdRef="material-CoreWall" />
+</Layer>
+
+<Layer id="layer-InternalPartition">
+<MaterialId materialIdRef="material-InternalPartition" />
+</Layer>
+
+<Material id="material-ExternalSideWall">
+<Name>External Side Wall</Name>
+<R-value unit="SquareMeterKPerW">0.134</R-value>
+<Thickness>0.025</Thickness>
+<Conductivity unit="WPerMeterK">0.187</Conductivity>
+<Density unit="KgPerCubicM">290</Density>
+<SpecificHeat unit="JPerKgK">14423.639958391</SpecificHeat>
+</Material>
+
+<Material id="material-InternalSide">
+<Name>Inernal Side</Name>
+<R-value unit="SquareMeterKPerW">0.134</R-value>
+<Thickness>0.025</Thickness>
+<Conductivity unit="WPerMeterK">0.187</Conductivity>
+<Density unit="KgPerCubicM">290</Density>
+<SpecificHeat unit="JPerKgK">14423.639958391</SpecificHeat>
+</Material>
+
+<Material id="material-ExternalSideground">
+<Name>External Side(ground)</Name>
+<R-value unit="SquareMeterKPerW">0.134</R-value>
+<Thickness>0.025</Thickness>
+<Conductivity unit="WPerMeterK">0.187</Conductivity>
+<Density unit="KgPerCubicM">290</Density>
+<SpecificHeat unit="JPerKgK">14423.639958391</SpecificHeat>
+</Material>
+
+<Material id="material-ExternalSideRoof">
+<Name>External Side Roof</Name>
+<R-value unit="SquareMeterKPerW">0.134</R-value>
+<Thickness>0.025</Thickness>
+<Conductivity unit="WPerMeterK">0.187</Conductivity>
+<Density unit="KgPerCubicM">290</Density>
+<SpecificHeat unit="JPerKgK">14423.639958391</SpecificHeat>
+</Material>
+
+<Material id="material-CoreWall">
+<Name>Core Wall</Name>
+<R-value unit="SquareMeterKPerW">0.267</R-value>
+<Thickness>0.05</Thickness>
+<Conductivity unit="WPerMeterK">0.187</Conductivity>
+<Density unit="KgPerCubicM">290</Density>
+<SpecificHeat unit="JPerKgK">14423.639958391</SpecificHeat>
+</Material>
+
+<Material id="material-InternalPartition">
+<Name>Internal Partition</Name>
+<R-value unit="SquareMeterKPerW">0.267</R-value>
+<Thickness>0.05</Thickness>
+<Conductivity unit="WPerMeterK">0.187</Conductivity>
+<Density unit="KgPerCubicM">290</Density>
+<SpecificHeat unit="JPerKgK">14423.639958391</SpecificHeat>
+</Material>
+
+
+<Zone id="ZoneID">
+<AirChangesPerHour>0</AirChangesPerHour>
+<OAFlowPerArea unit="LPerSecPerSquareM">0</OAFlowPerArea>
+<OAFlowPerPerson unit="LPerSec">0</OAFlowPerPerson>
+<DesignHeatT unit="C">0</DesignHeatT>
+<DesignCoolT unit="C">0</DesignCoolT>
+<TypeCode>0</TypeCode>
+<Name>Zone</Name>
+<CADObjectId>Unknown</CADObjectId>
+</Zone>
+
+
+<WindowType id="OperableWindow">
+<Name>WinInst : SIM_EXT_GLZ</Name>
+<Description>Standard Dbl Glazed</Description>
+<U-value unit="WPerSquareMeterK">0</U-value>
+<SolarHeatGainCoeff unit="Fraction">0</SolarHeatGainCoeff>
+<Transmittance type="Visible" unit="Fraction" surfaceType="Both">0</Transmittance>
+<Glaze id="glaze-e0a05">
+  <Name />
+  <Description>Standard Dbl Glazed</Description>
+  <Thickness unit="Meters">0</Thickness>
+  <Conductivity unit="WPerMeterK">0</Conductivity>
+  <Transmittance type="Solar" unit="Fraction" surfaceType="Both">0</Transmittance>
+  <Reflectance type="ExtSolar" unit="Fraction" surfaceType="Both">0</Reflectance>
+  <Reflectance type="IntSolar" unit="Fraction" surfaceType="Both">0</Reflectance>
+  <Transmittance type="Visible" unit="Fraction" surfaceType="Both">0</Transmittance>
+  <Reflectance type="ExtVisible" unit="Fraction" surfaceType="Both">0</Reflectance>
+  <Reflectance type="IntVisible" unit="Fraction" surfaceType="Both">0</Reflectance>
+  <Emittance type="ExtIR" unit="Fraction" surfaceType="Both">0</Emittance>
+  <Emittance type="IntIR" unit="Fraction" surfaceType="Both">0</Emittance>
+</Glaze>
+<Gap id="GapIdentificationbbbec" gas="Argon">
+  <Name>Glazing</Name>
+  <Description>Standard Dbl Glazed</Description>
+  <Thickness unit="Meters">0</Thickness>
+  <Conductivity unit="WPerMeterK">0</Conductivity>
+</Gap>
+<Glaze id="GlazingIdentification423ab">
+  <Name>Glazing</Name>
+  <Description>Standard Dbl Glazed</Description>
+  <Thickness unit="Meters">0</Thickness>
+  <Conductivity unit="WPerMeterK">0</Conductivity>
+  <Transmittance type="Visible" unit="Fraction" surfaceType="Both">0</Transmittance>
+  <Reflectance type="ExtIR" unit="Fraction" surfaceType="Both">0</Reflectance>
+  <Transmittance type="Visible" unit="Fraction" surfaceType="Both">0</Transmittance>
+  <Reflectance type="ExtIR" unit="Fraction" surfaceType="Both">0</Reflectance>
+  <Emittance type="ExtIR" unit="Fraction" surfaceType="Both">0</Emittance>
+</Glaze>
+</WindowType>
+
+
+<WindowType id="OperableSkylight">
+<Name>Skylight_ver00 : SIM_EXT_GLZ_SKY DF01</Name>
+<Description>Standard Dbl Glazed</Description>
+<U-value unit="WPerSquareMeterK">0</U-value>
+<SolarHeatGainCoeff unit="Fraction">0</SolarHeatGainCoeff>
+<Transmittance type="Visible" unit="Fraction" surfaceType="Both">0</Transmittance>
+<Glaze id="glaze-295cf">
+  <Name />
+  <Description>Standard Dbl Glazed</Description>
+  <Thickness unit="Meters">0</Thickness>
+  <Conductivity unit="WPerMeterK">0</Conductivity>
+  <Transmittance type="Solar" unit="Fraction" surfaceType="Both">0</Transmittance>
+  <Reflectance type="ExtSolar" unit="Fraction" surfaceType="Both">0</Reflectance>
+  <Reflectance type="IntSolar" unit="Fraction" surfaceType="Both">0</Reflectance>
+  <Transmittance type="Visible" unit="Fraction" surfaceType="Both">0</Transmittance>
+  <Reflectance type="ExtVisible" unit="Fraction" surfaceType="Both">0</Reflectance>
+  <Reflectance type="IntVisible" unit="Fraction" surfaceType="Both">0</Reflectance>
+  <Emittance type="ExtIR" unit="Fraction" surfaceType="Both">0</Emittance>
+  <Emittance type="IntIR" unit="Fraction" surfaceType="Both">0</Emittance>
+</Glaze>
+<Gap id="GapIdentificationd3e73" gas="Argon">
+  <Name>Glazing</Name>
+  <Description>Standard Dbl Glazed</Description>
+  <Thickness unit="Meters">0</Thickness>
+  <Conductivity unit="WPerMeterK">0</Conductivity>
+</Gap>
+<Glaze id="GlazingIdentification46ee2">
+  <Name>Glazing</Name>
+  <Description>Standard Dbl Glazed</Description>
+  <Thickness unit="Meters">0</Thickness>
+  <Conductivity unit="WPerMeterK">0</Conductivity>
+  <Transmittance type="Visible" unit="Fraction" surfaceType="Both">0</Transmittance>
+  <Reflectance type="ExtIR" unit="Fraction" surfaceType="Both">0</Reflectance>
+  <Transmittance type="Visible" unit="Fraction" surfaceType="Both">0</Transmittance>
+  <Reflectance type="ExtIR" unit="Fraction" surfaceType="Both">0</Reflectance>
+  <Emittance type="ExtIR" unit="Fraction" surfaceType="Both">0</Emittance>
+</Glaze>
+</WindowType>
+
+<WindowType id="NonSlidingDoor">
+<Name>Doors_ver01 : SIM_INT_SLD</Name>
+<Description>Standard Dbl Glazed</Description>
+<U-value unit="WPerSquareMeterK">0</U-value>
+<SolarHeatGainCoeff unit="Fraction">0</SolarHeatGainCoeff>
+<Transmittance type="Visible" unit="Fraction" surfaceType="Both">0</Transmittance>
+<Glaze id="glaze-83731">
+  <Name />
+  <Description>Standard Dbl Glazed</Description>
+  <Thickness unit="Meters">0</Thickness>
+  <Conductivity unit="WPerMeterK">0</Conductivity>
+  <Transmittance type="Solar" unit="Fraction" surfaceType="Both">0</Transmittance>
+  <Reflectance type="ExtSolar" unit="Fraction" surfaceType="Both">0</Reflectance>
+  <Reflectance type="IntSolar" unit="Fraction" surfaceType="Both">0</Reflectance>
+  <Transmittance type="Visible" unit="Fraction" surfaceType="Both">0</Transmittance>
+  <Reflectance type="ExtVisible" unit="Fraction" surfaceType="Both">0</Reflectance>
+  <Reflectance type="IntVisible" unit="Fraction" surfaceType="Both">0</Reflectance>
+  <Emittance type="ExtIR" unit="Fraction" surfaceType="Both">0</Emittance>
+  <Emittance type="IntIR" unit="Fraction" surfaceType="Both">0</Emittance>
+</Glaze>
+<Gap id="GapIdentification622df" gas="Argon">
+  <Name>Glazing</Name>
+  <Description>Standard Dbl Glazed</Description>
+  <Thickness unit="Meters">0</Thickness>
+  <Conductivity unit="WPerMeterK">0</Conductivity>
+</Gap>
+<Glaze id="GlazingIdentificationc4103">
+  <Name>Glazing</Name>
+  <Description>Standard Dbl Glazed</Description>
+  <Thickness unit="Meters">0</Thickness>
+  <Conductivity unit="WPerMeterK">0</Conductivity>
+  <Transmittance type="Visible" unit="Fraction" surfaceType="Both">0</Transmittance>
+  <Reflectance type="ExtIR" unit="Fraction" surfaceType="Both">0</Reflectance>
+  <Transmittance type="Visible" unit="Fraction" surfaceType="Both">0</Transmittance>
+  <Reflectance type="ExtIR" unit="Fraction" surfaceType="Both">0</Reflectance>
+  <Emittance type="ExtIR" unit="Fraction" surfaceType="Both">0</Emittance>
+</Glaze>
+</WindowType>
+
+
+  <Zone id="aim0024">
+    <DesignHeatT unit="C">21.11111</DesignHeatT>
+    <DesignCoolT unit="C">23.33333</DesignCoolT>
+    <TypeCode>14</TypeCode>
+    <Name>Default</Name>
+    <CADObjectId>293242</CADObjectId>
+  </Zone>
+  <DocumentHistory>
+    <ProgramInfo id="aim0004">
+      <CompanyName>Autodesk, Inc.</CompanyName>
+      <ProductName>Autodesk Revit 2017 BEES</ProductName>
+      <Version>2017 20170816_0615(x64)</Version>
+      <Platform>Microsoft Windows 7</Platform>
+      <ProjectEntity>
+        <URI>file:///C:/Users/mdengusi/Desktop/SAM_Bath/2018-01-25/SAM_Live_ver05gOneRoom.rte</URI>
+        <GUID entity="File">00933d1d-33cb-4c93-9878-e180c2019448</GUID>
+      </ProjectEntity>
+    </ProgramInfo>
+    <CreatedBy personId="aim0005" programId="aim0004" date="2018-01-26T07:26:26">
+      <CADModelId>00933d1d-33cb-4c93-9878-e180c2019448</CADModelId>
+    </CreatedBy>
+    <PersonInfo id="aim0005" />
+  </DocumentHistory>
+</gbXML>

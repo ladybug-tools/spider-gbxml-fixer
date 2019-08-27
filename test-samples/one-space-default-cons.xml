@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-16"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <gbXML useSIUnitsForResults="true" temperatureUnit="C" lengthUnit="Meters" areaUnit="SquareMeters" volumeUnit="CubicMeters" version="0.37" xmlns="http://www.gbxml.org/schema">
   <Campus id="aim0002">
     <Location>
@@ -450,7 +450,7 @@
     </Surface>
     <DaylightSavings>false</DaylightSavings>
     <Name>Created from Revit</Name>
-  </Campus> 
+  </Campus>
 
 <Construction id="Ceiling">
 	<Absorptance unit="Fraction" type="ExtIR">0</Absorptance>
