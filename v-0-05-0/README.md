@@ -4,6 +4,17 @@
 
 <summary>Concept</summary>
 
+Two fairly complex files seem to be making the trip to OpenStudio
+
+* [berlin-office-1-1k-surfaces.zip]( https://www.ladybug.tools/spider-gbxml-fixer/v-0-05-0/spider-gbxml-fixer-dev.html#https://cdn.jsdelivr.net/gh/ladybug-tools/spider@master/gbxml-sample-files/zip/berlin-office-1-1k-surfaces.zip )
+* [winchester-school-560-surfaces.zip]( https://www.ladybug.tools/spider-gbxml-fixer/v-0-05-0/spider-gbxml-fixer-dev.html#https://cdn.jsdelivr.net/gh/ladybug-tools/spider@master/gbxml-sample-files/zip/winchester-school-560-surfaces.zip )
+
+It can tale a while for results to appear with large files.
+
+Also very simple files with just a space or two and few windows seem to make the trip.
+
+It's a start...
+
 
 </details>
 
