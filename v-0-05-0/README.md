@@ -1,4 +1,4 @@
-# ZZZZZ Read Me
+# Spider gbXML Fixer 'Atrax' Read Me
 
 <details open>
 
@@ -25,7 +25,9 @@
 
 <summary>Change Log</summary>
 
-### XXX
+### 2019-08-27 ~ Theo
+
+SF Atrax v-0-05-0
 
 * First commit
 
