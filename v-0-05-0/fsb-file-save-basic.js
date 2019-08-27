@@ -101,7 +101,7 @@ FSB.butSaveFile = function( text ) {
 
 FSB.butSaveFileZip = function( text ) {
 
-	const name = FSB.name.replace( /\.txt/i, ".zip" );
+	const name = FSB.name.replace( /\.xml/i, ".zip" );
 	const zip = new JSZip();
 
 	zip.file( FSB.name, text );
