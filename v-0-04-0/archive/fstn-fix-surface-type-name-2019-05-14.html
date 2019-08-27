@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang = "en" >
+<head>
+<meta charset = "utf-8" >
+<meta name = "viewport" content= "width=device-width, initial-scale=1" >
+<meta name = "description" content = "Open files with FileReader() or XMLHttpRequest()" >
+<meta name = "keywords" content = "JavaScript,GitHub,FOSS" >
+<meta name = "date" content = "2019-02-07" >
+<title></title>
+<style>
+
+	body { font: 12pt monospace; margin: 0 auto 0 400px; max-width: 800px; }
+	a { color: crimson; text-decoration: none; }
+	a:hover, a:focus { background-color: yellow; color: #aaa; text-decoration: underline }
+
+	button, input[type=button] { background-color: #ddd; border: none; color: #322; cursor: pointer; padding: 3px 5px; }
+	button:hover { background: #ccc; color: #fff }
+
+	.sumMenuTitle { background-color: #ccc; color: #888; margin: 10px 0; text-align: center; }
+	.sumHeader { font-size:1.3rem; }
+
+	.dragDropArea { border: 1px dashed gray; box-sizing: border-box; margin: 10px; padding: 0 10px; }
+
+	#navMenu { background-color: #eee; left: 0; margin: 20px; max-width: 300px; padding: 0 10px;
+		position: fixed; top: 0; }
+
+	#navPopUp { background-color: #eee; border-radius: 8px; display: block; max-height: 95%; max-width: 25%;
+		opacity: 0.95; overflow: auto; padding: 0 5px 10px 5px; position: fixed;
+		resize: both; right: 1rem; top: 1rem; z-index: 10; };
+
+
+</style>
+</head>
+<body>
+<script src="https://rawgit.com/showdownjs/showdown/1.9.0/dist/showdown.min.js" ></script>
+
+<script src="../fil-file-open-xml-zip/fil-file-open-xml-zip.js" ></script>
+<script src="../gbx-gbxml-core.js" ></script>
+<script src="../ggd-get-gbxml-data/ggd-get-gbxml-data.js" ></script>
+<script src="../gsa-get-surface-attributes/gsa-get-surface-attributes.js" ></script>
+
+<script src="fstn-fix-surface-type-name.js" ></script>
+
+	<nav id="navMenu" >
+
+		<div id="divTitle" ></div>
+
+		<details class=navSubMenu open >
+
+			<summary class=sumMenuTitle >File Menu</summary>
+
+			<section id="FILdivFileOpen"></section>
+
+			<section id="FILdivFileSave"></section>
+
+		</details>
+
+		<p>
+			<button id=but onclick=location.hash=this.innerHTML; >../../test-samples/one-room-with-surface-type-errors.xml</button>
+		</p>
+
+	</nav>
+
+	<nav id="navPopUp" >
+
+			<div id="divPopUpData" ></div>
+
+			<div id="divMessage" ></div>
+
+	</nav>
+
+	<div id="divContents" ></div>
+
+
+<script>
+
+const urlSourceCodeIcon = "https://pushme-pullyou.github.io/github-mark-64.png";
+const urlSourceCode = "https://github.com/zzzzz/xxxxx.html";
+
+
+FIL.urlDefaultFile = "../../test-samples/one-room-with-surface-type-errors.xml"
+
+init();
+
+
+
+function init() {
+
+	divTitle.innerHTML = getTitle();
+
+	FILdivFileOpen.innerHTML = FIL.getMenuFileOpen();
+
+	FILdivFileSave.innerHTML = FIL.getMenuFileSave();
+
+	FIL.xhrRequestFileXml( FIL.urlDefaultFile );
+
+	//FIL.onHashChange();
+
+	window.addEventListener ( 'hashchange', FIL.onHashChange, false );
+	document.body.addEventListener( 'onXmlFileLoad', onLoad, false );
+
+}
+
+
+
+function onLoad() {
+
+	//console.log( '', FIL.name  );
+
+	GGD.getData(  FIL.text  );
+
+	htm1 = GGD.getGbxmlData(  FIL.text  );
+
+	//htm2 = FT.getSurfaceTypeInvalid();
+
+	htm3 = FSTN.getMenuSurfaceTypeName();
+
+	divContents.innerHTML =
+	`
+		<br><br>
+
+		<h2 id=SGFh1FileName >Check file: ${ decodeURI( FIL.name ) } </h2>
+
+		<p>
+			<button onclick=SGF.runAll(); >Run all checks</button>
+
+			<button onclick=SGF.closeAll(); >Close all checks</button>
+		</p>
+
+		<p>
+			<input type=checkbox id=SGFinpIgnoreAirSurfaceType > Ignore Air surface type
+		</p>
+		
+		${ htm1 }
+
+		${ htm3 }
+	`;
+}
+
+
+const MNU = {};
+
+
+MNU.setPopupShowHide = function( id, text ) {
+	//console.log( 'id', id );
+
+	id.classList.toggle( "active" );
+
+	divPopUpData.innerHTML = id.classList.contains( 'active' ) ? text : '';
+
+};
+
+
+
+function getTitle() {
+
+	document.title = document.title ? document.title : location.href.split( '/' ).pop().slice( 0, - 5 ).replace( /-/g, ' ' );
+
+	const htm =
+	`
+		<h2>
+			<a href=${ urlSourceCode } target=_top title="Source code on GitHub" >
+				<img src=${ urlSourceCodeIcon } height=18 >
+			</a>
+			<a href="" title="Click to reload this page" >${ document.title }</a>
+		</h2>
+
+		<p>
+			${ FIL.description }
+		</p>
+	`;
+
+	return htm;
+
+}
+
+</script>
+</body>
+</html>

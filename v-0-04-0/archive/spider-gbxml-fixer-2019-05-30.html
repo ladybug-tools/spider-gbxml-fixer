@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang = "en" >
+<head>
+<meta charset="utf-8">
+<meta name = "viewport" content= "width=device-width, initial-scale=1" >
+<meta name = "description" content = "JavaScript utilities to help you identify and fix common errors in gbXML files" >
+<meta name = "keywords" content = "JavaScript,GitHub,FOSS" >
+<meta name = "date" content = "2019-05-29" >
+<meta name = "version" content = "0.4.0-dev" >
+<title>Spider gbXML Fixer 'Atrax'</title>
+<link href="https://fonts.googleapis.com/css?family=Inconsolata" rel="stylesheet" >
+<link rel="stylesheet" href="https://pushme-pullyou.github.io/tootoo14/js-14-1/style.css" >
+</head>
+<!-- //Copyright 2019 Ladybug Tools authors. MIT License -->
+<body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.5/jszip.min.js" ></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js" ></script>
+
+<!-- menus generally -->
+
+<script src="https://pushme-pullyou.github.io/tootoo14/js-14-1/mnu-menu/mnu-menu.js" ></script>
+<script src="https://ladybug-tools.github.io/spider-gbxml-tools/spider-gbxml-viewer/r15/js-gbxml/gal-sample-files-gallery-gbxml.js" ></script>
+<script src="gbx-gbxml-core.js" ></script>
+<script src="gsa-get-surface-attributes/gsa-get-surface-attributes.js" ></script>
+
+<!-- File menu panel -->
+<script src="fil-file-open-xml-zip/fil-file-open-xml-zip.js" ></script>
+
+<!-- Edit Menu -->
+<script src="ggd-get-gbxml-data/ggd-get-gbxml-data.js" ></script>
+<script src="gss-get-surface-statistics/gss-get-surface-statistics.js" ></script>
+<script src="gcs-get-check-strings/gcs-get-check-strings.js" ></script>
+<script src="gco-get-check-offset/gco-get-check-offset.js" ></script>
+<script src="ocv-openings-check-vertices/ocv-openings-check-vertices.js" ></script>
+<script src="fxa-fix-xml-attributes/fxa-fix-xml-attributes.js" ></script>
+
+<script src="fstn-fix-surface-type-name/fstn-fix-surface-type-name.js" ></script>
+<script src="fets-fix-exposed-to-sun/fets-fix-exposed-to-sun.js" ></script>
+<script src="fdpc-fix-duplicate-planar-coordinates/fdpc-fix-duplicate-planar-coordinates.js" ></script>
+<script src="fasst-fix-adjacent-space-surface-type/fasst-fix-adjacent-space-surface-type.js" ></script>
+<script src="fase-fix-adjacent-space-extra/fase-fix-adjacent-space-extra.js" ></script>
+<script src="fasd-fix-adjacent-space-duplicate/fasd-fix-adjacent-space-duplicate.js" ></script>
+<script src="fasa-fix-air-single-adjacent/fasa-fix-air-single-adjacent.js" ></script>
+<script src="fcim-fix-cad-id-missing/fcim-fix-cad-id-missing.js" ></script>
+
+
+<!-- Settings menu -->
+<script src="https://pushme-pullyou.github.io/tootoo14/js-14-1/thm-theme/thm-theme.js" ></script>
+<script src="https://pushme-pullyou.github.io/tootoo14/js-14-1/tmp-template/tmp-template.js" ></script>
+
+	<button id="expandButton" onclick="toggleNavPanel();" >☰</button>
+
+	<nav id="navPanel" >
+
+		<section class="secContent" >
+
+			<header>
+
+				<div id="MNUdivHeader" ></div>
+
+			</header>
+
+			<div >
+
+				<p>
+					See <a href="http://www.ladybug.tools/spider-gbxml-tools/spider-gbxml-viewer/" target="_blank">Spider gbXML Viewer 'Maevia'</a>
+				</p>
+
+				<p>
+					See <a href="http://gbxml.org/schema_doc/6.01/GreenBuildingXML_Ver6.01.html" target="_blank">Schema GreenBuildingXML_Ver6.01.xsd </a>
+				</p>
+
+			</div>
+
+
+			<details open >
+
+				<summary class="sumMenuTitle" >File menu</summary>
+
+				<div id="GALdivSampleFilesGallery"></div>
+
+				<div id="FILdivFileOpen"></div>
+
+				<div id="FILdivFileSave"></div>
+
+			</details>
+
+
+			<details>
+
+				<summary class=sumMenuTitle >Settings menu</summary>
+
+				<div id=THMdivMenuThemeSelect ></div>
+
+				<div id=TMPdivTemplate ></div>
+
+			</details>
+
+
+			<footer>
+
+				<div id="MNUdivFooter" ></div>
+
+				<div id="MNUdivFooterPopup" ></div>
+
+				<h1 onclick="navPanel.scrollTop=0;" style="cursor:pointer;text-align:center;" title="go to top of menu" >
+					<img alt="spider icon" src="https://ladybug.tools/artwork/icons_bugs/ico/spider.ico" height=18 >
+				</h1>
+
+			</footer>
+
+		</section>
+
+	</nav>
+
+
+	<main id=main >
+
+		<div id=divContents ></div>
+
+	</main>
+
+
+	<nav id="navPopup" hidden >
+
+		<section class="secContent" >
+
+			<div id="MNUdivPopup" ></div>
+
+		</section>
+
+	</nav>
+
+
+	<nav>
+
+		<a href="" id="aViewSource" target=_blank; hidden >view source</a>
+
+	</nav>
+
+
+<script>
+
+THM.themeUrlStorage = 'spider-gbxml-fixer-theme-url';
+THM.cssBasic = "https://pushme-pullyou.github.io/tootoo14/js-14-1/style.css";
+
+// useful when testing / un-comment
+//FIL.urlDefaultFile = "https://www.ladybug.tools/spider/gbxml-sample-files/bristol-clifton-downs-broken.xml";
+//FIL.urlDefaultFile = "https://cdn.jsdelivr.net/gh/ladybug-tools/spider@master/gbxml-sample-files/zip/coventry-university-of-warwick-small.zip";
+FIL.urlDefaultFile = "https://cdn.jsdelivr.net/gh/ladybug-tools/spider@master/gbxml-sample-files/zip/pittsburg-airport.zip";
+
+
+MNU.helpFile = "../README.md";
+
+MNU.description = document.head.querySelector( '[ name=description ]' ).content;
+MNU.description =
+	`
+		Mission: run a series of basics checks on <a href="https://gbXML.org" target="_blank">gbXML</a> files to identify, report and help you fix any errors
+	`;
+
+// For main menu header
+//MNU.urlSourceCode = "https://github.com/ladybug-tools/spider-gbxml-fixer/tree/master/r0-4-0/";
+
+MNU.homeText ="<img src='https://ladybug.tools/artwork/icons_bugs/ico/ladybug.ico' height=24 >";
+MNU.homeTitle="Ladybug Tools: free computer applications that support environmental design and education";
+MNU.homeUrl  ="https://www.ladybug.tools";
+
+MNU.repoText ="<img src='https://ladybug.tools/artwork/icons_bugs/ico/spider.ico' height=24 >";
+MNU.repoTitle="Spider: 3D interactive analysis in your browser mostly written around the Three.js JavaScript library";
+MNU.repoUrl  ="https://www.ladybug.tools/spider/";
+
+MNU.appText  = ""; // "gbXML Tools";
+MNU.appTitle = ""; // "Tools to help you find, load, examine and edit gbXML files - in large numbers and sizes";
+MNU.appUrl   = ""; // "https://www.ladybug.tools/spider-gbxml-tools/";
+
+MNU.footerUrl    = "https://ladybug-tools.github.io/spider/#";
+MNU.footerTarget = "target=_blank";
+MNU.footerPopupUrl = "../../spider/";
+
+MNU.footerIssues = "https://github.com/ladybug-tools/spider-gbxml-fixer/issues";
+
+GBX.viewer = "../../spider-gbxml-tools/spider-gbxml-viewer/r15/spider-gbxml-viewer15.html";
+
+FIL.helpFile = "./fil-file-open-xml-zip/README.md";
+GBX.helpFile = "./README.md";
+
+
+FASA.helpFile = "./fasa-fix-air-single-adjacent/README.md";
+FASD.helpFile = "./fasd-fix-adjacent-space-duplicate/README.md";
+FASE.helpFile = "./fase-fix-adjacent-space-extra/README.md";
+FASST.helpFile = "./fasst-fix-adjacent-space-surface-type/README.md";
+FCIM.helpFile = "./fcim-fix-cad-id-missing/README.md";
+FDPC.helpFile = "./fdpc-fix-duplicate-planar-coordinates/README.md";
+FETS.helpFile = "./fets-fix-exposed-to-sun/README.md";
+FSTN.helpFile = "./fstn-fix-surface-type-name/README.md";
+FXA.helpFile = "./fxa-fix-xml-attributes/README.md";
+
+GCO.helpFile = "./gco-get-check-offset/README.md";
+GCS.helpFile = "./gcs-get-check-strings/README.md";
+GGD.helpFile = "./ggd-get-gbxml-data/README.md";
+GSA.helpFile = "./gsa-get-surface-attributes/README.md";
+GSS.helpFile = "./gss-get-surface-statistics/README.md";
+
+OCV.helpFile = "./ocv-openings-check-vertices/README.md";
+
+
+
+init();
+
+
+function init() {
+
+	if ( /(iPad|iPhone|iPod)/g.test( navigator.userAgent ) ) { /* I hate having to add this */
+
+		divContents.style.width = getComputedStyle( divContents ).width;
+		divContents.style.height = getComputedStyle( divContents ).height;
+		divContents.setAttribute( 'scrolling', 'no' );
+
+	}
+
+	THMdivMenuThemeSelect.innerHTML = THM.getMenuThemeSelect();
+	THM.init();
+
+	MNUdivHeader.innerHTML = MNU.getNavHeader();
+
+	GALdivSampleFilesGallery.innerHTML=GAL.getMenuSampleFilesGallery();
+
+	FILdivFileOpen.innerHTML=FIL.getMenuFileOpen();
+
+	FILdivFileSave.innerHTML=FIL.getMenuFileSave();
+
+	MNUdivFooterPopup.innerHTML = MNU.getNavFooterPopup();
+
+	FIL.onHashChange(); // checks location hash, if none set default file ( the read me ) to open
+
+	document.body.addEventListener( 'onXmlFileLoad', GBX.init, false ); // hash changed, file loaded so let's go
+
+	aViewSource.style.display = "block";
+	aViewSource.href = MNU.urlSourceCode;
+}
+
+
+
+function toggleNavPanel() {
+
+	expandButton.classList.toggle( 'collapsed' );
+	navPanel.classList.toggle( 'collapsed' );
+	main.classList.toggle( 'collapsed' );
+
+}
+
+</script>
+</body>
+</html>

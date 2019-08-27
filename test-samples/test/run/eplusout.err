@@ -1,0 +1,21 @@
+Program Version,EnergyPlus, Version 9.1.0-08d2e308bb, YMD=2019.08.26 23:14,
+   ** Warning ** CheckEnvironmentSpecifications: SimulationControl specified doing design day simulations, but no design environments specified.
+   **   ~~~   ** ...No design environment results produced. For these results, add appropriate SizingPeriod:* objects for your simulation.
+   ** Warning ** GetVertices: Roof/Ceiling is not oriented correctly! Tilt angle=[89.0], should be near 0, Surface="E-03S0_100-E-W-987", in Zone="DEFAULT".
+   ** Warning ** GetVertices: Roof/Ceiling is not oriented correctly! Tilt angle=[89.0], should be near 0, Surface="E-03S0_100-E-W-988", in Zone="DEFAULT".
+   ** Warning ** GetVertices: Roof/Ceiling is not oriented correctly! Tilt angle=[89.0], should be near 0, Surface="W-03S0_100-E-W-989", in Zone="DEFAULT".
+   ** Warning ** GetVertices: Roof/Ceiling is not oriented correctly! Tilt angle=[89.0], should be near 0, Surface="W-03S0_100-E-W-990", in Zone="DEFAULT".
+   ** Warning ** GetVertices: Roof/Ceiling is not oriented correctly! Tilt angle=[90.0], should be near 0, Surface="X-03S0_100-03S0_100-I-O-997", in Zone="DEFAULT".
+   ** Warning ** GetVertices: Roof/Ceiling is not oriented correctly! Tilt angle=[90.0], should be near 0, Surface="X-03S0_100-03S0_100-I-O-999", in Zone="DEFAULT".
+   ** Severe  ** GetSurfaceData: Zone has no surfaces, Zone=ZONE
+   ** Warning ** GetSurfaceData: There are 10 coincident/collinear vertices; These have been deleted unless the deletion would bring the number of surface sides < 3.
+   **   ~~~   ** For explicit details on each problem surface, use Output:Diagnostics,DisplayExtraWarnings;
+   **  Fatal  ** GetSurfaceData: Errors discovered, program terminates.
+   ...Summary of Errors that led to program termination:
+   ..... Reference severe error count=1
+   ..... Last severe error=GetSurfaceData: Zone has no surfaces, Zone=ZONE
+   ************* Warning:  Node connection errors not checked - most system input has not been read (see previous warning).
+   ************* Fatal error -- final processing.  Program exited before simulations began.  See previous error messages.
+   ************* EnergyPlus Warmup Error Summary. During Warmup: 0 Warning; 0 Severe Errors.
+   ************* EnergyPlus Sizing Error Summary. During Sizing: 0 Warning; 0 Severe Errors.
+   ************* EnergyPlus Terminated--Fatal Error Detected. 17 Warning; 1 Severe Errors; Elapsed Time=00hr 00min  0.59sec
