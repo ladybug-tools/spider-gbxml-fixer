@@ -44,7 +44,7 @@ FSB.getMenuFileSaveBasic = function( sourceContents, targetHelpFile ) {
 		<button id=butFILSave class=butHelp onclick="FSB.getHelp();" >?</button>
 
 		<p>
-			<button onclick=FSB.butSaveFile(FSB.sourceContents); >Save file as text</button>
+			<button onclick=FSB.butSaveFile(FSB.sourceContents); >Save file as XML</button>
 		</p>
 
 		<p>
