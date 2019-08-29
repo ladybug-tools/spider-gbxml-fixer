@@ -18,36 +18,6 @@ var GXF = {
 
 };
 
-GXF.filtersDefault = [ "Air", "ExposedFloor", "ExteriorWall", "RaisedFloor", "Roof",  "Shade",
-	"SlabOnGrade", "UndergroundWall", "UndergroundSlab" ];
-
-
-GXF.colorsDefault = {
-
-	InteriorWall: 0x008000,
-	ExteriorWall: 0xFFB400,
-	Roof: 0x800000,
-	InteriorFloor: 0x80FFFF,
-	ExposedFloor: 0x40B4FF,
-	Shade: 0xFFCE9D,
-	UndergroundWall: 0xA55200,
-	UndergroundSlab: 0x804000,
-	Ceiling: 0xFF8080,
-	Air: 0xFFFF00,
-	UndergroundCeiling: 0x408080,
-	RaisedFloor: 0x4B417D,
-	SlabOnGrade: 0x804000,
-	FreestandingColumn: 0x808080,
-	EmbeddedColumn: 0x80806E,
-	Undefined: 0x88888888
-
-};
-
-GXF.colors = Object.assign( {}, GXF.colorsDefault ); // create working copy of default colors
-GXF.surfaceTypes = Object.keys( GXF.colors );
-
-//let colors =  GXF.surfaceTypes.map( type => GXF.colorsDefault[ type ].toString( 16 ) );
-//GXF.colorsHex = colors.map( color => color.length > 4 ? color : '00' + color ); // otherwise greens no show
 
 
 
@@ -120,9 +90,9 @@ GXF.parseFile = function( gbxml )  {
 
 	GXF.surfaces.forEach( surface => {
 
-			const type = surface.match( /surfaceType="(.*?)"/i );
+		const type = surface.match( /surfaceType="(.*?)"/i );
 
-			if ( type !== "Air" && type !== "Shade") {
+		if ( type[ 1 ] !== "Air" && type[ 1 ] !== "Shade") {
 
 			const construction = surface.match( /constructionIdRef="(.*?)"/i );
 
@@ -140,11 +110,14 @@ GXF.parseFile = function( gbxml )  {
 
 			}
 
+		} else {
+
+			//console.log( '', type );
 		}
 
 	} );
 
-	GXF.gbxml = GXF.gbxml.replace( /<\/Campus>/i, `</Campus> ${ constructions2 }` );
+	GXF.gbxml = GXF.gbxml.replace( /<\/Campus>/i, `</Campus> ${ constructions }` );
 
 	GXF.gbxml = GXF.gbxml.replace( /encoding="UTF-16"/i, `encoding="UTF-8"` );
 
@@ -162,7 +135,7 @@ GXF.parseFile = function( gbxml )  {
 };
 
 
-constructions2 =
+const constructions =
 
 `
 
@@ -170,142 +143,124 @@ constructions2 =
 <U-value unit="WPerSquareMeterK">0</U-value>
 <Absorptance unit="Fraction" type="ExtIR">0</Absorptance>
 <Roughness value="Rough" />
-<LayerId layerIdRef="layer-InternalSide-ExternalSideground" />
-<Name>Floor : SIM_EXT_GRD_FLR FLR01</Name>
+<LayerId layerIdRef="layer-ceiling" />
+<Name>Ceiling</Name>
 </Construction>
 
 <Construction id="ExteriorWall">
 <U-value unit="WPerSquareMeterK">0</U-value>
 <Absorptance unit="Fraction" type="ExtIR">0</Absorptance>
 <Roughness value="Rough" />
-<LayerId layerIdRef="layer-ExternalSideWall-InternalSide" />
-<Name>Basic Wall : SIM_EXT_SLD</Name>
+<LayerId layerIdRef="layer-exterior-wall" />
+<Name>Exterior Wall</Name>
 </Construction>
 
 <Construction id="InteriorFloor">
 <U-value unit="WPerSquareMeterK">0</U-value>
 <Absorptance unit="Fraction" type="ExtIR">0</Absorptance>
 <Roughness value="Rough" />
-<LayerId layerIdRef="layer-InternalSide-ExternalSideground" />
-<Name>Floor : SIM_EXT_GRD_FLR FLR01</Name>
+<LayerId layerIdRef="layer-interior-floor" />
+<Name>Interior Floor</Name>
 </Construction>
 
 <Construction id="InteriorWall">
 <U-value unit="WPerSquareMeterK">0</U-value>
 <Absorptance unit="Fraction" type="ExtIR">0</Absorptance>
 <Roughness value="Rough" />
-<LayerId layerIdRef="layer-CoreWall" />
-<Name>Basic Wall : SIM_INT_SLD_Core</Name>
+<LayerId layerIdRef="layer-interior-wall" />
+<Name>Interior Wall</Name>
 </Construction>
 
 <Construction id="RaisedFloor">
 <U-value unit="WPerSquareMeterK">0</U-value>
 <Absorptance unit="Fraction" type="ExtIR">0</Absorptance>
 <Roughness value="Rough" />
-<LayerId layerIdRef="layer-InternalSide-ExternalSideground" />
-<Name>Floor : SIM_EXT_GRD_FLR FLR01</Name>
+<LayerId layerIdRef="layer-raised-floor" />
+<Name>Raised Floor</Name>
 </Construction>
-
 
 <Construction id="Roof">
 <U-value unit="WPerSquareMeterK">0</U-value>
 <Absorptance unit="Fraction" type="ExtIR">0</Absorptance>
 <Roughness value="Rough" />
-<LayerId layerIdRef="layer-ExternalSideRoof-InternalSide" />
-<Name>Basic Roof : SIM_EXT_SLD_Roof DA01</Name>
+<LayerId layerIdRef="layer-roof" />
+<Name>Roof</Name>
 </Construction>
-
 
 <Construction id="SlabOnGrade">
 <U-value unit="WPerSquareMeterK">0</U-value>
 <Absorptance unit="Fraction" type="ExtIR">0</Absorptance>
 <Roughness value="Rough" />
-<LayerId layerIdRef="layer-InternalSide-ExternalSideground" />
-<Name>Floor : SIM_EXT_GRD_FLR FLR01</Name>
+<LayerId layerIdRef="layer-slab-on-grade" />
+<Name>Slab on Grade</Name>
 </Construction>
-
-
 
 <Construction id="UndergroundSlab">
 <U-value unit="WPerSquareMeterK">0</U-value>
 <Absorptance unit="Fraction" type="ExtIR">0</Absorptance>
 <Roughness value="Rough" />
-<LayerId layerIdRef="layer-InternalSide-ExternalSideground" />
-<Name>Floor : SIM_EXT_GRD_FLR FLR01</Name>
+<LayerId layerIdRef="layer-underground-slab" />
+<Name>Slab on Grade</Name>
 </Construction>
-
 
 <Construction id="UndergroundWall">
 <U-value unit="WPerSquareMeterK">0</U-value>
 <Absorptance unit="Fraction" type="ExtIR">0</Absorptance>
 <Roughness value="Rough" />
-<LayerId layerIdRef="layer-ExternalSideWall-InternalSide" />
-<Name>Basic Wall : SIM_EXT_SLD</Name>
+<LayerId layerIdRef="layer-underground-wall" />
+<Name>Underground Wall</Name>
 </Construction>
 
 
-
-<Layer id="layer-ExternalSideWall-InternalSide">
-<MaterialId materialIdRef="material-ExternalSideWall" />
-<MaterialId materialIdRef="material-InternalSide" />
+<Layer id="layer-ceiling">
+<MaterialId materialIdRef="material-ceiling" />
+</Layer>
+<Layer id="layer-exterior-wall">
+<MaterialId materialIdRef="material-exterior-wall" />
+</Layer>
+<Layer id="layer-interior-floor">
+<MaterialId materialIdRef="material-interior-floor" />
+</Layer>
+<Layer id="layer-interior-wall">
+<MaterialId materialIdRef="material-interior-wall" />
+</Layer>
+<Layer id="layer-raised-floor">
+<MaterialId materialIdRef="material-raised-floor" />
+</Layer>
+<Layer id="layer-roof">
+<MaterialId materialIdRef="material-roof" />
+</Layer>
+<Layer id="layer-slab-on-grade">
+<MaterialId materialIdRef="material-slab-on-grade" />
+</Layer>
+<Layer id="layer-underground-slab">
+<MaterialId materialIdRef="material-underground-slab" />
+</Layer>
+<Layer id="layer-underground-wall">
+<MaterialId materialIdRef="material-underground-wall" />
 </Layer>
 
-<Layer id="layer-InternalSide-ExternalSideground">
-<MaterialId materialIdRef="material-InternalSide" />
-<MaterialId materialIdRef="material-ExternalSideground" />
-</Layer>
 
-<Layer id="layer-ExternalSideRoof-InternalSide">
-<MaterialId materialIdRef="material-ExternalSideRoof" />
-<MaterialId materialIdRef="material-InternalSide" />
-</Layer>
-
-<Layer id="layer-CoreWall">
-<MaterialId materialIdRef="material-CoreWall" />
-</Layer>
-
-<Layer id="layer-InternalPartition">
-<MaterialId materialIdRef="material-InternalPartition" />
-</Layer>
-
-<Material id="material-ExternalSideWall">
-<Name>External Side Wall</Name>
+<Material id="material-ceiling">
+<Name>Exterior Wall</Name>
 <R-value unit="SquareMeterKPerW">0.134</R-value>
-<Thickness>0.025</Thickness>
+<Thickness>0.05</Thickness>
 <Conductivity unit="WPerMeterK">0.187</Conductivity>
 <Density unit="KgPerCubicM">290</Density>
 <SpecificHeat unit="JPerKgK">14423.639958391</SpecificHeat>
 </Material>
 
-<Material id="material-InternalSide">
-<Name>Inernal Side</Name>
+<Material id="material-exterior-wall">
+<Name>Exterior Wall</Name>
 <R-value unit="SquareMeterKPerW">0.134</R-value>
-<Thickness>0.025</Thickness>
+<Thickness>0.05</Thickness>
 <Conductivity unit="WPerMeterK">0.187</Conductivity>
 <Density unit="KgPerCubicM">290</Density>
 <SpecificHeat unit="JPerKgK">14423.639958391</SpecificHeat>
 </Material>
 
-<Material id="material-ExternalSideground">
-<Name>External Side(ground)</Name>
-<R-value unit="SquareMeterKPerW">0.134</R-value>
-<Thickness>0.025</Thickness>
-<Conductivity unit="WPerMeterK">0.187</Conductivity>
-<Density unit="KgPerCubicM">290</Density>
-<SpecificHeat unit="JPerKgK">14423.639958391</SpecificHeat>
-</Material>
-
-<Material id="material-ExternalSideRoof">
-<Name>External Side Roof</Name>
-<R-value unit="SquareMeterKPerW">0.134</R-value>
-<Thickness>0.025</Thickness>
-<Conductivity unit="WPerMeterK">0.187</Conductivity>
-<Density unit="KgPerCubicM">290</Density>
-<SpecificHeat unit="JPerKgK">14423.639958391</SpecificHeat>
-</Material>
-
-<Material id="material-CoreWall">
-<Name>Core Wall</Name>
+<Material id="material-interior-floor">
+<Name>Interior Floor</Name>
 <R-value unit="SquareMeterKPerW">0.267</R-value>
 <Thickness>0.05</Thickness>
 <Conductivity unit="WPerMeterK">0.187</Conductivity>
@@ -313,8 +268,8 @@ constructions2 =
 <SpecificHeat unit="JPerKgK">14423.639958391</SpecificHeat>
 </Material>
 
-<Material id="material-InternalPartition">
-<Name>Internal Partition</Name>
+<Material id="material-interior-wall">
+<Name>Interior Wall</Name>
 <R-value unit="SquareMeterKPerW">0.267</R-value>
 <Thickness>0.05</Thickness>
 <Conductivity unit="WPerMeterK">0.187</Conductivity>
@@ -322,18 +277,91 @@ constructions2 =
 <SpecificHeat unit="JPerKgK">14423.639958391</SpecificHeat>
 </Material>
 
+<Material id="material-raised-floor">
+<Name>Raised Floor</Name>
+<R-value unit="SquareMeterKPerW">0.134</R-value>
+<Thickness>0.05</Thickness>
+<Conductivity unit="WPerMeterK">0.187</Conductivity>
+<Density unit="KgPerCubicM">290</Density>
+<SpecificHeat unit="JPerKgK">14423.639958391</SpecificHeat>
+</Material>
 
-<Zone id="ZoneID">
-<AirChangesPerHour>0</AirChangesPerHour>
-<OAFlowPerArea unit="LPerSecPerSquareM">0</OAFlowPerArea>
-<OAFlowPerPerson unit="LPerSec">0</OAFlowPerPerson>
-<DesignHeatT unit="C">0</DesignHeatT>
-<DesignCoolT unit="C">0</DesignCoolT>
-<TypeCode>0</TypeCode>
-<Name>Zone</Name>
-<CADObjectId>Unknown</CADObjectId>
-</Zone>
+<Material id="material-roof">
+<Name>Roof</Name>
+<R-value unit="SquareMeterKPerW">0.134</R-value>
+<Thickness>0.05</Thickness>
+<Conductivity unit="WPerMeterK">0.187</Conductivity>
+<Density unit="KgPerCubicM">290</Density>
+<SpecificHeat unit="JPerKgK">14423.639958391</SpecificHeat>
+</Material>
 
+<Material id="material-slab-on-grade">
+<Name>Slab on Grade</Name>
+<R-value unit="SquareMeterKPerW">0.134</R-value>
+<Thickness>0.05</Thickness>
+<Conductivity unit="WPerMeterK">0.187</Conductivity>
+<Density unit="KgPerCubicM">290</Density>
+<SpecificHeat unit="JPerKgK">14423.639958391</SpecificHeat>
+</Material>
+
+<Material id="material-underground-slab">
+<Name>Underground Slab</Name>
+<R-value unit="SquareMeterKPerW">0.134</R-value>
+<Thickness>0.05</Thickness>
+<Conductivity unit="WPerMeterK">0.187</Conductivity>
+<Density unit="KgPerCubicM">290</Density>
+<SpecificHeat unit="JPerKgK">14423.639958391</SpecificHeat>
+</Material>
+
+<Material id="material-underground-wall">
+<Name>Underground Wall</Name>
+<R-value unit="SquareMeterKPerW">0.134</R-value>
+<Thickness>0.05</Thickness>
+<Conductivity unit="WPerMeterK">0.187</Conductivity>
+<Density unit="KgPerCubicM">290</Density>
+<SpecificHeat unit="JPerKgK">14423.639958391</SpecificHeat>
+</Material>
+
+
+
+<WindowType id="FixedWindow">
+<Name>WinInst : SIM_EXT_GLZ</Name>
+<Description>Standard Dbl Glazed</Description>
+<U-value unit="WPerSquareMeterK">0</U-value>
+<SolarHeatGainCoeff unit="Fraction">0</SolarHeatGainCoeff>
+<Transmittance type="Visible" unit="Fraction" surfaceType="Both">0</Transmittance>
+<Glaze id="glaze-e0a05">
+  <Name />
+  <Description>Standard Dbl Glazed</Description>
+  <Thickness unit="Meters">0</Thickness>
+  <Conductivity unit="WPerMeterK">0</Conductivity>
+  <Transmittance type="Solar" unit="Fraction" surfaceType="Both">0</Transmittance>
+  <Reflectance type="ExtSolar" unit="Fraction" surfaceType="Both">0</Reflectance>
+  <Reflectance type="IntSolar" unit="Fraction" surfaceType="Both">0</Reflectance>
+  <Transmittance type="Visible" unit="Fraction" surfaceType="Both">0</Transmittance>
+  <Reflectance type="ExtVisible" unit="Fraction" surfaceType="Both">0</Reflectance>
+  <Reflectance type="IntVisible" unit="Fraction" surfaceType="Both">0</Reflectance>
+  <Emittance type="ExtIR" unit="Fraction" surfaceType="Both">0</Emittance>
+  <Emittance type="IntIR" unit="Fraction" surfaceType="Both">0</Emittance>
+</Glaze>
+<Gap id="GapIdentificationbbbec" gas="Argon">
+  <Name>Glazing</Name>
+  <Description>Standard Dbl Glazed</Description>
+  <Thickness unit="Meters">0</Thickness>
+  <Conductivity unit="WPerMeterK">0</Conductivity>
+</Gap>
+<Glaze id="GlazingIdentification423ab">
+  <Name>Glazing</Name>
+  <Description>Standard Dbl Glazed</Description>
+  <Thickness unit="Meters">0</Thickness>
+  <Conductivity unit="WPerMeterK">0</Conductivity>
+  <Transmittance type="Visible" unit="Fraction" surfaceType="Both">0</Transmittance>
+  <Reflectance type="ExtIR" unit="Fraction" surfaceType="Both">0</Reflectance>
+  <Transmittance type="Visible" unit="Fraction" surfaceType="Both">0</Transmittance>
+  <Reflectance type="ExtIR" unit="Fraction" surfaceType="Both">0</Reflectance>
+  <Emittance type="ExtIR" unit="Fraction" surfaceType="Both">0</Emittance>
+</Glaze>
+</WindowType>
 
 <WindowType id="OperableWindow">
 <Name>WinInst : SIM_EXT_GLZ</Name>
@@ -454,148 +482,3 @@ constructions2 =
 </WindowType>
 
 `;
-
-/////////////////////////////////////////////////////
-
-constructions =
-
-`
-
-<Construction id="Ceiling">
-	<Absorptance unit="Fraction" type="ExtIR">0</Absorptance>
-	<LayerId layerIdRef="layerCeiling" />
-	<Name>Ceiling</Name>
-	<Roughness value="Rough" />
-	<U-value unit="WPerSquareMeterK">0.999999</U-value>
-</Construction>
-
-<Construction id="ExteriorWall">
-	<Absorptance unit="Fraction" type="ExtIR">0</Absorptance>
-	<LayerId layerIdRef="layer" />
-	<Name>Exterior Wall</Name>
-	<Roughness value="Rough" />
-	<U-value unit="WPerSquareMeterK">0.999999</U-value>
-</Construction>
-
-
-<Construction id="InteriorWall">
-	<Absorptance unit="Fraction" type="ExtIR">0</Absorptance>
-	<LayerId layerIdRef="layer" />
-	<Name>Interior Wall</Name>
-	<Roughness value="Rough" />
-	<U-value unit="WPerSquareMeterK">0.999999</U-value>
-</Construction>
-
-<Construction id="RaisedFloor">
-	<Absorptance unit="Fraction" type="ExtIR">0</Absorptance>
-	<LayerId layerIdRef="layer" />
-	<Name>Raised Floor</Name>
-	<Roughness value="Rough" />
-	<U-value unit="WPerSquareMeterK">0.999999</U-value>
-</Construction>
-
-<Construction id="Roof">
-	<Absorptance unit="Fraction" type="ExtIR">0</Absorptance>
-	<LayerId layerIdRef="layer" />
-	<Name>Roof</Name>
-	<Roughness value="Rough" />
-	<U-value unit="WPerSquareMeterK">0.999999</U-value>
-</Construction>
-
-<Construction id="Shade">
-	<Absorptance unit="Fraction" type="ExtIR">0</Absorptance>
-	<LayerId layerIdRef="layer" />
-	<Name>Shade</Name>
-	<Roughness value="Rough" />
-	<U-value unit="WPerSquareMeterK">0.999999</U-value>
-</Construction>
-
-<Construction id="SlabOnGrade">
-	<Absorptance unit="Fraction" type="ExtIR">0</Absorptance>
-	<LayerId layerIdRef="layer" />
-	<Name>Slab on Grade</Name>
-	<Roughness value="Rough" />
-	<U-value unit="WPerSquareMeterK">0.999999</U-value>
-</Construction>
-
-<Construction id="UndergroundSlab">
-	<Absorptance unit="Fraction" type="ExtIR">0</Absorptance>
-	<LayerId layerIdRef="layer" />
-	<Name>Underground Slab</Name>
-	<Roughness value="Rough" />
-	<U-value unit="WPerSquareMeterK">0.999999</U-value>
-</Construction>
-
-<Construction id="UndergroundWall">
-	<Absorptance unit="Fraction" type="ExtIR">0</Absorptance>
-	<LayerId layerIdRef="layer" />
-	<Name>Underground Wall</Name>
-	<Roughness value="Rough" />
-	<U-value unit="WPerSquareMeterK">0.999999</U-value>
-</Construction>
-
-
-<Construction id="FixedWindow">
-	<Absorptance unit="Fraction" type="ExtIR">0</Absorptance>
-	<LayerId layerIdRef="layer" />
-	<Name>Fixed Window</Name>
-	<Roughness value="Rough" />
-	<U-value unit="WPerSquareMeterK">0.999999</U-value>
-</Construction>
-
-<Construction id="FixedSkylight">
-	<Absorptance unit="Fraction" type="ExtIR">0</Absorptance>
-	<LayerId layerIdRef="layer" />
-	<Name>Fixed Skylight</Name>
-	<Roughness value="Rough" />
-	<U-value unit="WPerSquareMeterK">0.999999</U-value>
-</Construction>
-
-<Construction id="Operable Window">
-	<Absorptance unit="Fraction" type="ExtIR">0</Absorptance>
-	<LayerId layerIdRef="layer" />
-	<Name>Operable Window</Name>
-	<Roughness value="Rough" />
-	<U-value unit="WPerSquareMeterK">0.999999</U-value>
-</Construction>
-
-<Construction id="OperableSkylight">
-	<Absorptance unit="Fraction" type="ExtIR">0</Absorptance>
-	<LayerId layerIdRef="layer" />
-	<Name>Operable Skylight</Name>
-	<Roughness value="Rough" />
-	<U-value unit="WPerSquareMeterK">0.999999</U-value>
-</Construction>
-
-<Construction id="NonSlidingDoor">
-	<Absorptance unit="Fraction" type="ExtIR">0</Absorptance>
-	<LayerId layerIdRef="layer" />
-	<Name>Non Sliding Door</Name>
-	<Roughness value="Rough" />
-	<U-value unit="WPerSquareMeterK">0.999999</U-value>
-</Construction>
-
-<Construction id="SlidingDoor">
-	<Absorptance unit="Fraction" type="ExtIR">0</Absorptance>
-	<LayerId layerIdRef="layer" />
-	<Name>Sliding Door</Name>
-	<Roughness value="Rough" />
-	<U-value unit="WPerSquareMeterK">0.999999</U-value>
-</Construction>
-
-
-<Layer id="layerCeiling">
-	<MaterialId materialIdRef="aim2309" />
-</Layer>
-
-<Layer id="layer">
-	<MaterialId materialIdRef="material" />
-</Layer>
-
-<Material id="material">
-<Name>No insulation</Name>
-<Description>No insulation</Description>
-<R-value unit="SquareMeterKPerW">0.00001</R-value>
-</Material>
-`
-

@@ -1,38 +1,29 @@
-Program Version,EnergyPlus, Version 9.1.0-08d2e308bb, YMD=2019.08.27 12:09,
+Program Version,EnergyPlus, Version 9.1.0-08d2e308bb, YMD=2019.08.29 00:36,
    ** Warning ** CheckEnvironmentSpecifications: SimulationControl specified doing design day simulations, but no design environments specified.
    **   ~~~   ** ...No design environment results produced. For these results, add appropriate SizingPeriod:* objects for your simulation.
-   ** Warning ** GetVertices: Floor is not oriented correctly! Tilt angle=[153.6], should be near 180, Surface="B-03_101-E-F-346", in Zone="DEFAULT".
-   ** Warning ** GetVertices: Floor is not oriented correctly! Tilt angle=[153.8], should be near 180, Surface="B-03_101-E-F-347", in Zone="DEFAULT".
-   ** Warning ** GetVertices: Floor is not oriented correctly! Tilt angle=[153.6], should be near 180, Surface="B-03_102-E-F-364", in Zone="DEFAULT".
-   ** Warning ** GetVertices: Floor is not oriented correctly! Tilt angle=[153.8], should be near 180, Surface="B-03_102-E-F-366", in Zone="DEFAULT".
-   ** Warning ** GetVertices: Roof/Ceiling is upside down! Tilt angle=[130.9], should be near 0, Surface="T-03_100-E-R-323", in Zone="DEFAULT".
-   **   ~~~   ** Automatic fix is attempted.
-   ** Warning ** GetVertices: Roof/Ceiling is upside down! Tilt angle=[130.9], should be near 0, Surface="T-03_100-E-R-333", in Zone="DEFAULT".
-   **   ~~~   ** Automatic fix is attempted.
+   ** Warning ** GetHTSurfaceData: Surfaces with interface to Ground found but no "Ground Temperatures" were input.
+   **   ~~~   ** Found first in surface=B-B1_001-E-F-415
+   **   ~~~   ** Defaults, constant throughout the year of (18.0) will be used.
    ** Warning ** GetSurfaceData: Entered Zone Floor Areas differ from calculated Zone Floor Area(s).
    **   ~~~   ** ...use Output:Diagnostics,DisplayExtraWarnings; to show more details on individual zones.
-   ** Warning ** GetSurfaceData: There are 5 coincident/collinear vertices; These have been deleted unless the deletion would bring the number of surface sides < 3.
+   ** Warning ** CalcSurfaceCentroid: 4 Surfaces have the Z coordinate < 0.
+   **   ~~~   ** ...in any calculations, Wind Speed will be 0.0 for these surfaces.
+   **   ~~~   ** ...in any calculations, Outside temperatures will be the outside temperature + 9.750E-003 for these surfaces.
+   **   ~~~   ** ...that is, these surfaces will have conditions as though at ground level.
+   ** Warning ** GetSurfaceData: There are 1 coincident/collinear vertices; These have been deleted unless the deletion would bring the number of surface sides < 3.
    **   ~~~   ** For explicit details on each problem surface, use Output:Diagnostics,DisplayExtraWarnings;
-   ** Warning ** ProcessSurfaceVertices: Possible non-planar surface:"X-S-501", Max "out of line"=3.00212E-004 at Vertex # 3
-   ** Warning ** ProcessSurfaceVertices: Possible non-planar surface:"X-S-503", Max "out of line"=1.30861E-003 at Vertex # 5
-   ** Warning ** ProcessSurfaceVertices: Possible non-planar surface:"X-S-505", Max "out of line"=9.93141E-004 at Vertex # 1
-   ** Warning ** ProcessSurfaceVertices: Possible non-planar surface:"X-S-507", Max "out of line"=9.84975E-004 at Vertex # 4
-   ** Warning ** ProcessSurfaceVertices: Possible non-planar surface:"X-S-509", Max "out of line"=7.41214E-004 at Vertex # 3
-   ** Warning ** ProcessSurfaceVertices: Possible non-planar surface:"X-S-524", Max "out of line"=1.50354E-004 at Vertex # 2
-   ** Warning ** ProcessSurfaceVertices: Possible non-planar surface:"X-S-527", Max "out of line"=1.29542E-004 at Vertex # 4
-   ** Warning ** ProcessSurfaceVertices: Possible non-planar surface:"E-03_102-E-W-369", Max "out of line"=2.00435E-003 at Vertex # 2
    ** Severe  ** For zone: DEFAULT it is not possible to calculate the volume from the surrounding surfaces so either provide the volume value or define all the surfaces to fully enclose the zone.
    ** Warning ** Indicated Zone Volume <= 0.0 for Zone=DEFAULT
    **   ~~~   ** The calculated Zone Volume was=0.00
    **   ~~~   ** The simulation will continue with the Zone Volume set to 10.0 m3. 
    **   ~~~   ** ...use Output:Diagnostics,DisplayExtraWarnings; to show more details on individual zones.
    ** Warning ** CalculateZoneVolume: 1 zone is not fully enclosed. For more details use:  Output:Diagnostics,DisplayExtrawarnings; 
-   ** Warning ** CheckUsedConstructions: There are 4 nominally unused constructions in input.
+   ** Warning ** CheckUsedConstructions: There are 3 nominally unused constructions in input.
    **   ~~~   ** For explicit details on each unused construction, use Output:Diagnostics,DisplayExtraWarnings;
-   ** Warning ** DetermineShadowingCombinations: There are 46 surfaces which are receiving surfaces and are non-convex.
+   ** Warning ** DetermineShadowingCombinations: There are 1 surfaces which are receiving surfaces and are non-convex.
    **   ~~~   ** ...Shadowing values may be inaccurate. Check .shd report file for more surface shading details
    **   ~~~   ** ...Add Output:Diagnostics,DisplayExtraWarnings; to see individual warnings for each surface.
-   ** Severe  ** DetermineShadowingCombinations: There are 39 surfaces which are casting surfaces and are non-convex.
+   ** Severe  ** DetermineShadowingCombinations: There are 5 surfaces which are casting surfaces and are non-convex.
    **   ~~~   ** ...Shadowing values may be inaccurate. Check .shd report file for more surface shading details
    **   ~~~   ** ...Add Output:Diagnostics,DisplayExtraWarnings; to see individual severes for each surface.
    ** Warning ** Output:Meter: invalid Key Name="ELECTRICITY:FACILITY" - not found.
@@ -74,23 +65,11 @@ Program Version,EnergyPlus, Version 9.1.0-08d2e308bb, YMD=2019.08.27 12:09,
    ************* Base Surface does not surround subsurface errors occuring...
    ************* Check that the GlobalGeometryRules object is expressing the proper starting corner and direction [CounterClockwise/Clockwise]
    *************
-   ** Warning ** Base surface does not surround subsurface (CHKSBS), Overlap Status=Partial-Overlap
-   **   ~~~   **   The base surround errors occurred 1 times.
-   **   ~~~   ** Surface "E-00_107-E-W-58" overlaps SubSurface "E-00_107-E-W-58-D-1"
-   ** Warning ** Base surface does not surround subsurface (CHKSBS), Overlap Status=Partial-Overlap
-   **   ~~~   **   The base surround errors occurred 1 times.
-   **   ~~~   ** Surface "N-02_104-E-W-268" overlaps SubSurface "N-02_104-E-W-268-D-1"
    ** Warning ** Base surface does not surround subsurface (CHKSBS), Overlap Status=No-Overlap
    **   ~~~   **   The base surround errors occurred 1 times.
-   **   ~~~   ** Surface "S-02_100-E-W-184" misses SubSurface "S-02_100-E-W-184-D-1"
-   ** Warning ** Base surface does not surround subsurface (CHKSBS), Overlap Status=No-Overlap
-   **   ~~~   **   The base surround errors occurred 1 times.
-   **   ~~~   ** Surface "W-00_106-E-W-46" misses SubSurface "W-00_106-E-W-46-D-1"
-   ** Warning ** Base surface does not surround subsurface (CHKSBS), Overlap Status=Partial-Overlap
-   **   ~~~   **   The base surround errors occurred 1 times.
-   **   ~~~   ** Surface "W-1B_101-E-W-175" overlaps SubSurface "W-1B_101-E-W-175-D-2"
+   **   ~~~   ** Surface "E-00_002-E-W-13" misses SubSurface "E-00_002-E-W-13-D-1"
    *************
-   **   ~~~   **   The base surround errors occurred 5 times (total).
+   **   ~~~   **   The base surround errors occurred 1 times (total).
    *************
    *************
    ************* ===== Final Error Summary =====
@@ -102,4 +81,4 @@ Program Version,EnergyPlus, Version 9.1.0-08d2e308bb, YMD=2019.08.27 12:09,
    *************
    ************* EnergyPlus Warmup Error Summary. During Warmup: 0 Warning; 0 Severe Errors.
    ************* EnergyPlus Sizing Error Summary. During Sizing: 0 Warning; 0 Severe Errors.
-   ************* EnergyPlus Completed Successfully-- 88 Warning; 40 Severe Errors; Elapsed Time=00hr 02min  8.64sec
+   ************* EnergyPlus Completed Successfully-- 23 Warning; 6 Severe Errors; Elapsed Time=00hr 03min  3.60sec
