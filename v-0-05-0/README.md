@@ -39,6 +39,14 @@ It can tale a while for results to appear with large files.
 
 <summary>Change Log</summary>
 
+
+### 2019-08-29 ~ Theo
+
+SGF Atrax v-0-05-03
+
+* B: Deletes mystery character that's first in file
+
+
 ### 2019-08-29 ~ Theo
 
 SGF Atrax v-0-05-02

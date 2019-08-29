@@ -37,7 +37,7 @@ FSB.getMenuFileSaveBasic = function( sourceContents, targetHelpFile ) {
 
 	const htm =
 	`
-	<details>
+	<details open>
 
 		<summary>Save data to file</summary>
 
@@ -74,8 +74,6 @@ FSB.getHelp = function() {
 		<p>${ "source code".link( FSB.urlSourceCode ) } - v${ FSB.version } - ${ FSB.date }</p>
 	`;
 
-
-
 	FSB.target.innerHTML = htm;
 
 	navDragMove.hidden = false;
@@ -85,7 +83,7 @@ FSB.getHelp = function() {
 
 FSB.butSaveFile = function( text ) {
 
-	//console.log( 'text', text );
+	console.log( 'text', text.slice( 0, 200 ) );
 
 	const blob = new Blob( [ text ] );
 	let a = document.body.appendChild( document.createElement( 'a' ) );

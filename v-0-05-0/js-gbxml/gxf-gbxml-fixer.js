@@ -8,12 +8,12 @@ var GXF = {
 	script: {
 
 		copyright: "Copyright 2019 Ladybug Tools authors",
-		date: "2019-08-27",
+		date: "2019-08-29",
 		description: "Parse gbXML surfaces",
 		helpFile: "../js-gbxml/gxf-gbxml-fixer.md",
 		license: "MIT License",
 		urlSourceCode: "../js-gbxml/gxf-gbxml-fixer.js",
-		version: "0.05.00-1gxfx"
+		version: "0.05.00-2gxfx"
 	}
 
 };
@@ -51,7 +51,11 @@ GXF.parseFile = function( gbxml )  {
 
 	if ( !gbxml || gbxml.includes( "xmlns" ) === false ) { return; }
 
-	console.log( '', gbxml.length );
+	console.log( 'bytes', gbxml.length );
+
+	gbxml = gbxml.charAt( 0 ) === "<" ? gbxml : gbxml.slice( 1 );
+
+	console.log( 'gbxml', gbxml.slice( 0, 200 ) );
 
 	GXF.gbxml = gbxml;
 
