@@ -17,7 +17,6 @@
 <link rel = "license" href = "https://opensource.org/licenses/MIT" >
 <link rel = "stylesheet" href = "https://pushme-pullyou.github.io/tootoo14/js-14-07/style.css" >
 
-
 </head>
 
 <body>
@@ -126,6 +125,8 @@
 
 	<main id="main" >
 
+		<div id=FOBdivMessages style="margin: 0 auto; max-width: 40rem;"></div>
+
 		<div id="divContents" style="height:90vh;overflow: auto;"></div>
 
 	</main>
@@ -231,7 +232,7 @@ function init() {
 
 	THM.init();
 
-	GXF.init(); // gets things going
+
 
 	MNUdivHeader.innerHTML = MNU.getNavHeader();
 
@@ -269,6 +270,8 @@ function init() {
 	if ( window.innerWidth < 640 || window.innerHeight < 640 ) { toggleNavPanel(); }
 
 	FSB.target = divDragMoveContent;
+
+	GXF.init(); // gets things going
 
 
 }

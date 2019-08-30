@@ -23,17 +23,13 @@ var GXF = {
 
 GXF.init = function( target ) {
 
-	//console.log( 'target', target );
-	//change to custom event with data passing via event details??
-
 	FOB.xhr.addEventListener( 'load', GXF.onXhrResponse, false );
 	FOB.reader.addEventListener( 'load', GXF.onReaderResult, false );
 	document.body.addEventListener( 'FOBonZipFileLoad', GXF.onFileZipLoad, false );
 	document.body.addEventListener( 'onZipFileParse', GXF.onFileZipLoad, false );
 
-	//document.body.addEventListener( 'onGbxParse', GXFU.onGbxParse, false );
 
-	//GXF.messageDiv = target || "";
+	FOBdet.open = true;
 
 };
 
@@ -46,10 +42,11 @@ GXF.onReaderResult = function() { GXF.parseFile( FOB.reader.result ); };
 GXF.onFileZipLoad = function() { GXF.parseFile( FOB.text ); };
 
 
-
 GXF.parseFile = function( gbxml )  {
 
 	if ( !gbxml || gbxml.includes( "xmlns" ) === false ) { return; }
+
+	divContents.innerHTML = `Working on ${ FOB.name }`;
 
 	console.log( 'bytes', gbxml.length );
 
@@ -58,7 +55,6 @@ GXF.parseFile = function( gbxml )  {
 	console.log( 'gbxml', gbxml.slice( 0, 200 ) );
 
 	GXF.gbxml = gbxml;
-
 	//console.log( 'gbxml', gbxml );
 
 	GXF.timeStart = performance.now();
@@ -128,8 +124,13 @@ GXF.parseFile = function( gbxml )  {
 
 	divContents.innerHTML =
 	`
-		<p>${ GXF.gbxml.length } bytes</p>
-		<p>Ready to save</p>
+		<h3>Construction data added</h3>
+
+		<p>${ GXF.gbxml.length.toLocaleString() } bytes processed</p>
+
+		<p>Ready to save. File menu » 'Save data to file' » Click 'Save file as XML' </p>
+
+		<p>Happy simulating!</p>
 	`;
 
 	FSB.sourceContents = GXF.gbxml;
@@ -144,186 +145,186 @@ const constructions =
 `
 
 <Construction id="Ceiling">
-<U-value unit="WPerSquareMeterK">0</U-value>
-<Absorptance unit="Fraction" type="ExtIR">0</Absorptance>
-<Roughness value="Rough" />
-<LayerId layerIdRef="layer-ceiling" />
-<Name>Ceiling</Name>
+	<U-value unit="WPerSquareMeterK">0</U-value>
+	<Absorptance unit="Fraction" type="ExtIR">0</Absorptance>
+	<Roughness value="Rough" />
+	<LayerId layerIdRef="layer-ceiling" />
+	<Name>Ceiling</Name>
 </Construction>
 
-<Construction id="ExteriorWall">
-<U-value unit="WPerSquareMeterK">0</U-value>
-<Absorptance unit="Fraction" type="ExtIR">0</Absorptance>
-<Roughness value="Rough" />
-<LayerId layerIdRef="layer-exterior-wall" />
-<Name>Exterior Wall</Name>
+	<Construction id="ExteriorWall">
+	<U-value unit="WPerSquareMeterK">0</U-value>
+	<Absorptance unit="Fraction" type="ExtIR">0</Absorptance>
+	<Roughness value="Rough" />
+	<LayerId layerIdRef="layer-exterior-wall" />
+	<Name>Exterior Wall</Name>
 </Construction>
 
 <Construction id="InteriorFloor">
-<U-value unit="WPerSquareMeterK">0</U-value>
-<Absorptance unit="Fraction" type="ExtIR">0</Absorptance>
-<Roughness value="Rough" />
-<LayerId layerIdRef="layer-interior-floor" />
-<Name>Interior Floor</Name>
+	<U-value unit="WPerSquareMeterK">0</U-value>
+	<Absorptance unit="Fraction" type="ExtIR">0</Absorptance>
+	<Roughness value="Rough" />
+	<LayerId layerIdRef="layer-interior-floor" />
+	<Name>Interior Floor</Name>
 </Construction>
 
 <Construction id="InteriorWall">
-<U-value unit="WPerSquareMeterK">0</U-value>
-<Absorptance unit="Fraction" type="ExtIR">0</Absorptance>
-<Roughness value="Rough" />
-<LayerId layerIdRef="layer-interior-wall" />
-<Name>Interior Wall</Name>
+	<U-value unit="WPerSquareMeterK">0</U-value>
+	<Absorptance unit="Fraction" type="ExtIR">0</Absorptance>
+	<Roughness value="Rough" />
+	<LayerId layerIdRef="layer-interior-wall" />
+	<Name>Interior Wall</Name>
 </Construction>
 
 <Construction id="RaisedFloor">
-<U-value unit="WPerSquareMeterK">0</U-value>
-<Absorptance unit="Fraction" type="ExtIR">0</Absorptance>
-<Roughness value="Rough" />
-<LayerId layerIdRef="layer-raised-floor" />
-<Name>Raised Floor</Name>
+	<U-value unit="WPerSquareMeterK">0</U-value>
+	<Absorptance unit="Fraction" type="ExtIR">0</Absorptance>
+	<Roughness value="Rough" />
+	<LayerId layerIdRef="layer-raised-floor" />
+	<Name>Raised Floor</Name>
 </Construction>
 
 <Construction id="Roof">
-<U-value unit="WPerSquareMeterK">0</U-value>
-<Absorptance unit="Fraction" type="ExtIR">0</Absorptance>
-<Roughness value="Rough" />
-<LayerId layerIdRef="layer-roof" />
-<Name>Roof</Name>
+	<U-value unit="WPerSquareMeterK">0</U-value>
+	<Absorptance unit="Fraction" type="ExtIR">0</Absorptance>
+	<Roughness value="Rough" />
+	<LayerId layerIdRef="layer-roof" />
+	<Name>Roof</Name>
 </Construction>
 
 <Construction id="SlabOnGrade">
-<U-value unit="WPerSquareMeterK">0</U-value>
-<Absorptance unit="Fraction" type="ExtIR">0</Absorptance>
-<Roughness value="Rough" />
-<LayerId layerIdRef="layer-slab-on-grade" />
-<Name>Slab on Grade</Name>
+	<U-value unit="WPerSquareMeterK">0</U-value>
+	<Absorptance unit="Fraction" type="ExtIR">0</Absorptance>
+	<Roughness value="Rough" />
+	<LayerId layerIdRef="layer-slab-on-grade" />
+	<Name>Slab on Grade</Name>
 </Construction>
 
 <Construction id="UndergroundSlab">
-<U-value unit="WPerSquareMeterK">0</U-value>
-<Absorptance unit="Fraction" type="ExtIR">0</Absorptance>
-<Roughness value="Rough" />
-<LayerId layerIdRef="layer-underground-slab" />
-<Name>Slab on Grade</Name>
+	<U-value unit="WPerSquareMeterK">0</U-value>
+	<Absorptance unit="Fraction" type="ExtIR">0</Absorptance>
+	<Roughness value="Rough" />
+	<LayerId layerIdRef="layer-underground-slab" />
+	<Name>Slab on Grade</Name>
 </Construction>
 
 <Construction id="UndergroundWall">
-<U-value unit="WPerSquareMeterK">0</U-value>
-<Absorptance unit="Fraction" type="ExtIR">0</Absorptance>
-<Roughness value="Rough" />
-<LayerId layerIdRef="layer-underground-wall" />
-<Name>Underground Wall</Name>
+	<U-value unit="WPerSquareMeterK">0</U-value>
+	<Absorptance unit="Fraction" type="ExtIR">0</Absorptance>
+	<Roughness value="Rough" />
+	<LayerId layerIdRef="layer-underground-wall" />
+	<Name>Underground Wall</Name>
 </Construction>
 
 
 <Layer id="layer-ceiling">
-<MaterialId materialIdRef="material-ceiling" />
+	<MaterialId materialIdRef="material-ceiling" />
 </Layer>
 <Layer id="layer-exterior-wall">
-<MaterialId materialIdRef="material-exterior-wall" />
+	<MaterialId materialIdRef="material-exterior-wall" />
 </Layer>
 <Layer id="layer-interior-floor">
-<MaterialId materialIdRef="material-interior-floor" />
+	<MaterialId materialIdRef="material-interior-floor" />
 </Layer>
 <Layer id="layer-interior-wall">
-<MaterialId materialIdRef="material-interior-wall" />
+	<MaterialId materialIdRef="material-interior-wall" />
 </Layer>
 <Layer id="layer-raised-floor">
-<MaterialId materialIdRef="material-raised-floor" />
+	<MaterialId materialIdRef="material-raised-floor" />
 </Layer>
 <Layer id="layer-roof">
-<MaterialId materialIdRef="material-roof" />
+	<MaterialId materialIdRef="material-roof" />
 </Layer>
 <Layer id="layer-slab-on-grade">
-<MaterialId materialIdRef="material-slab-on-grade" />
+	<MaterialId materialIdRef="material-slab-on-grade" />
 </Layer>
 <Layer id="layer-underground-slab">
-<MaterialId materialIdRef="material-underground-slab" />
+	<MaterialId materialIdRef="material-underground-slab" />
 </Layer>
 <Layer id="layer-underground-wall">
-<MaterialId materialIdRef="material-underground-wall" />
+<	MaterialId materialIdRef="material-underground-wall" />
 </Layer>
 
 
 <Material id="material-ceiling">
-<Name>Exterior Wall</Name>
-<R-value unit="SquareMeterKPerW">0.134</R-value>
-<Thickness>0.05</Thickness>
-<Conductivity unit="WPerMeterK">0.187</Conductivity>
-<Density unit="KgPerCubicM">290</Density>
-<SpecificHeat unit="JPerKgK">14423.639958391</SpecificHeat>
+	<Name>Exterior Wall</Name>
+	<R-value unit="SquareMeterKPerW">0.134</R-value>
+	<Thickness>0.05</Thickness>
+	<Conductivity unit="WPerMeterK">0.187</Conductivity>
+	<Density unit="KgPerCubicM">290</Density>
+	<SpecificHeat unit="JPerKgK">14423.639958391</SpecificHeat>
 </Material>
 
 <Material id="material-exterior-wall">
-<Name>Exterior Wall</Name>
-<R-value unit="SquareMeterKPerW">0.134</R-value>
-<Thickness>0.05</Thickness>
-<Conductivity unit="WPerMeterK">0.187</Conductivity>
-<Density unit="KgPerCubicM">290</Density>
-<SpecificHeat unit="JPerKgK">14423.639958391</SpecificHeat>
+	<Name>Exterior Wall</Name>
+	<R-value unit="SquareMeterKPerW">0.134</R-value>
+	<Thickness>0.05</Thickness>
+	<Conductivity unit="WPerMeterK">0.187</Conductivity>
+	<Density unit="KgPerCubicM">290</Density>
+	<SpecificHeat unit="JPerKgK">14423.639958391</SpecificHeat>
 </Material>
 
 <Material id="material-interior-floor">
-<Name>Interior Floor</Name>
-<R-value unit="SquareMeterKPerW">0.267</R-value>
-<Thickness>0.05</Thickness>
-<Conductivity unit="WPerMeterK">0.187</Conductivity>
-<Density unit="KgPerCubicM">290</Density>
-<SpecificHeat unit="JPerKgK">14423.639958391</SpecificHeat>
+	<Name>Interior Floor</Name>
+	<R-value unit="SquareMeterKPerW">0.267</R-value>
+	<Thickness>0.05</Thickness>
+	<Conductivity unit="WPerMeterK">0.187</Conductivity>
+	<Density unit="KgPerCubicM">290</Density>
+	<SpecificHeat unit="JPerKgK">14423.639958391</SpecificHeat>
 </Material>
 
 <Material id="material-interior-wall">
-<Name>Interior Wall</Name>
-<R-value unit="SquareMeterKPerW">0.267</R-value>
-<Thickness>0.05</Thickness>
-<Conductivity unit="WPerMeterK">0.187</Conductivity>
-<Density unit="KgPerCubicM">290</Density>
-<SpecificHeat unit="JPerKgK">14423.639958391</SpecificHeat>
+	<Name>Interior Wall</Name>
+	<R-value unit="SquareMeterKPerW">0.267</R-value>
+	<Thickness>0.05</Thickness>
+	<Conductivity unit="WPerMeterK">0.187</Conductivity>
+	<Density unit="KgPerCubicM">290</Density>
+	<SpecificHeat unit="JPerKgK">14423.639958391</SpecificHeat>
 </Material>
 
 <Material id="material-raised-floor">
-<Name>Raised Floor</Name>
-<R-value unit="SquareMeterKPerW">0.134</R-value>
-<Thickness>0.05</Thickness>
-<Conductivity unit="WPerMeterK">0.187</Conductivity>
-<Density unit="KgPerCubicM">290</Density>
-<SpecificHeat unit="JPerKgK">14423.639958391</SpecificHeat>
+	<Name>Raised Floor</Name>
+	<R-value unit="SquareMeterKPerW">0.134</R-value>
+	<Thickness>0.05</Thickness>
+	<Conductivity unit="WPerMeterK">0.187</Conductivity>
+	<Density unit="KgPerCubicM">290</Density>
+	<SpecificHeat unit="JPerKgK">14423.639958391</SpecificHeat>
 </Material>
 
 <Material id="material-roof">
-<Name>Roof</Name>
-<R-value unit="SquareMeterKPerW">0.134</R-value>
-<Thickness>0.05</Thickness>
-<Conductivity unit="WPerMeterK">0.187</Conductivity>
-<Density unit="KgPerCubicM">290</Density>
-<SpecificHeat unit="JPerKgK">14423.639958391</SpecificHeat>
+	<Name>Roof</Name>
+	<R-value unit="SquareMeterKPerW">0.134</R-value>
+	<Thickness>0.05</Thickness>
+	<Conductivity unit="WPerMeterK">0.187</Conductivity>
+	<Density unit="KgPerCubicM">290</Density>
+	<SpecificHeat unit="JPerKgK">14423.639958391</SpecificHeat>
 </Material>
 
 <Material id="material-slab-on-grade">
-<Name>Slab on Grade</Name>
-<R-value unit="SquareMeterKPerW">0.134</R-value>
-<Thickness>0.05</Thickness>
-<Conductivity unit="WPerMeterK">0.187</Conductivity>
-<Density unit="KgPerCubicM">290</Density>
-<SpecificHeat unit="JPerKgK">14423.639958391</SpecificHeat>
+	<Name>Slab on Grade</Name>
+	<R-value unit="SquareMeterKPerW">0.134</R-value>
+	<Thickness>0.05</Thickness>
+	<Conductivity unit="WPerMeterK">0.187</Conductivity>
+	<Density unit="KgPerCubicM">290</Density>
+	<SpecificHeat unit="JPerKgK">14423.639958391</SpecificHeat>
 </Material>
 
 <Material id="material-underground-slab">
-<Name>Underground Slab</Name>
-<R-value unit="SquareMeterKPerW">0.134</R-value>
-<Thickness>0.05</Thickness>
-<Conductivity unit="WPerMeterK">0.187</Conductivity>
-<Density unit="KgPerCubicM">290</Density>
-<SpecificHeat unit="JPerKgK">14423.639958391</SpecificHeat>
+	<Name>Underground Slab</Name>
+	<R-value unit="SquareMeterKPerW">0.134</R-value>
+	<Thickness>0.05</Thickness>
+	<Conductivity unit="WPerMeterK">0.187</Conductivity>
+	<Density unit="KgPerCubicM">290</Density>
+	<SpecificHeat unit="JPerKgK">14423.639958391</SpecificHeat>
 </Material>
 
 <Material id="material-underground-wall">
-<Name>Underground Wall</Name>
-<R-value unit="SquareMeterKPerW">0.134</R-value>
-<Thickness>0.05</Thickness>
-<Conductivity unit="WPerMeterK">0.187</Conductivity>
-<Density unit="KgPerCubicM">290</Density>
-<SpecificHeat unit="JPerKgK">14423.639958391</SpecificHeat>
+	<Name>Underground Wall</Name>
+	<R-value unit="SquareMeterKPerW">0.134</R-value>
+	<Thickness>0.05</Thickness>
+	<Conductivity unit="WPerMeterK">0.187</Conductivity>
+	<Density unit="KgPerCubicM">290</Density>
+	<SpecificHeat unit="JPerKgK">14423.639958391</SpecificHeat>
 </Material>
 
 
