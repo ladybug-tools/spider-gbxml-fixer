@@ -6,7 +6,7 @@
 
 1. Open a file using the left menu
 2. Wait
-3. Save fixed files using 'Save file as XML' in lefy menu
+3. Save fixed files using 'Save file as XML' in left menu
 
 </details>
 <details open>
