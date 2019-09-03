@@ -247,7 +247,7 @@ const constructions =
 
 
 <Material id="material-ceiling">
-	<Name>Exterior Wall</Name>
+	<Name>Ceiling</Name>
 	<R-value unit="SquareMeterKPerW">0.134</R-value>
 	<Thickness>0.05</Thickness>
 	<Conductivity unit="WPerMeterK">0.187</Conductivity>
@@ -336,7 +336,7 @@ const constructions =
 <SolarHeatGainCoeff unit="Fraction">0</SolarHeatGainCoeff>
 <Transmittance type="Visible" unit="Fraction" surfaceType="Both">0</Transmittance>
 <Glaze id="glaze-e0a05">
-  <Name />
+  <Name>Glazing</Name>
   <Description>Standard Dbl Glazed</Description>
   <Thickness unit="Meters">0</Thickness>
   <Conductivity unit="WPerMeterK">0</Conductivity>
@@ -375,7 +375,7 @@ const constructions =
 <SolarHeatGainCoeff unit="Fraction">0</SolarHeatGainCoeff>
 <Transmittance type="Visible" unit="Fraction" surfaceType="Both">0</Transmittance>
 <Glaze id="glaze-e0a05">
-  <Name />
+  <Name>Glazing</Name>
   <Description>Standard Dbl Glazed</Description>
   <Thickness unit="Meters">0</Thickness>
   <Conductivity unit="WPerMeterK">0</Conductivity>
@@ -415,7 +415,7 @@ const constructions =
 <SolarHeatGainCoeff unit="Fraction">0</SolarHeatGainCoeff>
 <Transmittance type="Visible" unit="Fraction" surfaceType="Both">0</Transmittance>
 <Glaze id="glaze-295cf">
-  <Name />
+  <Name>Glazing</Name>
   <Description>Standard Dbl Glazed</Description>
   <Thickness unit="Meters">0</Thickness>
   <Conductivity unit="WPerMeterK">0</Conductivity>
@@ -454,7 +454,7 @@ const constructions =
 <SolarHeatGainCoeff unit="Fraction">0</SolarHeatGainCoeff>
 <Transmittance type="Visible" unit="Fraction" surfaceType="Both">0</Transmittance>
 <Glaze id="glaze-83731">
-  <Name />
+  <Name>Glazing</Name>
   <Description>Standard Dbl Glazed</Description>
   <Thickness unit="Meters">0</Thickness>
   <Conductivity unit="WPerMeterK">0</Conductivity>

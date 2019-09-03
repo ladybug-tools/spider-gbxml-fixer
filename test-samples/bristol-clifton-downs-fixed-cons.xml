@@ -59686,7 +59686,8 @@
       </PlanarGeometry>
       <CADObjectId>Floor: SIM_INT_SLD_FLR FLR02 [925134]</CADObjectId>
       <Name>T-01_115-01_115-I-C-279</Name>
-    <AdjacentSpaceId xmlns="" spaceIdRef="aim2821"/></Surface>
+    <AdjacentSpaceId xmlns="" spaceIdRef="aim2821"/>
+	</Surface>
     <Surface surfaceType="InteriorWall" constructionIdRef="InteriorWall" id="aim9352">
       <AdjacentSpaceId spaceIdRef="aim2821"/>
       <AdjacentSpaceId spaceIdRef="aim2879"/>
@@ -73354,7 +73355,7 @@
       <CADObjectId>Basic Roof: SIM_EXT_SLD_Roof DA01 [929391]</CADObjectId>
       <Name>T-RF_103-E-R-498</Name>
     </Surface>
-    <Surface surfaceType="Shade" constructionIdRef="Shade" exposedToSun="true" id="aim13205">
+    <Surface surfaceType="Shade" exposedToSun="true" id="aim13205">
       <RectangularGeometry id="aim13206">
         <Azimuth>183.436431884766</Azimuth>
         <CartesianPoint>
@@ -73393,7 +73394,7 @@
       <CADObjectId>Basic Wall: SIM_MASS_SLD [943385]</CADObjectId>
       <Name>X-S-499</Name>
     </Surface>
-    <Surface surfaceType="Shade" constructionIdRef="Shade" exposedToSun="true" id="aim13215">
+    <Surface surfaceType="Shade" exposedToSun="true" id="aim13215">
       <RectangularGeometry id="aim13216">
         <Azimuth>268.529815673828</Azimuth>
         <CartesianPoint>
@@ -73432,7 +73433,7 @@
       <CADObjectId>Basic Wall: SIM_MASS_SLD [943386]</CADObjectId>
       <Name>X-S-500</Name>
     </Surface>
-    <Surface surfaceType="Shade" constructionIdRef="Shade" exposedToSun="true" id="aim13225">
+    <Surface surfaceType="Shade" exposedToSun="true" id="aim13225">
       <RectangularGeometry id="aim13226">
         <Azimuth>315.859252929688</Azimuth>
         <CartesianPoint>
@@ -73471,7 +73472,7 @@
       <CADObjectId>Basic Wall: SIM_MASS_SLD [943387]</CADObjectId>
       <Name>X-S-501</Name>
     </Surface>
-    <Surface surfaceType="Shade" constructionIdRef="Shade" exposedToSun="true" id="aim13235">
+    <Surface surfaceType="Shade" exposedToSun="true" id="aim13235">
       <RectangularGeometry id="aim13236">
         <Azimuth>93.4364318847656</Azimuth>
         <CartesianPoint>
@@ -73510,7 +73511,7 @@
       <CADObjectId>Basic Wall: SIM_MASS_SLD [943389]</CADObjectId>
       <Name>X-S-502</Name>
     </Surface>
-    <Surface surfaceType="Shade" constructionIdRef="Shade" exposedToSun="true" id="aim13245">
+    <Surface surfaceType="Shade" exposedToSun="true" id="aim13245">
       <RectangularGeometry id="aim13246">
         <Azimuth>183.436431884766</Azimuth>
         <CartesianPoint>
@@ -73549,7 +73550,7 @@
       <CADObjectId>Basic Wall: SIM_MASS_SLD [943390]</CADObjectId>
       <Name>X-S-503</Name>
     </Surface>
-    <Surface surfaceType="Shade" constructionIdRef="Shade" exposedToSun="true" id="aim13255">
+    <Surface surfaceType="Shade" exposedToSun="true" id="aim13255">
       <RectangularGeometry id="aim13256">
         <Azimuth>93.4364318847656</Azimuth>
         <CartesianPoint>
@@ -73588,7 +73589,7 @@
       <CADObjectId>Basic Wall: SIM_MASS_SLD [943391]</CADObjectId>
       <Name>X-S-504</Name>
     </Surface>
-    <Surface surfaceType="Shade" constructionIdRef="Shade" exposedToSun="true" id="aim13265">
+    <Surface surfaceType="Shade" exposedToSun="true" id="aim13265">
       <RectangularGeometry id="aim13266">
         <Azimuth>180</Azimuth>
         <CartesianPoint>
@@ -73662,7 +73663,7 @@
       <CADObjectId>Basic Roof: SIM_MASS_SLD_Roof [943411]</CADObjectId>
       <Name>X-S-505</Name>
     </Surface>
-    <Surface surfaceType="Shade" constructionIdRef="Shade" exposedToSun="true" id="aim13282">
+    <Surface surfaceType="Shade" exposedToSun="true" id="aim13282">
       <RectangularGeometry id="aim13283">
         <Azimuth>182.635437011719</Azimuth>
         <CartesianPoint>
@@ -73726,7 +73727,7 @@
       <CADObjectId>Basic Wall: SIM_MASS_SLD [947272]</CADObjectId>
       <Name>X-S-506</Name>
     </Surface>
-    <Surface surfaceType="Shade" constructionIdRef="Shade" exposedToSun="true" id="aim13297">
+    <Surface surfaceType="Shade" exposedToSun="true" id="aim13297">
       <RectangularGeometry id="aim13298">
         <Azimuth>272.635437011719</Azimuth>
         <CartesianPoint>
@@ -73765,7 +73766,7 @@
       <CADObjectId>Basic Wall: SIM_MASS_SLD [947291]</CADObjectId>
       <Name>X-S-507</Name>
     </Surface>
-    <Surface surfaceType="Shade" constructionIdRef="Shade" exposedToSun="true" id="aim13307">
+    <Surface surfaceType="Shade" exposedToSun="true" id="aim13307">
       <RectangularGeometry id="aim13308">
         <Azimuth>2.63543820381165</Azimuth>
         <CartesianPoint>
@@ -73829,7 +73830,7 @@
       <CADObjectId>Basic Wall: SIM_MASS_SLD [947292]</CADObjectId>
       <Name>X-S-508</Name>
     </Surface>
-    <Surface surfaceType="Shade" constructionIdRef="Shade" exposedToSun="true" id="aim13322">
+    <Surface surfaceType="Shade" exposedToSun="true" id="aim13322">
       <RectangularGeometry id="aim13323">
         <Azimuth>92.6354370117188</Azimuth>
         <CartesianPoint>
@@ -73868,7 +73869,7 @@
       <CADObjectId>Basic Wall: SIM_MASS_SLD [947311]</CADObjectId>
       <Name>X-S-509</Name>
     </Surface>
-    <Surface surfaceType="Shade" constructionIdRef="Shade" exposedToSun="true" id="aim13332">
+    <Surface surfaceType="Shade" exposedToSun="true" id="aim13332">
       <RectangularGeometry id="aim13333">
         <Azimuth>272.635437011719</Azimuth>
         <CartesianPoint>
@@ -73917,7 +73918,7 @@
       <CADObjectId>Basic Wall: SIM_MASS_SLD [947312]</CADObjectId>
       <Name>X-S-510</Name>
     </Surface>
-    <Surface surfaceType="Shade" constructionIdRef="Shade" exposedToSun="true" id="aim13344">
+    <Surface surfaceType="Shade" exposedToSun="true" id="aim13344">
       <RectangularGeometry id="aim13345">
         <Azimuth>92.6354370117188</Azimuth>
         <CartesianPoint>
@@ -73966,7 +73967,7 @@
       <CADObjectId>Basic Wall: SIM_MASS_SLD [947313]</CADObjectId>
       <Name>X-S-511</Name>
     </Surface>
-    <Surface surfaceType="Shade" constructionIdRef="Shade" exposedToSun="true" id="aim13356">
+    <Surface surfaceType="Shade" exposedToSun="true" id="aim13356">
       <RectangularGeometry id="aim13357">
         <Azimuth>180</Azimuth>
         <CartesianPoint>
@@ -74005,7 +74006,7 @@
       <CADObjectId>Basic Roof: SIM_MASS_SLD_Roof [947315]</CADObjectId>
       <Name>X-S-512</Name>
     </Surface>
-    <Surface surfaceType="Shade" constructionIdRef="Shade" exposedToSun="true" id="aim13366">
+    <Surface surfaceType="Shade" exposedToSun="true" id="aim13366">
       <RectangularGeometry id="aim13367">
         <Azimuth>180</Azimuth>
         <CartesianPoint>
@@ -74044,7 +74045,7 @@
       <CADObjectId>Basic Roof: SIM_MASS_SLD_Roof [947315]</CADObjectId>
       <Name>X-S-513</Name>
     </Surface>
-    <Surface surfaceType="Shade" constructionIdRef="Shade" exposedToSun="true" id="aim13376">
+    <Surface surfaceType="Shade" exposedToSun="true" id="aim13376">
       <RectangularGeometry id="aim13377">
         <Azimuth>272.635437011719</Azimuth>
         <CartesianPoint>
@@ -74083,7 +74084,7 @@
       <CADObjectId>Basic Roof: SIM_MASS_SLD_Roof [947315]</CADObjectId>
       <Name>X-S-514</Name>
     </Surface>
-    <Surface surfaceType="Shade" constructionIdRef="Shade" exposedToSun="true" id="aim13386">
+    <Surface surfaceType="Shade" exposedToSun="true" id="aim13386">
       <RectangularGeometry id="aim13387">
         <Azimuth>92.6354370117188</Azimuth>
         <CartesianPoint>
@@ -74122,7 +74123,7 @@
       <CADObjectId>Basic Roof: SIM_MASS_SLD_Roof [947315]</CADObjectId>
       <Name>X-S-515</Name>
     </Surface>
-    <Surface surfaceType="Shade" constructionIdRef="Shade" exposedToSun="true" id="aim13396">
+    <Surface surfaceType="Shade" exposedToSun="true" id="aim13396">
       <RectangularGeometry id="aim13397">
         <Azimuth>2.88491821289062</Azimuth>
         <CartesianPoint>
@@ -74161,7 +74162,7 @@
       <CADObjectId>Basic Wall: SIM_MASS_SLD [948795]</CADObjectId>
       <Name>X-S-516</Name>
     </Surface>
-    <Surface surfaceType="Shade" constructionIdRef="Shade" exposedToSun="true" id="aim13406">
+    <Surface surfaceType="Shade" exposedToSun="true" id="aim13406">
       <RectangularGeometry id="aim13407">
         <Azimuth>183.436431884766</Azimuth>
         <CartesianPoint>
@@ -74200,7 +74201,7 @@
       <CADObjectId>Basic Wall: SIM_MASS_SLD [959708]</CADObjectId>
       <Name>X-S-517</Name>
     </Surface>
-    <Surface surfaceType="Shade" constructionIdRef="Shade" exposedToSun="true" id="aim13416">
+    <Surface surfaceType="Shade" exposedToSun="true" id="aim13416">
       <RectangularGeometry id="aim13417">
         <Azimuth>183.436431884766</Azimuth>
         <CartesianPoint>
@@ -74239,7 +74240,7 @@
       <CADObjectId>Basic Wall: SIM_MASS_SLD [959709]</CADObjectId>
       <Name>X-S-518</Name>
     </Surface>
-    <Surface surfaceType="Shade" constructionIdRef="Shade" exposedToSun="true" id="aim13426">
+    <Surface surfaceType="Shade" exposedToSun="true" id="aim13426">
       <RectangularGeometry id="aim13427">
         <Azimuth>93.4364318847656</Azimuth>
         <CartesianPoint>
@@ -74278,7 +74279,7 @@
       <CADObjectId>Basic Wall: SIM_MASS_SLD [959710]</CADObjectId>
       <Name>X-S-519</Name>
     </Surface>
-    <Surface surfaceType="Shade" constructionIdRef="Shade" exposedToSun="true" id="aim13436">
+    <Surface surfaceType="Shade" exposedToSun="true" id="aim13436">
       <RectangularGeometry id="aim13437">
         <Azimuth>93.4364318847656</Azimuth>
         <CartesianPoint>
@@ -74317,7 +74318,7 @@
       <CADObjectId>Basic Wall: SIM_MASS_SLD [959711]</CADObjectId>
       <Name>X-S-520</Name>
     </Surface>
-    <Surface surfaceType="Shade" constructionIdRef="Shade" exposedToSun="true" id="aim13446">
+    <Surface surfaceType="Shade" exposedToSun="true" id="aim13446">
       <RectangularGeometry id="aim13447">
         <Azimuth>93.4364318847656</Azimuth>
         <CartesianPoint>
@@ -74356,7 +74357,7 @@
       <CADObjectId>Basic Wall: SIM_MASS_SLD [959712]</CADObjectId>
       <Name>X-S-521</Name>
     </Surface>
-    <Surface surfaceType="Shade" constructionIdRef="Shade" exposedToSun="true" id="aim13456">
+    <Surface surfaceType="Shade" exposedToSun="true" id="aim13456">
       <RectangularGeometry id="aim13457">
         <Azimuth>3.43643450737</Azimuth>
         <CartesianPoint>
@@ -74395,7 +74396,7 @@
       <CADObjectId>Basic Wall: SIM_MASS_SLD [959713]</CADObjectId>
       <Name>X-S-522</Name>
     </Surface>
-    <Surface surfaceType="Shade" constructionIdRef="Shade" exposedToSun="true" id="aim13466">
+    <Surface surfaceType="Shade" exposedToSun="true" id="aim13466">
       <RectangularGeometry id="aim13467">
         <Azimuth>93.4364318847656</Azimuth>
         <CartesianPoint>
@@ -74434,7 +74435,7 @@
       <CADObjectId>Basic Wall: SIM_MASS_SLD [959714]</CADObjectId>
       <Name>X-S-523</Name>
     </Surface>
-    <Surface surfaceType="Shade" constructionIdRef="Shade" exposedToSun="true" id="aim13476">
+    <Surface surfaceType="Shade" exposedToSun="true" id="aim13476">
       <RectangularGeometry id="aim13477">
         <Azimuth>93.4364318847656</Azimuth>
         <CartesianPoint>
@@ -74473,7 +74474,7 @@
       <CADObjectId>Basic Wall: SIM_MASS_SLD [959715]</CADObjectId>
       <Name>X-S-524</Name>
     </Surface>
-    <Surface surfaceType="Shade" constructionIdRef="Shade" exposedToSun="true" id="aim13486">
+    <Surface surfaceType="Shade" exposedToSun="true" id="aim13486">
       <RectangularGeometry id="aim13487">
         <Azimuth>183.436431884766</Azimuth>
         <CartesianPoint>
@@ -74532,7 +74533,7 @@
       <CADObjectId>Basic Wall: SIM_MASS_SLD [959730]</CADObjectId>
       <Name>X-S-525</Name>
     </Surface>
-    <Surface surfaceType="Shade" constructionIdRef="Shade" exposedToSun="true" id="aim13500">
+    <Surface surfaceType="Shade" exposedToSun="true" id="aim13500">
       <RectangularGeometry id="aim13501">
         <Azimuth>273.436431884766</Azimuth>
         <CartesianPoint>
@@ -74571,7 +74572,7 @@
       <CADObjectId>Basic Wall: SIM_MASS_SLD [959745]</CADObjectId>
       <Name>X-S-526</Name>
     </Surface>
-    <Surface surfaceType="Shade" constructionIdRef="Shade" exposedToSun="true" id="aim13510">
+    <Surface surfaceType="Shade" exposedToSun="true" id="aim13510">
       <RectangularGeometry id="aim13511">
         <Azimuth>273.436431884766</Azimuth>
         <CartesianPoint>
@@ -74610,7 +74611,7 @@
       <CADObjectId>Basic Wall: SIM_MASS_SLD [959746]</CADObjectId>
       <Name>X-S-527</Name>
     </Surface>
-    <Surface surfaceType="Shade" constructionIdRef="Shade" exposedToSun="true" id="aim13520">
+    <Surface surfaceType="Shade" exposedToSun="true" id="aim13520">
       <RectangularGeometry id="aim13521">
         <Azimuth>273.436431884766</Azimuth>
         <CartesianPoint>
@@ -74659,7 +74660,7 @@
       <CADObjectId>Basic Wall: SIM_MASS_SLD [959747]</CADObjectId>
       <Name>X-S-528</Name>
     </Surface>
-    <Surface surfaceType="Shade" constructionIdRef="Shade" exposedToSun="true" id="aim13532">
+    <Surface surfaceType="Shade" exposedToSun="true" id="aim13532">
       <RectangularGeometry id="aim13533">
         <Azimuth>3.43643450737</Azimuth>
         <CartesianPoint>
@@ -74698,7 +74699,7 @@
       <CADObjectId>Basic Wall: SIM_MASS_SLD [959748]</CADObjectId>
       <Name>X-S-529</Name>
     </Surface>
-    <Surface surfaceType="Shade" constructionIdRef="Shade" exposedToSun="true" id="aim13542">
+    <Surface surfaceType="Shade" exposedToSun="true" id="aim13542">
       <RectangularGeometry id="aim13543">
         <Azimuth>273.436431884766</Azimuth>
         <CartesianPoint>
@@ -74737,7 +74738,7 @@
       <CADObjectId>Basic Wall: SIM_MASS_SLD [959749]</CADObjectId>
       <Name>X-S-530</Name>
     </Surface>
-    <Surface surfaceType="Shade" constructionIdRef="Shade" exposedToSun="true" id="aim13552">
+    <Surface surfaceType="Shade" exposedToSun="true" id="aim13552">
       <RectangularGeometry id="aim13553">
         <Azimuth>273.436431884766</Azimuth>
         <CartesianPoint>
@@ -74796,7 +74797,7 @@
       <CADObjectId>Basic Wall: SIM_MASS_SLD [959750]</CADObjectId>
       <Name>X-S-531</Name>
     </Surface>
-    <Surface surfaceType="Shade" constructionIdRef="Shade" exposedToSun="true" id="aim13566">
+    <Surface surfaceType="Shade" exposedToSun="true" id="aim13566">
       <RectangularGeometry id="aim13567">
         <Azimuth>273.436431884766</Azimuth>
         <CartesianPoint>
@@ -74835,7 +74836,7 @@
       <CADObjectId>Basic Wall: SIM_MASS_SLD [959765]</CADObjectId>
       <Name>X-S-532</Name>
     </Surface>
-    <Surface surfaceType="Shade" constructionIdRef="Shade" exposedToSun="true" id="aim13576">
+    <Surface surfaceType="Shade" exposedToSun="true" id="aim13576">
       <RectangularGeometry id="aim13577">
         <Azimuth>273.436431884766</Azimuth>
         <CartesianPoint>
@@ -74874,7 +74875,7 @@
       <CADObjectId>Basic Wall: SIM_MASS_SLD [959779]</CADObjectId>
       <Name>X-S-533</Name>
     </Surface>
-    <Surface surfaceType="Shade" constructionIdRef="Shade" exposedToSun="true" id="aim13586">
+    <Surface surfaceType="Shade" exposedToSun="true" id="aim13586">
       <RectangularGeometry id="aim13587">
         <Azimuth>3.43643450737</Azimuth>
         <CartesianPoint>
@@ -74913,7 +74914,7 @@
       <CADObjectId>Basic Wall: SIM_MASS_SLD [959780]</CADObjectId>
       <Name>X-S-534</Name>
     </Surface>
-    <Surface surfaceType="Shade" constructionIdRef="Shade" exposedToSun="true" id="aim13596">
+    <Surface surfaceType="Shade" exposedToSun="true" id="aim13596">
       <RectangularGeometry id="aim13597">
         <Azimuth>3.43643450737</Azimuth>
         <CartesianPoint>
@@ -74952,7 +74953,7 @@
       <CADObjectId>Basic Wall: SIM_MASS_SLD [959781]</CADObjectId>
       <Name>X-S-535</Name>
     </Surface>
-    <Surface surfaceType="Shade" constructionIdRef="Shade" exposedToSun="true" id="aim13606">
+    <Surface surfaceType="Shade" exposedToSun="true" id="aim13606">
       <RectangularGeometry id="aim13607">
         <Azimuth>3.43643450737</Azimuth>
         <CartesianPoint>
@@ -74991,7 +74992,7 @@
       <CADObjectId>Basic Wall: SIM_MASS_SLD [959782]</CADObjectId>
       <Name>X-S-536</Name>
     </Surface>
-    <Surface surfaceType="Shade" constructionIdRef="Shade" exposedToSun="true" id="aim13616">
+    <Surface surfaceType="Shade" exposedToSun="true" id="aim13616">
       <RectangularGeometry id="aim13617">
         <Azimuth>93.4364318847656</Azimuth>
         <CartesianPoint>
@@ -75030,7 +75031,7 @@
       <CADObjectId>Basic Wall: SIM_MASS_SLD [959783]</CADObjectId>
       <Name>X-S-537</Name>
     </Surface>
-    <Surface surfaceType="Shade" constructionIdRef="Shade" exposedToSun="true" id="aim13626">
+    <Surface surfaceType="Shade" exposedToSun="true" id="aim13626">
       <RectangularGeometry id="aim13627">
         <Azimuth>183.436431884766</Azimuth>
         <CartesianPoint>
@@ -75069,7 +75070,7 @@
       <CADObjectId>Basic Wall: SIM_MASS_SLD [959784]</CADObjectId>
       <Name>X-S-538</Name>
     </Surface>
-    <Surface surfaceType="Shade" constructionIdRef="Shade" exposedToSun="true" id="aim13636">
+    <Surface surfaceType="Shade" exposedToSun="true" id="aim13636">
       <RectangularGeometry id="aim13637">
         <Azimuth>93.4364318847656</Azimuth>
         <CartesianPoint>
@@ -75108,7 +75109,7 @@
       <CADObjectId>Basic Wall: SIM_MASS_SLD [959798]</CADObjectId>
       <Name>X-S-539</Name>
     </Surface>
-    <Surface surfaceType="Shade" constructionIdRef="Shade" exposedToSun="true" id="aim13646">
+    <Surface surfaceType="Shade" exposedToSun="true" id="aim13646">
       <RectangularGeometry id="aim13647">
         <Azimuth>183.436431884766</Azimuth>
         <CartesianPoint>
@@ -75147,7 +75148,7 @@
       <CADObjectId>Basic Wall: SIM_MASS_SLD [959799]</CADObjectId>
       <Name>X-S-540</Name>
     </Surface>
-    <Surface surfaceType="Shade" constructionIdRef="Shade" exposedToSun="true" id="aim13656">
+    <Surface surfaceType="Shade" exposedToSun="true" id="aim13656">
       <RectangularGeometry id="aim13657">
         <Azimuth>183.436431884766</Azimuth>
         <CartesianPoint>
@@ -75181,7 +75182,7 @@
       <CADObjectId>Basic Roof: SIM_MASS_SLD_Roof [959810]</CADObjectId>
       <Name>X-S-541</Name>
     </Surface>
-    <Surface surfaceType="Shade" constructionIdRef="Shade" exposedToSun="true" id="aim13665">
+    <Surface surfaceType="Shade" exposedToSun="true" id="aim13665">
       <RectangularGeometry id="aim13666">
         <Azimuth>273.436431884766</Azimuth>
         <CartesianPoint>
@@ -75220,7 +75221,7 @@
       <CADObjectId>Basic Roof: SIM_MASS_SLD_Roof [959811]</CADObjectId>
       <Name>X-S-542</Name>
     </Surface>
-    <Surface surfaceType="Shade" constructionIdRef="Shade" exposedToSun="true" id="aim13675">
+    <Surface surfaceType="Shade" exposedToSun="true" id="aim13675">
       <RectangularGeometry id="aim13676">
         <Azimuth>273.436431884766</Azimuth>
         <CartesianPoint>
@@ -75254,7 +75255,7 @@
       <CADObjectId>Basic Roof: SIM_MASS_SLD_Roof [959812]</CADObjectId>
       <Name>X-S-543</Name>
     </Surface>
-    <Surface surfaceType="Shade" constructionIdRef="Shade" exposedToSun="true" id="aim13684">
+    <Surface surfaceType="Shade" exposedToSun="true" id="aim13684">
       <RectangularGeometry id="aim13685">
         <Azimuth>93.4364318847656</Azimuth>
         <CartesianPoint>
@@ -75288,7 +75289,7 @@
       <CADObjectId>Basic Roof: SIM_MASS_SLD_Roof [959813]</CADObjectId>
       <Name>X-S-544</Name>
     </Surface>
-    <Surface surfaceType="Shade" constructionIdRef="Shade" exposedToSun="true" id="aim13693">
+    <Surface surfaceType="Shade" exposedToSun="true" id="aim13693">
       <RectangularGeometry id="aim13694">
         <Azimuth>93.4364318847656</Azimuth>
         <CartesianPoint>
@@ -75327,7 +75328,7 @@
       <CADObjectId>Basic Roof: SIM_MASS_SLD_Roof [959814]</CADObjectId>
       <Name>X-S-545</Name>
     </Surface>
-    <Surface surfaceType="Shade" constructionIdRef="Shade" exposedToSun="true" id="aim13703">
+    <Surface surfaceType="Shade" exposedToSun="true" id="aim13703">
       <RectangularGeometry id="aim13704">
         <Azimuth>93.4364318847656</Azimuth>
         <CartesianPoint>
@@ -75361,7 +75362,7 @@
       <CADObjectId>Basic Roof: SIM_MASS_SLD_Roof [959815]</CADObjectId>
       <Name>X-S-546</Name>
     </Surface>
-    <Surface surfaceType="Shade" constructionIdRef="Shade" exposedToSun="true" id="aim13712">
+    <Surface surfaceType="Shade" exposedToSun="true" id="aim13712">
       <RectangularGeometry id="aim13713">
         <Azimuth>273.436431884766</Azimuth>
         <CartesianPoint>
@@ -75400,7 +75401,7 @@
       <CADObjectId>Basic Roof: SIM_MASS_SLD_Roof [959815]</CADObjectId>
       <Name>X-S-547</Name>
     </Surface>
-    <Surface surfaceType="Shade" constructionIdRef="Shade" exposedToSun="true" id="aim13722">
+    <Surface surfaceType="Shade" exposedToSun="true" id="aim13722">
       <RectangularGeometry id="aim13723">
         <Azimuth>93.4364318847656</Azimuth>
         <CartesianPoint>
@@ -75439,7 +75440,7 @@
       <CADObjectId>Basic Roof: SIM_MASS_SLD_Roof [959815]</CADObjectId>
       <Name>X-S-548</Name>
     </Surface>
-    <Surface surfaceType="Shade" constructionIdRef="Shade" exposedToSun="true" id="aim13732">
+    <Surface surfaceType="Shade" exposedToSun="true" id="aim13732">
       <RectangularGeometry id="aim13733">
         <Azimuth>93.4364318847656</Azimuth>
         <CartesianPoint>
@@ -75473,7 +75474,7 @@
       <CADObjectId>Basic Roof: SIM_MASS_SLD_Roof [959816]</CADObjectId>
       <Name>X-S-549</Name>
     </Surface>
-    <Surface surfaceType="Shade" constructionIdRef="Shade" exposedToSun="true" id="aim13741">
+    <Surface surfaceType="Shade" exposedToSun="true" id="aim13741">
       <RectangularGeometry id="aim13742">
         <Azimuth>275.157775878906</Azimuth>
         <CartesianPoint>
@@ -75507,7 +75508,7 @@
       <CADObjectId>Basic Roof: SIM_MASS_SLD_Roof [959817]</CADObjectId>
       <Name>X-S-550</Name>
     </Surface>
-    <Surface surfaceType="Shade" constructionIdRef="Shade" exposedToSun="true" id="aim13750">
+    <Surface surfaceType="Shade" exposedToSun="true" id="aim13750">
       <RectangularGeometry id="aim13751">
         <Azimuth>43.8868103027344</Azimuth>
         <CartesianPoint>
@@ -75541,7 +75542,7 @@
       <CADObjectId>Basic Roof: SIM_MASS_SLD_Roof [959817]</CADObjectId>
       <Name>X-S-551</Name>
     </Surface>
-    <Surface surfaceType="Shade" constructionIdRef="Shade" exposedToSun="true" id="aim13759">
+    <Surface surfaceType="Shade" exposedToSun="true" id="aim13759">
       <RectangularGeometry id="aim13760">
         <Azimuth>3.43643450737</Azimuth>
         <CartesianPoint>
@@ -75575,7 +75576,7 @@
       <CADObjectId>Basic Roof: SIM_MASS_SLD_Roof [959817]</CADObjectId>
       <Name>X-S-552</Name>
     </Surface>
-    <Surface surfaceType="Shade" constructionIdRef="Shade" exposedToSun="true" id="aim13768">
+    <Surface surfaceType="Shade" exposedToSun="true" id="aim13768">
       <RectangularGeometry id="aim13769">
         <Azimuth>93.4364318847656</Azimuth>
         <CartesianPoint>
@@ -75609,7 +75610,7 @@
       <CADObjectId>Basic Roof: SIM_MASS_SLD_Roof [959817]</CADObjectId>
       <Name>X-S-553</Name>
     </Surface>
-    <Surface surfaceType="Shade" constructionIdRef="Shade" exposedToSun="true" id="aim13777">
+    <Surface surfaceType="Shade" exposedToSun="true" id="aim13777">
       <RectangularGeometry id="aim13778">
         <Azimuth>3.43643450737</Azimuth>
         <CartesianPoint>
@@ -75643,7 +75644,7 @@
       <CADObjectId>Basic Roof: SIM_MASS_SLD_Roof [959818]</CADObjectId>
       <Name>X-S-554</Name>
     </Surface>
-    <Surface surfaceType="Shade" constructionIdRef="Shade" exposedToSun="true" id="aim13786">
+    <Surface surfaceType="Shade" exposedToSun="true" id="aim13786">
       <RectangularGeometry id="aim13787">
         <Azimuth>182.250457763672</Azimuth>
         <CartesianPoint>
@@ -75677,7 +75678,7 @@
       <CADObjectId>Basic Roof: SIM_MASS_SLD_Roof [959818]</CADObjectId>
       <Name>X-S-555</Name>
     </Surface>
-    <Surface surfaceType="Shade" constructionIdRef="Shade" exposedToSun="true" id="aim13795">
+    <Surface surfaceType="Shade" exposedToSun="true" id="aim13795">
       <RectangularGeometry id="aim13796">
         <Azimuth>273.436431884766</Azimuth>
         <CartesianPoint>
@@ -75711,7 +75712,7 @@
       <CADObjectId>Basic Roof: SIM_MASS_SLD_Roof [959818]</CADObjectId>
       <Name>X-S-556</Name>
     </Surface>
-    <Surface surfaceType="Shade" constructionIdRef="Shade" exposedToSun="true" id="aim13804">
+    <Surface surfaceType="Shade" exposedToSun="true" id="aim13804">
       <RectangularGeometry id="aim13805">
         <Azimuth>3.43643450737</Azimuth>
         <CartesianPoint>
@@ -75750,7 +75751,7 @@
       <CADObjectId>Basic Roof: SIM_MASS_SLD_Roof [959819]</CADObjectId>
       <Name>X-S-557</Name>
     </Surface>
-    <Surface surfaceType="Shade" constructionIdRef="Shade" exposedToSun="true" id="aim13814">
+    <Surface surfaceType="Shade" exposedToSun="true" id="aim13814">
       <RectangularGeometry id="aim13815">
         <Azimuth>183.436431884766</Azimuth>
         <CartesianPoint>
@@ -75789,7 +75790,7 @@
       <CADObjectId>Basic Roof: SIM_MASS_SLD_Roof [959819]</CADObjectId>
       <Name>X-S-558</Name>
     </Surface>
-    <Surface surfaceType="Shade" constructionIdRef="Shade" exposedToSun="true" id="aim13824">
+    <Surface surfaceType="Shade" exposedToSun="true" id="aim13824">
       <RectangularGeometry id="aim13825">
         <Azimuth>3.43643450737</Azimuth>
         <CartesianPoint>
@@ -75823,7 +75824,7 @@
       <CADObjectId>Basic Roof: SIM_MASS_SLD_Roof [959820]</CADObjectId>
       <Name>X-S-559</Name>
     </Surface>
-    <Surface surfaceType="Shade" constructionIdRef="Shade" exposedToSun="true" id="aim13833">
+    <Surface surfaceType="Shade" exposedToSun="true" id="aim13833">
       <RectangularGeometry id="aim13834">
         <Azimuth>184.622421264648</Azimuth>
         <CartesianPoint>
@@ -75857,7 +75858,7 @@
       <CADObjectId>Basic Roof: SIM_MASS_SLD_Roof [959820]</CADObjectId>
       <Name>X-S-560</Name>
     </Surface>
-    <Surface surfaceType="Shade" constructionIdRef="Shade" exposedToSun="true" id="aim13842">
+    <Surface surfaceType="Shade" exposedToSun="true" id="aim13842">
       <RectangularGeometry id="aim13843">
         <Azimuth>93.4364318847656</Azimuth>
         <CartesianPoint>
@@ -75891,7 +75892,7 @@
       <CADObjectId>Basic Roof: SIM_MASS_SLD_Roof [959820]</CADObjectId>
       <Name>X-S-561</Name>
     </Surface>
-    <Surface surfaceType="Shade" constructionIdRef="Shade" exposedToSun="true" id="aim13851">
+    <Surface surfaceType="Shade" exposedToSun="true" id="aim13851">
       <RectangularGeometry id="aim13852">
         <Azimuth>93.4364318847656</Azimuth>
         <CartesianPoint>
@@ -75925,7 +75926,7 @@
       <CADObjectId>Basic Roof: SIM_MASS_SLD_Roof [959821]</CADObjectId>
       <Name>X-S-562</Name>
     </Surface>
-    <Surface surfaceType="Shade" constructionIdRef="Shade" exposedToSun="true" id="aim13860">
+    <Surface surfaceType="Shade" exposedToSun="true" id="aim13860">
       <RectangularGeometry id="aim13861">
         <Azimuth>273.436431884766</Azimuth>
         <CartesianPoint>
@@ -75959,7 +75960,7 @@
       <CADObjectId>Basic Roof: SIM_MASS_SLD_Roof [959821]</CADObjectId>
       <Name>X-S-563</Name>
     </Surface>
-    <Surface surfaceType="Shade" constructionIdRef="Shade" exposedToSun="true" id="aim13869">
+    <Surface surfaceType="Shade" exposedToSun="true" id="aim13869">
       <RectangularGeometry id="aim13870">
         <Azimuth>3.43643450737</Azimuth>
         <CartesianPoint>
@@ -75993,7 +75994,7 @@
       <CADObjectId>Basic Roof: SIM_MASS_SLD_Roof [959821]</CADObjectId>
       <Name>X-S-564</Name>
     </Surface>
-    <Surface surfaceType="Shade" constructionIdRef="Shade" exposedToSun="true" id="aim13878">
+    <Surface surfaceType="Shade" exposedToSun="true" id="aim13878">
       <RectangularGeometry id="aim13879">
         <Azimuth>93.4364318847656</Azimuth>
         <CartesianPoint>
@@ -76027,7 +76028,7 @@
       <CADObjectId>Basic Roof: SIM_MASS_SLD_Roof [959822]</CADObjectId>
       <Name>X-S-565</Name>
     </Surface>
-    <Surface surfaceType="Shade" constructionIdRef="Shade" exposedToSun="true" id="aim13887">
+    <Surface surfaceType="Shade" exposedToSun="true" id="aim13887">
       <RectangularGeometry id="aim13888">
         <Azimuth>273.436431884766</Azimuth>
         <CartesianPoint>
@@ -76061,7 +76062,7 @@
       <CADObjectId>Basic Roof: SIM_MASS_SLD_Roof [959822]</CADObjectId>
       <Name>X-S-566</Name>
     </Surface>
-    <Surface surfaceType="Shade" constructionIdRef="Shade" exposedToSun="true" id="aim13896">
+    <Surface surfaceType="Shade" exposedToSun="true" id="aim13896">
       <RectangularGeometry id="aim13897">
         <Azimuth>3.43643450737</Azimuth>
         <CartesianPoint>
@@ -76095,7 +76096,7 @@
       <CADObjectId>Basic Roof: SIM_MASS_SLD_Roof [959822]</CADObjectId>
       <Name>X-S-567</Name>
     </Surface>
-    <Surface surfaceType="Shade" constructionIdRef="Shade" exposedToSun="true" id="aim13905">
+    <Surface surfaceType="Shade" exposedToSun="true" id="aim13905">
       <RectangularGeometry id="aim13906">
         <Azimuth>93.4364318847656</Azimuth>
         <CartesianPoint>
@@ -76134,7 +76135,7 @@
       <CADObjectId>Basic Roof: SIM_MASS_SLD_Roof [959823]</CADObjectId>
       <Name>X-S-568</Name>
     </Surface>
-    <Surface surfaceType="Shade" constructionIdRef="Shade" exposedToSun="true" id="aim13915">
+    <Surface surfaceType="Shade" exposedToSun="true" id="aim13915">
       <RectangularGeometry id="aim13916">
         <Azimuth>273.436431884766</Azimuth>
         <CartesianPoint>
@@ -76173,7 +76174,7 @@
       <CADObjectId>Basic Roof: SIM_MASS_SLD_Roof [959823]</CADObjectId>
       <Name>X-S-569</Name>
     </Surface>
-    <Surface surfaceType="Shade" constructionIdRef="Shade" exposedToSun="true" id="aim13925">
+    <Surface surfaceType="Shade" exposedToSun="true" id="aim13925">
       <RectangularGeometry id="aim13926">
         <Azimuth>273.436431884766</Azimuth>
         <CartesianPoint>
@@ -76207,7 +76208,7 @@
       <CADObjectId>Basic Roof: SIM_MASS_SLD_Roof [959824]</CADObjectId>
       <Name>X-S-570</Name>
     </Surface>
-    <Surface surfaceType="Shade" constructionIdRef="Shade" exposedToSun="true" id="aim13934">
+    <Surface surfaceType="Shade" exposedToSun="true" id="aim13934">
       <RectangularGeometry id="aim13935">
         <Azimuth>93.4364318847656</Azimuth>
         <CartesianPoint>
@@ -76241,7 +76242,7 @@
       <CADObjectId>Basic Roof: SIM_MASS_SLD_Roof [959824]</CADObjectId>
       <Name>X-S-571</Name>
     </Surface>
-    <Surface surfaceType="Shade" constructionIdRef="Shade" exposedToSun="true" id="aim13943">
+    <Surface surfaceType="Shade" exposedToSun="true" id="aim13943">
       <RectangularGeometry id="aim13944">
         <Azimuth>183.436431884766</Azimuth>
         <CartesianPoint>
@@ -76275,7 +76276,7 @@
       <CADObjectId>Basic Roof: SIM_MASS_SLD_Roof [959824]</CADObjectId>
       <Name>X-S-572</Name>
     </Surface>
-    <Surface surfaceType="Shade" constructionIdRef="Shade" exposedToSun="true" id="aim13952">
+    <Surface surfaceType="Shade" exposedToSun="true" id="aim13952">
       <RectangularGeometry id="aim13953">
         <Azimuth>180</Azimuth>
         <CartesianPoint>
@@ -76316,192 +76317,231 @@
     </Surface>
     <DaylightSavings>true</DaylightSavings>
     <Name>Created from Revit</Name>
-  </Campus> 
+  </Campus>
 
 <Construction id="Ceiling">
-<U-value unit="WPerSquareMeterK">0</U-value>
-<Absorptance unit="Fraction" type="ExtIR">0</Absorptance>
-<Roughness value="Rough" />
-<LayerId layerIdRef="layer-ceiling" />
-<Name>Ceiling</Name>
+	<U-value unit="WPerSquareMeterK">0</U-value>
+	<Absorptance unit="Fraction" type="ExtIR">0</Absorptance>
+	<Roughness value="Rough" />
+	<LayerId layerIdRef="layer-ceiling" />
+	<Name>Ceiling</Name>
 </Construction>
 
-<Construction id="ExteriorWall">
-<U-value unit="WPerSquareMeterK">0</U-value>
-<Absorptance unit="Fraction" type="ExtIR">0</Absorptance>
-<Roughness value="Rough" />
-<LayerId layerIdRef="layer-exterior-wall" />
-<Name>Exterior Wall</Name>
+	<Construction id="ExteriorWall">
+	<U-value unit="WPerSquareMeterK">0</U-value>
+	<Absorptance unit="Fraction" type="ExtIR">0</Absorptance>
+	<Roughness value="Rough" />
+	<LayerId layerIdRef="layer-exterior-wall" />
+	<Name>Exterior Wall</Name>
 </Construction>
 
 <Construction id="InteriorFloor">
-<U-value unit="WPerSquareMeterK">0</U-value>
-<Absorptance unit="Fraction" type="ExtIR">0</Absorptance>
-<Roughness value="Rough" />
-<LayerId layerIdRef="layer-interior-floor" />
-<Name>Interior Floor</Name>
+	<U-value unit="WPerSquareMeterK">0</U-value>
+	<Absorptance unit="Fraction" type="ExtIR">0</Absorptance>
+	<Roughness value="Rough" />
+	<LayerId layerIdRef="layer-interior-floor" />
+	<Name>Interior Floor</Name>
 </Construction>
 
 <Construction id="InteriorWall">
-<U-value unit="WPerSquareMeterK">0</U-value>
-<Absorptance unit="Fraction" type="ExtIR">0</Absorptance>
-<Roughness value="Rough" />
-<LayerId layerIdRef="layer-interior-wall" />
-<Name>Interior Wall</Name>
+	<U-value unit="WPerSquareMeterK">0</U-value>
+	<Absorptance unit="Fraction" type="ExtIR">0</Absorptance>
+	<Roughness value="Rough" />
+	<LayerId layerIdRef="layer-interior-wall" />
+	<Name>Interior Wall</Name>
 </Construction>
 
-<Construction id="Raised Floor">
-<U-value unit="WPerSquareMeterK">0</U-value>
-<Absorptance unit="Fraction" type="ExtIR">0</Absorptance>
-<Roughness value="Rough" />
-<LayerId layerIdRef="layer-raised-floor" />
-<Name>Raised Floor</Name>
+<Construction id="RaisedFloor">
+	<U-value unit="WPerSquareMeterK">0</U-value>
+	<Absorptance unit="Fraction" type="ExtIR">0</Absorptance>
+	<Roughness value="Rough" />
+	<LayerId layerIdRef="layer-raised-floor" />
+	<Name>Raised Floor</Name>
 </Construction>
 
 <Construction id="Roof">
-<U-value unit="WPerSquareMeterK">0</U-value>
-<Absorptance unit="Fraction" type="ExtIR">0</Absorptance>
-<Roughness value="Rough" />
-<LayerId layerIdRef="layer-roof" />
-<Name>Roof</Name>
+	<U-value unit="WPerSquareMeterK">0</U-value>
+	<Absorptance unit="Fraction" type="ExtIR">0</Absorptance>
+	<Roughness value="Rough" />
+	<LayerId layerIdRef="layer-roof" />
+	<Name>Roof</Name>
 </Construction>
 
 <Construction id="SlabOnGrade">
-<U-value unit="WPerSquareMeterK">0</U-value>
-<Absorptance unit="Fraction" type="ExtIR">0</Absorptance>
-<Roughness value="Rough" />
-<LayerId layerIdRef="layer-slab-on-grade" />
-<Name>Slab on Grade</Name>
+	<U-value unit="WPerSquareMeterK">0</U-value>
+	<Absorptance unit="Fraction" type="ExtIR">0</Absorptance>
+	<Roughness value="Rough" />
+	<LayerId layerIdRef="layer-slab-on-grade" />
+	<Name>Slab on Grade</Name>
 </Construction>
 
 <Construction id="UndergroundSlab">
-<U-value unit="WPerSquareMeterK">0</U-value>
-<Absorptance unit="Fraction" type="ExtIR">0</Absorptance>
-<Roughness value="Rough" />
-<LayerId layerIdRef="layer-underground-slab" />
-<Name>Slab on Grade</Name>
+	<U-value unit="WPerSquareMeterK">0</U-value>
+	<Absorptance unit="Fraction" type="ExtIR">0</Absorptance>
+	<Roughness value="Rough" />
+	<LayerId layerIdRef="layer-underground-slab" />
+	<Name>Slab on Grade</Name>
 </Construction>
 
 <Construction id="UndergroundWall">
-<U-value unit="WPerSquareMeterK">0</U-value>
-<Absorptance unit="Fraction" type="ExtIR">0</Absorptance>
-<Roughness value="Rough" />
-<LayerId layerIdRef="layer-underground-wall" />
-<Name>Underground Wall</Name>
+	<U-value unit="WPerSquareMeterK">0</U-value>
+	<Absorptance unit="Fraction" type="ExtIR">0</Absorptance>
+	<Roughness value="Rough" />
+	<LayerId layerIdRef="layer-underground-wall" />
+	<Name>Underground Wall</Name>
 </Construction>
 
 
 <Layer id="layer-ceiling">
-<MaterialId materialIdRef="material-ceiling" />
+	<MaterialId materialIdRef="material-ceiling" />
 </Layer>
 <Layer id="layer-exterior-wall">
-<MaterialId materialIdRef="material-exterior-wall" />
+	<MaterialId materialIdRef="material-exterior-wall" />
 </Layer>
 <Layer id="layer-interior-floor">
-<MaterialId materialIdRef="material-interior-floor" />
+	<MaterialId materialIdRef="material-interior-floor" />
 </Layer>
 <Layer id="layer-interior-wall">
-<MaterialId materialIdRef="material-interior-wall" />
+	<MaterialId materialIdRef="material-interior-wall" />
 </Layer>
 <Layer id="layer-raised-floor">
-<MaterialId materialIdRef="material-raised-floor" />
+	<MaterialId materialIdRef="material-raised-floor" />
 </Layer>
 <Layer id="layer-roof">
-<MaterialId materialIdRef="material-roof" />
+	<MaterialId materialIdRef="material-roof" />
 </Layer>
 <Layer id="layer-slab-on-grade">
-<MaterialId materialIdRef="material-slab-on-grade" />
+	<MaterialId materialIdRef="material-slab-on-grade" />
 </Layer>
 <Layer id="layer-underground-slab">
-<MaterialId materialIdRef="material-underground-slab" />
+	<MaterialId materialIdRef="material-underground-slab" />
 </Layer>
 <Layer id="layer-underground-wall">
-<MaterialId materialIdRef="material-underground-wall" />
+<	MaterialId materialIdRef="material-underground-wall" />
 </Layer>
 
 
 <Material id="material-ceiling">
-<Name>Exterior Wall</Name>
-<R-value unit="SquareMeterKPerW">0.134</R-value>
-<Thickness>0.05</Thickness>
-<Conductivity unit="WPerMeterK">0.187</Conductivity>
-<Density unit="KgPerCubicM">290</Density>
-<SpecificHeat unit="JPerKgK">14423.639958391</SpecificHeat>
+	<Name>Ceiling</Name>
+	<R-value unit="SquareMeterKPerW">0.134</R-value>
+	<Thickness>0.05</Thickness>
+	<Conductivity unit="WPerMeterK">0.187</Conductivity>
+	<Density unit="KgPerCubicM">290</Density>
+	<SpecificHeat unit="JPerKgK">14423.639958391</SpecificHeat>
 </Material>
 
 <Material id="material-exterior-wall">
-<Name>Exterior Wall</Name>
-<R-value unit="SquareMeterKPerW">0.134</R-value>
-<Thickness>0.05</Thickness>
-<Conductivity unit="WPerMeterK">0.187</Conductivity>
-<Density unit="KgPerCubicM">290</Density>
-<SpecificHeat unit="JPerKgK">14423.639958391</SpecificHeat>
+	<Name>Exterior Wall</Name>
+	<R-value unit="SquareMeterKPerW">0.134</R-value>
+	<Thickness>0.05</Thickness>
+	<Conductivity unit="WPerMeterK">0.187</Conductivity>
+	<Density unit="KgPerCubicM">290</Density>
+	<SpecificHeat unit="JPerKgK">14423.639958391</SpecificHeat>
 </Material>
 
 <Material id="material-interior-floor">
-<Name>Interior Floor</Name>
-<R-value unit="SquareMeterKPerW">0.267</R-value>
-<Thickness>0.05</Thickness>
-<Conductivity unit="WPerMeterK">0.187</Conductivity>
-<Density unit="KgPerCubicM">290</Density>
-<SpecificHeat unit="JPerKgK">14423.639958391</SpecificHeat>
+	<Name>Interior Floor</Name>
+	<R-value unit="SquareMeterKPerW">0.267</R-value>
+	<Thickness>0.05</Thickness>
+	<Conductivity unit="WPerMeterK">0.187</Conductivity>
+	<Density unit="KgPerCubicM">290</Density>
+	<SpecificHeat unit="JPerKgK">14423.639958391</SpecificHeat>
 </Material>
 
 <Material id="material-interior-wall">
-<Name>Interior Wall</Name>
-<R-value unit="SquareMeterKPerW">0.267</R-value>
-<Thickness>0.05</Thickness>
-<Conductivity unit="WPerMeterK">0.187</Conductivity>
-<Density unit="KgPerCubicM">290</Density>
-<SpecificHeat unit="JPerKgK">14423.639958391</SpecificHeat>
+	<Name>Interior Wall</Name>
+	<R-value unit="SquareMeterKPerW">0.267</R-value>
+	<Thickness>0.05</Thickness>
+	<Conductivity unit="WPerMeterK">0.187</Conductivity>
+	<Density unit="KgPerCubicM">290</Density>
+	<SpecificHeat unit="JPerKgK">14423.639958391</SpecificHeat>
 </Material>
 
 <Material id="material-raised-floor">
-<Name>Raised Floor</Name>
-<R-value unit="SquareMeterKPerW">0.134</R-value>
-<Thickness>0.05</Thickness>
-<Conductivity unit="WPerMeterK">0.187</Conductivity>
-<Density unit="KgPerCubicM">290</Density>
-<SpecificHeat unit="JPerKgK">14423.639958391</SpecificHeat>
+	<Name>Raised Floor</Name>
+	<R-value unit="SquareMeterKPerW">0.134</R-value>
+	<Thickness>0.05</Thickness>
+	<Conductivity unit="WPerMeterK">0.187</Conductivity>
+	<Density unit="KgPerCubicM">290</Density>
+	<SpecificHeat unit="JPerKgK">14423.639958391</SpecificHeat>
 </Material>
 
 <Material id="material-roof">
-<Name>Roof</Name>
-<R-value unit="SquareMeterKPerW">0.134</R-value>
-<Thickness>0.05</Thickness>
-<Conductivity unit="WPerMeterK">0.187</Conductivity>
-<Density unit="KgPerCubicM">290</Density>
-<SpecificHeat unit="JPerKgK">14423.639958391</SpecificHeat>
+	<Name>Roof</Name>
+	<R-value unit="SquareMeterKPerW">0.134</R-value>
+	<Thickness>0.05</Thickness>
+	<Conductivity unit="WPerMeterK">0.187</Conductivity>
+	<Density unit="KgPerCubicM">290</Density>
+	<SpecificHeat unit="JPerKgK">14423.639958391</SpecificHeat>
 </Material>
 
 <Material id="material-slab-on-grade">
-<Name>Slab on Grade</Name>
-<R-value unit="SquareMeterKPerW">0.134</R-value>
-<Thickness>0.05</Thickness>
-<Conductivity unit="WPerMeterK">0.187</Conductivity>
-<Density unit="KgPerCubicM">290</Density>
-<SpecificHeat unit="JPerKgK">14423.639958391</SpecificHeat>
+	<Name>Slab on Grade</Name>
+	<R-value unit="SquareMeterKPerW">0.134</R-value>
+	<Thickness>0.05</Thickness>
+	<Conductivity unit="WPerMeterK">0.187</Conductivity>
+	<Density unit="KgPerCubicM">290</Density>
+	<SpecificHeat unit="JPerKgK">14423.639958391</SpecificHeat>
 </Material>
 
 <Material id="material-underground-slab">
-<Name>Underground Slab</Name>
-<R-value unit="SquareMeterKPerW">0.134</R-value>
-<Thickness>0.05</Thickness>
-<Conductivity unit="WPerMeterK">0.187</Conductivity>
-<Density unit="KgPerCubicM">290</Density>
-<SpecificHeat unit="JPerKgK">14423.639958391</SpecificHeat>
+	<Name>Underground Slab</Name>
+	<R-value unit="SquareMeterKPerW">0.134</R-value>
+	<Thickness>0.05</Thickness>
+	<Conductivity unit="WPerMeterK">0.187</Conductivity>
+	<Density unit="KgPerCubicM">290</Density>
+	<SpecificHeat unit="JPerKgK">14423.639958391</SpecificHeat>
 </Material>
 
 <Material id="material-underground-wall">
-<Name>Underground Wall</Name>
-<R-value unit="SquareMeterKPerW">0.134</R-value>
-<Thickness>0.05</Thickness>
-<Conductivity unit="WPerMeterK">0.187</Conductivity>
-<Density unit="KgPerCubicM">290</Density>
-<SpecificHeat unit="JPerKgK">14423.639958391</SpecificHeat>
+	<Name>Underground Wall</Name>
+	<R-value unit="SquareMeterKPerW">0.134</R-value>
+	<Thickness>0.05</Thickness>
+	<Conductivity unit="WPerMeterK">0.187</Conductivity>
+	<Density unit="KgPerCubicM">290</Density>
+	<SpecificHeat unit="JPerKgK">14423.639958391</SpecificHeat>
 </Material>
 
 
+
+<WindowType id="FixedWindow">
+<Name>WinInst : SIM_EXT_GLZ</Name>
+<Description>Standard Dbl Glazed</Description>
+<U-value unit="WPerSquareMeterK">0</U-value>
+<SolarHeatGainCoeff unit="Fraction">0</SolarHeatGainCoeff>
+<Transmittance type="Visible" unit="Fraction" surfaceType="Both">0</Transmittance>
+<Glaze id="glaze-e0a05">
+  <Name>Glazing</Name>
+  <Description>Standard Dbl Glazed</Description>
+  <Thickness unit="Meters">0</Thickness>
+  <Conductivity unit="WPerMeterK">0</Conductivity>
+  <Transmittance type="Solar" unit="Fraction" surfaceType="Both">0</Transmittance>
+  <Reflectance type="ExtSolar" unit="Fraction" surfaceType="Both">0</Reflectance>
+  <Reflectance type="IntSolar" unit="Fraction" surfaceType="Both">0</Reflectance>
+  <Transmittance type="Visible" unit="Fraction" surfaceType="Both">0</Transmittance>
+  <Reflectance type="ExtVisible" unit="Fraction" surfaceType="Both">0</Reflectance>
+  <Reflectance type="IntVisible" unit="Fraction" surfaceType="Both">0</Reflectance>
+  <Emittance type="ExtIR" unit="Fraction" surfaceType="Both">0</Emittance>
+  <Emittance type="IntIR" unit="Fraction" surfaceType="Both">0</Emittance>
+</Glaze>
+<Gap id="GapIdentificationbbbec" gas="Argon">
+  <Name>Glazing</Name>
+  <Description>Standard Dbl Glazed</Description>
+  <Thickness unit="Meters">0</Thickness>
+  <Conductivity unit="WPerMeterK">0</Conductivity>
+</Gap>
+<Glaze id="GlazingIdentification423ab">
+  <Name>Glazing</Name>
+  <Description>Standard Dbl Glazed</Description>
+  <Thickness unit="Meters">0</Thickness>
+  <Conductivity unit="WPerMeterK">0</Conductivity>
+  <Transmittance type="Visible" unit="Fraction" surfaceType="Both">0</Transmittance>
+  <Reflectance type="ExtIR" unit="Fraction" surfaceType="Both">0</Reflectance>
+  <Transmittance type="Visible" unit="Fraction" surfaceType="Both">0</Transmittance>
+  <Reflectance type="ExtIR" unit="Fraction" surfaceType="Both">0</Reflectance>
+  <Emittance type="ExtIR" unit="Fraction" surfaceType="Both">0</Emittance>
+</Glaze>
+</WindowType>
 
 <WindowType id="OperableWindow">
 <Name>WinInst : SIM_EXT_GLZ</Name>
@@ -76510,7 +76550,7 @@
 <SolarHeatGainCoeff unit="Fraction">0</SolarHeatGainCoeff>
 <Transmittance type="Visible" unit="Fraction" surfaceType="Both">0</Transmittance>
 <Glaze id="glaze-e0a05">
-  <Name />
+  <Name>Glazing</Name>
   <Description>Standard Dbl Glazed</Description>
   <Thickness unit="Meters">0</Thickness>
   <Conductivity unit="WPerMeterK">0</Conductivity>
@@ -76550,7 +76590,7 @@
 <SolarHeatGainCoeff unit="Fraction">0</SolarHeatGainCoeff>
 <Transmittance type="Visible" unit="Fraction" surfaceType="Both">0</Transmittance>
 <Glaze id="glaze-295cf">
-  <Name />
+  <Name>Glazing</Name>
   <Description>Standard Dbl Glazed</Description>
   <Thickness unit="Meters">0</Thickness>
   <Conductivity unit="WPerMeterK">0</Conductivity>
@@ -76589,7 +76629,7 @@
 <SolarHeatGainCoeff unit="Fraction">0</SolarHeatGainCoeff>
 <Transmittance type="Visible" unit="Fraction" surfaceType="Both">0</Transmittance>
 <Glaze id="glaze-83731">
-  <Name />
+  <Name>Glazing</Name>
   <Description>Standard Dbl Glazed</Description>
   <Thickness unit="Meters">0</Thickness>
   <Conductivity unit="WPerMeterK">0</Conductivity>
