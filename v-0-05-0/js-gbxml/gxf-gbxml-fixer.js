@@ -242,7 +242,7 @@ const constructions =
 	<MaterialId materialIdRef="material-underground-slab" />
 </Layer>
 <Layer id="layer-underground-wall">
-<	MaterialId materialIdRef="material-underground-wall" />
+	<MaterialId materialIdRef="material-underground-wall" />
 </Layer>
 
 
