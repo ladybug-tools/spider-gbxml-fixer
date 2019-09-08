@@ -61,6 +61,8 @@ GXF.parseFile = function( gbxml )  {
 
 	GXF.openings = GXF.gbxml.match( /<Opening(.*?)<\/Opening>/gis );
 
+	GXF.openingsUpdated = 0;
+
 	if ( GXF.openings ) {
 
 		GXF.openings.forEach( opening => {
@@ -79,6 +81,9 @@ GXF.parseFile = function( gbxml )  {
 
 				GXF.gbxml = GXF.gbxml.replace( opening, newOpening );
 				//console.log( 'surface', surface );
+
+				GXF.openingsUpdated ++;
+
 			}
 
 		} );
@@ -87,6 +92,8 @@ GXF.parseFile = function( gbxml )  {
 
 
 	GXF.surfaces = GXF.gbxml.match( /<Surface(.*?)<\/Surface>/gis );
+
+	GXF.surfacesUpdated = 0;
 
 	GXF.surfaces.forEach( surface => {
 
@@ -108,6 +115,8 @@ GXF.parseFile = function( gbxml )  {
 
 				GXF.gbxml = GXF.gbxml.replace( surface, newSurface );
 
+				GXF.surfacesUpdated ++;
+
 			}
 
 		} else {
@@ -128,7 +137,11 @@ GXF.parseFile = function( gbxml )  {
 
 		<p>${ GXF.gbxml.length.toLocaleString() } bytes processed</p>
 
-		<p>Ready to save. File menu » 'Save data to file' » Click 'Save file as XML' </p>
+		<p>Openings found: ${ GXF.openings.length } - updated: ${ GXF.openingsUpdated }</p>
+
+		<p>Surfaces found: ${ GXF.surfaces.length } - updated: ${ GXF.surfacesUpdated }</p>
+
+		<p>Ready to save. File menu » 'Save data to file' » Click 'Save to file' </p>
 
 		<p>Happy simulating!</p>
 	`;

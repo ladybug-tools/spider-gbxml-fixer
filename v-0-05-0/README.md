@@ -75,6 +75,12 @@ See current [construction-defaults.txt]( #https://www.ladybug.tools/spider-gbxml
 
 <summary>Change Log</summary>
 
+### 2019-09-07 ~ Theo
+
+
+SGF Atrax v-0-05-00-4dev
+
+* Many fixes
 
 ### 2019-08-29 ~ Theo
 
