@@ -385,6 +385,45 @@ const constructions =
 </Glaze>
 </WindowType>
 
+<WindowType id="FixedSkylight">
+<Name>Skylight_ver00 : SIM_EXT_GLZ_SKY DF01</Name>
+<Description>Standard Dbl Glazed</Description>
+<U-value unit="WPerSquareMeterK">0</U-value>
+<SolarHeatGainCoeff unit="Fraction">0</SolarHeatGainCoeff>
+<Transmittance type="Visible" unit="Fraction" surfaceType="Both">0</Transmittance>
+<Glaze id="glaze-295cf">
+  <Name>Glazing</Name>
+  <Description>Standard Dbl Glazed</Description>
+  <Thickness unit="Meters">0</Thickness>
+  <Conductivity unit="WPerMeterK">0</Conductivity>
+  <Transmittance type="Solar" unit="Fraction" surfaceType="Both">0</Transmittance>
+  <Reflectance type="ExtSolar" unit="Fraction" surfaceType="Both">0</Reflectance>
+  <Reflectance type="IntSolar" unit="Fraction" surfaceType="Both">0</Reflectance>
+  <Transmittance type="Visible" unit="Fraction" surfaceType="Both">0</Transmittance>
+  <Reflectance type="ExtVisible" unit="Fraction" surfaceType="Both">0</Reflectance>
+  <Reflectance type="IntVisible" unit="Fraction" surfaceType="Both">0</Reflectance>
+  <Emittance type="ExtIR" unit="Fraction" surfaceType="Both">0</Emittance>
+  <Emittance type="IntIR" unit="Fraction" surfaceType="Both">0</Emittance>
+</Glaze>
+<Gap id="GapIdentificationd3e73" gas="Argon">
+  <Name>Glazing</Name>
+  <Description>Standard Dbl Glazed</Description>
+  <Thickness unit="Meters">0</Thickness>
+  <Conductivity unit="WPerMeterK">0</Conductivity>
+</Gap>
+<Glaze id="GlazingIdentification46ee2">
+  <Name>Glazing</Name>
+  <Description>Standard Dbl Glazed</Description>
+  <Thickness unit="Meters">0</Thickness>
+  <Conductivity unit="WPerMeterK">0</Conductivity>
+  <Transmittance type="Visible" unit="Fraction" surfaceType="Both">0</Transmittance>
+  <Reflectance type="ExtIR" unit="Fraction" surfaceType="Both">0</Reflectance>
+  <Transmittance type="Visible" unit="Fraction" surfaceType="Both">0</Transmittance>
+  <Reflectance type="ExtIR" unit="Fraction" surfaceType="Both">0</Reflectance>
+  <Emittance type="ExtIR" unit="Fraction" surfaceType="Both">0</Emittance>
+</Glaze>
+</WindowType>
+
 <WindowType id="OperableWindow">
 <Name>WinInst : SIM_EXT_GLZ</Name>
 <Description>Standard Dbl Glazed</Description>
