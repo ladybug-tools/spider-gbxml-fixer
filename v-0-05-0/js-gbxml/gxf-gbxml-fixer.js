@@ -28,7 +28,6 @@ GXF.init = function( target ) {
 	document.body.addEventListener( 'FOBonZipFileLoad', GXF.onFileZipLoad, false );
 	document.body.addEventListener( 'onZipFileParse', GXF.onFileZipLoad, false );
 
-
 	FOBdet.open = true;
 
 };
@@ -141,14 +140,19 @@ GXF.parseFile = function( gbxml )  {
 
 		<p>Surfaces found: ${ GXF.surfaces.length } - updated: ${ GXF.surfacesUpdated }</p>
 
+		<p>File size: ${ GXF.gbxml.length.toLocaleString() }</p>
+
 		<p>Ready to save. File menu » 'Save data to file' » Click 'Save to file' </p>
+
 
 		<p>Happy simulating!</p>
 	`;
 
-	FSB.sourceContents = GXF.gbxml;
+	FSB.text = GXF.gbxml;
 
-	FSB.name = FOB.name;
+	console.log( 'FOB.text', FOB.text.length );
+
+	FSB.fileName = FOB.fileName;
 
 };
 
