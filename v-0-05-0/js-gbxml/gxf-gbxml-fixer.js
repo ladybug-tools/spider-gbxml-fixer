@@ -217,12 +217,20 @@ const constructions =
 	<Name>Slab on Grade</Name>
 </Construction>
 
+<Construction id="UndergroundCeiling">
+	<U-value unit="WPerSquareMeterK">0</U-value>
+	<Absorptance unit="Fraction" type="ExtIR">0</Absorptance>
+	<Roughness value="Rough" />
+	<LayerId layerIdRef="layer-underground-ceiling" />
+	<Name>Underground Ceiling</Name>
+</Construction>
+
 <Construction id="UndergroundSlab">
 	<U-value unit="WPerSquareMeterK">0</U-value>
 	<Absorptance unit="Fraction" type="ExtIR">0</Absorptance>
 	<Roughness value="Rough" />
 	<LayerId layerIdRef="layer-underground-slab" />
-	<Name>Slab on Grade</Name>
+	<Name>Underground Slab</Name>
 </Construction>
 
 <Construction id="UndergroundWall">
@@ -254,6 +262,9 @@ const constructions =
 </Layer>
 <Layer id="layer-slab-on-grade">
 	<MaterialId materialIdRef="material-slab-on-grade" />
+</Layer>
+<Layer id="layer-underground-ceiling">
+	<MaterialId materialIdRef="material-underground-ceiling" />
 </Layer>
 <Layer id="layer-underground-slab">
 	<MaterialId materialIdRef="material-underground-slab" />
@@ -319,6 +330,15 @@ const constructions =
 
 <Material id="material-slab-on-grade">
 	<Name>Slab on Grade</Name>
+	<R-value unit="SquareMeterKPerW">0.134</R-value>
+	<Thickness>0.05</Thickness>
+	<Conductivity unit="WPerMeterK">0.187</Conductivity>
+	<Density unit="KgPerCubicM">290</Density>
+	<SpecificHeat unit="JPerKgK">14423.639958391</SpecificHeat>
+</Material>
+
+<Material id="material-underground-ceiling">
+	<Name>Ceiling</Name>
 	<R-value unit="SquareMeterKPerW">0.134</R-value>
 	<Thickness>0.05</Thickness>
 	<Conductivity unit="WPerMeterK">0.187</Conductivity>
