@@ -8,12 +8,12 @@ var GXF = {
 	script: {
 
 		copyright: "Copyright 2019 Ladybug Tools authors",
-		date: "2019-08-29",
+		date: "2019-09-11",
 		description: "Parse gbXML surfaces",
 		helpFile: "../js-gbxml/gxf-gbxml-fixer.md",
 		license: "MIT License",
 		urlSourceCode: "../js-gbxml/gxf-gbxml-fixer.js",
-		version: "0.05.00-2gxfx"
+		version: "0.05.00-3gxfx"
 	}
 
 };
@@ -365,6 +365,44 @@ const constructions =
 </Material>
 
 
+<WindowType id="Air">
+<Name>Air</Name>
+<Description>Standard Dbl Glazed</Description>
+<U-value unit="WPerSquareMeterK">0</U-value>
+<SolarHeatGainCoeff unit="Fraction">0</SolarHeatGainCoeff>
+<Transmittance type="Visible" unit="Fraction" surfaceType="Both">0</Transmittance>
+<Glaze id="glaze-e0a05">
+  <Name>Glazing</Name>
+  <Description>Standard Dbl Glazed</Description>
+  <Thickness unit="Meters">0</Thickness>
+  <Conductivity unit="WPerMeterK">0</Conductivity>
+  <Transmittance type="Solar" unit="Fraction" surfaceType="Both">0</Transmittance>
+  <Reflectance type="ExtSolar" unit="Fraction" surfaceType="Both">0</Reflectance>
+  <Reflectance type="IntSolar" unit="Fraction" surfaceType="Both">0</Reflectance>
+  <Transmittance type="Visible" unit="Fraction" surfaceType="Both">0</Transmittance>
+  <Reflectance type="ExtVisible" unit="Fraction" surfaceType="Both">0</Reflectance>
+  <Reflectance type="IntVisible" unit="Fraction" surfaceType="Both">0</Reflectance>
+  <Emittance type="ExtIR" unit="Fraction" surfaceType="Both">0</Emittance>
+  <Emittance type="IntIR" unit="Fraction" surfaceType="Both">0</Emittance>
+</Glaze>
+<Gap id="GapIdentificationbbbec" gas="Argon">
+  <Name>Glazing</Name>
+  <Description>Standard Dbl Glazed</Description>
+  <Thickness unit="Meters">0</Thickness>
+  <Conductivity unit="WPerMeterK">0</Conductivity>
+</Gap>
+<Glaze id="GlazingIdentification423ab">
+  <Name>Glazing</Name>
+  <Description>Standard Dbl Glazed</Description>
+  <Thickness unit="Meters">0</Thickness>
+  <Conductivity unit="WPerMeterK">0</Conductivity>
+  <Transmittance type="Visible" unit="Fraction" surfaceType="Both">0</Transmittance>
+  <Reflectance type="ExtIR" unit="Fraction" surfaceType="Both">0</Reflectance>
+  <Transmittance type="Visible" unit="Fraction" surfaceType="Both">0</Transmittance>
+  <Reflectance type="ExtIR" unit="Fraction" surfaceType="Both">0</Reflectance>
+  <Emittance type="ExtIR" unit="Fraction" surfaceType="Both">0</Emittance>
+</Glaze>
+</WindowType>
 
 <WindowType id="FixedWindow">
 <Name>WinInst : SIM_EXT_GLZ</Name>
