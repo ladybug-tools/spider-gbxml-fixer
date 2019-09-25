@@ -99,6 +99,8 @@ FSB.butSaveFile = function() {
 
 	//FSB.text = window.FOB && FOB.text ? FOB.text : "Hello, World!";
 
+	FSB.text.replace( /encoding="UTF-16"/, "" );
+	
 	const blob = new Blob( [ FSB.text ] );
 	let a = document.body.appendChild( document.createElement( 'a' ) );
 	a.href = window.URL.createObjectURL( blob );

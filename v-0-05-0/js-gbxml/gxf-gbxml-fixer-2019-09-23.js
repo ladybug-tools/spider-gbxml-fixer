@@ -51,7 +51,7 @@ GXF.parseFile = function( gbxml )  {
 
 	gbxml = gbxml.charAt( 0 ) === "<" ? gbxml : gbxml.slice( 1 );
 
-	//console.log( 'gbxml', gbxml.slice( 0, 200 ) );
+	console.log( 'gbxml', gbxml.slice( 0, 200 ) );
 
 	GXF.gbxml = gbxml;
 	//console.log( 'gbxml', gbxml );
@@ -100,7 +100,7 @@ GXF.parseFile = function( gbxml )  {
 
 		if ( type[ 1 ] !== "Air" && type[ 1 ] !== "Shade") {
 
-			const construction = surface.match( /\<surface(.*?)constructionIdRef="(.*?)"(.*?)\r/i );
+			const construction = surface.match( /constructionIdRef="(.*?)"/i );
 
 			if ( !construction ) {
 
@@ -116,20 +116,16 @@ GXF.parseFile = function( gbxml )  {
 
 				GXF.surfacesUpdated ++;
 
-			} else {
-
-				console.log( { construction } );
 			}
 
 		} else {
 
 			//console.log( '', type );
-
 		}
 
 	} );
 
-	GXF.gbxml = GXF.gbxml.replace( /<\/Campus>/i, `</Campus> ${ constructionsLite }` );
+	GXF.gbxml = GXF.gbxml.replace( /<\/Campus>/i, `</Campus> ${ constructions }` );
 
 	GXF.gbxml = GXF.gbxml.replace( /encoding="UTF-16"/i, `encoding="UTF-8"` );
 
