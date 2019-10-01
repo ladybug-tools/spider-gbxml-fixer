@@ -1,4 +1,5 @@
 //https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/540328/BR_PDF_AD_L2A_2013_with_2016_amendments.pdf
+//https://www.uk-ncm.org.uk/filelibrary/NCM_Modelling_Guide_2013_Edition_20November2015.pdf
 //Michal on 2019.10.01 reference to UK Building Regulations Part L2A
 //Multiple layers in Constructions are in order from outside to inside
 
