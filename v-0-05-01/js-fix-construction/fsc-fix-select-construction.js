@@ -50,7 +50,7 @@ FSC.getMenuSelectConstruction = function () {
 		<p>Select construction, layer, material and window type to be added if needed to gbXML file</p>
 			<select onclick=FSC.fetchConstructionFile(this) size=2 >
 				<option selected >Minimum defaults</option>
-				<option>UK England building regs 2010</option>
+				<option>UK Building Regulations 2010 England</option>
 			<select>
 
 			<p><button onclick=GXF.parseFile(); >Fix file by adding construction data</button></p>

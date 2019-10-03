@@ -7,7 +7,15 @@
 	<Name>Ceiling</Name>
 </Construction>
 
-	<Construction id="ExteriorWall">
+<Construction id="ExposedFloor">
+	<U-value unit="WPerSquareMeterK">0.22</U-value>
+	<Absorptance unit="Fraction" type="ExtIR">0</Absorptance>
+	<Roughness value="Rough" />
+	<LayerId layerIdRef="layer-exposed-floor" />
+	<Name>ExposedFloor</Name>
+</Construction>
+
+<Construction id="ExteriorWall">
 	<U-value unit="WPerSquareMeterK">0</U-value>
 	<Absorptance unit="Fraction" type="ExtIR">0</Absorptance>
 	<Roughness value="Rough" />
@@ -83,6 +91,9 @@
 <Layer id="layer-ceiling">
 	<MaterialId materialIdRef="material-ceiling" />
 </Layer>
+<Layer id="layer-exposed-floor">
+	<MaterialId materialIdRef="material-exposed-floor" />
+</Layer>
 <Layer id="layer-exterior-wall">
 	<MaterialId materialIdRef="material-exterior-wall" />
 </Layer>
@@ -114,6 +125,15 @@
 
 <Material id="material-ceiling">
 	<Name>Ceiling</Name>
+	<R-value unit="SquareMeterKPerW">0.134</R-value>
+	<Thickness>0.05</Thickness>
+	<Conductivity unit="WPerMeterK">0.187</Conductivity>
+	<Density unit="KgPerCubicM">290</Density>
+	<SpecificHeat unit="JPerKgK">14423.639958391</SpecificHeat>
+</Material>
+
+<Material id="material-exposed-floor">
+	<Name>Exposed Floor</Name>
 	<R-value unit="SquareMeterKPerW">0.134</R-value>
 	<Thickness>0.05</Thickness>
 	<Conductivity unit="WPerMeterK">0.187</Conductivity>
